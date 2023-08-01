@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# ██╗    ██╗███╗   ███╗██████╗ ███████╗██╗      ██████╗  █████╗ ██████╗
+# ██║    ██║████╗ ████║██╔══██╗██╔════╝██║     ██╔═══██╗██╔══██╗██╔══██╗
+# ██║ █╗ ██║██╔████╔██║██████╔╝█████╗  ██║     ██║   ██║███████║██║  ██║
+# ██║███╗██║██║╚██╔╝██║██╔══██╗██╔══╝  ██║     ██║   ██║██╔══██║██║  ██║
+# ╚███╔███╔╝██║ ╚═╝ ██║██║  ██║███████╗███████╗╚██████╔╝██║  ██║██████╔╝
+#  ╚══╝╚══╝ ╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝
+#
+# Autor = Shen Blaskowitz
+# Follow Me = https://github.com/Shentxt
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#                 Executed Windos Manager Reload
+#
+# a simple WM reload script
+#
+# required to function (only hyprland)
+# --------------------
+# hyprctl: wmreload
+# hyprctl: notify
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# this script reloads the desktop
+sleep 1 && hyprctl reload
+
+# pkill aplications
+pkill eww
+pkill rofi
+pkill swaylock
+pkill hyprpicker
+
+# Start Aplications
+~/.config/eww/scripts/init ./init
+
+# turn it off if you don't like the sound
+paplay ~/.config/hypr/assets/effects/system.ogg &>/dev/null &
+
+# send a notification, that he has recharged
+hyprctl notify 5 2000 "rgb(151720)" "It has been reloaded successfully!"

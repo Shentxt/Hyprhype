@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# ██████╗ ██████╗ ██╗ ██████╗ ██╗  ██╗████████╗███╗   ██╗███████╗███████╗
+# ██╔══██╗██╔══██╗██║██╔════╝ ██║  ██║╚══██╔══╝████╗  ██║██╔════╝██╔════╝
+# ██████╔╝██████╔╝██║██║  ███╗███████║   ██║   ██╔██╗ ██║█████╗  ███████╗
+# ██╔══██╗██╔══██╗██║██║   ██║██╔══██║   ██║   ██║╚██╗██║██╔══╝  ╚════██║
+# ██████╔╝██║  ██║██║╚██████╔╝██║  ██║   ██║   ██║ ╚████║███████╗███████║
+# ╚═════╝ ╚═╝  ╚═╝╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═══╝╚══════╝╚══════╝
+#
+# Autor = Shen Blaskowitz
+# Inspiration = https://github.com/adi1090x
+# Follow Me = https://github.com/Shentxt
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#                 Executed Brightness
+#
+# a simple brightness script
+#
+# required to function
+# --------------------
+# wlsunset: brightness
+# dunst: notify
+# awk: print the message
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Set brightness using sunset
+wlsunset -S 6:00 -s 1:00 >/dev/null 2>&1
+
+#Function to show notifications
+notify_brightness_change() {
+	local mode=$1
+	local temperature=$2
+
+	hyprctl notify 5 2000 "rgb(151720)" "Mode $mode activated, Temperature: $temperature"
+}
+
+# Get the current brightness state
+current_mode=$(wlsunset -l | awk '{print $2}')
+current_temperature=$(wlsunset -l | awk '{print $NF}')
+
+# Check if a change in brightness has occurred and display a notification
+if [[ $current_mode == "day" ]] && [[ $(date +%H:%M) == "06:00" ]]; then
+	notify_brightness_change "day" "$current_temperature"
+elif [[ $current_mode == "night" ]] && [[ $(date +%H:%M) == "20:00" ]]; then
+	notify_brightness_change "night" "$current_temperature"
+fi

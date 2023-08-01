@@ -1,0 +1,48 @@
+#!/bin/sh
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# ██╗    ██╗ █████╗ ██╗     ██╗     ██████╗  █████╗ ██████╗ ███████╗██████╗ 
+# ██║    ██║██╔══██╗██║     ██║     ██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔══██╗
+# ██║ █╗ ██║███████║██║     ██║     ██████╔╝███████║██████╔╝█████╗  ██████╔╝
+# ██║███╗██║██╔══██║██║     ██║     ██╔═══╝ ██╔══██║██╔═══╝ ██╔══╝  ██╔══██╗
+# ╚███╔███╔╝██║  ██║███████╗███████╗██║     ██║  ██║██║     ███████╗██║  ██║
+#  ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝     ╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝  
+#
+# Autor = Shen Blaskowitz
+# Follow Me = https://github.com/Shentxt
+#  
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#                 Executed Wallpaper
+#
+# a simple wallpaper script
+# 
+# required to function
+# --------------------
+# swww: wallpaper
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# folder="${HOME}/Pictures"
+folder="${HOME}/.config/hypr/assets/walls"
+
+# use all imagen or jpg and png
+pic=$(find $folder -type f -name '*.jpg' -o -name '*.png' | shuf -n1)
+
+# Path of the file that saves the last used image
+last_wallpaper_file="/tmp/last_wallpaper.txt"
+
+# Check if an image was supplied as an argument to script
+if [ -n "$1" ]; then
+  if [ -f "$1" ]; then   
+    pic="$1"
+  fi
+fi
+
+# use swwww for the transition
+sleep 1 && swww img -t any --transition-bezier 0.0,0.0,1.0,1.0 --transition-duration .8 --transition-step 255 --transition-fps 60 $pic & &>/dev/null
+
+# Guardar la ruta de la imagen utilizada en el archivo
+echo "$pic" > "$last_wallpaper_file"

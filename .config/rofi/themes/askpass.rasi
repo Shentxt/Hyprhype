@@ -1,0 +1,86 @@
+/**
+ *
+ * Author : Aditya Shakya (adi1090x)
+ * Github : @adi1090x
+ * 
+ * Rofi Theme File
+ * Rofi Version: 1.7.3
+ **/
+
+/*****----- Global Properties -----*****/
+@import                          "shared/colors.rasi"
+@import                          "shared/fonts.rasi"
+
+/*****----- Main Window -----*****/
+window {
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       420px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+    padding:                     20px;
+    border:                      0px solid;
+    border-radius:               12px;
+    border-color:                @background-alt;
+    background-color:             rgba(13, 15, 24, 0.5);
+    cursor:                      "default";
+    children:                    [ "inputbar", "listview" ];
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               0px;
+    border-color:                @selected;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    children:                    [ "textbox-prompt-colon", "prompt", "entry" ];
+}
+
+dummy {
+    expand:                      false;
+    width:                       10px;
+    background-color:            transparent;
+}
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    str:                         "";
+    padding:                     10px 12px;
+     border-radius:               12px;
+    border:                      2px solid;
+    border-color:                #ffffff;
+    background-color:            transparent;
+    text-color:                  #ffff;
+}
+prompt {
+    enabled:                     true;
+    padding:                     10px 12px;
+     border-radius:               12px;
+    border:                      2px solid;
+    border-color:                #ffffff;
+    background-color:            transparent;
+    text-color:                  #ffff;
+}
+entry {
+    enabled:                     true;
+    padding:                     10px 12px;
+    border:                      0px 0px 0px 0px;
+    border-radius:               12px;
+    border-color:                #ffff;
+    background-color:             rgba(165, 182, 207, 0.5);
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder:                 "Password";
+    placeholder-color:           inherit;
+}
+
+/*****----- Listview -----*****/
+listview {
+    enabled:                     false;
+}

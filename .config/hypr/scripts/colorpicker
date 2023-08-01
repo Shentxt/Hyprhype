@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# ██████╗ ██████╗ ██╗      ██████╗ ██████╗ ██████╗ ██╗ ██████╗██╗  ██╗███████╗██████╗
+# ██╔════╝██╔═══██╗██║     ██╔═══██╗██╔══██╗██╔══██╗██║██╔════╝██║ ██╔╝██╔════╝██╔══██╗
+# ██║     ██║   ██║██║     ██║   ██║██████╔╝██████╔╝██║██║     █████╔╝ █████╗  ██████╔╝
+# ██║     ██║   ██║██║     ██║   ██║██╔══██╗██╔═══╝ ██║██║     ██╔═██╗ ██╔══╝  ██╔══██╗
+# ╚██████╗╚██████╔╝███████╗╚██████╔╝██║  ██║██║     ██║╚██████╗██║  ██╗███████╗██║  ██║
+#  ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+#
+# Autor = Shen Blaskowitz
+# Follow Me = https://github.com/Shentxt
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#                 Executed Colorpicker
+#
+# a simple colorpicker script
+#
+# required to function
+# --------------------
+# hyprpicker: colorpicker
+# hyprctl: notify
+# wl-paste: past color
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Require hyprpicker past color
+color_output=$(hyprpicker)
+
+# Copy the output to the clipboard
+echo "$color_output" | wl-copy
+
+# Get the hex name from the clipboard
+hex_color=$(wl-paste)
+
+if [[ -n "$hex_color" ]]; then
+	hyprctl notify 5 2000 "rgb(151720)" "Color: $hex_color"
+	paplay ~/.config/hypr/assets/effects/pick.ogg &>/dev/null
+else
+	hyprctl notify 1 2000 "rgb(FF0000)" "Color selection canceled or no color detected"
+	paplay ~/.config/hypr/assets/effects/alert.ogg &>/dev/null
+fi

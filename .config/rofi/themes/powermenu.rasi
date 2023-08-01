@@ -1,0 +1,165 @@
+/**
+ *
+ * Author : Aditya Shakya (adi1090x)
+ * Github : @adi1090x
+ * 
+ * Rofi Theme File
+ * Rofi Version: 1.7.3
+ **/
+
+/*****----- Configuration -----*****/
+configuration {
+    show-icons:                 false;
+}
+
+/*****----- Global Properties -----*****/
+@import                          "shared/colors.rasi"
+@import                          "shared/fonts.rasi"
+
+/*
+USE_ICON=YES
+*/
+
+/*****----- Main Window -----*****/
+window {
+    /* properties for window widget */
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  true;
+    width:                       1000px;
+    height:                      420px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+    
+    /* properties for all widgets */
+    enabled:                     true;
+    border:                      0px solid;
+    border-radius:               0px;
+    border-color:                @background;
+    cursor:                      "default";
+    background-color:            rgba(13, 15, 24, 0.5);
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    enabled:                     true;
+    spacing:                     0px;
+    margin:                      0px;
+    padding:                     0px;
+    background-color:            transparent;
+    orientation:                 vertical;
+    children:                    [  "imagebox", "listview"];
+}
+
+/*****----- Imagebox -----*****/
+imagebox {
+    expand:                      false;
+    width:                       40px;
+    spacing:                     40px;
+    padding:                     100px;
+    border-radius:               12px;
+    border:                      0px solid;
+    border-color:                #ffffff;
+    background-color:            transparent;
+    background-image:         url("", width);
+    children:                    [ "inputbar", "dummy", "message" ];
+}
+
+/*****----- User -----*****/
+userimage {
+    margin:                      0px 0px;
+    border:                      0px;
+    border-radius:               0px;
+    border-color:                @background-alt;
+    background-color:            transparent;
+    background-image:        url("/home/shen/.face", width);
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled:                     true; 
+    padding:                     0px;
+    border-radius:               12px;
+    border:                      0px solid;
+    border-color:                #ffffff;
+    background-color:            transparent;
+    text-color:                  inherit;
+    children:                    [ "dummy", "prompt", "dummy"];
+}
+
+dummy {
+    background-color:            transparent;
+}
+
+prompt {
+    background-color:            transparent;
+    border-color:                inherit;
+    text-color:                  #ffffff;
+}
+
+/*****----- Message -----*****/
+message {
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     0px;
+    border-radius:               12px;
+    border:                      0px solid;
+    border-color:                #ffffff;
+    background-color:            transparent;
+    text-color:                  #ffffff;
+}
+textbox {
+    background-color:            transparent;
+    text-color:                  inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+}
+
+/*****----- Listview -----*****/
+listview {
+    enabled:                     true;
+    columns:                     1;
+    lines:                       1;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    margin:                      0px;
+    spacing:                     0px;
+    padding:                     12px;
+    border-radius:               12px;
+    border:                      0px solid;
+    border-color:                #ffffff;
+    background-color:            transparent;
+    background-image:            url("", width); 
+    cursor:                      "default";
+}
+
+/*****----- Elements -----*****/
+element {
+    enabled:                     true;
+    padding:                     0px  0px;
+    border-radius:               12px ;
+    border:                      0px solid;
+    border-color:                #ffffff;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      pointer;
+}
+element-text {
+    font:                        "feather bold 45";
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.0;
+    horizontal-align:            0.5;
+}
+element selected.normal { 
+    background-color:            transparent;
+    text-color:                  #6E6E6E;
+}
