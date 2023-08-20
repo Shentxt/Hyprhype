@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #
 # ███████╗ ██████╗██████╗ ███████╗███████╗███╗   ██╗███████╗██╗  ██╗ ██████╗ ████████╗
@@ -81,7 +80,7 @@ fi
 
 # notify and view screenshot
 notify_view() {
-	notify_cmd_shot='dunstify -u low -h string:x-dunst-stack-tag:obscreenshot -i /usr/share/archcraft/icons/dunst/picture.png'
+	notify_cmd_shot='dunstify -u low -h string:x-dunst-stack-tag:obscreenshot -i ~/.config/hypr/assets/icons/camera.png'
 	${notify_cmd_shot} "$file."
 	paplay ~/.config/hypr/assets/effects/screenshot.ogg &>/dev/null &
 	swayimg "${dir}/${file}"

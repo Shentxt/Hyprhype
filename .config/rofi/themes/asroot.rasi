@@ -180,6 +180,6 @@ element selected.urgent {
     text-color:                  var(background);
 }
 element selected.normal {
-    background-color:            rgba(165, 182, 207, 0.5);
+    background-image: linear-gradient(45deg, #7396E6, #CE7194);
     text-color:                  var(background);
 }

@@ -13,78 +13,59 @@ configuration {
 }
 
 /*****----- Global Properties -----*****/
-@import                          "shared/colors.rasi"
-@import                          "shared/fonts.rasi"
+* {
+    mainbox-spacing:             26px;
+    mainbox-margin:              0px 200px;
+    message-margin:              0px 350px;
+    message-padding:             12px;
+    message-border-radius:       12px;
+    listview-spacing:            12px;
+    element-padding:             45px 42px;
+    element-border-radius:       12px;
 
-/*
-USE_ICON=YES
-*/
+    prompt-font:                 "minecraft 32";
+    textbox-font:                "minecraft 12";
+    element-text-font:           "feather Bold 48";
+    
+    background-color:        rgba(13, 15, 24, 0.5); 
+    background-normal:           white/20%;
+    background-selected:         white/20%;
+    foreground-normal:           white;
+    foreground-selected:         white;
+}
 
 /*****----- Main Window -----*****/
 window {
-    /* properties for window widget */
     transparency:                "real";
     location:                    center;
     anchor:                      center;
     fullscreen:                  true;
-    width:                       1000px;
-    height:                      420px;
-    x-offset:                    0px;
-    y-offset:                    0px;
-    
-    /* properties for all widgets */
-    enabled:                     true;
-    border:                      0px solid;
-    border-radius:               0px;
-    border-color:                @background;
     cursor:                      "default";
-    background-color:            rgba(13, 15, 24, 0.5);
 }
 
 /*****----- Main Box -----*****/
 mainbox {
     enabled:                     true;
-    spacing:                     0px;
-    margin:                      0px;
-    padding:                     0px;
+    spacing:                     var(mainbox-spacing);
+    margin:                      var(mainbox-margin);
     background-color:            transparent;
-    orientation:                 vertical;
-    children:                    [  "imagebox", "listview"];
-}
-
-/*****----- Imagebox -----*****/
-imagebox {
-    expand:                      false;
-    width:                       40px;
-    spacing:                     40px;
-    padding:                     100px;
-    border-radius:               12px;
-    border:                      0px solid;
-    border-color:                #ffffff;
-    background-color:            transparent;
-    background-image:         url("", width);
-    children:                    [ "inputbar", "dummy", "message" ];
+    children:                    [ "dummy", "userimage", "inputbar", "listview", "message", "dummy" ];
 }
 
 /*****----- User -----*****/
 userimage {
-    margin:                      0px 0px;
-    border:                      0px;
-    border-radius:               0px;
-    border-color:                @background-alt;
+    margin:                      0px 460px 0px 379px;
+    border:                      2px;
+    border-radius:               100;
+    border-color:                white;
     background-color:            transparent;
-    background-image:        url("/home/shen/.face", width);
+    background-image:            url("~/.face", height); 
 }
 
 /*****----- Inputbar -----*****/
 inputbar {
-    enabled:                     true; 
-    padding:                     0px;
-    border-radius:               12px;
-    border:                      0px solid;
-    border-color:                #ffffff;
+    enabled:                     true;
     background-color:            transparent;
-    text-color:                  inherit;
     children:                    [ "dummy", "prompt", "dummy"];
 }
 
@@ -93,23 +74,23 @@ dummy {
 }
 
 prompt {
+    enabled:                     true;
+    font:                        var(prompt-font);
     background-color:            transparent;
-    border-color:                inherit;
-    text-color:                  #ffffff;
+    text-color:                  var(foreground-normal);
 }
 
 /*****----- Message -----*****/
 message {
     enabled:                     true;
-    margin:                      0px;
-    padding:                     0px;
-    border-radius:               12px;
-    border:                      0px solid;
-    border-color:                #ffffff;
-    background-color:            transparent;
-    text-color:                  #ffffff;
+    margin:                      var(message-margin);
+    padding:                     var(message-padding);
+    border-radius:               var(message-border-radius);
+    background-color:            var(background-normal);
+    text-color:                  var(foreground-normal);
 }
 textbox {
+    font:                        var(textbox-font);
     background-color:            transparent;
     text-color:                  inherit;
     vertical-align:              0.5;
@@ -119,7 +100,8 @@ textbox {
 /*****----- Listview -----*****/
 listview {
     enabled:                     true;
-    columns:                     1;
+    expand:                      false;
+    columns:                     5;
     lines:                       1;
     cycle:                       true;
     dynamic:                     true;
@@ -129,37 +111,29 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
     
-    margin:                      0px;
-    spacing:                     0px;
-    padding:                     12px;
-    border-radius:               12px;
-    border:                      0px solid;
-    border-color:                #ffffff;
+    spacing:                     var(listview-spacing);
     background-color:            transparent;
-    background-image:            url("", width); 
     cursor:                      "default";
 }
 
 /*****----- Elements -----*****/
 element {
     enabled:                     true;
-    padding:                     0px  0px;
-    border-radius:               12px ;
-    border:                      0px solid;
-    border-color:                #ffffff;
+    padding:                     var(element-padding);
+    border-radius:               var(element-border-radius);
     background-color:            transparent;
-    text-color:                  @foreground;
+    text-color:                  var(foreground-normal);
     cursor:                      pointer;
 }
 element-text {
-    font:                        "feather bold 45";
+    font:                        var(element-text-font);
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
-    vertical-align:              0.0;
+    vertical-align:              0.5;
     horizontal-align:            0.5;
 }
-element selected.normal { 
-    background-color:            transparent;
-    text-color:                  #6E6E6E;
+element selected.normal {
+    background-image: linear-gradient(45deg, #7396E6, #CE7194);
+    text-color:                  #151515;
 }

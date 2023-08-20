@@ -1,0 +1,159 @@
+#!/usr/bin/env bash
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# ███████╗ ██████╗██████╗ ███████╗███████╗███╗   ██╗██████╗ ███████╗ ██████╗ ██████╗ ██████╗ ██████╗ 
+# ██╔════╝██╔════╝██╔══██╗██╔════╝██╔════╝████╗  ██║██╔══██╗██╔════╝██╔════╝██╔═══██╗██╔══██╗██╔══██╗
+# ███████╗██║     ██████╔╝█████╗  █████╗  ██╔██╗ ██║██████╔╝█████╗  ██║     ██║   ██║██████╔╝██║  ██║
+# ╚════██║██║     ██╔══██╗██╔══╝  ██╔══╝  ██║╚██╗██║██╔══██╗██╔══╝  ██║     ██║   ██║██╔══██╗██║  ██║
+# ███████║╚██████╗██║  ██║███████╗███████╗██║ ╚████║██║  ██║███████╗╚██████╗╚██████╔╝██║  ██║██████╔╝
+# ╚══════╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝    
+#
+# Autor = kaii
+# Inspiration = https://github.com/kaii-lb
+# Follow Me = https://github.com/Shentxt
+#  
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#                 Executed Screenrecord
+#
+# a simple screenrecord script
+# 
+# required to function
+# --------------------
+# hyprctl: windows data
+# rofi: Launch Script 
+# wl-screenrec: Screenrecord
+# wl-copy: copy information
+# slurp: colors
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Theme Elements
+prompt='Screenrecord'
+mesg="Directory :: $(xdg-user-dir VIDEOS)/Screenrecord"
+
+# Options
+layout=$(cat ~/.config/rofi/themes/screenrecord.rasi | grep 'USE_ICON' | cut -d'=' -f2)
+if [[ "$layout" == 'NO' ]]; then
+	option_1=" Capture Desktop"
+	option_2=" Capture Area"
+	option_3=" Capture Window"
+	option_4=" Capture in 5s"
+	option_5=" Capture in 10s"
+else
+	option_1=""
+	option_2=""
+	option_3=""
+	option_4=""
+	option_5=""
+fi
+
+# Rofi CMD
+rofi_cmd() {
+	rofi -dmenu \
+		-p "$prompt" \
+		-mesg "$mesg" \
+		-markup-rows \
+		-theme ~/.config/rofi/themes/screenrecord.rasi
+}
+
+# Pass variables to rofi dmenu
+run_rofi() {
+	echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5" | rofi_cmd
+}
+
+# Directory
+dir="$(xdg-user-dir VIDEOS)/Screenrecord"
+if [[ ! -d "$dir" ]]; then
+	mkdir -p "$dir"
+fi
+
+# Countdown
+countdown() {
+	for sec in $(seq "$1" -1 1); do
+		dunstify -t 1000 -h string:x-dunst-stack-tag:screenshottimer -i ~/.config/hypr/assets/icons/clock.png "Recording in: $sec"
+		sleep 1
+	done
+}
+
+# Record screen
+record_now() {
+    sleep 0.5 && wl-screenrec -g "0,0 1366x768" -f "${dir}/Screen_Recording_from_${time}.mkv"
+    wl-copy < "${dir}/Screen_Recording_from_${time}.mkv"
+    notify_view
+}
+
+record_5() {
+    countdown '5'
+    sleep 1 && wf-recorder -g "0,0 1366x768" -f "${dir}/Screen_Recording_from_${time}.mkv"
+    wl-copy < "${dir}/Screen_Recording_from_${time}.mkv"
+    notify_view
+}
+
+record5area() {
+    countdown '5'
+    sleep 1 && wl-screenrec -g "$(slurp -b#0f0f0f78 -c#cc7765 -w4)" -f "${dir}/Screen_Recording_from_${time}.mkv"
+    wl-copy < "${dir}/Screen_Recording_from_${time}.mkv"
+    notify_view
+}
+
+record_win() {
+    hyprvars=$(hyprctl activewindow -j | cut -d' ' -f2- | head -n -1 | tail -n +4)
+    jqvars=$(echo -e "{\n$hyprvars\n}" | jq -r ".at,.size" | jq -s "add" | jq '_nwise(4)' | jq -r '"\(.[0]),\(.[1]) \(.[2])x\(.[3])"')
+    sleep 1 && wl-screenrec -g "${jqvars}" -f "${dir}/Screen_Recording_from_${time}.mkv"
+    wl-copy < "${dir}/Screen_Recording_from_${time}.mkv"
+    notify_view
+}
+
+record_area() {
+    wl-screenrec -g "$(slurp -b#0f0f0f78 -c#cc7765 -w4)" -f "${dir}/Screen_Recording_from_${time}.mkv"
+    wl-copy < "${dir}/Screen_Recording_from_${time}.mkv"
+    notify_view
+}
+
+# Notify and view recording start
+notify_view_start() {
+	notify-send "Screen Recording Started" "Recording has started." -i "~/.config/hypr/assets/icons/camera.png"
+}
+
+# Notify and view recording finished
+notify_view_finish() {
+	notify-send "Screen Recording Finished" "The recording has been saved." -i "~/.config/hypr/assets/icons/camera.png"
+}
+
+# Execute Command
+run_cmd() {
+	if [[ "$1" == '--opt1' ]]; then
+		record_now
+	elif [[ "$1" == '--opt2' ]]; then
+		record_area
+	elif [[ "$1" == '--opt3' ]]; then
+		record_win
+	elif [[ "$1" == '--opt4' ]]; then
+		record_5
+	elif [[ "$1" == '--opt5' ]]; then
+		record5area
+	fi
+}
+
+# Actions
+chosen="$(run_rofi)"
+case ${chosen} in
+    $option_1)
+		run_cmd --opt1
+        ;;
+    $option_2)
+		run_cmd --opt2
+        ;;
+    $option_3)
+		run_cmd --opt3
+        ;;
+    $option_4)
+		run_cmd --opt4
+        ;;
+    $option_5)
+		run_cmd --opt5
+        ;;
+esac

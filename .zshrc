@@ -10,6 +10,7 @@ export EDITOR='nvim'
 export TERMINAL='wezterm'
 export BROWSER='firefox'
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
+export XHOST_AUTHORITY=$(xhost +si:localuser:root)
 
 if [ -d "$HOME/.local/bin" ] ;
   then PATH="$HOME/.local/bin:$PATH"
@@ -119,6 +120,10 @@ alias musica="ncmpcpp"
 
 alias ls='lsd -a --group-directories-first'
 alias ll='lsd -la --group-directories-first'
+
+alias su='pkexec'
+alias pkill='pkill -f'
+alias cp='cp -r'
 
 #  ┌─┐┬ ┬┌┬┐┌─┐  ┌─┐┌┬┐┌─┐┬─┐┌┬┐
 #  ├─┤│ │ │ │ │  └─┐ │ ├─┤├┬┘ │ 

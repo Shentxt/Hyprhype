@@ -9,4 +9,5 @@ DIR="$HOME/.config/hypr"
 export SUDO_ASKPASS="$DIR"/scripts/askpass
 
 # execute the application
+xhost +si:localuser:root
 sudo -A -E $1

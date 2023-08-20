@@ -165,7 +165,7 @@ element {
     cursor:                      pointer;
 }
 element normal.normal {
-    background-color:            transparent;
+     background-color:            transparent;
     text-color:                  inherit;
 }
 element normal.urgent {
@@ -177,7 +177,7 @@ element normal.active {
     text-color:                  @foreground;
 }
 element selected.normal {
-    background-color:            rgba(165, 182, 207, 0.5);
+    background-image: linear-gradient(45deg, #7396E6, #CE7194);
     text-color:                  @background;
 }
 element selected.urgent {

@@ -2,16 +2,17 @@
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #
-# ██╗    ██╗ █████╗ ██╗     ██╗     ██████╗  █████╗ ██████╗ ███████╗██████╗ 
+# ██╗    ██╗ █████╗ ██╗     ██╗     ██████╗  █████╗ ██████╗ ███████╗██████╗
 # ██║    ██║██╔══██╗██║     ██║     ██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔══██╗
 # ██║ █╗ ██║███████║██║     ██║     ██████╔╝███████║██████╔╝█████╗  ██████╔╝
 # ██║███╗██║██╔══██║██║     ██║     ██╔═══╝ ██╔══██║██╔═══╝ ██╔══╝  ██╔══██╗
 # ╚███╔███╔╝██║  ██║███████╗███████╗██║     ██║  ██║██║     ███████╗██║  ██║
-#  ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝     ╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝  
+#  ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝     ╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝
 #
-# Autor = Shen Blaskowitz
+# Autor = Axenide
+# Follow = https://github.com/Axenide/Dotfiles
 # Follow Me = https://github.com/Shentxt
-#  
+#
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -19,30 +20,50 @@
 #
 # a simple wallpaper script
 # 
+# use of swww = swww --help more informations
+# There is also simple, 
+# which simply fades into the new image, any, which starts at a random point with either center of outer transitions, 
+# and random, which selects a transition effect at random.
+#
 # required to function
 # --------------------
+# rofi: launcher
 # swww: wallpaper
 #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-# folder="${HOME}/Pictures"
-folder="${HOME}/.config/hypr/assets/walls"
+WALLPAPERS_DIR="$HOME/.config/hypr/assets/walls"
 
-# use all imagen or jpg and png
-pic=$(find $folder -type f -name '*.jpg' -o -name '*.png' | shuf -n1)
+# find image size to display (very slow)
+#echo $(identify -format '%[fx:w]x%[fx:h]\' ~/Pictures/$A 2>/dev/null)
 
-# Path of the file that saves the last used image
-last_wallpaper_file="/tmp/last_wallpaper.txt"
+build_theme() {
+    rows=$1
+    cols=$2
+    icon_size=$3
 
-# Check if an image was supplied as an argument to script
-if [ -n "$1" ]; then
-  if [ -f "$1" ]; then   
-    pic="$1"
-  fi
+    echo "element{orientation:vertical;}element-text{horizontal-align:0.5;}element-icon{size:$icon_size.0000em;}listview{lines:$rows;columns:$cols;}"
+}
+
+theme="$HOME/.config/rofi/themes/wallpaper.rasi"
+
+ROFI_CMD="rofi -dmenu -i -show-icons -theme-str $(build_theme 3 4 8) -theme ${theme}"
+
+choice=$(\
+    ls --escape "$WALLPAPERS_DIR" | \
+        while read A; do echo -en "$A\x00icon\x1f$WALLPAPERS_DIR/$A\n"; done | \
+        $ROFI_CMD -p "󰸉  Wallpaper" \
+)
+
+wallpaper="$WALLPAPERS_DIR/$choice"
+
+if [ "$XDG_CURRENT_DESKTOP" = "sway" ]; then
+    swaymsg output "*" bg "$wallpaper" "stretch"
+
+    exit 0
+else
+    swww img -t any --transition-bezier 0.0,0.0,1.0,1.0 --transition-duration 1 --transition-step 255 --transition-fps 60 "$wallpaper" && \
+    ln -sf "$wallpaper" "$WALLPAPERS_DIR"/current.wall
 fi
 
-# use swwww for the transition
-sleep 1 && swww img -t any --transition-bezier 0.0,0.0,1.0,1.0 --transition-duration .8 --transition-step 255 --transition-fps 60 $pic & &>/dev/null
-
-# Guardar la ruta de la imagen utilizada en el archivo
-echo "$pic" > "$last_wallpaper_file"
+exit 1
