@@ -1,8 +1,8 @@
-<h2><strong><Personal Settings in Hyprland Wayland</strong></h2>
+<h2><strong>Personal Settings in Hyprland Wayland</strong></h2>
 
 Welcome to my personal setup on Hyprland Wayland! Although my setup is still in progress, I'm here to help you with any questions you may have.
 
-<h2><strong><keys Maps</strong></h2>
+<h2><strong>Keys Maps</strong></h2>
 
 - **Win+Shift+D:** Open the key display. This key combination can be useful to access various functions in my settings.
 
