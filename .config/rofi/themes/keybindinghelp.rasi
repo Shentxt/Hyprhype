@@ -102,16 +102,16 @@ element {
     border:                      0px solid;
     border-color:                #ffffff;
     background-color:            transparent; 
-    text-color:                  @foreground;
+    text-color:                  #cad5ff;
     cursor:                      pointer;
 }
 element normal.normal {
     background-color:            inherit;
-    text-color:                  inherit;
+    text-color:                  #cad5ff;
 }
 element normal.urgent {
     background-color:            @urgent;
-    text-color:                  @foreground;
+    text-color:                  #cad5ff;
 }
 element normal.active {
     background-color:            @active;
@@ -119,7 +119,7 @@ element normal.active {
 }
 element selected.normal {
     background-image: linear-gradient(45deg, #7396E6, #CE7194);
-    text-color:                  @background;
+    text-color:                   #000000;
 }
 element selected.urgent {
     background-color:            @urgent;

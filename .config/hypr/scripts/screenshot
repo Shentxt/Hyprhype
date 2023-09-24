@@ -3,22 +3,22 @@
 #
 # ███████╗ ██████╗██████╗ ███████╗███████╗███╗   ██╗███████╗██╗  ██╗ ██████╗ ████████╗
 # ██╔════╝██╔════╝██╔══██╗██╔════╝██╔════╝████╗  ██║██╔════╝██║  ██║██╔═══██╗╚══██╔══╝
-# ███████╗██║     ██████╔╝█████╗  █████╗  ██╔██╗ ██║███████╗███████║██║   ██║   ██║   
-# ╚════██║██║     ██╔══██╗██╔══╝  ██╔══╝  ██║╚██╗██║╚════██║██╔══██║██║   ██║   ██║   
-# ███████║╚██████╗██║  ██║███████╗███████╗██║ ╚████║███████║██║  ██║╚██████╔╝   ██║   
-# ╚══════╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   
+# ███████╗██║     ██████╔╝█████╗  █████╗  ██╔██╗ ██║███████╗███████║██║   ██║   ██║
+# ╚════██║██║     ██╔══██╗██╔══╝  ██╔══╝  ██║╚██╗██║╚════██║██╔══██║██║   ██║   ██║
+# ███████║╚██████╗██║  ██║███████╗███████╗██║ ╚████║███████║██║  ██║╚██████╔╝   ██║
+# ╚══════╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝    ╚═╝
 #
 # Autor = Shen Blaskowitz
 # Inspiration = https://github.com/adi1090x
 # Follow Me = https://github.com/Shentxt
-#  
+#
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #                 Executed Screenshot
 #
 # a simple screenshot script
-# 
+#
 # required to function
 # --------------------
 # grimblast: screenshot
@@ -35,10 +35,10 @@ RASI="$DIR/rofi/themes/screenshot.rasi"
 
 # Theme Elements
 prompt='Screenshot'
-mesg="Directory :: `xdg-user-dir PICTURES`/Screenshots"
+mesg="Directory :: $(xdg-user-dir PICTURES)/Screenshots"
 
 # Options
-layout=`cat ${RASI} | grep 'USE_ICON' | cut -d'=' -f2`
+layout=$(cat ${RASI} | grep 'USE_ICON' | cut -d'=' -f2)
 if [[ "$layout" == 'NO' ]]; then
 	option_1=" Capture Desktop"
 	option_2=" Capture Area"
@@ -80,7 +80,7 @@ fi
 
 # notify and view screenshot
 notify_view() {
-	notify_cmd_shot='dunstify -u low -h string:x-dunst-stack-tag:obscreenshot -i ~/.config/hypr/assets/icons/camera.png'
+	notify_cmd_shot='notify-send "Cortana" "John, the suit has been reloaded successfully." -i ~/.config/hypr/assets/icons/refresh.png'
 	${notify_cmd_shot} "$file."
 	paplay ~/.config/hypr/assets/effects/screenshot.ogg &>/dev/null &
 	swayimg "${dir}/${file}"
@@ -99,14 +99,14 @@ copy_shot() {
 # countdown
 countdown() {
 	for sec in $(seq "$1" -1 1); do
-		dunstify -t 1000 -h string:x-dunst-stack-tag:screenshottimer -i ~/.config/hypr/assets/icons/clock.png "Taking shot in : $sec"
+		notify-send "Taking shot in : $sec" -i ~/.config/hypr/assets/icons/clock.png
 		sleep 1
 	done
 }
 
 # take shots
 shotnow() {
-	cd "${dir}" && sleep 0.5 && grimblast save output "${file}" | copy_shot
+	sleep 1 && cd "${dir}" && sleep 0.5 && grimblast save output "${file}" | copy_shot
 	notify_view
 }
 
@@ -123,12 +123,12 @@ shot10() {
 }
 
 shotwin() {
-	cd "${dir}" && grimblast save active "${file}" | copy_shot
+	sleep 1 && cd "${dir}" && grimblast save active "${file}" | copy_shot
 	notify_view
 }
 
 shotarea() {
-	cd "${dir}" && grimblast save area "${file}" | copy_shot
+	sleep 1 && cd "${dir}" && grimblast save area "${file}" | copy_shot
 	notify_view
 }
 
@@ -150,19 +150,19 @@ run_cmd() {
 # Actions
 chosen="$(run_rofi)"
 case ${chosen} in
-    $option_1)
-		run_cmd --opt1
-        ;;
-    $option_2)
-		run_cmd --opt2
-        ;;
-    $option_3)
-		run_cmd --opt3
-        ;;
-    $option_4)
-		run_cmd --opt4
-        ;;
-    $option_5)
-		run_cmd --opt5
-        ;;
+$option_1)
+	run_cmd --opt1
+	;;
+$option_2)
+	run_cmd --opt2
+	;;
+$option_3)
+	run_cmd --opt3
+	;;
+$option_4)
+	run_cmd --opt4
+	;;
+$option_5)
+	run_cmd --opt5
+	;;
 esac

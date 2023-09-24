@@ -28,24 +28,20 @@
 #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-# Set brightness using sunset
-wlsunset -S 6:00 -s 1:00 >/dev/null 2>&1
+# Obtén el valor actual del brillo
+current_brightness=$(xrandr --current --verbose | grep -i brightness | awk '{print $2}')
 
-#Function to show notifications
-notify_brightness_change() {
-	local mode=$1
-	local temperature=$2
+# Ejecuta el comando wlsunset para actualizar el brillo
+wlsunset -S 8:00 -s 8:22 >/dev/null 2>&1
 
-	hyprctl notify 5 2000 "rgb(151720)" "Mode $mode activated, Temperature: $temperature"
-}
+# Obtén el nuevo valor del brillo después del cambio
+new_brightness=$(xrandr --current --verbose | grep -i brightness | awk '{print $2}')
 
-# Get the current brightness state
-current_mode=$(wlsunset -l | awk '{print $2}')
-current_temperature=$(wlsunset -l | awk '{print $NF}')
-
-# Check if a change in brightness has occurred and display a notification
-if [[ $current_mode == "day" ]] && [[ $(date +%H:%M) == "06:00" ]]; then
-	notify_brightness_change "day" "$current_temperature"
-elif [[ $current_mode == "night" ]] && [[ $(date +%H:%M) == "20:00" ]]; then
-	notify_brightness_change "night" "$current_temperature"
+# Compara los valores de brillo para determinar si cambió
+if [[ "$new_brightness" != "$current_brightness" ]]; then
+	if [[ "$new_brightness" < "$current_brightness" ]]; then
+		notify-send "Brillo cambiado para la noche"
+	else
+		notify-send "Brillo cambiado para el día"
+	fi
 fi

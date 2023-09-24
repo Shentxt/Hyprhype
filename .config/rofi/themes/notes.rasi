@@ -63,7 +63,7 @@ inputbar {
     padding:                     80px 60px;
     border-radius:               12px;
     border:                      1px solid;
-    border-color:                #ffffff;
+    border-color:                #cad5ff;
     background-image:            url("~/.config/rofi/images/vertical.jpg", width); 
     text-color:                  @foreground;
     orientation:                 horizontal;
@@ -76,9 +76,9 @@ textbox-prompt-colon {
     padding:                     12px 15px;
     border-radius:               100%;
     border:                      2px solid;
-    border-color:                #ffffff;
+    border-color:                #cad5ff;
     background-color:            rgba(13, 15, 24, 0.5);
-    text-color:                  inherit;
+    text-color:                  #cad5ff;
 }
 entry {
     enabled:                     true;
@@ -87,12 +87,12 @@ entry {
     padding:                     12px 16px;
     border-radius:               100%;
     border:                      2px solid;
-    border-color:                #ffffff;
+    border-color:                #cad5ff;
     background-color:            rgba(13, 15, 24, 0.5); 
 
-    text-color:                  inherit;
+    text-color:                  #cad5ff;
     cursor:                      text;
-    placeholder:                 "Search";
+    placeholder:                 "Documents";
     placeholder-color:           inherit;
 }
 dummy {
@@ -112,7 +112,7 @@ button {
     padding:                     0px;
     border-radius:               100%;
     border:                      2px solid;
-    border-color:                #ffffff;
+    border-color:                #cad5ff;
     background-color:            rgba(13, 15, 24, 0.5);
     text-color:                  inherit;
     cursor:                      pointer;
@@ -154,7 +154,11 @@ element {
 }
 element normal.normal {
      background-color:            transparent;
-    text-color:                  inherit;
+    text-color:                   #cad5ff;
+}
+element alternate.normal {
+    background-color:            transparent;
+    text-color:                  #cad5ff;
 }
 element normal.urgent {
     background-color:            @urgent;

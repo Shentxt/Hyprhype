@@ -25,22 +25,17 @@
 # hyprctl: notify
 #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# this script reloads the desktop
 sleep 1 && hyprctl reload
 
-# pkill aplications
-pkill eww
-pkill rofi
-pkill swaylock
-pkill hyprpicker
-pkill dusnt
+#pkill Aplications
+#pkill eww
+pkill ags
 
 # Start Aplications
-~/.config/eww/scripts/init ./init
+#~/.config/eww/init
+~/.config/hypr/scripts/wallrandom
+ags &
 
-# turn it off if you don't like the sound
-paplay ~/.config/hypr/assets/effects/system.ogg &>/dev/null &
-
-# send a notification, that he has recharged
-#notify-send -u low -t 0 "Low sumary" "It has been reloaded successfully!"
-hyprctl notify 5 2000 "rgb(151720)" "It has been reloaded successfully!"
+#this script reloads the desktop
+notify-send "Morgana" "Upgrade complete! Our window manager is purring like a finely-tuned engine." -i ~/.config/hypr/assets/icons/morgana/awesome.png
+paplay ~/.config/hypr/assets/effects/system.ogg &>/dev/null

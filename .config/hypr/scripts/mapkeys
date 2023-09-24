@@ -12,21 +12,21 @@
 # Autor = Gh0stzk
 # Inspiration = https://github.com/gh0stzk
 # Follow Me = https://github.com/Shentxt
-#  
+#
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #                 Executed Mapkeys
 #
-# a simple brightness script
-# 
+# a simple mapkeys of Wm script
+#
 # required to function
 # --------------------
 # awk: mapkeys
 # rofi: launch script
-# 
+#
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-awk '/^[a-z]/ && last {print $0,"\t",last} {last=""} /^#/{last=$0}' ~/.config/hypr/style/keybinds.conf|
-    column -t -s $'\t' |
-rofi -dmenu -i -theme ~/.config/rofi/themes/keybindinghelp.rasi 
+awk '/^[a-z]/ && last {print $0,"\t",last} {last=""} /^#/{last=$0}' ~/.config/hypr/style/keybinds.conf |
+	column -t -s $'\t' |
+	rofi -dmenu -i -theme ~/.config/rofi/themes/keybindinghelp.rasi

@@ -107,7 +107,7 @@ element {
 }
 element normal.normal {
     bacground-color:             transparent;
-    text-color:                  @foreground;
+    text-color:                  #cad5ff;
 }
 element normal.urgent {
     background-color:            transparent;
@@ -131,7 +131,7 @@ element selected.active {
 }
 element alternate.normal {
     background-color:            transparent;
-    text-color:                  @foreground;
+    text-color:                  #cad5ff;
 }
 element alternate.urgent {
     background-color:            transparent;

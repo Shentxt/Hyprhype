@@ -62,13 +62,13 @@ message {
     padding:                     10px;
     border:                      2px solid;
     border-radius:               12px;
-    border-color:                #ffffff;
+    border-color:                #cad5ff;
     background-color:            transparent;
     text-color:                  inherit;
 }
 textbox {
     background-color:            transparent;
-    text-color:                  #ffffff;
+    text-color:                 #cad5ff;
     vertical-align:              0.5;
     horizontal-align:            0.5;
 }
@@ -110,7 +110,7 @@ element-text {
 element normal.normal,
 element alternate.normal {
     background-color:            transparent;
-    text-color:                  var(foreground);
+    text-color:                  #cad5ff;
 }
 element normal.urgent,
 element alternate.urgent,
@@ -122,7 +122,7 @@ element normal.active,
 element alternate.active,
 element selected.urgent {
     background-color:            var(active);
-    text-color:                  var(background);
+    text-color:                  var(active);
 }
 element selected.normal {
     background-image: linear-gradient(45deg, #7396E6, #CE7194);

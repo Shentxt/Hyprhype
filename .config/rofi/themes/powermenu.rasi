@@ -57,9 +57,9 @@ userimage {
     margin:                      0px 460px 0px 379px;
     border:                      2px;
     border-radius:               100;
-    border-color:                white;
+    border-color:                #cad5ff;
     background-color:            transparent;
-    background-image:            url("~/.face", height); 
+    background-image:            url("~/.face", height);
 }
 
 /*****----- Inputbar -----*****/
@@ -77,7 +77,7 @@ prompt {
     enabled:                     true;
     font:                        var(prompt-font);
     background-color:            transparent;
-    text-color:                  var(foreground-normal);
+    text-color:                  #cad5ff;
 }
 
 /*****----- Message -----*****/
@@ -85,9 +85,10 @@ message {
     enabled:                     true;
     margin:                      var(message-margin);
     padding:                     var(message-padding);
-    border-radius:               var(message-border-radius);
-    background-color:            var(background-normal);
-    text-color:                  var(foreground-normal);
+    border-radius:               12;
+    border-color:                #cad5ff;
+    background-color:            transparent;
+    text-color:                  #cad5ff;
 }
 textbox {
     font:                        var(textbox-font);
@@ -136,4 +137,12 @@ element-text {
 element selected.normal {
     background-image: linear-gradient(45deg, #7396E6, #CE7194);
     text-color:                  #151515;
+}
+element normal.normal {
+    background-color:            transparent;
+    text-color:                  #cad5ff;
+}
+element alternate.normal {
+    background-color:            transparent;
+    text-color:                  #cad5ff;
 }

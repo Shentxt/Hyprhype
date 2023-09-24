@@ -37,9 +37,9 @@ echo "$color_output" | wl-copy
 hex_color=$(wl-paste)
 
 if [[ -n "$hex_color" ]]; then
-	hyprctl notify 5 2000 "rgb(151720)" "Color: $hex_color"
+	notify-send "Morgana" "That color is so elegant, #${hex_color}. You have an eye for elegance!" -i ~/.config/hypr/assets/icons/morgana/ok.png
 	paplay ~/.config/hypr/assets/effects/pick.ogg &>/dev/null
 else
-	hyprctl notify 1 2000 "rgb(FF0000)" "Color selection canceled or no color detected"
+	notify-send "Morgana" "Seems like the color selection was canceled or no color was detected. Don't worry, we'll find the perfect color next time!" -i ~/.config/hypr/assets/icons/morgana/critic.png
 	paplay ~/.config/hypr/assets/effects/alert.ogg &>/dev/null
 fi

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+sleep 1
+
+name=$(whoami)
+
+notify-send "Morgana" "${name}?,you're back? welcome what will we do today!" -i ~/.config/hypr/assets/icons/morgana/gato.png
+paplay ~/.config/hypr/assets/effects/alert.ogg &>/dev/null

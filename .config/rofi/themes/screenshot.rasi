@@ -58,7 +58,7 @@ imagebox {
     padding:                     100px;
     border-radius:               12px;
     border:                      2px solid;
-    border-color:                #ffffff;
+    border-color:                #cad5ff;
     spacing:                     0px;
     padding:                     100px;
     background-color:            transparent;
@@ -85,9 +85,9 @@ textbox-prompt-colon {
     padding:                     15px 15px;
     border-radius:               12px;
     border:                      2px solid;
-    border-color:                #ffffff;
+    border-color:                #cad5ff;
     background-color:            rgba(13, 15, 24, 0.5);
-    text-color:                  #ffffff;
+    text-color:                  #cad5ff;
 }
 prompt {
     enabled:                     true;
@@ -165,7 +165,7 @@ element-text {
 element normal.normal,
 element alternate.normal {
     background-color:            transparent;
-    text-color:                  var(foreground);
+    text-color:                   #cad5ff;
 }
 element normal.urgent,
 element alternate.urgent,

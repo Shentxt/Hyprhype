@@ -4,7 +4,8 @@
 
 /*****----- Configuration -----*****/
 configuration {
-    show-icons:                 false;
+    show-icons:              true;
+    window-thumbnail:        true;
 }
 
 /*****----- Global Properties -----*****/
@@ -19,7 +20,7 @@ window {
     anchor:                      center;
     fullscreen:                  false;
     width:                       850px;
-    height:                      650px;
+    height:                      250px;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -38,7 +39,7 @@ mainbox {
     spacing:                     12px; 
     margin:                      0px;
     padding:                     0px; 
-    background-color:            rgba(13, 15, 24, 0.5);
+    background-color:            rgba(13, 15, 24, 0.5); 
     orientation:                 vertical;
     children:                    [ "listbox" ];
 }
@@ -77,8 +78,8 @@ button selected {
 /*****----- Listview -----*****/
 listview {
     enabled:                     true;
-    columns:                     1;
-    lines:                       7;
+    columns:                     1; 
+    lines:                       7; 
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
@@ -87,8 +88,7 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
     spacing:                     10px;
-    background-color:            transparent;
-     
+    background-color:            transparent; 
     text-color:                  @foreground;
     cursor:                      "default";
 }
@@ -96,26 +96,32 @@ listview {
 /*****----- Elements -----*****/
 element {
     enabled:                     true;
-    spacing:                     10px;
-    padding:                     10px;
+    spacing:                     12px;
+    padding:                     12px;
     border-radius:               12px;
     border:                      0px solid;
     border-color:                #ffffff;
     background-color:            transparent; 
     text-color:                  @foreground;
     cursor:                      pointer;
+    orientation: vertical;
+    children: [ element-icon, element-text ];
+    spacing: 4px;
+}
+element-icon {
+  size: 6em;
 }
 element normal.normal {
     bacground-color:             transparent;
-    text-color:                  @foreground;
+    text-color:                  #cad5ff;
 }
 element normal.urgent {
     background-color:            transparent;
-    text-color:                  @foreground;
+    text-color:                  #cad5ff;
 }
 element normal.active {
     bacground-color:             transparent;
-    text-color:                  @foreground;
+    text-color:                  #cad5ff;
 }
 element selected.normal {
     background-image: linear-gradient(45deg, #7396E6, #CE7194);
@@ -126,12 +132,12 @@ element selected.urgent {
     text-color:                  @foreground;
 }
 element selected.active {
-    background-color:            transparent;
-    text-color:                  @foreground;
+    background-image: linear-gradient(45deg, #7396E6, #CE7194);
+    text-color:                  #000000;
 }
 element alternate.normal {
     background-color:            transparent;
-    text-color:                  @foreground;
+    text-color:                  #cad5ff;
 }
 element alternate.urgent {
     background-color:            transparent;

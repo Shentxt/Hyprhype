@@ -19,10 +19,10 @@
 #                 Executed Wallpaper
 #
 # a simple wallpaper script
-# 
+#
 # use of swww = swww --help more informations
-# There is also simple, 
-# which simply fades into the new image, any, which starts at a random point with either center of outer transitions, 
+# There is also simple,
+# which simply fades into the new image, any, which starts at a random point with either center of outer transitions,
 # and random, which selects a transition effect at random.
 #
 # required to function
@@ -38,32 +38,32 @@ WALLPAPERS_DIR="$HOME/.config/hypr/assets/walls"
 #echo $(identify -format '%[fx:w]x%[fx:h]\' ~/Pictures/$A 2>/dev/null)
 
 build_theme() {
-    rows=$1
-    cols=$2
-    icon_size=$3
+	rows=$1
+	cols=$2
+	icon_size=$3
 
-    echo "element{orientation:vertical;}element-text{horizontal-align:0.5;}element-icon{size:$icon_size.0000em;}listview{lines:$rows;columns:$cols;}"
+	echo "element{orientation:vertical;}element-text{horizontal-align:0.5;}element-icon{size:$icon_size.0000em;}listview{lines:$rows;columns:$cols;}"
 }
 
 theme="$HOME/.config/rofi/themes/wallpaper.rasi"
 
 ROFI_CMD="rofi -dmenu -i -show-icons -theme-str $(build_theme 3 4 8) -theme ${theme}"
 
-choice=$(\
-    ls --escape "$WALLPAPERS_DIR" | \
-        while read A; do echo -en "$A\x00icon\x1f$WALLPAPERS_DIR/$A\n"; done | \
-        $ROFI_CMD -p "󰸉  Wallpaper" \
+choice=$(
+	ls --escape "$WALLPAPERS_DIR" |
+		while read A; do echo -en "$A\x00icon\x1f$WALLPAPERS_DIR/$A\n"; done |
+		$ROFI_CMD -p "󰸉  Wallpaper"
 )
 
 wallpaper="$WALLPAPERS_DIR/$choice"
 
 if [ "$XDG_CURRENT_DESKTOP" = "sway" ]; then
-    swaymsg output "*" bg "$wallpaper" "stretch"
-
-    exit 0
+	swaymsg output "*" bg "$wallpaper" "stretch"
+	exit 0
 else
-    swww img -t any --transition-bezier 0.0,0.0,1.0,1.0 --transition-duration 1 --transition-step 255 --transition-fps 60 "$wallpaper" && \
-    ln -sf "$wallpaper" "$WALLPAPERS_DIR"/current.wall
+	swww img -t any --transition-bezier 0.0,0.0,1.0,1.0 --transition-duration 1 --transition-step 255 --transition-fps 60 "$wallpaper" &&
+		wal -i "$wallpaper" &&
+		ln -sf "$wallpaper" "$WALLPAPERS_DIR"/current.wall
 fi
 
 exit 1

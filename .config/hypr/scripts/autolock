@@ -4,47 +4,25 @@
 #
 #  █████╗ ██╗   ██╗████████╗ ██████╗ ██╗      ██████╗  ██████╗██╗  ██╗
 # ██╔══██╗██║   ██║╚══██╔══╝██╔═══██╗██║     ██╔═══██╗██╔════╝██║ ██╔╝
-# ███████║██║   ██║   ██║   ██║   ██║██║     ██║   ██║██║     █████╔╝ 
-# ██╔══██║██║   ██║   ██║   ██║   ██║██║     ██║   ██║██║     ██╔═██╗ 
+# ███████║██║   ██║   ██║   ██║   ██║██║     ██║   ██║██║     █████╔╝
+# ██╔══██║██║   ██║   ██║   ██║   ██║██║     ██║   ██║██║     ██╔═██╗
 # ██║  ██║╚██████╔╝   ██║   ╚██████╔╝███████╗╚██████╔╝╚██████╗██║  ██╗
 # ╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚══════╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝
 #
 # Autor = Shen Blaskowitz
 # Follow Me = https://github.com/Shentxt
-#  
+#
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #                 Executed AutoLock
 #
 # a simple Lock session script
-# 
+#
 # required to function
 # --------------------
-# swaylock: lock session
+# gtklock: lock session
 # swayidle: waiting lock session
+# hyprctl:  notify
 #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-# Set idle time in seconds before blocking
-IDLE_TIME=600  # Example: 600 seconds (10 minutes)
-
-# Command to lock the screen with swaylock
-LOCK_COMMAND="swaylock -f"
-
-# Flag to track if the lock command has been executed
-LOCK_EXECUTED=false
-
-# Function to execute the lock command
-execute_lock_command() {
-  if [ "$LOCK_EXECUTED" = false ]; then
-    $LOCK_COMMAND
-    LOCK_EXECUTED=true
-  fi
-}
-
-# Start swayidle and define the action when idle time is reached
-swayidle -w \
-  timeout $IDLE_TIME "execute_lock_command" \
-  resume "execute_lock_command" \
-  before-sleep "execute_lock_command"

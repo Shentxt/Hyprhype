@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# Directorio de descarga para las imágenes
+download_dir="$HOME/.config/hypr/assets/walls"
+
+# URL de la página web con las imágenes y nombres
+URL="https://alphacoders.com/"
+
+# Función para descargar una imagen desde la URL
+download_image() {
+	local url="$1"
+	local filename="$2"
+	wget -q "$url" -O "$filename"
+}
+
+# Función para construir el tema Rofi
+build_theme() {
+	local rows=$1
+	local cols=$2
+	local icon_size=$3
+	local theme_file="$HOME/.config/rofi/themes/wallpaper.rasi"
+
+	echo "element{orientation:vertical;}element-text{horizontal-align:0.5;}element-icon{size:$icon_size.0000em;}listview{lines:$rows;columns:$cols;}"
+}
+
+# Construir el tema Rofi
+theme=$(build_theme 3 4 8)
+
+# Descargar imágenes y generar la lista para Rofi
+image_list=""
+for img_url in $(curl -s "$URL" | grep -o 'https://images[^\"]*jpg'); do
+	img_name=$(basename "$img_url")
+	img_path="$download_dir/$img_name"
+	image_list+="$img_name\n"
+done
+
+# Ejecutar Rofi con la lista de imágenes
+choice=$(echo -e "$image_list" | rofi -dmenu -i -show-icons -theme-str "$theme" -p "󰸉  Wallpaper")
+
+# Realizar acciones con la imagen seleccionada
+if [ -n "$choice" ]; then
+	chosen_image="$download_dir/$choice"
+	# Preguntar al usuario si desea descargar la imagen
+	if rofi -dmenu -i -p "Descargar $choice? (Sí/No)" -lines 2 -theme-str "$theme" <<<"Sí\nNo" | grep -iq "Sí"; then
+		download_image "$img_url" "$chosen_image"
+	fi
+fi
