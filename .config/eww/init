@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# ---------------------------
+
+# Pkill
+pkill eww
+pkill eww daemon
+pkill myshell
+pkill conky
+
+# ----------------------------
+
+# Launch
+eww daemon
+eww open bar
+eww open dock
+eww open desktop
+eww open notifications_popup
+
+# ----------------------------
+
+# Reload
+$HOME/.config/eww/scripts/myshell/./myshell --eww --file
+sh ~/.config/eww/scripts/quotes update &
+
+# ----------------------------

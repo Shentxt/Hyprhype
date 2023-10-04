@@ -1,0 +1,104 @@
+(defvar desktop_reveal true)
+(defwidget desktop [] (box
+    :class "desktop"
+    (desktop_clock)))
+
+(defwidget desktop_clock [] (box
+    :class "clock"
+    :space-evenly false
+    :orientation "v"
+    :valign "center"
+    :halign "center"
+    (box
+        :space-evenly false
+        :class "time"
+        (label :class "hour" :text hour)
+        (box 
+        :class "timebox" 
+        :valign "center" 
+        :orientation "v" 
+        :spacing 12
+        (box 
+          :class "timebox magenta" 
+          ""
+        )
+        (box 
+          :class "timebox green" 
+          ""
+        )
+        (box 
+          :class "timebox yellow" 
+          ""
+        )
+      )
+        (label :class "minutes" :text minutes)
+    (box 
+        :class "timebox" 
+        :valign "center" 
+        :orientation "v" 
+        :spacing 12
+        (box 
+          :class "timebox magenta" 
+          ""
+        )
+        (box 
+          :class "timebox green" 
+          ""
+        )
+        (box 
+          :class "timebox yellow" 
+          ""
+        )
+      )
+    (label :class "seconds" :text seconds))
+    (box :class "separator" :height 2 :hexpand true) 
+    (box :class "separator" :height 2 :hexpand true)
+    (box :halign "center"
+        (label 
+          :class "icon" 
+          :text {weather.icon}
+          :style "color: ${weather.icon_color == "null" ? "#4c4c4c" : weather.icon_color}"
+        )
+      )
+      (box :orientation "h" :halign "center" :valign "start"
+        (label :class "desc" :text {weather.description})
+        (label 
+          :class "temp" 
+          :text "${round(weather.temp, 1)}°C" 
+          :halign "center"
+        )
+      ) 
+    (label :class "date" :text date)
+    (box :class "separator" :height 2 :hexpand true) 
+    (box :class "separator" :height 2 :hexpand true) 
+        (quotes  
+        :quote_text "example."
+        :quote_author "example"))
+)
+
+(defwidget quotes [] 
+(box
+    :class "quote" 
+    :orientation "h" 
+    :halign "center"
+    :spacing 0 
+    :space-evenly "false"
+    (box
+      :orientation "v" 
+      :spacing 0 
+      :space-evenly "false" 
+      (label 
+        :class "quote-text" 
+        :halign "center" 
+        :wrap "true"
+        :text "\"${quote_text}\""
+      )
+      (label 
+        :class "quote-author" 
+        :halign "center" 
+        :wrap "true"
+        :text quote_author
+      )
+    )
+  )
+)

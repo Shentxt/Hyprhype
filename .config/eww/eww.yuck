@@ -1,0 +1,46 @@
+; Import
+
+(include "./yuck/widgets.yuck")
+(include "./yuck/windows.yuck")
+(include "./yuck/setup.yuck")
+
+; ------------------------------
+; Variables
+
+; Defvar
+(defvar     media           "{}")
+(defvar     media_positions "{}")
+(defvar     bluetooth       "{}")
+(defvar     network         "{}")
+(defvar     battery         "{}")
+(defvar     notifications   "{}")
+(defvar     apps            "{}")
+(defvar     picture         "/home/shen/.face")
+
+; Defpoll
+(defpoll quote_text   :interval "10m" "~/.config/eww/scripts/quotes quote")
+(defpoll quote_author :interval "10m" "~/.config/eww/scripts/quotes author")
+(defpoll    panel_clock :interval "1s" `date "+%H:%M  |  %b. %d. %A"`)
+(defpoll    hour        :interval "1s" `date "+%H"`)
+(defpoll    minutes     :interval "1s" `date "+%M"`)
+(defpoll    seconds     :interval "1s" `date "+%S"`)
+(defpoll    date        :interval "1s" `date "+%b. %d. %A"`)
+(defpoll    uptime      :interval "1s" "uptime | awk '{print $3}' | tr ',' ' '")
+(defpoll    volume      :interval "1s" :initial "{}" `scripts/volume get`)
+(defpoll    theme       :interval "1s" :initial "{}" `scripts/theme get`)
+(defpoll    power       :interval "1s" :initial "{}" `scripts/power get`)
+(defpoll    night_light :interval "1s" :initial "{}" `scripts/night_light get`)
+(defpoll    brightness  :interval "1s" :initial "{}" `scripts/brightness get`)
+
+; Deflisten
+(deflisten  weather         `scripts/weather.py`)
+(deflisten  details         `scripts/details`)
+(deflisten  window      `scripts/hyprland window`)
+(deflisten  workspaces  `scripts/hyprland workspaces`)
+(deflisten  events      :initial "[]" `scripts/events get`)
+
+; ------------------------------
+
+
+
+

@@ -1,0 +1,10 @@
+.notifications-window-box{
+    .notification{
+        @include notification;
+        .notification-content{
+            min-width: 450px;
+            min-height: 50px;
+            @include floating_widget;
+        }
+    }
+}

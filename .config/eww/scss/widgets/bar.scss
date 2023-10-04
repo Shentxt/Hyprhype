@@ -1,0 +1,111 @@
+@mixin system-indicators($orientation) {
+     border: 2px solid $white;
+     border-radius: $radii;
+    @include button($flat: false, $radii: $panel_button_radius);
+    .reveal{
+        @if $orientation == 'v' { padding-top: .5em; }
+        @if $orientation == 'h' { padding-left: .2em;}
+    }
+    .slider{
+        @include slider($width: 0.5em, $slider: false);
+        @if $orientation == 'v' { > * { min-height: 80px; } }
+        @if $orientation == 'h' { > * { min-width: 90px; } }
+    }
+    .icon{
+        margin: .1em 0;
+        &.volume{
+            color: $teal;
+        }
+        &.bluetooth, &.bt_speaker{
+            color: $magenta;
+        }
+        &.mute{
+            color: $red;
+        }
+        &.screen{
+            color: $yellow;
+        }
+        &.battery{
+            &.low{ color: $destructive; }
+            &.charging{ color: $succes; }
+            &.charged{ color: $succes; }
+        }
+        &.notifications.active{
+            color: $orange;
+        }
+        &.network{
+            &.none,&.low{ color: $magenta; }
+            &.medium{ color: $green; }
+            &.high{ color: $yellow; }
+        }
+    }
+}
+
+@mixin panel_media() {
+    .player{
+        border: 2px solid $white;
+        border-radius: $radii;
+        @include button($flat: true, $radii: $panel_button_radius);
+    }
+    .controls{
+        @include button($radii: $panel_button_radius);
+        button {
+            &.prev, &.next, &.play-pause{
+                background-repeat: no-repeat;
+                background-size: 1.90rem;
+                min-height: 1.90rem;
+                min-width: 1.90rem;
+                margin: 0rem 0rem 0rem 0rem;
+                color: transparentize($fg_color, 0.3);
+                &:hover{ color: transparentize($fg_color, 0.15) }                                &:active{ color: $fg_color }
+                &:active{ color: $fg_color }
+            }
+        }
+    }
+    .icon{
+        &.vlc{ color: $yellow; }
+        &.spotify{ color: $green; }
+        &.firefox{ color: $orange; }
+        &.mpv{ color: $magenta; }
+    }
+}
+
+ .forecast {
+    margin-bottom: 0.20rem;
+    margin-right: 0.30rem;
+    font-size: 1.25rem;
+}
+
+@mixin workspaces() {
+    border: 2px solid $white;
+    border-radius: $radii;
+    @include button($flat: false, $radii: $panel_button_radius);
+    .workspace-btn{
+        margin-right: 0.42rem;
+        &.empty{ color: transparentize($fg_color, 0.34); }
+        &.occupied{ color: transparentize($fg_color, 0.18); }
+        &.active{ color: $white; }
+        &:hover{
+            &.empty{ color: transparentize($fg_color, 0.18); }
+            &.occupied{ color: $white; }
+        }
+        &:active{ color: $white;  }
+    }
+}
+
+ .timebox{
+      font-size: 0.45rem;
+      margin-bottom: 0.20rem;
+      margin-right: 0.10rem;
+
+      &.magenta {
+        color: $magenta;
+      }
+
+      &.green {
+        color: $green;
+      }
+
+      &.yellow {
+        color: $yellow;
+ }

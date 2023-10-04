@@ -1,0 +1,127 @@
+(defwidget datemenu [valign halign] (box
+    :valign valign
+    :halign halign
+    :orientation "v"
+    :class "datemenu"
+    :space-evenly false
+    (box
+        :halign "center"
+        :space-evenly false
+        :class "time"
+        (label :text hour :class "hour")
+        (label :text ":" :class "dot")
+        (label :text minutes :class "minutes")
+        (label :text ":" :class "dot")
+        (label :text seconds :class "seconds"))
+        (box :class "separator" :height 2 :hexpand true)
+        (box :class "separator" :height 2 :hexpand true)
+    (box
+        :class "calendar-bin widget"
+        (calendar))
+         (box :class "separator" :height 2 :hexpand true)
+        (box :class "separator" :height 2 :hexpand true)
+    (box
+        :class "system"
+        (sysprogress_cpu)
+        (sysprogress_ram)
+        (sysprogress_temp)
+        (sysprogress_bat))
+        (box :class "separator" :height 2 :hexpand true)
+        (box :class "separator" :height 2 :hexpand true)
+        (weather)
+        (box :class "separator" :height 2 :hexpand true)
+        (box :class "separator" :height 2 :hexpand true)
+        (profile)
+))
+
+ (defwidget weather []
+  (box 
+    :class "weather"
+    :spacing 10
+    :space-evenly false
+    (box
+      :class "weather info"
+      :hexpand true
+      (box
+        :space-evenly false 
+        :orientation "v"
+        (label 
+          :class "weather desc" 
+          :halign "start" 
+          :text {weather.description}
+        )
+        (label 
+          :class "weather temp" 
+          :halign "start" 
+          :text "${round(weather.temp, 1)}°C"
+        )
+      )
+      (box
+        :class "weather city"
+        :valign "end"
+        :halign "end"
+        (label :text {weather.city})
+      )
+    )
+    (box 
+      :class "weather icon" 
+      (label 
+        :class "icon" 
+        :halign "end" 
+        :valign "center" 
+        :text {weather.icon} 
+        :style "color: ${weather.icon_color}"
+      )
+    )
+  )
+)
+
+(defwidget profile []
+	(box 
+		:class "profile" 
+		:space-evenly false 
+    :spacing 10
+    (box 
+      :class "profile image" 
+      :halign "center"
+      :valign "center"
+      :style "background-image: url('${picture}');"
+      :tooltip "Good Jobs"
+    )
+    (box
+      :orientation "v"
+      :hexpand true
+      (box 
+        :class "profile info" 
+        :space-evenly false 
+        :orientation "v" 
+        :spacing 5
+        (label 
+          :class "name" 
+          :text {details.user} 
+          :halign "start"
+        )
+        (box
+          :space-evenly false
+          :spacing 5
+          (label :text "")
+          (label 
+            :class "uptime" 
+            :text {details.uptime} 
+            :halign "start"
+          )
+        )
+      )
+    )
+    (eventbox
+      :cursor "pointer"
+      (button 
+        :class "exit"
+        :halign "center"
+        :valign "center" 
+        :onclick "mugshot &" 
+        ""
+      )
+    )
+	)
+)

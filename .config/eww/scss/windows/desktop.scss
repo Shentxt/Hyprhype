@@ -1,0 +1,60 @@
+.desktop{
+    .clock{
+        color: $white;
+        .time{
+            .hour{ color: $red; }
+            .minutes{ color: $magenta; }
+            .seconds{ color: $green; }
+            border: 3px solid $yellow;
+            border-radius: $popover_radius;
+            padding: .5em 1.3em;
+            margin-bottom: 1rem;
+            .hour, .minutes, .seconds, .separator{
+            font-size: 8rem;
+            font-family: $mono_font;
+            margin-right: 1rem;
+            margin-left: 1rem;
+            margin-top: 1rem;
+         }}
+
+        .date{ 
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+        }
+
+     .timebox {
+    font-family: "Font Awesome 6 Pro Solid";
+    font-size: 1.2rem;
+
+    &.magenta {
+      color: $magenta;
+    }
+    &.green {
+      color: $green;
+    }
+    &.yellow {
+      color: $yellow;
+    }
+  }
+
+  &.weather {}
+    .icon {
+      font-size: 65px;
+      font-family: "Font Awesome 6 Pro Solid";
+      margin-top: 1rem;
+    }
+
+    .desc, .temp{
+      font-size: 1.2rem;
+      color: $white;
+      margin-top: 1rem;
+    }
+
+ .quote-text, .quote-author{
+    font-size:  1.2rem;
+    font-weight: bold;
+    color: $white; 
+    margin-top: 1rem;
+}
+
