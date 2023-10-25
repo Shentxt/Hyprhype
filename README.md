@@ -1,15 +1,14 @@
 # Sections
-- [Presentation]()
-- [Download]()
-- [Keys-Maps]()
-- [Inpirations and Contacts]()
+- [Download](https://github.com/Shentxt/Hyprhype/tree/master#download)
+- [Keys-Maps](https://github.com/Shentxt/Hyprhype/tree/master#keys-map)
+- [Inpirations and Contacts](https://github.com/Shentxt/Hyprhype/tree/master#inpirations-and-contacts)
 
 ## Presentation
 Clarification: This is a custom made setup for me and equipment. Any error, or software problem that I kindly ask you to contact me, I will try to find a solution or clarify what is missing.
 
 Welcome to my personal setup on Hyprland Wayland! Although my setup is still in progress, I'm here to help you with any questions you may have.
 
-## Download
+### Download
 <div style="background-color: black; color: white; padding: 10px;">
 <pre><code>
 Git clone https://github.com/Shentxt/Hyprhype#tabla-de-contenidos
@@ -35,11 +34,11 @@ sudo paru -Syu kohaa hyprpicker yt-dlp wal wlsunset browsh firefox
 
 - These files are located in usr.
 
-## Keys-Map
+### Keys-Map
 
 - **Win+Shift+D:** Open the key display. This key combination can be useful to access various functions in my settings.
 
-## Inpirations and Contacts
+### Inpirations and Contacts
 
 - [Reddit](https://www.reddit.com/user/ProfessionLower9249)
 
