@@ -1,0 +1,49 @@
+* {
+  all: unset;
+  border: 0rem; }
+
+window {
+  background-image: url("/tmp/distorted.png");
+  background-color:     rgba(59, 66, 82, 0.6);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+#window-box {
+  border-radius: 1.5rem;
+  padding: 1.5rem; }
+
+#input-label {
+  font-size: 1.5rem;
+  color: transparent;
+  background-color: transparent;
+  margin: -1rem; }
+
+#input-field {
+   background-color: #3B4252;
+  color: #8FAFD1;
+  caret-color: #8FAFD1; 
+  border-radius: 999px;
+  font-size: 1.3rem;
+  padding: 0.341rem 1.364rem;
+  margin: 0.477rem;
+  box-shadow: 2px 2px 4px rgba(22, 22, 22, 0.5);
+  min-height: 2.727rem; }
+
+#unlock-button {
+  margin: -20rem;
+  color: transparent;
+  background-color: transparent; }
+
+#error-label {
+  color: #8FAFD1; }
+
+#clock-label {
+  font-family: 'minecraft';
+  font-size: 6rem;
+  border-radius: 1.2rem;
+  padding: 0.5rem;
+  margin: 0.6rem;
+  margin-top: -1rem;
+  color: #81A1C1;
+  text-shadow: 1px 1px 2px rgba(22, 22, 30, 0.5); }

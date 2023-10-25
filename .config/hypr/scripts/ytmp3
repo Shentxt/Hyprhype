@@ -8,3 +8,7 @@ for i in "$@"; do
     -o "%(title)s.%(ext)s" \
     "$i"
 done
+
+#download music from yt
+notify-send "Morgana" "new soundtrack? amazing it's time to try it." -i ~/.config/hypr/assets/icons/morgana/awesome.png
+paplay ~/.config/hypr/assets/effects/system.ogg &>/dev/null

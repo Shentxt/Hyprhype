@@ -22,19 +22,17 @@
 # required to function (only hyprland)
 # --------------------
 # hyprctl: wmreload
-# hyprctl: notify
+# notify-send: notify
 #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 sleep 1 && hyprctl reload
 
 #pkill Aplications
-#pkill eww
 pkill ags
 
 # Start Aplications
-#~/.config/eww/init
 ~/.config/hypr/scripts/wallrandom
-ags &
+ags
 
 #this script reloads the desktop
 notify-send "Morgana" "Upgrade complete! Our window manager is purring like a finely-tuned engine." -i ~/.config/hypr/assets/icons/morgana/awesome.png

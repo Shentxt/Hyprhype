@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-sleep 0.45
-tmpbg="/tmp/screen.png"
-distortedbg="/tmp/distorted.png"
-
-grim "$tmpbg"
-corrupter -mag 3 -boffset 10 -lag 0.01 -meanabber 5 -stdabber 5 -stdoffset 5 "$tmpbg" "$distortedbg"
-gtklock -b "$distortedbg"
-rm "$tmpbg" "$distortedbg"

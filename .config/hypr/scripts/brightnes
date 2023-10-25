@@ -40,8 +40,8 @@ new_brightness=$(xrandr --current --verbose | grep -i brightness | awk '{print $
 # Compara los valores de brillo para determinar si cambió
 if [[ "$new_brightness" != "$current_brightness" ]]; then
 	if [[ "$new_brightness" < "$current_brightness" ]]; then
-		notify-send "Brillo cambiado para la noche"
+		notify-send "Brightnes Dark"
 	else
-		notify-send "Brillo cambiado para el día"
+		notify-send "Brightnes Light"
 	fi
 fi

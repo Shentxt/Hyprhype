@@ -1,0 +1,806 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; object-src 'none'; script-src resource: chrome:; connect-src https:; img-src https: data: blob: chrome:; style-src 'unsafe-inline';">
+    <meta name="color-scheme" content="light dark">
+    <title data-l10n-id="newtab-page-title"></title>
+    <link rel="icon" type="image/png" href="chrome://branding/content/icon32.png"/>
+    <link rel="localization" href="branding/brand.ftl" />
+    <link rel="localization" href="toolkit/branding/brandings.ftl" />
+    <link rel="localization" href="browser/newtab/newtab.ftl" />
+    <link rel="stylesheet" href="chrome://browser/content/contentSearchUI.css" />
+    <link rel="stylesheet" href="chrome://activity-stream/content/css/activity-stream.css" />
+  </head>
+  <!-- Cached: Sun, 22 Oct 2023 04:29:12 GMT -->
+  <body class="activity-stream">
+    <div id="header-asrouter-container" role="presentation"></div>
+    <div id="root">
+      <div><span><button class="icon icon-settings personalize-button" data-l10n-id="newtab-personalize-icon-label"></button><div class="customize-menu" role="dialog" data-l10n-id="newtab-personalize-dialog-label"><button class="close-button" data-l10n-id="newtab-custom-close-button"></button><div></div><div class="home-section"><div id="shortcuts-section" class="section"><label class="switch"><input type="checkbox" id="shortcuts-toggle" checked="" preference="feeds.topsites" aria-labelledby="custom-shortcuts-title" aria-describedby="custom-shortcuts-subtitle" eventSource="TOP_SITES"/><span class="slider" role="presentation"></span></label><div><h2 id="custom-shortcuts-title" class="title"><label for="shortcuts-toggle" data-l10n-id="newtab-custom-shortcuts-title"></label></h2><p id="custom-shortcuts-subtitle" class="subtitle" data-l10n-id="newtab-custom-shortcuts-subtitle"></p><div class="more-info-top-wrapper"><div class="more-information"><select id="row-selector" class="selector" name="row-count" preference="topSitesRows" aria-labelledby="custom-shortcuts-title"><option selected="" value="1" data-l10n-id="newtab-custom-row-selector" data-l10n-args="{&quot;num&quot;: 1}"></option><option value="2" data-l10n-id="newtab-custom-row-selector" data-l10n-args="{&quot;num&quot;: 2}"></option><option value="3" data-l10n-id="newtab-custom-row-selector" data-l10n-args="{&quot;num&quot;: 3}"></option><option value="4" data-l10n-id="newtab-custom-row-selector" data-l10n-args="{&quot;num&quot;: 4}"></option></select><div class="check-wrapper" role="presentation"><input type="checkbox" id="sponsored-shortcuts" class="sponsored-checkbox" preference="showSponsoredTopSites" eventSource="SPONSORED_TOP_SITES"/><label class="sponsored" for="sponsored-shortcuts" data-l10n-id="newtab-custom-sponsored-sites"></label></div></div></div></div></div><div id="recent-section" class="section"><label class="switch"><input type="checkbox" id="highlights-toggle" preference="feeds.section.highlights" eventSource="HIGHLIGHTS" aria-labelledby="custom-recent-title" aria-describedby="custom-recent-subtitle"/><span class="slider" role="presentation"></span></label><div><h2 id="custom-recent-title" class="title"><label for="highlights-toggle" data-l10n-id="newtab-custom-recent-title"></label></h2><p id="custom-recent-subtitle" class="subtitle" data-l10n-id="newtab-custom-recent-subtitle"></p></div></div><span class="divider" role="separator"></span><div><button id="settings-link" class="external-link" data-l10n-id="newtab-custom-settings"></button></div></div></div></span><div class="outer-wrapper ds-outer-wrapper-breakpoint-override visible-logo"><main class=""><div class="non-collapsible-section"><div class="search-wrapper"><div class="logo-and-wordmark"><div class="logo"></div><div class="wordmark"></div></div><div class="search-inner-wrapper"><button class="search-handoff-button" data-l10n-id="newtab-search-box-handoff-input" data-l10n-args="{&quot;engine&quot;: &quot;Google&quot;}" tabindex="-1"><div class="fake-textbox" data-l10n-id="newtab-search-box-handoff-text" data-l10n-args="{&quot;engine&quot;: &quot;Google&quot;}"></div><input type="search" class="fake-editable" tabindex="-1" aria-hidden="true"/><div class="fake-caret"></div></button></div></div></div><div class="body-wrapper on"><div class="discovery-stream ds-layout"><div class="ds-column ds-column-12"><div class="ds-column-grid"><div><div class="ds-top-sites"><section class="collapsible-section top-sites" data-section-id="topsites"><div class="section-top-bar"><h3 class="section-title-container " style="visibility:hidden"><span class="section-title"><span data-l10n-id="newtab-section-header-topsites"></span></span><span class="learn-more-link-wrapper"></span></h3></div><div><ul class="top-sites-list"><li class="top-site-outer"><div class="top-site-inner"><a class="top-site-button" href="https://archlinux.org/packages/" tabindex="0" draggable="true" data-is-sponsored-link="false"><div class="tile" aria-hidden="true"><div class="icon-wrapper" data-fallback="a"><div class="top-site-icon rich-icon" style="background-image:url(data:image/png;base64,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)"></div></div></div><div class="title"><span dir="auto">archlinux<span class="sponsored-label" data-l10n-id="newtab-topsite-sponsored"></span></span></div></a><div><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;archlinux&quot;}" class="context-menu-button icon"></button></div><div class="topsite-impression-observer"></div></div></li><li class="top-site-outer"><div class="top-site-inner"><a class="top-site-button" href="https://www.wallpaperflare.com/" tabindex="0" draggable="true" data-is-sponsored-link="false"><div class="tile" aria-hidden="true"><div class="icon-wrapper" data-fallback="w"><div></div><div class="top-site-icon default-icon" data-fallback="" style="background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAC5klEQVQ4T4XTe0hTURwH8HPu7jZ16ny0ZMpmWYk06o9EiwyWCWbRg4wGJmnQH/5REqhZ0T9WSkimZWj20EpRpCGCCuVCzcwm6jTFt6G2pc49nHvcu8e9uycksoaOzn+H8zsfvvx+50DgZdmK8va7FmdScEhUB1Z0GL3VQW8HqKZcsKpsUzDU6qdtmQ9vwMREeqvaTQDZeiEC4iw2WoinyP62bsDoOLgoXBpUqJj/L2BquhPJmDqrcD4qd3dGB7v147XAz2H0iRIn+gurF0Cw0All0P0v5JFAV5V2GzpURTg78C7V6puMMMNhbDv2jSPKKyaUdinbbs0X9N60bgkghKC27NxbzD1yCWqhlenz9YN8hoVH8F8iVn4Y8XlyN4drOyocfqD3mkD/LK2EXunLZZYtANP6ARYdaMKjJZm0NvUWOTAdR7jM6RJ1qdwrsFh15TTQKeW428CFLgSANeijIDZdppdHviLHFs+rnQalVhyUKhso0P5BPHpQJzlwLeYg8WTXIRKDkAIMh210ooDrrOfZ/oTGXDlOGeEsj8nNmXtUtglAtSO85sfZLSzzzLHYy2wQKGGAy4EBy7KPwTAmvY/37E2foCzxg5jli2Vf2Mmalt/N3EhA1A0KvzaWdFMjyj2R4ZRFlMslKIYWrmnYQNV/ZNStjn+/bLXlqyiDGgVwpQ3DRT88APRuVjDZ3dS10tkgCWPoDnGxf43LpavUTfP47e0naAMQlRCkM0NDGklWqK+0sbdgyRPoQriuvuGNaao3HVubbAo/c/aqPqi5dqxnR3LffDSwC/yfEjZniolcHU1K2JmW9SKL8gDWN9rEqiR6iWh02UncjHO/a3ycUTMMCtH4sO1YCK98zWQ+5cKcOfWqQsWWU0AFCJuSl2aYSeaeHtKiOQ4FfnIA4wjwa0c4M2V3OiaO58S8lslkG89502daRxQfKuJm7WsX1ZASu0P5E7xQ3yGzkVAnhIiHZPK/l9dT/ALLymQgxrbgLgAAAABJRU5ErkJggg==)"></div></div></div><div class="title"><span dir="auto">wallpaperflare<span class="sponsored-label" data-l10n-id="newtab-topsite-sponsored"></span></span></div></a><div><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;wallpaperflare&quot;}" class="context-menu-button icon"></button></div><div class="topsite-impression-observer"></div></div></li><li class="top-site-outer"><div class="top-site-inner"><a class="top-site-button" href="https://wiki.archlinux.org/" tabindex="0" draggable="true" data-is-sponsored-link="false"><div class="tile" aria-hidden="true"><div class="icon-wrapper" data-fallback="w"><div></div><div class="top-site-icon default-icon" data-fallback="" style="background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABvElEQVQ4jY2TP4gTQRTGfzM7ybp35mBX8LY4GxM5OI4UiqDWtoKIjWhl4QmmEQwIhzZaa3GLlYWgjViI+AcUrrASUYTbQ0UxepwpFj1EDCSXuLNj4QYSLxP8mnm8972P3wyMMMZgUxjF+ycLUjUW5l/YPMq6/VfnHCEmAGuAsBHsurG6QwiaRUeq2cCdfXy88nmUT9qSJ4tywVNyGxjVSbPzNp81wFNyt6cknpJ00uzk2Wfr/n8HHLrz4ajriFeuEsuekvS08Zu/eoujvFveYN+t98XAUw1jmEmN+ZEZfG2M8BzZKhVl+f6x8vexBIGn6hMFOeMqgTEEXZ2J39qwqbNSR5tLYwnmbr6b2hO4axvt1P/a6tHTw3SuI1pTrlNZPT33bSTBps7qb5K23/jZ7S8/AO72511tShud9MJIgjCKdwINYHs+e5TUqkfy2W3gVN5vA+WkVk3+Jbg8sAzwcKB+mp8G+ALUh64QRnEZOMOwPg3Ub/vEgAvcGwoArgKFvF4DrgEfBwKawHVgHagAy2EUnwAQ00sre4HXwBPgSlKrvmSMwig+CCwCh4F5Mb20chF4ntSq1h83JujAH3Eom+H9uAq8AAAAAElFTkSuQmCC)"></div></div></div><div class="title"><span dir="auto">wiki.archlinux<span class="sponsored-label" data-l10n-id="newtab-topsite-sponsored"></span></span></div></a><div><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;wiki.archlinux&quot;}" class="context-menu-button icon"></button></div><div class="topsite-impression-observer"></div></div></li><li class="top-site-outer"><div class="top-site-inner"><a class="top-site-button" href="https://www.youtube.com/" tabindex="0" draggable="true" data-is-sponsored-link="false"><div class="tile" aria-hidden="true"><div class="icon-wrapper" data-fallback="Y"><div class="top-site-icon rich-icon" style="background-image:url(chrome://activity-stream/content/data/content/tippytop/images/youtube-com@2x.png)"></div></div></div><div class="title"><span dir="auto">YouTube<span class="sponsored-label" data-l10n-id="newtab-topsite-sponsored"></span></span></div></a><div><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;YouTube&quot;}" class="context-menu-button icon"></button></div><div class="topsite-impression-observer"></div></div></li><li class="top-site-outer"><div class="top-site-inner"><a class="top-site-button" href="https://www.facebook.com/" tabindex="0" draggable="true" data-is-sponsored-link="false"><div class="tile" aria-hidden="true"><div class="icon-wrapper" data-fallback="F"><div class="top-site-icon rich-icon" style="background-image:url(chrome://activity-stream/content/data/content/tippytop/images/facebook-com@2x.png)"></div></div></div><div class="title"><span dir="auto">Facebook<span class="sponsored-label" data-l10n-id="newtab-topsite-sponsored"></span></span></div></a><div><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;Facebook&quot;}" class="context-menu-button icon"></button></div><div class="topsite-impression-observer"></div></div></li><li class="top-site-outer"><div class="top-site-inner"><a class="top-site-button" href="https://www.wikipedia.org/" tabindex="0" draggable="true" data-is-sponsored-link="false"><div class="tile" aria-hidden="true"><div class="icon-wrapper" data-fallback="W"><div class="top-site-icon rich-icon" style="background-image:url(chrome://activity-stream/content/data/content/tippytop/images/wikipedia-org@2x.png)"></div></div></div><div class="title"><span dir="auto">Wikipedia<span class="sponsored-label" data-l10n-id="newtab-topsite-sponsored"></span></span></div></a><div><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;Wikipedia&quot;}" class="context-menu-button icon"></button></div><div class="topsite-impression-observer"></div></div></li><li class="top-site-outer hide-for-narrow"><div class="top-site-inner"><a class="top-site-button" href="https://www.reddit.com/" tabindex="0" draggable="true" data-is-sponsored-link="false"><div class="tile" aria-hidden="true"><div class="icon-wrapper" data-fallback="R"><div class="top-site-icon rich-icon" style="background-image:url(chrome://activity-stream/content/data/content/tippytop/images/reddit-com@2x.png)"></div></div></div><div class="title"><span dir="auto">Reddit<span class="sponsored-label" data-l10n-id="newtab-topsite-sponsored"></span></span></div></a><div><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;Reddit&quot;}" class="context-menu-button icon"></button></div><div class="topsite-impression-observer"></div></div></li><li class="top-site-outer hide-for-narrow search-shortcut"><div class="top-site-inner"><a class="top-site-button" tabindex="0" draggable="true" data-is-sponsored-link="false"><div class="tile" aria-hidden="true"><div class="icon-wrapper" data-fallback="@"><div class="top-site-icon rich-icon" style="background-image:url(chrome://activity-stream/content/data/content/tippytop/images/amazon@2x.png)"></div></div><div class="top-site-icon search-topsite"></div></div><div class="title"><span dir="auto">@amazon<span class="sponsored-label" data-l10n-id="newtab-topsite-sponsored"></span></span></div></a><div><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;@amazon&quot;}" class="context-menu-button icon"></button></div><div class="topsite-impression-observer"></div></div></li></ul><div class="edit-topsites-wrapper"></div></div></section></div></div></div></div><style data-styles="[[null]]"></style></div><div class="discovery-stream ds-layout"><div class="ds-column ds-column-12"><div class="ds-column-grid"><div></div></div></div><style data-styles="[[null]]"></style></div></div></main></div></div>
+    </div>
+    <div id="footer-asrouter-container" role="presentation"></div>
+    <script src="about:home?jscache"></script>
+  </body>
+</html>
+window.__FROM_STARTUP_CACHE__ = true;
+window.__STARTUP_STATE__ = {
+	"TopSites": {
+		"initialized": true,
+		"rows": [
+			{
+				"bookmarkGuid": null,
+				"frecency": 1000,
+				"guid": "ZwsqgtqcHAs6",
+				"lastVisitDate": 1697948939851,
+				"title": "Arch Linux - Package Search",
+				"url": "https://archlinux.org/packages/",
+				"type": "history",
+				"favicon": "data:image/png;base64,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",
+				"faviconLength": 3063,
+				"faviconRef": "",
+				"faviconSize": 144,
+				"smallFavicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAG8SURBVDiNjZM/iBNBFMZ/MzvJunfmYFfwtjgbEzk4jhSKoNa2goiNaGXhCaYRDAiHNlprcYuVhaCNWIj4BxSusBJRhNtDRTF6nCkWPUQMJJe4s2PhBhIvE/yaebz3vY/fDIwwxmBTGMX7JwtSNRbmX9g8yrr9V+ccISYAa4CwEey6sbpDCJpFR6rZwJ19fLzyeZRP2pIni3LBU3IbGNVJs/M2nzXAU3K3pySeknTS7OTZZ+v+fwccuvPhqOuIV64Sy56S9LTxm796i6O8W95g3633xcBTDWOYSY35kRl8bYzwHNkqFWX5/rHy97EEgafqEwU54yqBMQRdnYnf2rCps1JHm0tjCeZuvpvaE7hrG+3U/9rq0dPDdK4jWlOuU1k9PfdtJMGmzupvkrbf+NntLz8A7vbnXW1KG530wkiCMIp3Ag1gez57lNSqR/LZbeBU3m8D5aRWTf4luDywDPBwoH6anwb4AtSHrhBGcRk4w7A+DdRv+8SAC9wbCgCuAoW8XgOuAR8HAprAdWAdqADLYRSfABDTSyt7gdfAE+BKUqu+ZIzCKD4ILAKHgXkxvbRyEXie1KrWHzcm6MAfcSib4f24CrwAAAAASUVORK5CYII=",
+				"smallFaviconLength": 575,
+				"smallFaviconRef": "",
+				"smallFaviconSize": 16,
+				"hostname": "archlinux",
+				"typedBonus": true
+			},
+			{
+				"bookmarkGuid": null,
+				"frecency": 500,
+				"guid": "tusmFBuss_fZ",
+				"lastVisitDate": 1697945010049,
+				"title": "Wallpaperflare - Beautiful HD wallpapers free download",
+				"url": "https://www.wallpaperflare.com/",
+				"type": "history",
+				"favicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAC5klEQVQ4T4XTe0hTURwH8HPu7jZ16ny0ZMpmWYk06o9EiwyWCWbRg4wGJmnQH/5REqhZ0T9WSkimZWj20EpRpCGCCuVCzcwm6jTFt6G2pc49nHvcu8e9uycksoaOzn+H8zsfvvx+50DgZdmK8va7FmdScEhUB1Z0GL3VQW8HqKZcsKpsUzDU6qdtmQ9vwMREeqvaTQDZeiEC4iw2WoinyP62bsDoOLgoXBpUqJj/L2BquhPJmDqrcD4qd3dGB7v147XAz2H0iRIn+gurF0Cw0All0P0v5JFAV5V2GzpURTg78C7V6puMMMNhbDv2jSPKKyaUdinbbs0X9N60bgkghKC27NxbzD1yCWqhlenz9YN8hoVH8F8iVn4Y8XlyN4drOyocfqD3mkD/LK2EXunLZZYtANP6ARYdaMKjJZm0NvUWOTAdR7jM6RJ1qdwrsFh15TTQKeW428CFLgSANeijIDZdppdHviLHFs+rnQalVhyUKhso0P5BPHpQJzlwLeYg8WTXIRKDkAIMh210ooDrrOfZ/oTGXDlOGeEsj8nNmXtUtglAtSO85sfZLSzzzLHYy2wQKGGAy4EBy7KPwTAmvY/37E2foCzxg5jli2Vf2Mmalt/N3EhA1A0KvzaWdFMjyj2R4ZRFlMslKIYWrmnYQNV/ZNStjn+/bLXlqyiDGgVwpQ3DRT88APRuVjDZ3dS10tkgCWPoDnGxf43LpavUTfP47e0naAMQlRCkM0NDGklWqK+0sbdgyRPoQriuvuGNaao3HVubbAo/c/aqPqi5dqxnR3LffDSwC/yfEjZniolcHU1K2JmW9SKL8gDWN9rEqiR6iWh02UncjHO/a3ycUTMMCtH4sO1YCK98zWQ+5cKcOfWqQsWWU0AFCJuSl2aYSeaeHtKiOQ4FfnIA4wjwa0c4M2V3OiaO58S8lslkG89502daRxQfKuJm7WsX1ZASu0P5E7xQ3yGzkVAnhIiHZPK/l9dT/ALLymQgxrbgLgAAAABJRU5ErkJggg==",
+				"faviconLength": 799,
+				"faviconRef": "",
+				"faviconSize": 16,
+				"smallFavicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAC5klEQVQ4T4XTe0hTURwH8HPu7jZ16ny0ZMpmWYk06o9EiwyWCWbRg4wGJmnQH/5REqhZ0T9WSkimZWj20EpRpCGCCuVCzcwm6jTFt6G2pc49nHvcu8e9uycksoaOzn+H8zsfvvx+50DgZdmK8va7FmdScEhUB1Z0GL3VQW8HqKZcsKpsUzDU6qdtmQ9vwMREeqvaTQDZeiEC4iw2WoinyP62bsDoOLgoXBpUqJj/L2BquhPJmDqrcD4qd3dGB7v147XAz2H0iRIn+gurF0Cw0All0P0v5JFAV5V2GzpURTg78C7V6puMMMNhbDv2jSPKKyaUdinbbs0X9N60bgkghKC27NxbzD1yCWqhlenz9YN8hoVH8F8iVn4Y8XlyN4drOyocfqD3mkD/LK2EXunLZZYtANP6ARYdaMKjJZm0NvUWOTAdR7jM6RJ1qdwrsFh15TTQKeW428CFLgSANeijIDZdppdHviLHFs+rnQalVhyUKhso0P5BPHpQJzlwLeYg8WTXIRKDkAIMh210ooDrrOfZ/oTGXDlOGeEsj8nNmXtUtglAtSO85sfZLSzzzLHYy2wQKGGAy4EBy7KPwTAmvY/37E2foCzxg5jli2Vf2Mmalt/N3EhA1A0KvzaWdFMjyj2R4ZRFlMslKIYWrmnYQNV/ZNStjn+/bLXlqyiDGgVwpQ3DRT88APRuVjDZ3dS10tkgCWPoDnGxf43LpavUTfP47e0naAMQlRCkM0NDGklWqK+0sbdgyRPoQriuvuGNaao3HVubbAo/c/aqPqi5dqxnR3LffDSwC/yfEjZniolcHU1K2JmW9SKL8gDWN9rEqiR6iWh02UncjHO/a3ycUTMMCtH4sO1YCK98zWQ+5cKcOfWqQsWWU0AFCJuSl2aYSeaeHtKiOQ4FfnIA4wjwa0c4M2V3OiaO58S8lslkG89502daRxQfKuJm7WsX1ZASu0P5E7xQ3yGzkVAnhIiHZPK/l9dT/ALLymQgxrbgLgAAAABJRU5ErkJggg==",
+				"smallFaviconLength": 799,
+				"smallFaviconRef": "",
+				"smallFaviconSize": 16,
+				"hostname": "wallpaperflare",
+				"typedBonus": true
+			},
+			{
+				"bookmarkGuid": null,
+				"frecency": 200,
+				"guid": "_55DoyECwSrl",
+				"lastVisitDate": 1697948909324,
+				"title": "ArchWiki",
+				"url": "https://wiki.archlinux.org/",
+				"type": "history",
+				"favicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABvElEQVQ4jY2TP4gTQRTGfzM7ybp35mBX8LY4GxM5OI4UiqDWtoKIjWhl4QmmEQwIhzZaa3GLlYWgjViI+AcUrrASUYTbQ0UxepwpFj1EDCSXuLNj4QYSLxP8mnm8972P3wyMMMZgUxjF+ycLUjUW5l/YPMq6/VfnHCEmAGuAsBHsurG6QwiaRUeq2cCdfXy88nmUT9qSJ4tywVNyGxjVSbPzNp81wFNyt6cknpJ00uzk2Wfr/n8HHLrz4ajriFeuEsuekvS08Zu/eoujvFveYN+t98XAUw1jmEmN+ZEZfG2M8BzZKhVl+f6x8vexBIGn6hMFOeMqgTEEXZ2J39qwqbNSR5tLYwnmbr6b2hO4axvt1P/a6tHTw3SuI1pTrlNZPT33bSTBps7qb5K23/jZ7S8/AO72511tShud9MJIgjCKdwINYHs+e5TUqkfy2W3gVN5vA+WkVk3+Jbg8sAzwcKB+mp8G+ALUh64QRnEZOMOwPg3Ub/vEgAvcGwoArgKFvF4DrgEfBwKawHVgHagAy2EUnwAQ00sre4HXwBPgSlKrvmSMwig+CCwCh4F5Mb20chF4ntSq1h83JujAH3Eom+H9uAq8AAAAAElFTkSuQmCC",
+				"faviconLength": 501,
+				"faviconRef": "",
+				"faviconSize": 16,
+				"smallFavicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABvElEQVQ4jY2TP4gTQRTGfzM7ybp35mBX8LY4GxM5OI4UiqDWtoKIjWhl4QmmEQwIhzZaa3GLlYWgjViI+AcUrrASUYTbQ0UxepwpFj1EDCSXuLNj4QYSLxP8mnm8972P3wyMMMZgUxjF+ycLUjUW5l/YPMq6/VfnHCEmAGuAsBHsurG6QwiaRUeq2cCdfXy88nmUT9qSJ4tywVNyGxjVSbPzNp81wFNyt6cknpJ00uzk2Wfr/n8HHLrz4ajriFeuEsuekvS08Zu/eoujvFveYN+t98XAUw1jmEmN+ZEZfG2M8BzZKhVl+f6x8vexBIGn6hMFOeMqgTEEXZ2J39qwqbNSR5tLYwnmbr6b2hO4axvt1P/a6tHTw3SuI1pTrlNZPT33bSTBps7qb5K23/jZ7S8/AO72511tShud9MJIgjCKdwINYHs+e5TUqkfy2W3gVN5vA+WkVk3+Jbg8sAzwcKB+mp8G+ALUh64QRnEZOMOwPg3Ub/vEgAvcGwoArgKFvF4DrgEfBwKawHVgHagAy2EUnwAQ00sre4HXwBPgSlKrvmSMwig+CCwCh4F5Mb20chF4ntSq1h83JujAH3Eom+H9uAq8AAAAAElFTkSuQmCC",
+				"smallFaviconLength": 501,
+				"smallFaviconRef": "",
+				"smallFaviconSize": 16,
+				"hostname": "wiki.archlinux",
+				"typedBonus": true
+			},
+			{
+				"isDefault": true,
+				"url": "https://www.youtube.com/",
+				"hostname": "youtube",
+				"sendAttributionRequest": false,
+				"label": "YouTube",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/youtube-com@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/youtube-com.png",
+				"typedBonus": true
+			},
+			{
+				"isDefault": true,
+				"url": "https://www.facebook.com/",
+				"hostname": "facebook",
+				"sendAttributionRequest": false,
+				"label": "Facebook",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/facebook-com@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/facebook-com.ico",
+				"typedBonus": true
+			},
+			{
+				"isDefault": true,
+				"url": "https://www.wikipedia.org/",
+				"hostname": "wikipedia",
+				"sendAttributionRequest": false,
+				"label": "Wikipedia",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/wikipedia-org@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/wikipedia-org.ico",
+				"typedBonus": true
+			},
+			{
+				"isDefault": true,
+				"url": "https://www.reddit.com/",
+				"hostname": "reddit",
+				"sendAttributionRequest": false,
+				"label": "Reddit",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/reddit-com@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/reddit-com.png",
+				"typedBonus": true
+			},
+			{
+				"isDefault": true,
+				"url": "https://www.amazon.com/",
+				"hostname": "amazon",
+				"sendAttributionRequest": false,
+				"label": "@amazon",
+				"searchTopSite": true,
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/amazon@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/amazon.ico",
+				"typedBonus": true
+			}
+		],
+		"editForm": null,
+		"showSearchShortcutsForm": false,
+		"searchShortcuts": [
+			{
+				"keyword": "@google",
+				"shortURL": "google",
+				"url": "https://google.com",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/google-com@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/google-com.ico"
+			},
+			{
+				"keyword": "@amazon",
+				"shortURL": "amazon",
+				"url": "https://amazon.com",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/amazon@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/amazon.ico"
+			},
+			{
+				"keyword": "@bing",
+				"shortURL": "bing",
+				"url": "https://bing.com",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/bing-com@2x.svg",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/bing-com.ico"
+			},
+			{
+				"keyword": "@duckduckgo",
+				"shortURL": "duckduckgo",
+				"url": "https://duckduckgo.com",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/duckduckgo-com@2x.svg",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/duckduckgo-com.ico"
+			},
+			{
+				"keyword": "@wikipedia",
+				"shortURL": "wikipedia",
+				"url": "https://wikipedia.org",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/wikipedia-org@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/wikipedia-org.ico"
+			}
+		],
+		"pref": {
+			"collapsed": false
+		}
+	},
+	"App": {
+		"initialized": true,
+		"locale": "en-US",
+		"isForStartupCache": true,
+		"customizeMenuVisible": false,
+		"links": [
+			{
+				"bookmarkGuid": null,
+				"frecency": 1000,
+				"guid": "ZwsqgtqcHAs6",
+				"lastVisitDate": 1697948939851,
+				"title": "Arch Linux - Package Search",
+				"url": "https://archlinux.org/packages/",
+				"type": "history",
+				"favicon": "data:image/png;base64,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",
+				"faviconLength": 3063,
+				"faviconRef": "",
+				"faviconSize": 144,
+				"smallFavicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAG8SURBVDiNjZM/iBNBFMZ/MzvJunfmYFfwtjgbEzk4jhSKoNa2goiNaGXhCaYRDAiHNlprcYuVhaCNWIj4BxSusBJRhNtDRTF6nCkWPUQMJJe4s2PhBhIvE/yaebz3vY/fDIwwxmBTGMX7JwtSNRbmX9g8yrr9V+ccISYAa4CwEey6sbpDCJpFR6rZwJ19fLzyeZRP2pIni3LBU3IbGNVJs/M2nzXAU3K3pySeknTS7OTZZ+v+fwccuvPhqOuIV64Sy56S9LTxm796i6O8W95g3633xcBTDWOYSY35kRl8bYzwHNkqFWX5/rHy97EEgafqEwU54yqBMQRdnYnf2rCps1JHm0tjCeZuvpvaE7hrG+3U/9rq0dPDdK4jWlOuU1k9PfdtJMGmzupvkrbf+NntLz8A7vbnXW1KG530wkiCMIp3Ag1gez57lNSqR/LZbeBU3m8D5aRWTf4luDywDPBwoH6anwb4AtSHrhBGcRk4w7A+DdRv+8SAC9wbCgCuAoW8XgOuAR8HAprAdWAdqADLYRSfABDTSyt7gdfAE+BKUqu+ZIzCKD4ILAKHgXkxvbRyEXie1KrWHzcm6MAfcSib4f24CrwAAAAASUVORK5CYII=",
+				"smallFaviconLength": 575,
+				"smallFaviconRef": "",
+				"smallFaviconSize": 16,
+				"hostname": "archlinux",
+				"typedBonus": true
+			},
+			{
+				"bookmarkGuid": null,
+				"frecency": 500,
+				"guid": "tusmFBuss_fZ",
+				"lastVisitDate": 1697945010049,
+				"title": "Wallpaperflare - Beautiful HD wallpapers free download",
+				"url": "https://www.wallpaperflare.com/",
+				"type": "history",
+				"favicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAC5klEQVQ4T4XTe0hTURwH8HPu7jZ16ny0ZMpmWYk06o9EiwyWCWbRg4wGJmnQH/5REqhZ0T9WSkimZWj20EpRpCGCCuVCzcwm6jTFt6G2pc49nHvcu8e9uycksoaOzn+H8zsfvvx+50DgZdmK8va7FmdScEhUB1Z0GL3VQW8HqKZcsKpsUzDU6qdtmQ9vwMREeqvaTQDZeiEC4iw2WoinyP62bsDoOLgoXBpUqJj/L2BquhPJmDqrcD4qd3dGB7v147XAz2H0iRIn+gurF0Cw0All0P0v5JFAV5V2GzpURTg78C7V6puMMMNhbDv2jSPKKyaUdinbbs0X9N60bgkghKC27NxbzD1yCWqhlenz9YN8hoVH8F8iVn4Y8XlyN4drOyocfqD3mkD/LK2EXunLZZYtANP6ARYdaMKjJZm0NvUWOTAdR7jM6RJ1qdwrsFh15TTQKeW428CFLgSANeijIDZdppdHviLHFs+rnQalVhyUKhso0P5BPHpQJzlwLeYg8WTXIRKDkAIMh210ooDrrOfZ/oTGXDlOGeEsj8nNmXtUtglAtSO85sfZLSzzzLHYy2wQKGGAy4EBy7KPwTAmvY/37E2foCzxg5jli2Vf2Mmalt/N3EhA1A0KvzaWdFMjyj2R4ZRFlMslKIYWrmnYQNV/ZNStjn+/bLXlqyiDGgVwpQ3DRT88APRuVjDZ3dS10tkgCWPoDnGxf43LpavUTfP47e0naAMQlRCkM0NDGklWqK+0sbdgyRPoQriuvuGNaao3HVubbAo/c/aqPqi5dqxnR3LffDSwC/yfEjZniolcHU1K2JmW9SKL8gDWN9rEqiR6iWh02UncjHO/a3ycUTMMCtH4sO1YCK98zWQ+5cKcOfWqQsWWU0AFCJuSl2aYSeaeHtKiOQ4FfnIA4wjwa0c4M2V3OiaO58S8lslkG89502daRxQfKuJm7WsX1ZASu0P5E7xQ3yGzkVAnhIiHZPK/l9dT/ALLymQgxrbgLgAAAABJRU5ErkJggg==",
+				"faviconLength": 799,
+				"faviconRef": "",
+				"faviconSize": 16,
+				"smallFavicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAC5klEQVQ4T4XTe0hTURwH8HPu7jZ16ny0ZMpmWYk06o9EiwyWCWbRg4wGJmnQH/5REqhZ0T9WSkimZWj20EpRpCGCCuVCzcwm6jTFt6G2pc49nHvcu8e9uycksoaOzn+H8zsfvvx+50DgZdmK8va7FmdScEhUB1Z0GL3VQW8HqKZcsKpsUzDU6qdtmQ9vwMREeqvaTQDZeiEC4iw2WoinyP62bsDoOLgoXBpUqJj/L2BquhPJmDqrcD4qd3dGB7v147XAz2H0iRIn+gurF0Cw0All0P0v5JFAV5V2GzpURTg78C7V6puMMMNhbDv2jSPKKyaUdinbbs0X9N60bgkghKC27NxbzD1yCWqhlenz9YN8hoVH8F8iVn4Y8XlyN4drOyocfqD3mkD/LK2EXunLZZYtANP6ARYdaMKjJZm0NvUWOTAdR7jM6RJ1qdwrsFh15TTQKeW428CFLgSANeijIDZdppdHviLHFs+rnQalVhyUKhso0P5BPHpQJzlwLeYg8WTXIRKDkAIMh210ooDrrOfZ/oTGXDlOGeEsj8nNmXtUtglAtSO85sfZLSzzzLHYy2wQKGGAy4EBy7KPwTAmvY/37E2foCzxg5jli2Vf2Mmalt/N3EhA1A0KvzaWdFMjyj2R4ZRFlMslKIYWrmnYQNV/ZNStjn+/bLXlqyiDGgVwpQ3DRT88APRuVjDZ3dS10tkgCWPoDnGxf43LpavUTfP47e0naAMQlRCkM0NDGklWqK+0sbdgyRPoQriuvuGNaao3HVubbAo/c/aqPqi5dqxnR3LffDSwC/yfEjZniolcHU1K2JmW9SKL8gDWN9rEqiR6iWh02UncjHO/a3ycUTMMCtH4sO1YCK98zWQ+5cKcOfWqQsWWU0AFCJuSl2aYSeaeHtKiOQ4FfnIA4wjwa0c4M2V3OiaO58S8lslkG89502daRxQfKuJm7WsX1ZASu0P5E7xQ3yGzkVAnhIiHZPK/l9dT/ALLymQgxrbgLgAAAABJRU5ErkJggg==",
+				"smallFaviconLength": 799,
+				"smallFaviconRef": "",
+				"smallFaviconSize": 16,
+				"hostname": "wallpaperflare",
+				"typedBonus": true
+			},
+			{
+				"bookmarkGuid": null,
+				"frecency": 200,
+				"guid": "_55DoyECwSrl",
+				"lastVisitDate": 1697948909324,
+				"title": "ArchWiki",
+				"url": "https://wiki.archlinux.org/",
+				"type": "history",
+				"favicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABvElEQVQ4jY2TP4gTQRTGfzM7ybp35mBX8LY4GxM5OI4UiqDWtoKIjWhl4QmmEQwIhzZaa3GLlYWgjViI+AcUrrASUYTbQ0UxepwpFj1EDCSXuLNj4QYSLxP8mnm8972P3wyMMMZgUxjF+ycLUjUW5l/YPMq6/VfnHCEmAGuAsBHsurG6QwiaRUeq2cCdfXy88nmUT9qSJ4tywVNyGxjVSbPzNp81wFNyt6cknpJ00uzk2Wfr/n8HHLrz4ajriFeuEsuekvS08Zu/eoujvFveYN+t98XAUw1jmEmN+ZEZfG2M8BzZKhVl+f6x8vexBIGn6hMFOeMqgTEEXZ2J39qwqbNSR5tLYwnmbr6b2hO4axvt1P/a6tHTw3SuI1pTrlNZPT33bSTBps7qb5K23/jZ7S8/AO72511tShud9MJIgjCKdwINYHs+e5TUqkfy2W3gVN5vA+WkVk3+Jbg8sAzwcKB+mp8G+ALUh64QRnEZOMOwPg3Ub/vEgAvcGwoArgKFvF4DrgEfBwKawHVgHagAy2EUnwAQ00sre4HXwBPgSlKrvmSMwig+CCwCh4F5Mb20chF4ntSq1h83JujAH3Eom+H9uAq8AAAAAElFTkSuQmCC",
+				"faviconLength": 501,
+				"faviconRef": "",
+				"faviconSize": 16,
+				"smallFavicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABvElEQVQ4jY2TP4gTQRTGfzM7ybp35mBX8LY4GxM5OI4UiqDWtoKIjWhl4QmmEQwIhzZaa3GLlYWgjViI+AcUrrASUYTbQ0UxepwpFj1EDCSXuLNj4QYSLxP8mnm8972P3wyMMMZgUxjF+ycLUjUW5l/YPMq6/VfnHCEmAGuAsBHsurG6QwiaRUeq2cCdfXy88nmUT9qSJ4tywVNyGxjVSbPzNp81wFNyt6cknpJ00uzk2Wfr/n8HHLrz4ajriFeuEsuekvS08Zu/eoujvFveYN+t98XAUw1jmEmN+ZEZfG2M8BzZKhVl+f6x8vexBIGn6hMFOeMqgTEEXZ2J39qwqbNSR5tLYwnmbr6b2hO4axvt1P/a6tHTw3SuI1pTrlNZPT33bSTBps7qb5K23/jZ7S8/AO72511tShud9MJIgjCKdwINYHs+e5TUqkfy2W3gVN5vA+WkVk3+Jbg8sAzwcKB+mp8G+ALUh64QRnEZOMOwPg3Ub/vEgAvcGwoArgKFvF4DrgEfBwKawHVgHagAy2EUnwAQ00sre4HXwBPgSlKrvmSMwig+CCwCh4F5Mb20chF4ntSq1h83JujAH3Eom+H9uAq8AAAAAElFTkSuQmCC",
+				"smallFaviconLength": 501,
+				"smallFaviconRef": "",
+				"smallFaviconSize": 16,
+				"hostname": "wiki.archlinux",
+				"typedBonus": true
+			},
+			{
+				"isDefault": true,
+				"url": "https://www.youtube.com/",
+				"hostname": "youtube",
+				"sendAttributionRequest": false,
+				"label": "YouTube",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/youtube-com@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/youtube-com.png",
+				"typedBonus": true
+			},
+			{
+				"isDefault": true,
+				"url": "https://www.facebook.com/",
+				"hostname": "facebook",
+				"sendAttributionRequest": false,
+				"label": "Facebook",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/facebook-com@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/facebook-com.ico",
+				"typedBonus": true
+			},
+			{
+				"isDefault": true,
+				"url": "https://www.wikipedia.org/",
+				"hostname": "wikipedia",
+				"sendAttributionRequest": false,
+				"label": "Wikipedia",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/wikipedia-org@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/wikipedia-org.ico",
+				"typedBonus": true
+			},
+			{
+				"isDefault": true,
+				"url": "https://www.reddit.com/",
+				"hostname": "reddit",
+				"sendAttributionRequest": false,
+				"label": "Reddit",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/reddit-com@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/reddit-com.png",
+				"typedBonus": true
+			},
+			{
+				"isDefault": true,
+				"url": "https://www.amazon.com/",
+				"hostname": "amazon",
+				"sendAttributionRequest": false,
+				"label": "@amazon",
+				"searchTopSite": true,
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/amazon@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/amazon.ico",
+				"typedBonus": true
+			}
+		],
+		"pref": {
+			"collapsed": false
+		}
+	},
+	"ASRouter": {
+		"initialized": false
+	},
+	"Snippets": {
+		"initialized": false
+	},
+	"Prefs": {
+		"initialized": true,
+		"values": {
+			"default.sites": "https://www.youtube.com/,https://www.facebook.com/,https://www.wikipedia.org/,https://www.reddit.com/,https://www.amazon.com/,https://twitter.com/",
+			"feeds.section.topstories.options": "{\"api_key_pref\":\"extensions.pocket.oAuthConsumerKey\",\"hidden\":true,\"provider_icon\":\"chrome://global/skin/icons/pocket.svg\",\"provider_name\":\"Pocket\",\"read_more_endpoint\":\"https://getpocket.com/explore/trending?src=fx_new_tab\",\"stories_endpoint\":\"https://getpocket.cdn.mozilla.net/v3/firefox/global-recs?version=3&consumer_key=$apiKey&locale_lang=en-US&feed_variant=default_spocs_off\",\"stories_referrer\":\"https://getpocket.com/recommendations\",\"topics_endpoint\":\"https://getpocket.cdn.mozilla.net/v3/firefox/trending-topics?version=2&consumer_key=$apiKey&locale_lang=en-US\",\"show_spocs\":false}",
+			"feeds.topsites": true,
+			"hideTopSitesTitle": false,
+			"showSponsored": true,
+			"showSponsoredTopSites": false,
+			"pocketCta": "{\"cta_button\":\"\",\"cta_text\":\"\",\"cta_url\":\"\",\"use_cta\":false}",
+			"showSearch": true,
+			"feeds.snippets": false,
+			"topSitesRows": 1,
+			"telemetry": true,
+			"telemetry.ut.events": false,
+			"telemetry.structuredIngestion.endpoint": "https://incoming.telemetry.mozilla.org/submit",
+			"section.highlights.includeVisited": true,
+			"section.highlights.includeBookmarks": true,
+			"section.highlights.includePocket": true,
+			"section.highlights.includeDownloads": true,
+			"section.highlights.rows": 1,
+			"section.topstories.rows": 1,
+			"sectionOrder": "topsites,topstories,highlights",
+			"improvesearch.noDefaultSearchTile": true,
+			"improvesearch.topSiteSearchShortcuts.searchEngines": "google",
+			"improvesearch.topSiteSearchShortcuts.havePinned": "",
+			"asrouter.devtoolsEnabled": false,
+			"asrouter.providers.onboarding": "{\"id\":\"onboarding\",\"type\":\"local\",\"localProvider\":\"OnboardingMessageProvider\",\"enabled\":true,\"exclude\":[]}",
+			"discoverystream.flight.blocks": "{}",
+			"discoverystream.config": "{\"api_key_pref\":\"extensions.pocket.oAuthConsumerKey\",\"collapsible\":true,\"enabled\":true,\"show_spocs\":false,\"hardcoded_layout\":true,\"layout_endpoint\":\"https://getpocket.cdn.mozilla.net/v3/newtab/layout?version=1&consumer_key=$apiKey&layout_variant=basic\"}",
+			"discoverystream.endpoints": "https://getpocket.cdn.mozilla.net/,https://firefox-api-proxy.cdn.mozilla.net/,https://spocs.getpocket.com/",
+			"discoverystream.isCollectionDismissible": true,
+			"discoverystream.onboardingExperience.dismissed": false,
+			"discoverystream.region-basic-layout": false,
+			"discoverystream.spoc.impressions": "{}",
+			"discoverystream.endpointSpocsClear": "https://spocs.getpocket.com/user",
+			"discoverystream.rec.impressions": "{}",
+			"showRecentSaves": true,
+			"feeds.aboutpreferences": true,
+			"feeds.newtabinit": true,
+			"feeds.places": true,
+			"feeds.prefs": true,
+			"feeds.sections": true,
+			"feeds.section.highlights": false,
+			"feeds.system.topstories": false,
+			"feeds.systemtick": true,
+			"feeds.telemetry": true,
+			"feeds.favicon": true,
+			"feeds.system.topsites": true,
+			"feeds.recommendationprovider": true,
+			"feeds.discoverystreamfeed": true,
+			"isPrivateBrowsingEnabled": true,
+			"platform": "linux",
+			"region": "AR",
+			"fxa_endpoint": "https://accounts.firefox.com/",
+			"appUpdateChannel": "release",
+			"improvesearch.topSiteSearchShortcuts": true,
+			"mayHaveSponsoredTopSites": true,
+			"improvesearch.handoffToAwesomebar": true,
+			"urlbar.placeholderName": "Google",
+			"featureConfig": {
+				"customizationMenuEnabled": null,
+				"topSitesContileEnabled": false
+			},
+			"pocketConfig": {
+				"spocPositions": "1,5,7,11,18,20",
+				"spocTopsitesPositions": "2",
+				"spocAdTypes": "",
+				"spocZoneIds": "",
+				"spocTopsitesAdTypes": "",
+				"spocTopsitesZoneIds": "",
+				"spocSiteId": "",
+				"widgetPositions": "",
+				"hybridLayout": false,
+				"hideCardBackground": false,
+				"fourCardLayout": false,
+				"newFooterSection": false,
+				"saveToPocketCard": true,
+				"saveToPocketCardRegions": "",
+				"hideDescriptions": false,
+				"hideDescriptionsRegions": "",
+				"compactGrid": false,
+				"compactImages": false,
+				"imageGradient": false,
+				"titleLines": 3,
+				"descLines": 3,
+				"onboardingExperience": false,
+				"essentialReadsHeader": false,
+				"editorsPicksHeader": false,
+				"recentSavesEnabled": false,
+				"readTime": true,
+				"newSponsoredLabel": false,
+				"sendToPocket": true,
+				"recsPersonalized": false,
+				"spocsPersonalized": true,
+				"spocsCacheTimeout": null,
+				"regionStoriesConfig": "US,DE,CA,GB,IE,CH,AT,BE,IN,FR,IT,ES",
+				"regionBffConfig": "US,DE,CA,GB,IE,CH,AT,BE,IN,FR,IT,ES",
+				"regionStoriesBlock": "",
+				"localeListConfig": "",
+				"regionSpocsConfig": "US,CA,DE,GB,FR,IT,ES",
+				"topSitesContileSovEnabled": false
+			},
+			"logowordmark.alwaysVisible": true,
+			"feeds.section.topstories": true,
+			"discoverystream.enabled": true,
+			"discoverystream.sponsored-collections.enabled": false,
+			"discoverystream.hardcoded-basic-layout": false,
+			"discoverystream.personalization.enabled": true,
+			"discoverystream.personalization.override": false,
+			"discoverystream.personalization.modelKeys": "nb_model_arts_and_entertainment, nb_model_autos_and_vehicles, nb_model_beauty_and_fitness, nb_model_blogging_resources_and_services, nb_model_books_and_literature, nb_model_business_and_industrial, nb_model_computers_and_electronics, nb_model_finance, nb_model_food_and_drink, nb_model_games, nb_model_health, nb_model_hobbies_and_leisure, nb_model_home_and_garden, nb_model_internet_and_telecom, nb_model_jobs_and_education, nb_model_law_and_government, nb_model_online_communities, nb_model_people_and_society, nb_model_pets_and_animals, nb_model_real_estate, nb_model_reference, nb_model_science, nb_model_shopping, nb_model_sports, nb_model_travel",
+			"discoverystream.spocs-endpoint": "",
+			"discoverystream.spocs-endpoint-query": "",
+			"newNewtabExperience.colors": "#0090ED,#FF4F5F,#2AC3A2,#FF7139,#A172FF,#FFA437,#FF2A8A"
+		}
+	},
+	"Dialog": {
+		"visible": false,
+		"data": {}
+	},
+	"Sections": [
+		{
+			"title": {
+				"id": "newtab-section-header-pocket",
+				"values": {
+					"provider": "Pocket"
+				}
+			},
+			"rows": [],
+			"enabled": false,
+			"id": "topstories",
+			"pref": {
+				"titleString": {
+					"id": "home-prefs-recommended-by-header",
+					"values": {
+						"provider": "Pocket"
+					}
+				},
+				"descString": {
+					"id": "home-prefs-recommended-by-description-new",
+					"values": {
+						"provider": "Pocket"
+					}
+				},
+				"nestedPrefs": [],
+				"learnMore": {
+					"link": {
+						"href": "https://getpocket.com/firefox/new_tab_learn_more",
+						"id": "home-prefs-recommended-by-learn-more"
+					}
+				},
+				"collapsed": false,
+				"feed": "feeds.section.topstories"
+			},
+			"shouldHidePref": true,
+			"eventSource": "TOP_STORIES",
+			"icon": "chrome://global/skin/icons/pocket.svg",
+			"learnMore": {
+				"link": {
+					"href": "https://getpocket.com/firefox/new_tab_learn_more",
+					"message": {
+						"id": "newtab-pocket-learn-more"
+					}
+				}
+			},
+			"compactCards": false,
+			"rowsPref": "section.topstories.rows",
+			"maxRows": 4,
+			"availableLinkMenuOptions": [
+				"CheckBookmarkOrArchive",
+				"CheckSavedToPocket",
+				"Separator",
+				"OpenInNewWindow",
+				"OpenInPrivateWindow",
+				"Separator",
+				"BlockUrl"
+			],
+			"emptyState": {
+				"message": {
+					"id": "newtab-empty-section-topstories",
+					"values": {
+						"provider": "Pocket"
+					}
+				},
+				"icon": "check"
+			},
+			"shouldSendImpressionStats": true,
+			"dedupeFrom": [
+				"highlights"
+			],
+			"options": {
+				"api_key_pref": "extensions.pocket.oAuthConsumerKey",
+				"hidden": true,
+				"provider_icon": "chrome://global/skin/icons/pocket.svg",
+				"provider_name": "Pocket",
+				"read_more_endpoint": "https://getpocket.com/explore/trending?src=fx_new_tab",
+				"stories_endpoint": "https://getpocket.cdn.mozilla.net/v3/firefox/global-recs?version=3&consumer_key=$apiKey&locale_lang=en-US&feed_variant=default_spocs_off",
+				"stories_referrer": "https://getpocket.com/recommendations",
+				"topics_endpoint": "https://getpocket.cdn.mozilla.net/v3/firefox/trending-topics?version=2&consumer_key=$apiKey&locale_lang=en-US",
+				"show_spocs": false
+			},
+			"contextMenuOptions": [
+				"CheckBookmarkOrArchive",
+				"CheckSavedToPocket",
+				"Separator",
+				"OpenInNewWindow",
+				"OpenInPrivateWindow",
+				"Separator",
+				"BlockUrl"
+			],
+			"initialized": false
+		},
+		{
+			"title": {
+				"id": "newtab-section-header-recent-activity"
+			},
+			"rows": [],
+			"enabled": false,
+			"id": "highlights",
+			"pref": {
+				"titleString": {
+					"id": "home-prefs-recent-activity-header"
+				},
+				"descString": {
+					"id": "home-prefs-recent-activity-description"
+				},
+				"nestedPrefs": [
+					{
+						"name": "section.highlights.includeVisited",
+						"titleString": "home-prefs-highlights-option-visited-pages"
+					},
+					{
+						"name": "section.highlights.includeBookmarks",
+						"titleString": "home-prefs-highlights-options-bookmarks"
+					},
+					{
+						"name": "section.highlights.includeDownloads",
+						"titleString": "home-prefs-highlights-option-most-recent-download"
+					},
+					{
+						"name": "section.highlights.includePocket",
+						"titleString": "home-prefs-highlights-option-saved-to-pocket",
+						"hidden": false
+					}
+				],
+				"collapsed": false,
+				"feed": "feeds.section.highlights"
+			},
+			"shouldHidePref": false,
+			"eventSource": "HIGHLIGHTS",
+			"icon": "chrome://global/skin/icons/highlights.svg",
+			"compactCards": true,
+			"rowsPref": "section.highlights.rows",
+			"maxRows": 4,
+			"emptyState": {
+				"message": {
+					"id": "newtab-empty-section-highlights"
+				},
+				"icon": "chrome://global/skin/icons/highlights.svg"
+			},
+			"shouldSendImpressionStats": false,
+			"options": {},
+			"initialized": false
+		}
+	],
+	"Pocket": {
+		"isUserLoggedIn": null,
+		"pocketCta": {},
+		"waitingForSpoc": true
+	},
+	"Personalization": {
+		"lastUpdated": null,
+		"initialized": false
+	},
+	"DiscoveryStream": {
+		"config": {
+			"api_key_pref": "extensions.pocket.oAuthConsumerKey",
+			"collapsible": true,
+			"enabled": true,
+			"show_spocs": false,
+			"hardcoded_layout": true,
+			"layout_endpoint": "https://getpocket.cdn.mozilla.net/v3/newtab/layout?version=1&consumer_key=40249-e88c401e1b1f2242d9e441c4&layout_variant=basic"
+		},
+		"layout": [
+			{
+				"width": 12,
+				"components": [
+					{
+						"type": "TopSites",
+						"header": {
+							"title": {
+								"id": "newtab-section-header-topsites"
+							}
+						},
+						"placement": {
+							"name": "sponsored-topsites",
+							"ad_types": [
+								3120
+							],
+							"zone_ids": [
+								280143
+							]
+						},
+						"spocs": {
+							"probability": 1,
+							"prefs": [
+								"showSponsoredTopSites"
+							],
+							"positions": [
+								{
+									"index": 2
+								}
+							]
+						},
+						"properties": {}
+					},
+					{
+						"type": "Message",
+						"essentialReadsHeader": false,
+						"editorsPicksHeader": false,
+						"header": {
+							"title": {
+								"id": "newtab-section-header-pocket",
+								"values": {
+									"provider": "Pocket"
+								}
+							},
+							"subtitle": "",
+							"link_text": {
+								"id": "newtab-pocket-learn-more"
+							},
+							"link_url": "https://getpocket.com/firefox/new_tab_learn_more",
+							"icon": "chrome://global/skin/icons/pocket.svg"
+						},
+						"properties": {},
+						"styles": {
+							".ds-message": "margin-bottom: -20px"
+						}
+					},
+					{
+						"type": "CardGrid",
+						"properties": {
+							"items": 21,
+							"hybridLayout": false,
+							"hideCardBackground": false,
+							"fourCardLayout": false,
+							"compactGrid": false,
+							"essentialReadsHeader": false,
+							"editorsPicksHeader": false,
+							"onboardingExperience": false
+						},
+						"widgets": {
+							"positions": [],
+							"data": [
+								{
+									"type": "TopicsWidget"
+								}
+							]
+						},
+						"cta_variant": "link",
+						"header": {
+							"title": ""
+						},
+						"placement": {
+							"name": "spocs",
+							"ad_types": [
+								3617
+							],
+							"zone_ids": [
+								217758,
+								217995
+							]
+						},
+						"feed": {
+							"embed_reference": null,
+							"url": "https://getpocket.cdn.mozilla.net/v3/firefox/global-recs?version=3&consumer_key=$apiKey&locale_lang=$locale&region=$region&count=30"
+						},
+						"spocs": {
+							"probability": 1,
+							"positions": [
+								{
+									"index": 1
+								},
+								{
+									"index": 5
+								},
+								{
+									"index": 7
+								},
+								{
+									"index": 11
+								},
+								{
+									"index": 18
+								},
+								{
+									"index": 20
+								}
+							]
+						}
+					},
+					{
+						"type": "Navigation",
+						"newFooterSection": false,
+						"properties": {
+							"alignment": "left-align",
+							"links": [
+								{
+									"name": "Self improvement",
+									"url": "https://getpocket.com/explore/self-improvement?utm_source=pocket-newtab"
+								},
+								{
+									"name": "Food",
+									"url": "https://getpocket.com/explore/food?utm_source=pocket-newtab"
+								},
+								{
+									"name": "Entertainment",
+									"url": "https://getpocket.com/explore/entertainment?utm_source=pocket-newtab"
+								},
+								{
+									"name": "Health & fitness",
+									"url": "https://getpocket.com/explore/health?utm_source=pocket-newtab"
+								},
+								{
+									"name": "Science",
+									"url": "https://getpocket.com/explore/science?utm_source=pocket-newtab"
+								},
+								{
+									"name": "More recommendations ‚Ä∫",
+									"url": "https://getpocket.com/explore?utm_source=pocket-newtab"
+								}
+							],
+							"extraLinks": [
+								{
+									"name": "Career",
+									"url": "https://getpocket.com/explore/career?utm_source=pocket-newtab"
+								},
+								{
+									"name": "Technology",
+									"url": "https://getpocket.com/explore/technology?utm_source=pocket-newtab"
+								}
+							],
+							"privacyNoticeURL": {
+								"url": "https://www.mozilla.org/privacy/firefox/#suggest-relevant-content",
+								"title": {
+									"id": "newtab-section-menu-privacy-notice"
+								}
+							}
+						},
+						"header": {
+							"title": {
+								"id": "newtab-pocket-read-more"
+							}
+						},
+						"styles": {
+							".ds-navigation": "margin-top: -10px;"
+						}
+					}
+				]
+			}
+		],
+		"lastUpdated": null,
+		"isPrivacyInfoModalVisible": false,
+		"isCollectionDismissible": true,
+		"feeds": {
+			"data": {},
+			"loaded": false
+		},
+		"spocs": {
+			"spocs_endpoint": "https://spocs.getpocket.com/spocs",
+			"lastUpdated": 1697948940940,
+			"data": {},
+			"loaded": true,
+			"frequency_caps": [],
+			"blocked": [],
+			"placements": []
+		},
+		"experimentData": {
+			"utmSource": "pocket-newtab"
+		},
+		"recentSavesData": [],
+		"isUserLoggedIn": false,
+		"recentSavesEnabled": false,
+		"pocketButtonEnabled": true,
+		"saveToPocketCard": true,
+		"hideDescriptions": false,
+		"compactImages": false,
+		"imageGradient": false,
+		"newSponsoredLabel": false,
+		"titleLines": 3,
+		"descLines": 3,
+		"readTime": true
+	},
+	"Search": {
+		"fakeFocus": false,
+		"hide": false
+	}
+};
+
+ Œ©F6           e4•F&Åˇˇˇˇ       :about:home alt-data 1;17492,script version 20231010101059   Â

@@ -23,13 +23,12 @@
 # --------------------
 # grimblast: screenshot
 # swaimg: show screen
-# dunst: notify
+# notify-send: notify
 # wl-copy: copy img
-# rofi: launch script
+# wofi: launch script
 #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-# Import Current Theme
+# Import
 DIR="$HOME/.config"
 RASI="$DIR/rofi/themes/screenshot.rasi"
 
@@ -54,17 +53,15 @@ else
 fi
 
 # Rofi CMD
-rofi_cmd() {
-	rofi -dmenu \
+wofi_cmd() {
+    wofi --show dmenu \ 
 		-p "$prompt" \
-		-mesg "$mesg" \
-		-markup-rows \
-		-theme ${RASI}
+		-mesg "$mesg" 
 }
 
 # Pass variables to rofi dmenu
-run_rofi() {
-	echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5" | rofi_cmd
+run_wofi() {
+	echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5" | wofi_cmd
 }
 
 # Screenshot
@@ -148,7 +145,7 @@ run_cmd() {
 }
 
 # Actions
-chosen="$(run_rofi)"
+chosen="$(run_wofi)"
 case ${chosen} in
 $option_1)
 	run_cmd --opt1

@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+
+sudo bleachbit-cli --clean system.*
+
+bleachbit-cli --clean firefox.cache
+bleachbit-cli --clean chromium.cache
+
+sudo sysctl -w vm.drop_caches=3
+
+sudo pacman -Scc --noconfirm
+
+paru -Scc --noconfirm
+
+orphans=$(pacman -Qdtq)
+
+if [ -n "$orphans" ]; then
+    sudo pacman -Rns $orphans --noconfirm
+fi
+
+rm -rf ~/.cache/*
+
+sudo journalctl --vacuum-time=7d
+
+notify-send "Morgana" "Clear complete! Our window manager is purring like a finely-tuned engine." -i ~/.config/hypr/assets/icons/morgana/awesome.png
+paplay ~/.config/hypr/assets/effects/system.ogg &>/dev/null

@@ -11,16 +11,20 @@ Welcome to my personal setup on Hyprland Wayland! Although my setup is still in 
 ## Necesarys
 <div style="background-color: black; color: white; padding: 10px;">
 <pre><code>
-sudo paru -Syu hyprland lm-sensors rofi notify-send grimblast swww wal 
+sudo paru -Syu hyprland wezterm lm-sensors wofi notify-send grimblast swww nordic-bluish-accent-theme
 </code></pre>
 </div>
 
 ## Opcionals
 <div style="background-color: black; color: white; padding: 10px;">
 <pre><code>
-sudo paru -Syu kohaa hyprpicker wezterm yt-dlp wlsunset
+sudo paru -Syu kohaa hyprpicker yt-dlp wal wlsunset browsh firefox
 </code></pre>
 </div>
+
+## Others Software
+
+- These files are located in usr, they are icons and themes. use it by moving them to their respective directories
 
 ## Contact Reddit
 
@@ -28,6 +32,7 @@ sudo paru -Syu kohaa hyprpicker wezterm yt-dlp wlsunset
 
 ## Inspirations
 
+- [Cenunix](https://github.com/cenunix)
 - [AlphaTecnolog](https://github.com/AlphaTechnolog/dotfiles)
 - [Juminai](https://github.com/juminai/dotfiles)
 - [Gh0stzk](https://github.com/gh0stzk/dotfiles)
