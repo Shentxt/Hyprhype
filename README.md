@@ -1,4 +1,4 @@
-![Logotype](hyprback/assets/logotype "a logo")
+![Logotype](/assets/logotype.jpg "a logo")
 ** 🌿Sections**
 
 - 🌸 [Download](https://github.com/Shentxt/Hyprhype/tree/master#download)
