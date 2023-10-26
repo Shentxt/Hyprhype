@@ -1,17 +1,18 @@
-** 󱤇 Sections**
+![Logotype](hyprback/assets/logotype "a logo")
+** 🌿Sections**
 
--  [Download](https://github.com/Shentxt/Hyprhype/tree/master#download)
--  [Keys-Maps](https://github.com/Shentxt/Hyprhype/tree/master#keys-map)
--  [Informations](https://github.com/Shentxt/Hyprhype/tree/master#inpirations-and-contacts)
+- 🌸 [Download](https://github.com/Shentxt/Hyprhype/tree/master#download)
+- 🌸 [Keys-Maps](https://github.com/Shentxt/Hyprhype/tree/master#keys-map)
+- 🌸 [Informations](https://github.com/Shentxt/Hyprhype/tree/master#inpirations-and-contacts)
 
-** 󰋽 Presentation**
+** 🌿Presentation**
 
 Don't you think a system should be visually beautiful but just as fast? Simple yet elegant setup based on the Hyprland graphics system. 
 This setup aims for visual elegance and fluidity.
 
 Read carefully: As not everything computers have the same features and kernel. I ask you to clarify any problem that I present in the download or post of this one. This is in order to have feedback and be able to improve.
 
-## 󰦗 Download
+## 💾Download
 
 <div style="background-color: black; color: white; padding: 10px;">
 <pre><code>
@@ -22,7 +23,7 @@ Read carefully: As not everything computers have the same features and kernel. I
 </code></pre>
 </div>
 
-**  Removed directory git**
+** 💾Removed**
 
 <div style="background-color: black; color: white; padding: 10px;">
 <pre><code>
@@ -30,7 +31,7 @@ Read carefully: As not everything computers have the same features and kernel. I
 </code></pre>
 </div>
 
-**󰏔 Necesarys**
+** 📦Necesarys**
 
 <div style="background-color: black; color: white; padding: 10px;">
 <pre><code>
@@ -38,7 +39,7 @@ Read carefully: As not everything computers have the same features and kernel. I
 </code></pre>
 </div>
 
-** 󰏔 Opcionals**
+** 📦Opcionals**
 
 <div style="background-color: black; color: white; padding: 10px;">
 <pre><code>
@@ -46,7 +47,7 @@ Read carefully: As not everything computers have the same features and kernel. I
 </code></pre>
 </div>
 
-** 󰏔 Extra**
+** 📦Extra**
 
 - These files are located in usr.
 
@@ -54,20 +55,20 @@ Read carefully: As not everything computers have the same features and kernel. I
 
 - **Win+Shift+D:** Open the key display. This key combination can be useful to access various functions in my settings.
 
-## 󰋽 Informations
+## 🌿Informations
 
 - [Reddit](https://www.reddit.com/user/ProfessionLower9249)
 
-**  Inspirations**
+** 🌿Inspirations**
 
--  [Cenunix](https://github.com/cenunix)
--  [AlphaTecnolog](https://github.com/AlphaTechnolog/dotfiles)
--  [Juminai](https://github.com/juminai/dotfiles)
--  [Gh0stzk](https://github.com/gh0stzk/dotfiles)
--  [Aylur](https://github.com/Aylur/dotfiles)
+- 🌸 [Cenunix](https://github.com/cenunix)
+- 🌸 [AlphaTecnolog](https://github.com/AlphaTechnolog/dotfiles)
+- 🌸 [Juminai](https://github.com/juminai/dotfiles)
+- 🌸 [Gh0stzk](https://github.com/gh0stzk/dotfiles)
+- 🌸 [Aylur](https://github.com/Aylur/dotfiles)
 
-**  Thanks**
+** 🌿Thanks**
 
--  **Bing-Ia**
--  [Ags Disc](https://discord.com/channels/1143610930542944377/1143612651759489054)
--  [Hypr Red](https://www.reddit.com/r/hyprland/)
+- 🌸 **Bing-Ia**
+- 🌸 [Ags Disc](https://discord.com/channels/1143610930542944377/1143612651759489054)
+- 🌸 [Hypr Red](https://www.reddit.com/r/hyprland/)
