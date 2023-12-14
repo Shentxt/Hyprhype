@@ -1,3 +1,5 @@
+### 󰣇 shen ~  Hyprhype Dotfiles ⭐
+
 ![Logotype](/assets/logotype.jpg "a logo")
 ** 🌿Sections**
 
@@ -7,7 +9,7 @@
 
 ** 🌿Presentation**
 
-Don't you think a system should be visually beautiful but just as fast? Simple yet elegant setup based on the Hyprland graphics system. 
+Don't you think a system should be visually beautiful but just as fast? Simple yet elegant setup based on the Hyprland graphics system.
 This setup aims for visual elegance and fluidity.
 
 Read carefully: As not everything computers have the same features and kernel. I ask you to clarify any problem that I present in the download or post of this one. This is in order to have feedback and be able to improve.
@@ -35,7 +37,7 @@ Read carefully: As not everything computers have the same features and kernel. I
 
 <div style="background-color: black; color: white; padding: 10px;">
 <pre><code>
- sudo paru -Syu hyprland wezterm lm-sensors wofi notify-send grimblast swww nordic-bluish-accent-theme
+paru hyprland wezterm lm-sensors rofi notify-send grimblast swww nordic-bluish-accent-theme
 </code></pre>
 </div>
 
@@ -43,15 +45,23 @@ Read carefully: As not everything computers have the same features and kernel. I
 
 <div style="background-color: black; color: white; padding: 10px;">
 <pre><code>
- sudo paru -Syu kohaa hyprpicker yt-dlp wal wlsunset browsh firefox
+#Some features may not work, I recommend reading hypr/scripts and some AGS commands
+paru kohaa hyprpicker yt-dlp wal wlsunset vivaldi 
 </code></pre>
 </div>
 
 ** 📦Extra**
 
+<div style="background-color: black; color: white; padding: 10px;">
+<pre><code>
+#Only install this if your processor is AMD branded
+paru amdctl supergfxctl corectrl
+</code></pre>
+</div>
+
 - These files are located in usr.
 
-## 󰦅 Keys-Map
+## 🌿Keys-Map
 
 - **Win+Shift+D:** Open the key display. This key combination can be useful to access various functions in my settings.
 

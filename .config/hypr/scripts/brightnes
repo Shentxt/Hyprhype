@@ -27,21 +27,19 @@
 # awk: print the message
 #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-# Obtén el valor actual del brillo
 current_brightness=$(xrandr --current --verbose | grep -i brightness | awk '{print $2}')
 
-# Ejecuta el comando wlsunset para actualizar el brillo
+# Run the wlsunset command to update the brightness
 wlsunset -S 8:00 -s 8:22 >/dev/null 2>&1
 
-# Obtén el nuevo valor del brillo después del cambio
+# Get the new brightness value after the change
 new_brightness=$(xrandr --current --verbose | grep -i brightness | awk '{print $2}')
 
-# Compara los valores de brillo para determinar si cambió
-if [[ "$new_brightness" != "$current_brightness" ]]; then
-	if [[ "$new_brightness" < "$current_brightness" ]]; then
-		notify-send "Brightnes Dark"
-	else
-		notify-send "Brightnes Light"
-	fi
+# Compare brightness values ​​to determine if they changed
+if [[ "$new_brightness" != "$current_brightness" ]]; so
+if [[ "$new_brightness" < "$current_brightness" ]]; so
+notify-send "Brightnes Dark"
+the rest
+notify-send "Brightnes Light"
+fi
 fi

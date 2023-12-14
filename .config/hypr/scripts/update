@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Time interval between checks (in seconds)
+interval=3600
+
+while true; do
+    # Check for pacman updates
+    pacman_updates=$(checkupdates 2>/dev/null | wc -l)
+
+# Check for AUR updates
+    aur_updates=$(paru -Qua 2>/dev/null | wc -l)
+
+# If updates are available, display a message
+    if [ $pacman_updates -gt 0 ] || [ $aur_updates -gt 0 ]; then
+      notify-send "Morgana" "There are $pacman_updates, pacman updates, and $aur_updates, AUR updates are available." -i ~/.config/hypr/assets/icons/morgana/awesome.png
+paplay ~/.config/hypr/assets/effects/system.ogg &>/dev/null
+    fi
+  sleep $interval
+done

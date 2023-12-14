@@ -25,12 +25,13 @@
 # swaimg: show screen
 # notify-send: notify
 # wl-copy: copy img
-# wofi: launch script
+# rofi: launch script
 #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Import
 DIR="$HOME/.config"
-RASI="$DIR/rofi/themes/screenshot.rasi"
+RASI="$DIR/rofi/themes/default.rasi"
+
 
 # Theme Elements
 prompt='Screenshot'
@@ -39,29 +40,14 @@ mesg="Directory :: $(xdg-user-dir PICTURES)/Screenshots"
 # Options
 layout=$(cat ${RASI} | grep 'USE_ICON' | cut -d'=' -f2)
 if [[ "$layout" == 'NO' ]]; then
-	option_1=" Capture Desktop"
-	option_2=" Capture Area"
-	option_3=" Capture Window"
-	option_4=" Capture in 5s"
-	option_5=" Capture in 10s"
+	options=("Capture Desktop" "Capture Area" "Capture Window" "Capture in 5s" "Capture in 10s")
 else
-	option_1=""
-	option_2=""
-	option_3=""
-	option_4=""
-	option_5=""
+	options=(" Capture Desktop" " Capture Area" " Capture Window" " Capture in 5s" " Capture in 10s")
 fi
 
 # Rofi CMD
-wofi_cmd() {
-    wofi --show dmenu \ 
-		-p "$prompt" \
-		-mesg "$mesg" 
-}
-
-# Pass variables to rofi dmenu
-run_wofi() {
-	echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5" | wofi_cmd
+rofi_cmd() {
+    rofi -dmenu -p "$prompt" -mesg "$mesg" 
 }
 
 # Screenshot
@@ -77,26 +63,22 @@ fi
 
 # notify and view screenshot
 notify_view() {
-	notify_cmd_shot='notify-send "Cortana" "John, the suit has been reloaded successfully." -i ~/.config/hypr/assets/icons/refresh.png'
-	${notify_cmd_shot} "$file."
+	notify-send "Morgana" "track saved, we'll see it later... Let's continue!." -i ~/.config/hypr/assets/icons/morgana/normal.png
 	paplay ~/.config/hypr/assets/effects/screenshot.ogg &>/dev/null &
 	swayimg "${dir}/${file}"
-	if [[ -e "${dir}/${file}" ]]; then
-		${notify_cmd_shot} "Screenshot Saved."
-	else
-		${notify_cmd_shot} "Screenshot Deleted."
-	fi
-}
-
-# Copy screenshot to clipboard
-copy_shot() {
-	grimblast save output "${dir}/${file}" && xclip -selection clipboard -t image/png -i "${dir}/${file}"
+  if [[ -e "${dir}/${file}" ]]; then
+    wl-copy < "${dir}/${file}"
+    wl-paste > /tmp/image.png
+    notify-send "Screenshot Saved." -i /tmp/image.png
+else
+    notify-send "Screenshot Deleted." -i /tmp/image.png
+fi	
 }
 
 # countdown
 countdown() {
 	for sec in $(seq "$1" -1 1); do
-		notify-send "Taking shot in : $sec" -i ~/.config/hypr/assets/icons/clock.png
+		notify-send "Taking shot in : $sec" -i ~/.config/hypr/assets/icons/system/clock.png
 		sleep 1
 	done
 }
@@ -131,35 +113,25 @@ shotarea() {
 
 # Execute Command
 run_cmd() {
-	if [[ "$1" == '--opt1' ]]; then
+	case "$1" in
+	"${options[0]}")
 		shotnow
-	elif [[ "$1" == '--opt2' ]]; then
+		;;
+	"${options[1]}")
 		shotarea
-	elif [[ "$1" == '--opt3' ]]; then
+		;;
+	"${options[2]}")
 		shotwin
-	elif [[ "$1" == '--opt4' ]]; then
+		;;
+	"${options[3]}")
 		shot5
-	elif [[ "$1" == '--opt5' ]]; then
+		;;
+	"${options[4]}")
 		shot10
-	fi
+		;;
+	esac
 }
 
 # Actions
-chosen="$(run_wofi)"
-case ${chosen} in
-$option_1)
-	run_cmd --opt1
-	;;
-$option_2)
-	run_cmd --opt2
-	;;
-$option_3)
-	run_cmd --opt3
-	;;
-$option_4)
-	run_cmd --opt4
-	;;
-$option_5)
-	run_cmd --opt5
-	;;
-esac
+chosen="$(printf '%s\n' "${options[@]}" | rofi_cmd)"
+run_cmd "$chosen"

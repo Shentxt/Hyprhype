@@ -23,11 +23,11 @@
 # required to function
 # --------------------
 # awk: mapkeys
-# wofi: launch script
+# rofi: launch script
 #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 awk '/^[a-z]/ && last {print $0,"\t",last} {last=""} /^#/{last=$0}' ~/.config/hypr/style/keybinds.conf |
 column -t -s $'\t' | 
 awk '{$1=$1; print}' |
-wofi --show dmenu 
+rofi -dmenu -theme $HOME/.config/rofi/themes/default1.rasi

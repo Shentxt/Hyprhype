@@ -22,19 +22,17 @@
 #
 # required to function
 # --------------------
-# wofi: launcher
+# rofi: launcher
 # wezterm or other: terminal
 # nvim or other: editor in terminal 
 #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 # default values
 AUTHOR=$(whoami)
 NOTES_FOLDER="$HOME/.notes"
 NOTES_EDITOR='wezterm -e nvim '
 
-theme="wofi --show dmenu --preview='file://$WALLPAPERS_DIR/{}'"
-
+theme=~/.config/rofi/themes/default.rasi
 
 if [[ ! -d "${NOTES_FOLDER}" ]]; then
     mkdir -p "$NOTES_FOLDER"
@@ -66,7 +64,7 @@ delete_note() {
 note_context() {
     local note=$1
     local note_location="$NOTES_FOLDER/$note"
-    local action=$(echo -e "Edit\nDelete" | wofi --show dmenu "$note > ")
+    local action=$(echo -e "Edit\nDelete" | rofi -theme $theme -dmenu -p "$note > ")
     case $action in
         "Edit")
             edit_note "$note_location"
@@ -80,7 +78,7 @@ note_context() {
 }
 
 new_note() {
-    local title=$(echo -e "Cancel" | wofi --show dmenu "Input title: ")
+    local title=$(echo -e "Cancel" | rofi -theme $theme -dmenu -p "Input title: ")
 
     case "$title" in
         "Cancel")
@@ -117,7 +115,7 @@ main()
         first_menu="New\n${all_notes}"
     fi
 
-    local note=$(echo -e "$first_menu"  | wofi --show dmenu "󰚸  Notes")
+    local note=$(echo -e "$first_menu"  | rofi -theme $theme -dmenu -p "󰚸  Notes")
 
     case $note in
         "New")
@@ -131,6 +129,5 @@ main()
 	
 	exit 1
 }
-
 
 main

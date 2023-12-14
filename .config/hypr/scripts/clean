@@ -1,9 +1,11 @@
 #!/usr/bin/env sh
 
-sudo bleachbit-cli --clean system.*
+sudo bleachbit -c
 
-bleachbit-cli --clean firefox.cache
-bleachbit-cli --clean chromium.cache
+sudo bleachbit --clean system.*
+
+sudo bleachbit --clean firefox.cache
+sudi bleachbit --clean chromium.cache
 
 sudo sysctl -w vm.drop_caches=3
 

@@ -10,6 +10,7 @@ if [ $HYPRGAMEMODE = 1 ]; then
         keyword general:border_size 0;\
         keyword decoration:rounding 0;\
         keyword decoration:opacity 0;"
+  pkill bauh-tray
 	notify-send "Morgana" "Ready for the hot adventure!?, it's time to leave!!" -i ~/.config/hypr/assets/icons/morgana/awesome.png
         paplay ~/.config/hypr/assets/effects/system.ogg &>/dev/null
 	exit
@@ -17,6 +18,6 @@ fi
 hyprctl reload
 pkill ags
 ags 
-
+bauh-tray
 notify-send "Morgana" "ah! not now, not back to the real world" -i ~/.config/hypr/assets/icons/morgana/awesome.png
 paplay ~/.config/hypr/assets/effects/system.ogg &>/dev/null

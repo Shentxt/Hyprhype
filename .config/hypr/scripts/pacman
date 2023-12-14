@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Request password with Zenity
+PASSWORD=$(zenity --password --title="Paru Update" --timeout=10)
+
+# Check if a password has been entered
+if [ $? -eq 0 ]
+then
+    echo "Starting update..."
+
+    # Use the password to run Paru with superuser privileges
+    echo $PASSWORD | paru -Syu --noconfirm
+
+    # Clean up orphaned packages
+    echo $PASSWORD | sudo -S paru -Rns $(paru -Qdtq) --noconfirm
+
+    notify-send "Morgana" "updated system." -i ~/.config/hypr/assets/icons/morgana/awesome.png
+paplay ~/.config/hypr/assets/effects/system.ogg &>/dev/null
+else
+    notify-send "Morgana" "invalid password, aborting update" -i ~/.config/hypr/assets/icons/morgana/awesome.png
+paplay ~/.config/hypr/assets/effects/system.ogg &>/dev/null
+fi

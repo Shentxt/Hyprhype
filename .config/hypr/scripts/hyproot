@@ -1,13 +1,52 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-## Copyright (C) 2020-2023 Aditya Shakya <adi1090x@gmail.com>
+# Define the directories that contain .desktop files
+directories="/usr/share/applications ~/.local/share/applications"
 
-# directory
-DIR="$HOME/.config/hypr"
+# Initialize an empty string to hold the app names
+apps=""
 
-# rofi sudo askpass helper
-export SUDO_ASKPASS="$DIR"/scripts/askpass
+# Loop over the directories
+for directory in $directories
+do
+  # Loop over the .desktop files in the directory
+  for file in $directory/*.desktop
+  do
+    # Check if the .desktop file represents a graphical application
+    if grep -q "Type=Application" "$file"
+    then
+      # Extract the name and the exec command from the .desktop file
+      name=$(grep -m 1 "^Name=" "$file" | cut -d "=" -f 2)
+      exec=$(grep -m 1 "^Exec=" "$file" | cut -d "=" -f 2 | cut -d " " -f 1)
 
-# execute the application
-xhost +si:localuser:root
-sudo -A -E $1
+      # Add the name and the exec command to the apps string
+      apps+="$name: $exec\n"
+    fi
+  done
+done
+
+# Launch rofi and save the selected application
+selected=$(echo -e "$apps" | rofi -dmenu -theme ~/.config/rofi/themes/default.rasi -p "Run as root: ")
+
+# Extract the app name and the exec command from the selected string
+app=$(echo "$selected" | cut -d ":" -f 1)
+command=$(echo "$selected" | cut -d ":" -f 2)
+
+# Check if an application was selected
+if [ -z "$app" ]
+then
+  exit 0
+fi
+
+# Request password
+password=$(zenity --password --title="Password verification")
+
+# Verify the password and run the selected application as root if the password is correct
+echo $password | sudo -S -k sh -c "$command" 2> /dev/null
+
+if [ $? -eq 0 ]
+then
+  zenity --info --text="The application '$app' has been launched as root."
+else
+  zenity --error --text="Incorrect password. Please try again."
+fi

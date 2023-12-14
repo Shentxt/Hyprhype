@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Request the password with Zenity
+PASSWORD=$(zenity --password --title="Authentication")
+
+# Check if a password has been entered
+if [ $? -eq 0 ]; then
+    # Launch CoreCtrl with root privileges using the provided password
+    echo $PASSWORD | sudo -S corectrl
+else
+    # If a password has not been entered, it displays an error message
+    zenity --error --text="No password has been entered. CoreCtrl won't start."
+fi
