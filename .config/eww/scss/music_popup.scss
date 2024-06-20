@@ -1,0 +1,66 @@
+/*-------------------[Styles]------------------------------*/
+
+.musiccenter{
+  background-color: $bg;
+  color: $white;
+  border-radius: 6px;
+  text-shadow: 2px 2px 4px $lavanda;
+  border: 1px solid $magenta;
+}
+
+/*-------------------[Control]------------------------------*/
+
+.musiccontrols{
+  min-width: 170px;
+  padding: 5px 20px;
+  border-radius: 20px;
+}
+.musicbutton{
+  margin-top: -5rem;
+  margin-right: 20rem;
+  font-size: 19px;
+}
+
+/*-------------------[Title]------------------------------*/
+
+.musictitle{
+  margin-top: 5px;
+  margin-right: -21rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-style: italic;
+}
+
+/*-------------------[Bar]------------------------------*/
+
+.musicscale scale trough highlight {
+  all: unset;
+  background-image: $gradient;
+  border-radius: 10px;
+  min-width: 10px;
+}
+.musicscale scale trough {
+  all: unset;
+  background-color:  $bg;
+  border-radius: 6px; 
+  min-height: 10px;
+  min-width: 140px;
+  margin: 0px 10px;
+}
+.musicscale label{
+  font-size: 25px;
+}
+
+/*-------------------[Background img]------------------------------*/
+
+.musicart {
+  min-width: 100px;
+  min-height: 100px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: unset;
+  border-radius: 6px;
+  opacity: 0.85;
+  
+}

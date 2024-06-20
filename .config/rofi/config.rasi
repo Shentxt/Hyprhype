@@ -84,7 +84,7 @@ configuration {
 	display-filebrowser: "Files";
 
 	/*---------- Misc setting ----------*/
-	terminal: "wezterm";
+	terminal: "kitty";
 	font: "Minecraft 12";
 	sort: false;
 	threads: 0;

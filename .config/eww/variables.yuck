@@ -1,0 +1,102 @@
+; VARS
+
+(defvar open_musiccenter false)
+(defvar open_control_center false)
+(defvar open_osd false)
+(defvar open_launcher false)
+(defvar open_tray false)
+(defvar clipboard "[]")
+(defvar ANIM_DURATION "500ms")
+
+(defvar recorder_audio false)
+(defvar recorder_region false)
+
+; POLLS
+
+(defpoll quote_text   :interval "10m" "scripts/quotes.sh quote")
+(defpoll quote_author :interval "10m" "scripts/quotes.sh author")
+
+(defpoll username :interval "24h" "whoami")
+
+(defpoll uptime :interval "30s" "uptime -p | sed -E -e 's/hour(s)?/hrs/g' -e 's/minute(s)?/min/g'")
+
+(defpoll hostname :interval "24h" "cat /etc/hostname")
+
+(defpoll recording :interval "1s"
+"pgrep 'wf-recorder' || echo false")
+
+(defpoll distro :interval "1s" :initial "initial-value" :run-while launcher-visible 
+"scripts/distro.sh")
+
+(defpoll space :interval "1s" :initial "initial-value" :run-while launcher-visible 
+"scripts/space.sh")
+
+(defpoll tray :interval "1s" :initial "initial-value" :run-while tray-visible 
+`scripts/toggle_tray.sh --status`)
+
+(defpoll musicartlink :interval "1s"
+  `(url=$(playerctl metadata --format "{{ mpris:artUrl }}" | sed 's/b273/1e02/'); 
+    if [ -z "$url" ]; then 
+        img="/home/shen/.config/eww/images/music.jpg"; 
+    else 
+        img="$url"; 
+    fi
+    convert $img -blur 0x2 /tmp/blurred.jpg
+    echo "/tmp/blurred.jpg"
+  )`)
+
+(defpoll musicposition :interval "1s"
+  `playerctl metadata --format "{{ duration(position) }}"`)
+
+(defpoll musiclength :interval "10s"
+  `playerctl metadata --format "{{ duration(mpris:length)}}"`)
+
+(defpoll musicpositionpercentage :interval "1s"
+  `playerctl metadata --format "{{ position / (mpris:length / 100)  }}"`)
+
+(defpoll playingorpaused :interval "0" `playerctl status || echo "NoTrack"`)
+
+(defpoll music :interval "1s"
+  "playerctl metadata --format '{{ title }} - {{ artist }}' || true")
+
+(defpoll musicshort :interval "1s"
+  `playerctl metadata --format '{{ title }}' | cut -c1-30`)
+
+; LISTENS
+
+(deflisten network :initial '{"essid": "lo", "signal": ""}'
+"scripts/network.sh")
+
+(deflisten kb_layout :initial "en"
+"scripts/get_kb_layout.sh")
+
+(deflisten volume :initial "0"
+"scripts/volume.sh")
+
+(deflisten current_workspace :initial "1"
+"scripts/get_active_workspace.sh")
+
+(deflisten mpris :initial "{}"
+"scripts/mpris.sh")
+
+(deflisten mpris_positions :initial "{}"
+"scripts/positions.sh")
+
+(deflisten do-not-disturb :initial false
+"scripts/notifications.sh getdnd")
+
+(deflisten workspaces :initial "[{'window'}]"
+"scripts/workspaces.sh")
+
+(deflisten weather :initial "null"
+"scripts/weather.py")
+
+(deflisten current_theme :initial "dark" 
+"scripts/material.py --current")
+
+(deflisten notifications :initial '{"count": 0, "notifications": [], "popups": []}'
+"scripts/notifications.sh current")
+
+(deflisten apps :initial "{}"
+"scripts/apps.py")
+

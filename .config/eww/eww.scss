@@ -1,27 +1,53 @@
-/*----------------------------------------*/
-/*Import*/
-@import "./scss/colors.scss";
-@import "./scss/variables.scss";
-@import "./scss/common.scss";
+/*-------------------[Tooltip]------------------------------*/
 
-@import "./scss/widgets/sys_sliders.scss";
-@import "./scss/widgets/notification.scss";
-@import "./scss/widgets/toggle_button.scss";
-@import "./scss/widgets/media.scss";
-@import "./scss/widgets/calendar.scss";
-@import "./scss/widgets/bar.scss";
-@import "./scss/widgets/events.scss";
+* {
+    all: unset;
+    font-family: minecraft;
+    font-weight: bold;
+}
 
-@import "./scss/windows/bar.scss";
-@import "./scss/windows/datemenu.scss";
-@import "./scss/windows/quicksettings.scss";
-@import "./scss/windows/desktop.scss";
-@import "./scss/windows/osd.scss";
-@import "./scss/windows/dock.scss";
-@import "./scss/windows/notifications.scss";
-@import "./scss/windows/noti_center.scss";
-@import "./scss/windows/media.scss";
+/*-------------------[Variable]------------------------------*/
 
-tooltip{ @include tooltip }
+@mixin window {
+    background-color: $bg;
+    padding: 1rem;
+    color: $white;
+/*  box-shadow: 0 0 4px 2px $lavanda;*/
+    margin: 1rem;
+    border: 1px solid $magenta;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
 
-/*---------------------------------------*/
+@mixin over{
+  background-image: $gradient;
+}
+
+/*-------------------[Color]------------------------------*/
+
+$bg: rgba(46, 52, 64, 0.6);
+$fg: rgba(46, 52, 64, 0.1);
+
+$gradient: linear-gradient(45deg, #5e81ac,#a69ae6, #BC9AD4);
+$white:  #c0caf5;
+$cyan: #4DD0E1;
+$magenta: #c296eb;
+$lavanda: #d1cfe5;
+
+/*-------------------[Import]------------------------------*/
+
+@import "scripts/colors/colors.scss";
+
+
+@import "scss/bar.scss";
+
+@import "scss/control_center.scss";
+@import "scss/notifications_popup.scss";
+@import "scss/music_popup.scss";
+
+@import "scss/taskbar.scss";
+@import "scss/bg_widgets.scss";
+@import "scss/quick_settings.scss";
+@import "scss/user.scss";
+@import "scss/volume.scss";
+@import "scss/notifications.scss";

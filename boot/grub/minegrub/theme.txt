@@ -1,0 +1,164 @@
+# Global
+
+title-text: ""
+desktop-image: "background.png"
+
+# Terminal for Console and Options
+terminal-border: "20"
+terminal-left: "10%"
+terminal-top: "10%+23"
+terminal-width: "80%"
+terminal-height: "80%"
+terminal-box: "term_*.png"
+terminal-font: "Monocraft Regular 22"
+
+# Text White 
++ boot_menu {
+	# as we don't have any pixmaps here, it gets aligned strangely
+	# top pixmap is 17px in height 
+	# left pixmap is 6px in width 
+	# the text needs to be 3 pixels above and 3 pixels to the left
+	left = 50%-297 
+	top = 40%+14
+	width = 600
+	height = 500
+
+	item_font = "Minecraft Regular 30"
+	item_color = "#c0caf5"
+	selected_item_color = "#ffffa0"
+	item_height = 34
+	item_padding = 0
+	item_spacing = 38
+	scrollbar = false
+}
+
+
++ boot_menu {
+	left = 50%-300
+	top = 40%
+	width = 600
+	height = 500
+
+	item_font = "Minecraft Regular 30"
+	item_color = "#383838"
+	selected_item_color = "#3f3f28"
+	item_height = 34
+	item_padding = 0
+	item_spacing = 38
+	item_pixmap_style = "item_*.png"
+	selected_item_pixmap_style = "selected_item_*.png"
+	scrollbar = false
+}
+
+
+
++ image {
+	# width of the static bottom bar image is 744
+	left = 50%-372
+
+	# n is amount of boot options (each element is (42 height + 30 spacing) = 72px in height) 
+	# top = 40%+( 72 * N + 26 )
+	#
+	### +170 (for 2 boot options)
+	### +242 (for 3 boot options)
+	### +314 (for 4 boot options)
+	### +386 (for 5 boot options)
+	### +458 (for 6 boot options)
+	### +530 (for 7 boot options)
+	###
+	############### CHANGE VALUE HERE ################
+
+	top = 40%+314
+
+	### Don't leave spaces in between the value
+	##################################################
+
+	file = "static_bar.png"
+}
+
++ image {
+	# width of the logo image is 1200, but the center of the logo is at x=400
+	left = 50%-400
+	top = 0
+	file = "logo.png"	
+}
+
+# TEXT 
++ label {	
+	left = 6
+	top = 100%-61
+	height = 54
+	width = 200
+
+	text = "Minegrub 2.0.0"
+	font = "Minecraft Regular 30"
+	color = "white"
+}
+
+# SHADOW 
++ label {
+	left = 9
+	top = 100%-58
+	height = 54
+	width = 200
+
+	text = "Minegrub 2.0.0"
+	font = "Minecraft Regular 30"
+	color = "#3f3f3f"
+}
+
+# TEXT
++ label {	
+	left = 6
+	top = 100%-31
+	height = 54
+	width = 200
+
+	text = "647 Packages Installed"
+	font = "Minecraft Regular 30"
+	color = "white"
+}
+
+# SHADOW
++ label {
+	left = 9
+	top = 100%-28
+	height = 54
+	width = 200
+
+	text = "647 Packages Installed"
+	font = "Minecraft Regular 30"
+	color = "#3f3f3f"
+}
+
+# TEXT 
++ label {
+	id = "__timeout__"
+	
+	left = 50%
+	top = 100%-31
+	height = 24
+	width = 50%-6	
+	
+	text = "Joining world in %d seconds"
+	align = "right"
+	font = "Minecraft Regular 30"
+	color = "white"
+}
+
+# SHADOW 
++ label {
+	id = "__timeout__"
+
+	left = 50%+3
+	top = 100%-28
+	height = 24
+	width = 50%-6
+
+	text = "Joining world in %d seconds"
+	align = "right"
+	font = "Minecraft Regular 30"
+	color = "#3f3f3f"
+}
+
+

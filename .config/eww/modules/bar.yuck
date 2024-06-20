@@ -1,0 +1,145 @@
+;;-------------------[Widgets]------------------------------
+
+(defwidget bar []
+    (box :class "bar-widget" :orientation "h" :space-evenly true
+
+        (box :orientation "h" :space-evenly false :halign "start"
+            (logo)
+            (workspaces)
+
+        )
+
+        (box :orientation "h" :space-evenly false :halign "center"
+            (taskbar)
+            (space)
+            (clock)
+            (music)
+        )
+
+        (box :orientation "h" :space-evenly false :halign "end"
+            (tray_button)
+            (language)
+            (picker)
+            (indicator)
+        )
+
+    )
+    
+)
+
+;;-------------------[Logo]------------------------------
+
+(defwidget logo []
+    (button 
+    :class "logo" 
+    :onclick "rofi -show drun -theme ~/.config/rofi/themes/default.rasi &"
+    (label :text distro)
+  )
+)
+
+;;-------------------[Clock]------------------------------
+
+(defwidget clock []
+    (label :class "clock" :text {formattime(EWW_TIME, "%I:%M %p")})
+)
+
+;;-------------------[Language]------------------------------
+
+(defwidget language []
+    (button 
+         :onclick "scripts/switch_kb_layout.sh &"  
+         :onrightclick "~/.config/hypr/scripts/mapkeys &"
+         :class "language"        
+        (label :text {kb_layout}) 
+    )
+)
+
+;;-------------------[Tray]------------------------------
+
+(defwidget tray []
+    (revealer :transition "slideup" :reveal {open_tray} :duration {ANIM_DURATION}
+        (box :class "tray_box" :orientation "h" :space-evenly false
+            (systray :hexpand true :halign "center" :pack-direction "left")
+        )
+    )
+)
+
+(defwidget tray_button []
+  (box
+    (button :class "tray_button" :onclick "scripts/toggle_tray.sh --toggle"
+    (label :text tray)
+   )
+ )
+)
+
+;;-------------------[Picker]------------------------------
+
+(defwidget picker []
+    (button :onclick "sleep 0.1 && ~/.config/hypr/scripts/colorpicker &" :class "picker" "󰃉")
+)
+
+;;-------------------[Space]------------------------------
+
+(defwidget space []
+    (box :class "logo"
+    (label :text space)
+  )
+)
+
+;;-------------------[Workspace]------------------------------
+
+(defwidget workspaces []
+    (eventbox :onscroll "scripts/change_active_workspace.sh {} ${current_workspace}"
+        (box :orientation "h" :space-evenly false :class "workspaces" :hexpand true
+            (for workspace in workspaces
+                (button 
+                    :class "workspace ${current_workspace == workspace.id ? "current" : ""}" 
+                    :onclick "hyprctl dispatch workspace ${workspace.id}" 
+                    ""
+                )
+            )
+        )
+    )
+)
+
+;;-------------------[Language]------------------------------
+
+(defwidget language []
+    (button 
+         :onclick "scripts/switch_kb_layout.sh &"  
+         :onrightclick "~/.config/hypr/scripts/mapkeys &"
+         :class "language"        
+        (label :text {kb_layout}) 
+    )
+)
+
+;;-------------------[Music]------------------------------
+
+(defwidget music []
+     (eventbox
+            :onhover "${EWW_CMD} update music=true"	
+            :onhoverlost "${EWW_CMD} update music=false"
+            :cursor "pointer"
+            :visible {playingorpaused != "NoTrack"}   
+  (box :orientation "h"					
+         :space-evenly "false" 	 
+         :vexpand "false"
+    (button 
+              :style "background-image: url('${musicartlink}');"
+              :class "img"
+              :onrightclick "playerctl play-pause"
+              :onclick "scripts/toggle_musicontrol.sh --toggle &")
+     (revealer
+                :transition "slideleft"				
+                :reveal music 
+                :duration {ANIM_DURATION}
+        (box :orientation "h"					
+             :space-evenly "false"
+          (eventbox :cursor "pointer"			
+            (button :style "background-image: url('images/previous.png');"
+                    :class "button" 											 
+                    :onclick "playerctl previous" "󰼨"))
+        (eventbox :cursor "pointer" 
+            (button :style "background-image: url('images/next.png');" 
+                    :class "button" 									 
+                    :onclick "playerctl next" "󰼧")))))))

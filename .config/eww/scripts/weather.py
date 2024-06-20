@@ -1,100 +1,60 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 
-import requests
-import json
-import time
-import sys
+import requests, json, sys, time
 
-def get_weather(city_id, api_key, units='metric'):
-    url = f"http://api.openweathermap.org/data/2.5/weather?APPID={api_key}&id={city_id}&units={units}"
-    response = requests.get(url)
+API_TOKEN = "69c655f5c49d7a1612da1c5a0617d786"
+UNITS = 'metric'
+LANG = 'en'
+CITY = "Nur-Sultan"
 
-    if response.status_code == 200:
-        weather_data = response.json()
-        return weather_data
-    else:
+def get_icon(code):
+    icons = {
+        "01d": "",
+        "01n": "",
+        "02d": "",
+        "02n": "",
+        "03d": "󰖐",
+        "03n": "󰖐",
+        "04d": "",
+        "04n": "",
+        "09d": "",
+        "09n": "",
+        "10d": "",
+        "10n": "",
+        "11d": "",
+        "11n": "",
+        "13d": "󰖘",
+        "13n": "󰖘",
+        "50d": "",
+        "50n": "" 
+    }
+
+    try:
+        return icons[code]
+    except KeyError:
         return None
 
-def get_icon(icon_code):
-    icon_map = {
-        "01d": "",
-        "01n": "",
-        "02d": "",
-        "02n": "",
-        "03d": "",
-        "03n": "",
-        "04d": "",
-        "04n": "",
-        "09d": "",
-        "09n": "",
-        "10d": "",
-        "10n": "",
-        "11d": "",
-        "11n": "",
-        "13d": "󰼴",
-        "13n": "󰖘",
-        "40d": "",
-        "40n": "",
+
+def main():
+    response = requests.get(f"https://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={API_TOKEN}&lang={LANG}&units={UNITS}").json()
+    data = {
+        "icon": get_icon(response['weather'][0]['icon']),
+        "temp": str(round(response['main']['temp'])) + "°",
+        "desc": response['weather'][0]['description'].capitalize()
     }
+    return data
 
-    return icon_map.get(icon_code, "")
 
-def get_icon_color(icon_code):
-    color_map = {
-        "01d": "#c6a679",
-        "01n": "#9ec3c4",
-        "02d": "#ceb188",
-        "02n": "#8aabac",
-        "03d": "#cacaca",
-        "03n": "#cacaca",
-        "04d": "#cacaca",
-        "04n": "#4c4c4c",
-        "09d": "#a39ec4",
-        "09n": "#a39ec4",
-        "10d": "#9ec3c4",
-        "10n": "#9ec3c4",
-        "11d": "#ceb188",
-        "11n": "#ceb188",
-        "13d": "#cacaca",
-        "13n": "#cacaca",
-        "40d": "#9ec3c4",
-        "40n": "#9ec3c4",
-    }
+if __name__ == "__main__":
+    try:
+        while True:
+            try:
+                sys.stdout.write(json.dumps(main()) + "\n")
+                sys.stdout.flush()
+                time.sleep(1800)
+            except requests.exceptions.ConnectionError:
+                print("Connection error! Retrying...")
+                time.sleep(2)
 
-    return color_map.get(icon_code, "#4c4c4c")
-
-def format_weather_data(weather_data):
-    temp = weather_data["main"]["temp"]
-    temp_min = weather_data["main"]["temp_min"]
-    temp_max = weather_data["main"]["temp_max"]
-    feels_like = weather_data["main"]["feels_like"]
-    humidity = weather_data["main"]["humidity"]
-    description = weather_data["weather"][0]["main"]
-    city = weather_data["name"]
-    icon_code = weather_data["weather"][0]["icon"]
-    icon_color = get_icon_color(icon_code)
-
-    return {
-        "temp": temp,
-        "temp_min": temp_min,
-        "temp_max": temp_max,
-        "feels_like": feels_like,
-        "humidity": humidity,
-        "description": description,
-        "city": city,
-        "icon": get_icon(icon_code),
-        "icon_color": icon_color,
-    }
-
-api_key = '0dc5bb9adf9c76a433de01472542c754'
-city_id = '3433955'
-
-while True:
-    weather_data = get_weather(city_id, api_key)
-    
-    if weather_data:
-        weather = format_weather_data(weather_data)
-        sys.stdout.write(json.dumps(weather) + "\n")
-    sys.stdout.flush()
-
-    time.sleep(1800)
+    except KeyboardInterrupt:
+        exit(0)

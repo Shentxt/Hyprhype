@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# -------------------------------------------------------------
 #
 # ███╗   ███╗ █████╗ ██████╗ ██╗  ██╗███████╗██╗   ██╗███████╗
 # ████╗ ████║██╔══██╗██╔══██╗██║ ██╔╝██╔════╝╚██╗ ██╔╝██╔════╝
@@ -9,11 +9,7 @@
 # ██║ ╚═╝ ██║██║  ██║██║     ██║  ██╗███████╗   ██║   ███████║
 # ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝
 #
-# Autor = Gh0stzk
-# Inspiration = https://github.com/gh0stzk
-# Follow Me = https://github.com/Shentxt
-#
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# ----- Author: Shen - url: https://github.com/Shentxt ----
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #                 Executed Mapkeys
@@ -22,12 +18,12 @@
 #
 # required to function
 # --------------------
-# awk: mapkeys
-# rofi: launch script
+# awk: organizer 
+# rofi: ui
 #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-awk '/^[a-z]/ && last {print $0,"\t",last} {last=""} /^#/{last=$0}' ~/.config/hypr/style/keybinds.conf |
+awk '/^[a-z]/ && last {print $0,"\t",last} {last=""} /^#/{last=$0}' ~/.config/hypr/rules/keybinds.conf |
 column -t -s $'\t' | 
 awk '{$1=$1; print}' |
-rofi -dmenu -theme $HOME/.config/rofi/themes/default1.rasi
+rofi -dmenu -i -markup-rows -no-show-icons -width 1000 -lines 15 -yoffset 40 -theme $HOME/.config/rofi/themes/default1.rasi

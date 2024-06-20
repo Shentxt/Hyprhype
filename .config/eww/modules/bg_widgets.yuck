@@ -1,0 +1,84 @@
+;;-------------------[Widgets]------------------------------
+
+(defwidget bg_widgets []
+    (box :orientation "v" :space-evenly true
+        (box :orientation "h" :space-evenly false :valign "center" :halign "center" 
+        (welcome-image)
+        (welcome)
+    )
+        (box :orientation "h" :space-evenly false :valign "center"
+            (wac)
+            (separator)
+            (quotes)
+        )
+    )
+)
+
+;;-------------------[Weather and clock]------------------------------
+
+(defwidget wac []
+    (box :orientation "v" :space-evenly false :class "one"
+     (box :class "big_clock_box" :orientation "v" :space-evenly false
+        (label :class "big_clock_label" :text {formattime(EWW_TIME, "%I:%M %p")})
+        (label :class "big_calen_label" :text {formattime(EWW_TIME, "%d %B %Y")})
+    )
+        (box :class "weather" :orientation "h" :space-evenly false
+        (label :class "weather-error" :text "󰤨 Connect to the internet" :visible {weather == "null" ? true : false})
+        (label :class "weather-icon" :halign "start" :text {weather.icon})
+        (label :class "weather-temp" :halign "start" :text {weather.temp})
+    )
+  )
+)
+
+;;-------------------[Quotes]------------------------------
+
+(defwidget quotes []
+(box
+    :class "quote" 
+    :orientation "h" 
+    :halign "center"
+    :spacing 0 
+    :space-evenly "false"
+    (box
+      :orientation "v" 
+      :spacing 0 
+      :space-evenly "false" 
+      (label 
+        :class "quote-text" 
+        :halign "center" 
+        :wrap "true"
+        :text "\"${quote_text}\""
+      )
+      (label 
+        :class "quote-author" 
+        :halign "center" 
+        :wrap "true"
+        :text quote_author
+      )
+    )
+ )
+)
+
+;;-------------------[Welcome]------------------------------
+
+(defwidget welcome-image []
+    (box :orientation "v" :space-evenly false :class "welcome"
+     (box :class "welcome" :orientation "v" :space-evenly false
+     (label :class "welcome-image")
+    )
+  )
+)
+
+(defwidget welcome []
+    (box :orientation "v" :space-evenly false :class "welcome"
+     (box :class "welcome" :orientation "h" :space-evenly false
+     (label :class "welcome-text" :text username) 
+     (label :class "welcome-text" :text ", Welcom Back")
+    )
+    (box :class "welcome" :orientation "h" :space-evenly false 
+     (label :class "user-text" :text uptime)    
+     (label :class "user-text" :text {"@${hostname}"})
+    )
+  )
+)
+

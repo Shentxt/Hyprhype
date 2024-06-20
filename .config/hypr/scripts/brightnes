@@ -1,19 +1,14 @@
 #!/bin/bash
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# -------------------------------------------------------------------------
 #
-# ██████╗ ██████╗ ██╗ ██████╗ ██╗  ██╗████████╗███╗   ██╗███████╗███████╗
-# ██╔══██╗██╔══██╗██║██╔════╝ ██║  ██║╚══██╔══╝████╗  ██║██╔════╝██╔════╝
-# ██████╔╝██████╔╝██║██║  ███╗███████║   ██║   ██╔██╗ ██║█████╗  ███████╗
-# ██╔══██╗██╔══██╗██║██║   ██║██╔══██║   ██║   ██║╚██╗██║██╔══╝  ╚════██║
-# ██████╔╝██║  ██║██║╚██████╔╝██║  ██║   ██║   ██║ ╚████║███████╗███████║
-# ╚═════╝ ╚═╝  ╚═╝╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═══╝╚══════╝╚══════╝
-#
-# Autor = Shen Blaskowitz
-# Inspiration = https://github.com/adi1090x
-# Follow Me = https://github.com/Shentxt
-#
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# ██████╗ ██████╗ ██╗ ██████╗ ██╗  ██╗████████╗███╗   ██╗███████╗███████╗███████╗
+# ██╔══██╗██╔══██╗██║██╔════╝ ██║  ██║╚══██╔══╝████╗  ██║██╔════╝██╔════╝██╔════╝
+# ██████╔╝██████╔╝██║██║  ███╗███████║   ██║   ██╔██╗ ██║█████╗  ███████╗███████╗
+# ██╔══██╗██╔══██╗██║██║   ██║██╔══██║   ██║   ██║╚██╗██║██╔══╝  ╚════██║╚════██║
+# ██████╔╝██║  ██║██║╚██████╔╝██║  ██║   ██║   ██║ ╚████║███████╗███████║███████║
+# ╚═════╝ ╚═╝  ╚═╝╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═══╝╚══════╝╚══════╝╚══════╝
+# ----- Author: Shen - url: https://github.com/Shentxt -----
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #                 Executed Brightness
@@ -27,19 +22,20 @@
 # awk: print the message
 #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-current_brightness=$(xrandr --current --verbose | grep -i brightness | awk '{print $2}')
+change_brightness() {
+    wlsunset -g "$1"
+    notify-send "Brillo cambiado a $1"
+}
 
-# Run the wlsunset command to update the brightness
-wlsunset -S 8:00 -s 8:22 >/dev/null 2>&1
-
-# Get the new brightness value after the change
-new_brightness=$(xrandr --current --verbose | grep -i brightness | awk '{print $2}')
-
-# Compare brightness values ​​to determine if they changed
-if [[ "$new_brightness" != "$current_brightness" ]]; so
-if [[ "$new_brightness" < "$current_brightness" ]]; so
-notify-send "Brightnes Dark"
-the rest
-notify-send "Brightnes Light"
-fi
-fi
+# Programa el cambio de brillo
+while true; do
+    hour=$(date +%H)
+    if (( 6 <= hour && hour < 12 )); then
+        change_brightness 1.0
+    elif (( 12 <= hour && hour < 18 )); then
+        change_brightness 0.6
+    else
+        change_brightness 1.0
+    fi
+    sleep 1h
+done

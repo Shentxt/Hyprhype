@@ -1,8 +1,0 @@
-indent_type = "Spaces"
-line_endings = "Unix"
-quote_style = "AutoPreferDouble"
-call_parentheses = "None"
-
-indent_width = 2
-column_width = 120
-

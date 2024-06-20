@@ -1,0 +1,141 @@
+/**
+ *
+ * Author : Aditya Shakya (adi1090x)
+ * Github : @adi1090x
+ * 
+ * Rofi Theme File
+ * Rofi Version: 1.7.3
+ **/
+
+/*****----- Configuration -----*****/
+configuration {
+    show-icons:                 false;
+}
+
+/*****----- Global Properties -----*****/
+   @import                          "shared/colors.rasi"
+   @import                          "shared/fonts.rasi"
+
+/*
+USE_BUTTONS=YES
+*/
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  true;
+    width:                       800px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               0px;
+    border-color:                @border;
+    cursor:                      "default";
+    background-color:            @background;
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    background-color:            transparent;
+    orientation:                 horizontal;
+    children:                    [ "imagebox", "listview"];
+}
+
+/*****----- Imagebox -----*****/
+imagebox {
+    expand:                      false;
+    width:                       750px;
+    spacing:                     0px;
+    padding:                     100px;
+    border:                     3px solid;
+    border-radius:               90 90 90 90em;
+    border-color:                @border;
+    background-color:            transparent;
+    background-image:            url("/home/shen/.face",height);
+    children:                    [ "inputbar", "dummy", "message"];
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    padding:                     12px;
+     border:                     3px solid;
+    border-radius:               90 90 90 90em;
+    border-color:                @border;
+    background-color:            @background;
+    text-color:                  @background;
+    children:                    [ "dummy", "prompt", "dummy"];
+}
+
+dummy {
+    background-color:            transparent;
+}
+
+prompt {
+    background-color:            transparent;
+    text-color:                  @background-alt;
+}
+
+/*****----- Message -----*****/
+message {
+    enabled:                     true;
+    margin:                      46px;
+    padding:                     26px;
+     border:                     3px solid;
+    border-radius:               90 90 90 90em;
+    border-color:                @border;
+    background-color:            @background;
+    text-color:                  @background-alt;
+}
+textbox {
+    background-color:            transparent;
+    text-color:                  inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+}
+
+/*****----- Listview -----*****/
+listview {
+    enabled:                     true;
+    columns:                     1;
+    lines:                       4;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    spacing:                     20px;
+    margin:                      20px;
+    background-color:            transparent;
+    cursor:                      "default";
+}
+
+/*****----- Elements -----*****/
+element {
+    enabled:                     true;
+    padding:                     20px 10px;
+    background-color:            transparent;
+    text-color:                  @background-alt;
+    cursor:                      pointer;
+}
+element-text {
+    font:                        "feather bold 32";
+    background-color:            inherit;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+}
+element selected.normal {
+      border:                     3px solid;
+    border-radius:               90 90 90 90em;
+    border-color:                @border;
+    background-image:            @gradient;
+    text-color:                  #FFFFFF;
+}

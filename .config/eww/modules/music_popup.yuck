@@ -1,0 +1,24 @@
+(defwidget musiccenter []
+(box :orientation "h" :space-evenly "false"
+    (box :class "musiccontrols musicart" :orientation "v" :space-evenly "false" :spacing 5
+    :style {musicartlink != "" ? `background-image: url("${musicartlink}");` :  `background-color: #000;`}  
+    (label :class "musictitle" :text {musicshort} :valign "start" :halign "start")
+     (box :orientation "h"
+          :class "musicscale"
+          :space-evenly false
+          :halign "center"
+        (box :class "label" {musicposition})
+        (scale :min 0
+              :max 101
+              :value musicpositionpercentage)
+        (box :class "label" {musiclength}))
+    (box :class "musicbuttons" :orientation "v" :halign "center" :spacing 30
+    (button :class "musicbutton" :onclick "~/.config/eww/scripts/music.sh --down &" "󰑓")
+    (button :class "musicbutton" :onclick "playerctl previous &" "󰒮")
+    (button :class "musicbutton" :onclick "playerctl play-pause &" {playingorpaused != "Paused" ? "󰏤" : "󰐊" })
+    (button :class "musicbutton" :onclick "playerctl next &" "󰒭")
+    (button :class "musicbutton" :onclick "~/.config/eww/scripts/music.sh --up &" "󰑓")
+    )
+    )
+  )
+)

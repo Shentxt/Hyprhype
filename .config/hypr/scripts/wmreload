@@ -27,13 +27,6 @@
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 sleep 1 && hyprctl reload
 
-#pkill Aplications
-pkill ags
+name=$(whoami)
 
-# Start Aplications
-~/.config/hypr/scripts/wallrandom
-ags
-
-#this script reloads the desktop
-notify-send "Morgana" "Upgrade complete! Our window manager is purring like a finely-tuned engine." -i ~/.config/hypr/assets/icons/morgana/awesome.png
-paplay ~/.config/hypr/assets/effects/system.ogg &>/dev/null
+notify-send "Morgana" "hey, ${name} we need to do an <span color='yellow'> emergency reboot </span>" -i ~/.config/hypr/assets/icons/persona/morgana.png

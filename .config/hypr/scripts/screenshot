@@ -1,18 +1,15 @@
 #!/usr/bin/env bash
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# -------------------------------------------------------------
 #
 # ███████╗ ██████╗██████╗ ███████╗███████╗███╗   ██╗███████╗██╗  ██╗ ██████╗ ████████╗
 # ██╔════╝██╔════╝██╔══██╗██╔════╝██╔════╝████╗  ██║██╔════╝██║  ██║██╔═══██╗╚══██╔══╝
-# ███████╗██║     ██████╔╝█████╗  █████╗  ██╔██╗ ██║███████╗███████║██║   ██║   ██║
-# ╚════██║██║     ██╔══██╗██╔══╝  ██╔══╝  ██║╚██╗██║╚════██║██╔══██║██║   ██║   ██║
-# ███████║╚██████╗██║  ██║███████╗███████╗██║ ╚████║███████║██║  ██║╚██████╔╝   ██║
-# ╚══════╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝    ╚═╝
+# ███████╗██║     ██████╔╝█████╗  █████╗  ██╔██╗ ██║███████╗███████║██║   ██║   ██║   
+# ╚════██║██║     ██╔══██╗██╔══╝  ██╔══╝  ██║╚██╗██║╚════██║██╔══██║██║   ██║   ██║   
+# ███████║╚██████╗██║  ██║███████╗███████╗██║ ╚████║███████║██║  ██║╚██████╔╝   ██║   
+# ╚══════╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   
 #
-# Autor = Shen Blaskowitz
-# Inspiration = https://github.com/adi1090x
-# Follow Me = https://github.com/Shentxt
-#
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# ----- Author: Shen - url: https://github.com/Shentxt -----
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #                 Executed Screenshot
@@ -28,9 +25,11 @@
 # rofi: launch script
 #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # Import
-DIR="$HOME/.config"
-RASI="$DIR/rofi/themes/default.rasi"
+DIR="$HOME/.config/hypr"
+STYLE="default"
+RASI="/home/shen/.config/rofi/themes/default.rasi"
 
 
 # Theme Elements
@@ -42,7 +41,7 @@ layout=$(cat ${RASI} | grep 'USE_ICON' | cut -d'=' -f2)
 if [[ "$layout" == 'NO' ]]; then
 	options=("Capture Desktop" "Capture Area" "Capture Window" "Capture in 5s" "Capture in 10s")
 else
-	options=(" Capture Desktop" " Capture Area" " Capture Window" " Capture in 5s" " Capture in 10s")
+	options=("󰹑  Capture Desktop" "󰋫  Capture Area" "  Capture Window" "󱑍  Capture in 5s" "󱑍  Capture in 10s")
 fi
 
 # Rofi CMD
@@ -56,6 +55,15 @@ geometry=$(xrandr | grep 'current' | head -n1 | cut -d',' -f2 | tr -d '[:blank:]
 dir="$(xdg-user-dir PICTURES)/Screenshots"
 file="Screenshot_${time}_${geometry}.png"
 
+# Rofi CMD
+rofi_cmd() {
+	rofi -dmenu \
+		-p "$prompt" \
+		-mesg "$mesg" \
+		-markup-rows \
+		-theme ${RASI}
+}
+
 # Directory
 if [[ ! -d "$dir" ]]; then
 	mkdir -p "$dir"
@@ -63,22 +71,20 @@ fi
 
 # notify and view screenshot
 notify_view() {
-	notify-send "Morgana" "track saved, we'll see it later... Let's continue!." -i ~/.config/hypr/assets/icons/morgana/normal.png
-	paplay ~/.config/hypr/assets/effects/screenshot.ogg &>/dev/null &
-	swayimg "${dir}/${file}"
+	viewnior "${dir}/${file}"
   if [[ -e "${dir}/${file}" ]]; then
     wl-copy < "${dir}/${file}"
     wl-paste > /tmp/image.png
-    notify-send "Screenshot Saved." -i /tmp/image.png
+    notify-send "Makoto" "Screenshot <span color='yellow'>Saved</span>." -i /tmp/image.png
 else
-    notify-send "Screenshot Deleted." -i /tmp/image.png
+    notify-send "Makoto" "Screenshot <span color='yellow'>Deleted</span>." -i ~/.config/hypr/assets/icons/persona/makoto.png
 fi	
 }
 
 # countdown
 countdown() {
 	for sec in $(seq "$1" -1 1); do
-		notify-send "Taking shot in : $sec" -i ~/.config/hypr/assets/icons/system/clock.png
+		notify-send "Makoto" "Taking shot in :<span color='yellow'>$sec</span>" -i ~/.config/hypr/assets/icons/persona/makoto.png
 		sleep 1
 	done
 }

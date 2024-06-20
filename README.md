@@ -35,6 +35,8 @@ Read carefully: As not everything computers have the same features and kernel. I
 
 ** 📦Necesarys**
 
+https://github.com/catppuccin/catppuccin?tab=readme-ov-file
+
 <div style="background-color: black; color: white; padding: 10px;">
 <pre><code>
 paru hyprland wezterm lm-sensors rofi notify-send grimblast swww nordic-bluish-accent-theme

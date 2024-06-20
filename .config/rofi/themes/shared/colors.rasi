@@ -3,10 +3,11 @@
 /* Colors */
 
 * {
-    background:     rgba(59, 66, 82, 0.6);
+    background:     rgba(46, 52, 64, 0.6);
+/*  background:     rgba(59, 66, 82, 0.6);*/
     background-alt: #cad5ff;
     gradient: linear-gradient(45deg, #5e81ac,#a69ae6, #BC9AD4);
-    foreground:      #668DB4;
+    foreground:      #D3D3D3;
     border:          #cba6f7;
     urgent:          #BF616A;
 }

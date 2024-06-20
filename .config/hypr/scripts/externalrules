@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# picture in picture
+hyprctl keyword windowrulev2 "float, title:^(Pantalla en pantalla)$"
+hyprctl keyword windowrulev2 "size 260 146, title:^(Pantalla en pantalla)$"
+hyprctl keyword windowrulev2 "move 1072 588, title:^(Pantalla en pantalla)$"
+hyprctl keyword windowrulev2 "opaque, title:^(Pantalla en pantalla)$"
+hyprctl keyword windowrulev2 "pin, title:^(Pantalla en pantalla)$"
+
+# task
+hyprctl keyword windowrulev2 "float, title:^(Administrador de tareas - Brave)$"
+hyprctl keyword windowrulev2 "size 927 559, title:^(Administrador de tareas - Brave)$"
+hyprctl keyword windowrulev2 "move 249 157, title:^(Administrador de tareas - Brave)$" 
+
+# widgets
+hyprctl keyword windowrulev2 "float, title:^(_crx_nngceckbapebfimnlniiiahkandclblb)$"
+hyprctl keyword windowrulev2 "size 618 565, title:^(_crx_nngceckbapebfimnlniiiahkandclblb)$"
+hyprctl keyword windowrulev2 "move 383 116, title:^(_crx_nngceckbapebfimnlniiiahkandclblb)$"
