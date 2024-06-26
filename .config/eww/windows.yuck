@@ -8,14 +8,23 @@
     (bar)
 )
 
+(defwindow dock
+  :monitor 0
+  :geometry (geometry :width "30%"
+                      :anchor "bottom center"
+                )
+  :exclusive true
+  :namespace "eww"
+  (dock)
+)
+
 (defwindow control_center
     :monitor 0
     :stacking "overlay"
     :geometry (geometry
-                    :anchor "top left"
-                    :x "80px"
-                    :width "2px"
-                    :height "2px"
+                    :anchor "top right"
+                    :width "400px"
+                    :height "30px"
                 )
     :namespace "eww"
     (control_center)
@@ -26,8 +35,8 @@
   :stacking "overlay"
   :geometry (geometry :x "10px"
                       :y "10px" 
-                      :width "250px"
-                      :height "120px"
+                      :width "400px"
+                      :height "30px"
                       :anchor "top center")
       :namespace "eww"
       (musiccenter)
@@ -44,6 +53,18 @@
     :focusable true
     :namespace "eww"
     (launcher)
+)
+
+(defwindow notifications
+  :monitor 0
+  :stacking "overlay"
+  :geometry (geometry :x "10px"
+                      :y "10px" 
+                      :width "600px"
+                      :height "30px"
+                      :anchor "top center")
+  :namespace "eww"
+  (notifications)
 )
 
 (defwindow notifications_popup

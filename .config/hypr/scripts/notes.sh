@@ -26,7 +26,7 @@
 # default values
 AUTHOR=$(whoami)
 NOTES_FOLDER="$HOME/.notes"
-NOTES_EDITOR='kitty -e nvim '
+NOTES_EDITOR='kitty --title 'Float' -e nvim '
 
 theme=~/.config/rofi/themes/default.rasi
 

@@ -2,7 +2,7 @@
 
 state=$(eww get open_control_center)
 
-open_control_center(){
+open_control_center() {
     if [[ -z $(eww list-windows | grep '*control_center') ]]; then
         eww open control_center
     fi

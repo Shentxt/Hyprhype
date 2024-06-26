@@ -15,6 +15,7 @@
 /*  box-shadow: 0 0 4px 2px $lavanda;*/
     margin: 1rem;
     border: 1px solid $magenta;
+    transition: 0.3s;
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem;
 }
@@ -36,16 +37,15 @@ $lavanda: #d1cfe5;
 
 /*-------------------[Import]------------------------------*/
 
-@import "scripts/colors/colors.scss";
-
+/*@import "scripts/colors/colors.scss";*/
 
 @import "scss/bar.scss";
+@import "scss/dock.scss";
 
 @import "scss/control_center.scss";
 @import "scss/notifications_popup.scss";
 @import "scss/music_popup.scss";
 
-@import "scss/taskbar.scss";
 @import "scss/bg_widgets.scss";
 @import "scss/quick_settings.scss";
 @import "scss/user.scss";

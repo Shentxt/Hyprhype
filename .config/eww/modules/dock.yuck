@@ -1,0 +1,112 @@
+;;-------------------[Widgets]------------------------------
+
+(defwidget dock []
+    (box :class "bar-widget" :orientation "h" :space-evenly true
+
+        (box :orientation "h" :space-evenly false :halign "start"
+        (apps)  
+    )
+
+        (box :orientation "h" :space-evenly false :halign "center"
+        (browser)
+        (terminal)
+        (file)
+    )
+
+        (box :orientation "h" :space-evenly false :halign "end"
+       (trash)
+      (pacman)
+    )
+  )
+)
+
+;;-------------------[Top]------------------------------
+
+(defwidget apps []
+  (button 
+         :onclick "rofi -show drun -theme ~/.config/rofi/themes/default.rasi &"
+         :class "icon" "󰀻" 
+  )
+)
+
+;;-------------------[Mid]------------------------------
+
+(defwidget browser []
+    (button 
+         :onclick "~/.config/eww/scripts/apps.sh --browser"  
+         :class "icon" ""       
+    )
+)
+
+(defwidget terminal []
+    (button 
+         :onclick "~/.config/eww/scripts/apps.sh --terminal"  
+         :class "icon" ""       
+    )
+)
+
+(defwidget file []
+    (button 
+         :onclick "~/.config/eww/scripts/apps.sh --file-manager"  
+         :class "icon" ""       
+    )
+)
+
+;;-------------------[Bottom]------------------------------
+
+(defwidget trash []
+	(eventbox	
+        :onhover "${EWW_CMD} update tra=true"	
+				:onhoverlost "${EWW_CMD} update tra=false" 
+	(box		
+       :orientation "h"					
+				:space-evenly "false" 	 
+				:vexpand "false" 	
+				
+	(revealer	
+        :transition "slideleft"				
+				:reveal tra 
+				:duration "${ANIM_DURATION}"
+	(box	
+        :orientation "h"					
+				:space-evenly "false"
+				
+	(label  	
+        :class "text"
+				:text "${TRASH}")))
+	
+	(eventbox 
+	(button		
+			 	:onclick "~/.config/eww/scripts/apps.sh --trash"
+				:class "icon" "" )
+    ) 
+  )
+ )
+)
+
+(defwidget pacman []
+	(eventbox	
+        :onhover "${EWW_CMD} update pac=true"	
+				:onhoverlost "${EWW_CMD} update pac=false" 
+	(box		
+        :orientation "h"					
+				:space-evenly "false" 	 
+				:vexpand "false" 	
+				
+	(revealer	
+        :transition "slideleft"				
+				:reveal pac			 
+				:duration "${ANIM_DURATION}"
+	(box		
+        :orientation "h"					
+				:space-evenly "false"
+				
+	(label  	
+        :class "text"
+				:text "${UPDATES}")))
+	
+	(eventbox 
+	(button		 
+        :onrightclick "kitty --title 'Float' -e scripts/get_updates.sh --print-updates &"
+        :onclick "kitty --title 'Float' -e scripts/get_updates.sh --update-system &"
+				:class "icon" "󰮯" )) )))

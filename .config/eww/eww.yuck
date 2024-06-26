@@ -3,6 +3,7 @@
 
 
 (include "modules/bar.yuck")
+(include "modules/dock.yuck")
 (include "modules/notifications_popup.yuck")
 (include "modules/music_popup.yuck")
 (include "modules/control_center.yuck")
@@ -13,7 +14,6 @@
 (include "modules/quick_settings.yuck")
 (include "modules/user.yuck")
 
-(include "modules/taskbar.yuck")
 (include "modules/indicator.yuck")
 (include "modules/bg_widgets.yuck")
 

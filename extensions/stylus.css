@@ -1,0 +1,110 @@
+/* ==UserStyle==
+@name           Nordic
+@namespace   https://github.com/Shentxt
+@version        1.0.0
+@description    Theme Browser 
+@author         Shen
+==/UserStyle== */
+
+:root {
+	--black: #212121;
+	--white: #c0caf5;
+	--celeste: #4dd0e1;
+	--lavanda : #d1cfe5;
+	--violet: #c296eb;
+}
+
+* {
+	transition: all 0.3s ease;
+}
+
+body {
+	background-color: var(--black);
+	color: var(--white);
+	font-family: 'minecraft';
+}
+
+button {
+    cursor: pointer;
+}
+
+button:hover {
+	transition: background-color 0.5s ease;
+}
+
+blockquote {
+	margin-left: 20px;
+	color: var(--lavanda);
+}
+
+a {
+	color: var(--white);
+	text-decoration: none;
+	transition: color 0.5s ease;
+}
+
+a:focus {
+    outline: 2px solid var(--celeste);
+}
+
+a:active {
+    color: var(--white);
+}
+	
+a:hover {
+	color: var(--celeste);
+	text-decoration: none;
+	transition: background-color 0.5s ease;
+}
+
+a:visited {
+	color: var(--celeste);
+	text-decoration: line-through;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: var(--white);
+}
+
+p {
+	color: var(--white);
+}
+
+p.blink {
+	text-decoration: blink;
+}
+
+.icon {
+	color: var(--white);
+	animation: rotate 2s linear infinite;
+}
+
+img {
+	max-width: 250%;
+	border-radius: 5px;
+}
+
+/* for Chromium */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--lavanda), var(--black));
+  border-radius: 6px;
+}
+
+/* for Firefox */
+* {
+  scrollbar-width: thin; 
+  scrollbar-color: var(--lavanda) var(--black);
+}

@@ -1,14 +1,13 @@
 (defwidget indicator []
-    (button :onclick "scripts/toggle_control_center.sh" :class "indicator"
+    (button :onclick "scripts/toggle_control_center.sh &" :class "indicator" 
         (box :orientation "h" :space-evenly false
             (recorder_icon)
             (network_icon)
+            (bluetooth_icon)
             (do-not-disturb_icon)
             (theme_icon)
             (volume_icon)
             (battery_icon)
-        ;;  (bluetooth_icon)
-        ;;  (clock)
         )
     )
 )
@@ -44,6 +43,12 @@
 (defwidget volume_icon []
     (state_icon :condition true
                 :text {volume == "muted" ? "󰸈" : volume < 33 ? "" : volume < 67 ? "" : ""}
+    )
+)
+
+(defwidget bluetooth_icon []
+    (state_icon :condition true
+                :text "${icon}"
     )
 )
 

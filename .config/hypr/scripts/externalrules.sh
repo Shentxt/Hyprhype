@@ -3,7 +3,7 @@
 # picture in picture
 hyprctl keyword windowrulev2 "float, title:^(Pantalla en pantalla)$"
 hyprctl keyword windowrulev2 "size 260 146, title:^(Pantalla en pantalla)$"
-hyprctl keyword windowrulev2 "move 1072 588, title:^(Pantalla en pantalla)$"
+hyprctl keyword windowrulev2 "move 1057 544, title:^(Pantalla en pantalla)$"
 hyprctl keyword windowrulev2 "opaque, title:^(Pantalla en pantalla)$"
 hyprctl keyword windowrulev2 "pin, title:^(Pantalla en pantalla)$"
 

@@ -19,7 +19,7 @@
 # required to function
 # --------------------
 # grimblast: screenshot
-# swaimg: show screen
+# viewnior: show screen
 # notify-send: notify
 # wl-copy: copy img
 # rofi: launch script

@@ -4,20 +4,14 @@
 
 /*****----- Global Properties -----*****/
 @import                          "shared/colors.rasi"
-
-* {
-    font:                        "minecraft 11";
-   }
+@import                          "shared/fonts.rasi"
 
 configuration {
     modi:                        "drun";
     show-icons:                  true;
     drun-display-format:         "{name}";
-//    font:                        "JetBrainsMono NF Bold 11";
-    
-   hover-select:				 true;
-	//me-select-entry:			 "";
-	//me-accept-entry:			 "MousePrimary";
+    icon-theme: "Windows-Beuty";
+    hover-select:				 true;
 }
 
 //----- Main Window -----//
@@ -26,6 +20,7 @@ window {
     enabled:                     true;
     fullscreen:                  false;
     width:                       82%;
+    height:                      45%;
     transparency:                "real";
     cursor:                      "default";
     spacing:                     0px;
@@ -94,7 +89,7 @@ element selected {
 }
 
 element-icon {
-    size:                        33%;
+    size:                        25%;
     cursor:                      inherit;
     border-radius:               0px;
     background-color:            transparent;

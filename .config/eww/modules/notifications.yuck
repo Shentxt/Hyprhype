@@ -20,19 +20,21 @@
 )
 
 (defwidget notifications []
-    (box :orientation "v" :space-evenly false :class "notifications-center"
-        (box :orientation "h" :space-evenly true
-            (label :class "notifications-header-text" :halign "start" :text "Notifications")
-            (button :halign "end" :class "notifications-clear-button" :onclick "scripts/notifications.sh clear" "Clear all")
-        )
-        (scroll :vscroll true :class "notifications-scroll"
-            (box :orientation "v" :space-evenly false
-                (for notify in {notifications.notifications}
-                    (box :orientation "h" :space-evenly false :class "notification-box"
-                        (notification :notify {notify})
-                    )   
+    (revealer :transition "slideup" :reveal {open_notifications  == true ? true : false} :duration {ANIM_DURATION}
+        (box :orientation "v" :space-evenly false :class "notifications-center"
+            (box :orientation "h" :space-evenly true
+                (label :class "notifications-header-text" :halign "start" :text "Notifications")
+                (button :halign "end" :class "notifications-clear-button" :onclick "scripts/notifications.sh clear" "Clear all")
+            )
+            (scroll :vscroll true :class "notifications-scroll"
+                (box :orientation "v" :space-evenly false
+                    (for notify in {notifications.notifications}
+                        (box :orientation "h" :space-evenly false :class "notification-box"
+                            (notification :notify {notify})
+                        )   
+                    )
+                    (label :vexpand true :valign "center" :text "No notifications" :visible {notifications.notifications != "[]" ? false : true})
                 )
-                (label :vexpand true :valign "center" :text "No notifications" :visible {notifications.notifications != "[]" ? false : true})
             )
         )
     )

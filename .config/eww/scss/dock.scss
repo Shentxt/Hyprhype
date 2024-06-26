@@ -1,0 +1,20 @@
+.icon {
+    font-size: 1.5rem;
+    color: $white;
+    padding: 0 0.6rem;
+    transition: 0.3s;
+    border-radius: 12rem;
+    border-bottom-left-radius: 12rem;
+    border-bottom-right-radius: 2rem;
+    min-height: 21px;
+    min-width: 21px;
+}
+
+.icon:hover {
+  @include over;
+}
+
+.text {
+  font-size: 1rem;
+  padding: 0 0.6rem;
+}

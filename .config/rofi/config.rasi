@@ -14,7 +14,7 @@ configuration {
 	scroll-method: 0;
 	normalize-match: true;
 	show-icons: true;
-	icon-theme: "Zafiro";
+	icon-theme: "windows-beuty";
 /*	cache-dir: ;*/
 	steal-focus: false;
 /*	dpi: -1;*/

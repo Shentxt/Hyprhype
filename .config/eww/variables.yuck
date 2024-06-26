@@ -1,10 +1,15 @@
 ; VARS
 
+(defvar open_notifications false)
 (defvar open_musiccenter false)
 (defvar open_control_center false)
 (defvar open_osd false)
 (defvar open_launcher false)
 (defvar open_tray false)
+(defvar pac false)
+(defvar tra false)
+(defvar mu false)
+(defvar no false)
 (defvar clipboard "[]")
 (defvar ANIM_DURATION "500ms")
 
@@ -15,6 +20,18 @@
 
 (defpoll quote_text   :interval "10m" "scripts/quotes.sh quote")
 (defpoll quote_author :interval "10m" "scripts/quotes.sh author")
+
+(defpoll TRASH :interval "1s" "scripts/apps.sh --ntrash")
+
+(defpoll NOTIFI :interval "1s" "scripts/notifications.sh getcount")
+
+(defpoll battery :interval "1s" "scripts/bluetooth.sh --battery")
+
+(defpoll status :interval "1s" "scripts/bluetooth.sh --status")
+
+(defpoll icon :interval "1s" "scripts/bluetooth.sh --icon")
+
+(defpoll UPDATES :interval "1s" `scripts/get_updates.sh --get-updates`)
 
 (defpoll username :interval "24h" "whoami")
 
@@ -41,7 +58,7 @@
     else 
         img="$url"; 
     fi
-    convert $img -blur 0x2 /tmp/blurred.jpg
+    convert $img -blur 0x1 /tmp/blurred.jpg
     echo "/tmp/blurred.jpg"
   )`)
 
@@ -57,15 +74,21 @@
 (defpoll playingorpaused :interval "0" `playerctl status || echo "NoTrack"`)
 
 (defpoll music :interval "1s"
-  "playerctl metadata --format '{{ title }} - {{ artist }}' || true")
+  "playerctl metadata --format '{{ title }} - {{ artist }}' | fold -w 100")
 
-(defpoll musicshort :interval "1s"
-  `playerctl metadata --format '{{ title }}' | cut -c1-30`)
+(defpoll musictitle :interval "1s"
+  `playerctl metadata --format '{{ title }}' | cut -c1-30 | fold -w 18`)
+
+(defpoll musicartist :interval "1s"
+  `playerctl metadata --format '{{ artist }}' | cut -c1-30 | fold -w 25`)
 
 ; LISTENS
 
 (deflisten network :initial '{"essid": "lo", "signal": ""}'
 "scripts/network.sh")
+
+(deflisten bluetooth :initial '{"status": ""}' 
+"scripts/bluetooth.sh")
 
 (deflisten kb_layout :initial "en"
 "scripts/get_kb_layout.sh")
@@ -75,12 +98,6 @@
 
 (deflisten current_workspace :initial "1"
 "scripts/get_active_workspace.sh")
-
-(deflisten mpris :initial "{}"
-"scripts/mpris.sh")
-
-(deflisten mpris_positions :initial "{}"
-"scripts/positions.sh")
 
 (deflisten do-not-disturb :initial false
 "scripts/notifications.sh getdnd")
@@ -96,7 +113,3 @@
 
 (deflisten notifications :initial '{"count": 0, "notifications": [], "popups": []}'
 "scripts/notifications.sh current")
-
-(deflisten apps :initial "{}"
-"scripts/apps.py")
-

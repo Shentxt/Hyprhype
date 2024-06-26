@@ -52,6 +52,11 @@ toggle_dnd() {
         org.freedesktop.Notifications.ToggleDND
 }
 
+get_notification_count() {
+    count=$(jq '.count' $HOME/.cache/notifications.json)
+    echo "$count"
+}
+
 if [[ $1 == 'dismiss' ]]; then dismiss $2 $3; fi
 if [[ $1 == 'close' ]]; then close $2; fi
 if [[ $1 == 'action' ]]; then action $2 $3; fi
@@ -59,3 +64,4 @@ if [[ $1 == 'clear' ]]; then clear_all; fi
 if [[ $1 == 'current' ]]; then get_current; fi
 if [[ $1 == 'getdnd' ]]; then get_dnd; fi
 if [[ $1 == 'togglednd' ]]; then toggle_dnd && get_dnd; fi
+if [[ $1 == 'getcount' ]]; then get_notification_count; fi

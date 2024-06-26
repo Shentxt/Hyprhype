@@ -1,73 +1,50 @@
-### 󰣇 shen ~  Hyprhype Dotfiles ⭐
+### 󰣇 shen ~ Hyprhype Dotfiles ⭐
 
 ![Logotype](/assets/logotype.jpg "a logo")
 ** 🌿Sections**
 
-- 🌸 [Download](https://github.com/Shentxt/Hyprhype/tree/master#download)
-- 🌸 [Keys-Maps](https://github.com/Shentxt/Hyprhype/tree/master#keys-map)
-- 🌸 [Informations](https://github.com/Shentxt/Hyprhype/tree/master#inpirations-and-contacts)
+- 🌸 [Keys-Maps](https://github.com/Shentxt/Hyprhype/tree/master#Informations)
+- 🌸 [Config](https://github.com/Shentxt/Hyprhype/tree/master#Configurations)
+- 🌸 [Contact and Base](https://github.com/Shentxt/Hyprhype/tree/master#Base)
 
-** 🌿Presentation**
+## 🌿Informations
 
-Don't you think a system should be visually beautiful but just as fast? Simple yet elegant setup based on the Hyprland graphics system.
-This setup aims for visual elegance and fluidity.
+> :warning: **Because this is a custom configuration, I hope for your complete understanding. If you have any questions or problems in my configuration, contact me to get more feedback and make it efficient.**: 
 
-Read carefully: As not everything computers have the same features and kernel. I ask you to clarify any problem that I present in the download or post of this one. This is in order to have feedback and be able to improve.
+** 🌿Keys-Map **
 
-## 💾Download
+> :warning: **Before using this function install rofi**: 
 
-<div style="background-color: black; color: white; padding: 10px;">
-<pre><code>
- Git clone https://github.com/Shentxt/Hyprhype#tabla-de-contenidos
- cd Hyprhype
- chmod +x install
- ./install
-</code></pre>
-</div>
+|     Info     |    Keys      |
+| :----------: | :----------: |
+| Open Keymaps |  Win+Shift+D |
 
-** 💾Removed**
+** 🌿System **
 
-<div style="background-color: black; color: white; padding: 10px;">
-<pre><code>
- sudo rm -r Hyprhype
-</code></pre>
-</div>
+|    Distro    |                [EndevourOS](https://endeavouros.com/)                          |
+| :----------: | :----------------------------------------------------------------------------: |
+|    WM/comp   |                 [Hyprland](https://wiki.hyprland.org/)                         |
+|   Terminal   |                   [Kitty](https://github.com/kovidgoyal/kitty)                 |
+|   Browser    |                   [Brave](https://github.com/brave/brave-browser)              |
+|  Widgets/bar |            [ElKowars wacky widgets](https://github.com/elkowar/eww)            |
+|    Shell     |                [Starship](https://github.com/starship/starship)                |
+|   Launcher   |                   [Rofi](https://github.com/davatorium/rofi)                   |
+|    Editor    | [Neovim](https://github.com/neovim/neovim)-[Vs](https://code.visualstudio.com/)|
+| File Manager |              [Thunar](https://github.com/xfce-mirror/thunar)                   |
+| Lockscreen   |              [Hyprlock](https://github.com/hyprwm/hyprlock)                    |
+| Sesion UI    |              [Sddm](https://github.com/sddm/sddm)                              |
+|   Grub       |          [Minegrub](https://github.com/Lxtharia/minegrub-theme)                |
+| statepage    |          [Tartarus](https://alljavi.github.io/tartarus-startpage/)             |
 
-** 📦Necesarys**
+## 📦Configurations
 
-https://github.com/catppuccin/catppuccin?tab=readme-ov-file
+> :Info: **For organizational reasons, I have decided to separate the readme into two.**: 
 
-<div style="background-color: black; color: white; padding: 10px;">
-<pre><code>
-paru hyprland wezterm lm-sensors rofi notify-send grimblast swww nordic-bluish-accent-theme
-</code></pre>
-</div>
-
-** 📦Opcionals**
-
-<div style="background-color: black; color: white; padding: 10px;">
-<pre><code>
-#Some features may not work, I recommend reading hypr/scripts and some AGS commands
-paru kohaa hyprpicker yt-dlp wal wlsunset vivaldi 
-</code></pre>
-</div>
-
-** 📦Extra**
-
-<div style="background-color: black; color: white; padding: 10px;">
-<pre><code>
-#Only install this if your processor is AMD branded
-paru amdctl supergfxctl corectrl
-</code></pre>
-</div>
+- [Guide](CONFIG.md)
 
 - These files are located in usr.
 
-## 🌿Keys-Map
-
-- **Win+Shift+D:** Open the key display. This key combination can be useful to access various functions in my settings.
-
-## 🌿Informations
+## 🌿Base 
 
 - [Reddit](https://www.reddit.com/user/ProfessionLower9249)
 

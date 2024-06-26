@@ -24,7 +24,7 @@
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 change_brightness() {
     wlsunset -g "$1"
-    notify-send "Brillo cambiado a $1"
+    notify-send "Brightness change a $1"
 }
 
 # Programa el cambio de brillo

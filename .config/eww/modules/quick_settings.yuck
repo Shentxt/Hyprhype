@@ -5,7 +5,11 @@
             (do-not-disturb_mode)
         )
         (box :orientation "h" :space-evenly true
+            (bluetooth)
             (theme)
+        )
+        (box :orientation "h" :space-evenly true
+            (microphone)
             (recorder)
         )
     )
@@ -49,19 +53,39 @@
 
 (defwidget recorder []
     (quick_settings_button  :condition {recording == false} 
-                         ;   :action {recording == false ? "eww open recorder_menu" : "pkill -INT wf-recorder && notify-send 'Recording saved'"}
-       :action {recording == false ? "~/.config/hypr/scripts/recording && eww update recording=true" : "~/.config/hypr/scripts/recording && eww update recording=false"}
+                            :action {recording == false ? "eww open recorder_menu" : "pkill -INT wf-recorder && notify-send 'Recording saved'"}
                             :icon "󰻃"
                             :label "Recording"
-                            :class "right-bottom-plite"
+                            :class "right-center-plite"
     )
 )
 
 (defwidget theme []
     (quick_settings_button  :condition {current_theme == "light"} 
                             :action "scripts/material.py --toggle &"
-                            :icon " "
-                            :label "Game Mode"
+                            :icon "󰺵"
+                            :label "Gamemode"
+                            :class "left-center-plite"
+    )
+)
+
+
+
+(defwidget bluetooth []
+  (quick_settings_button    :condition {status == "on"} 
+                            :action "scripts/bluetooth.sh --toggle"
+                            :icon "${icon}"
+                            :label "${status}" 
                             :class "left-bottom-plite"
     )
+)
+
+(defwidget microphone []
+  (quick_settings_button  
+    :condition {do-not-disturb == false} 
+    :action "pamixer --togle-mute"
+    :icon ""
+    :label "Microphone"
+    :class "right-bottom-plite"
+  )
 )

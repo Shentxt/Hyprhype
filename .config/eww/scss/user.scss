@@ -36,7 +36,7 @@
 
 /*-------------------[Button]------------------------------*/
 
-.open-powermenu-button {
+.open-button {
     background-color: $bg;
     color: $white;
     border-radius: 1rem;
@@ -47,20 +47,5 @@
 }
 
 .open-powermenu-button:hover {
-    background-image: $gradient; 
-}
-
-.open-settings-button {
-/*  background-color: $bg;*/
-    color: $white;
-    border-radius: 0.5rem;
-    padding: 0 0.5rem;
-    margin: 0.35rem 2rem;
-    margin-left: 0.5rem;
-    transition: 0.3s;
-    font-size: 1.2rem;
-}
-
-.open-settings-button:hover {
     background-image: $gradient; 
 }

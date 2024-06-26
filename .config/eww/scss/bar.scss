@@ -75,11 +75,13 @@
 /*-------------------[Language]------------------------------*/
 
 .language {
-    border-radius: 0.5rem;
     padding: 0 0.25rem;
     margin: 0 0.25rem;
     transition: 0.3s;
     font-size: 1.3rem;
+    border-radius: 12rem;
+    border-bottom-left-radius: 12rem;
+    border-bottom-right-radius: 2rem;
 }
 
 .language:hover {
@@ -93,7 +95,9 @@
     padding: 0 0.5rem;
     margin: 0 0.25rem;
     margin-top: 0.2rem;
-    border-radius: 0.5rem;
+    border-radius: 12rem;
+    border-bottom-left-radius: 12rem;
+    border-bottom-right-radius: 2rem;
     transition: 0.3s;
 }
 .picker:hover {
@@ -132,7 +136,9 @@
 }
 
 .tray_button {
-    border-radius: 0.5rem;
+    border-radius: 12rem;
+    border-bottom-left-radius: 12rem;
+    border-bottom-right-radius: 2rem;
     padding: 0 0.5rem;
     margin: 0 0.25rem;
     transition: 0.3s;
@@ -180,16 +186,21 @@ menu>menuitem:hover {
   min-height: 32px;
   min-width: 60px;
   padding: 0 0.6rem;
+  transition: 0.3s;
   border-bottom-left-radius: 12rem;
   border-bottom-right-radius: 2rem;
   border: 1px solid $magenta;
+}
+
+.img:hover {
+    @include over;
 }
 
 .button {
     font-size: 1.50rem;
     background-color: $magenta;
     color: $white;
-    padding: 0 0.60rem;
+    padding: 0 0.20rem;
     margin: 0.16rem;
     transition: 0.3s;
     border-radius: 12rem;
@@ -200,5 +211,6 @@ menu>menuitem:hover {
 } 
 
 .button:hover {
-  @include over;
+    @include over;
 }
+

@@ -226,7 +226,12 @@ class NotificationDaemon(dbus.service.Object):
 def main():
     DBusGMainLoop(set_as_default=True)
     loop = GLib.MainLoop()
-    NotificationDaemon()
+    notification_daemon = NotificationDaemon()
+    if len(sys.argv) > 4 and sys.argv[1] == '--notify':
+        title = sys.argv[2]
+        text = sys.argv[3]
+        image_path = sys.argv[4]
+        notification_daemon.Notify(title, 0, image_path, title, text, [], {}, 0) 
     try:
         loop.run()
     except KeyboardInterrupt:
