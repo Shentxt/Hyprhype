@@ -1,6 +1,12 @@
-### 🌸 shen ~ Hyprhype Dotfiles 🌸 
+<div align="center">
+ <h1> 🌸 shen ~ Hyprhype Dotfiles 🌸 </h1>
+ </div>
 
-![Logotype](/assets/logo.jpeg "a logo")
+<p align="center">
+  <picture>
+    <img src="/assets/logo.jpeg">
+  </picture>
+</p>
 
 ** 🌿Sections**
 
@@ -51,11 +57,11 @@
 </details>
 
 <details>
-<summary><b><code>Firefox</code></b></summary>
+<summary><b><code>Menu</code></b></summary>
 
-|Lock|Power|
-|--|--|
-|![demo](/assets/Screen/lock.png "demo")|![demo](/assets/Screen/power.png "demo")|
+|Lock|Power|Launcher|
+|--|--|--|
+|![demo](/assets/Screen/lock.png "demo")|![demo](/assets/Screen/power.png "demo")|![demo](/assets/Screen/rofi.png "demo")|
 </details>
 
 ## 📦Configurations
