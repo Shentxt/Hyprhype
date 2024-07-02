@@ -18,3 +18,18 @@
   font-size: 1rem;
   padding: 0 0.6rem;
 }
+
+.app {
+    background-image: url("/home/shen/.face");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 2rem;
+    min-width: 2rem;
+    border-radius: 100%;
+    border: 1px solid $magenta;
+}
+
+.app:hover {
+  border-color: $cyan; 
+}

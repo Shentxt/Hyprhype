@@ -33,31 +33,26 @@
 ;;-------------------[Quotes]------------------------------
 
 (defwidget quotes []
-(box
-    :class "quote" 
-    :orientation "h" 
-    :halign "center"
-    :spacing 0 
-    :space-evenly "false"
-    (box
-      :orientation "v" 
-      :spacing 0 
-      :space-evenly "false" 
-      (label 
-        :class "quote-text" 
-        :halign "center" 
-        :wrap "true"
-        :text "\"${quote_text}\""
-      )
-      (label 
-        :class "quote-author" 
-        :halign "center" 
-        :wrap "true"
-        :text quote_author
-      )
+    (box :orientation "v" :space-evenly false :class "one"
+     (box :class "quote" :orientation "v" :space-evenly false
+        (label :class "quote-text" :text "\"${quote_text}\"") 
+        (label :class "quote-text" :text quote_author))
+        (box :class "info-box" :orientation "h" :space-evenly false
+        (box :class "info_box" :orientation "v" :valign "center" :halign "center" :spacing 15 :space-evenly "false"
+				(circular-progress :class "cpu-icon" :value cpu :thickness 11
+				(label :class "info-circle" :text "󰍛"))
+        (label :class "cpu-text" :valign "end" :halign "center" :text "${cpu}%"))
+        (box :class "info_box" :orientation "v" :valign "center" :halign "center" :spacing 15 :space-evenly "false"
+			  (circular-progress :class "memory-icon" :value memory :thickness 11
+			  (label :class "info-circle" :text "󰫗"))
+			  (label :class "memory-text" :valign "end" :halign "center" :text "${memory}%"))
+        (box :class "info_box" :orientation "v" :valign "center" :halign "center" :spacing 15 :space-evenly "false"
+				(circular-progress :class "disk-icon" :value disk :thickness 11
+				(label :class "info-circle" :text "󰇑")) 
+				(label :class "disk-text" :valign "end" :halign "center" :text "${disk}%"))
     )
- )
-)
+  )
+) 
 
 ;;-------------------[Welcome]------------------------------
 

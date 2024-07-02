@@ -91,19 +91,19 @@ countdown() {
 
 # take shots
 shotnow() {
-	sleep 1 && cd "${dir}" && sleep 0.5 && grimblast save output "${file}" | copy_shot
+	sleep 1 && cd "${dir}" && sleep 0.15 && grimblast save output "${file}" | copy_shot
 	notify_view
 }
 
 shot5() {
 	countdown '5'
-	sleep 1 && cd "${dir}" && grimblast save output "${file}" | copy_shot
+	sleep 2 && cd "${dir}" && grimblast save output "${file}" | copy_shot
 	notify_view
 }
 
 shot10() {
 	countdown '10'
-	sleep 1 && cd "${dir}" && grimblast save output "${file}" | copy_shot
+	sleep 2 && cd "${dir}" && grimblast save output "${file}" | copy_shot
 	notify_view
 }
 

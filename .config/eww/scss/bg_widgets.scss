@@ -110,3 +110,68 @@
     margin-top: 1rem;
 /*  text-shadow: 2px 2px 4px $lavanda;*/
   }
+
+/*-------------------[Info]------------------------------*/
+ 
+.info-box {
+    min-width: 20rem;
+    border-radius: 2rem;
+    margin-bottom: 0rem;
+    margin-left: 8rem; 
+}
+
+.info_box {
+	padding-top :0px;
+  padding-bottom :0px;
+  padding-right :12px;
+  padding-left :12px; 
+  font-size: 2.50rem;
+}
+
+.info-circle {
+	border-radius: 100%;
+	padding: 2.15rem;
+  border: 12px none $white;
+}
+
+.cpu-icon {
+	color: $magenta;
+}
+
+.cpu-text {
+  padding-top: 0;
+  padding-bottom: 2rem;
+  padding-right: 0;
+  padding-left: 0;
+	font-size : 1.25rem; 
+  font-weight : bold;
+  color: $magenta;
+}
+
+.memory-icon {
+	color: $white;
+}
+
+.memory-text {
+   padding-top: 0;
+  padding-bottom: 2rem;
+  padding-right: 0;
+  padding-left: 0;
+	font-size : 1.25rem; 
+	font-weight : bold;
+  color: $white;
+}
+
+.disk-icon {
+	color: $lavanda; 
+}
+
+.disk-text {
+  padding-top: 0;
+  padding-bottom: 2rem;
+  padding-right: 0;
+  padding-left: 0; 
+  font-size: 1.25rem; 
+	font-weight : bold;
+  color: $lavanda;
+}

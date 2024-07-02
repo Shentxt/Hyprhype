@@ -31,7 +31,7 @@
 (defwidget logo []
     (button 
     :class "logo" 
-    :onclick "rofi -show window -theme ~/.config/rofi/themes/windows.rasi &"
+    :onclick "rofi -show window -theme ~/.config/rofi/themes/windows.rasi &" 
     (label :text distro)
   )
 )
@@ -73,9 +73,44 @@
 
 ;;-------------------[Picker]------------------------------
 
+;(defwidget picker []
+;   (button :onclick "sleep 0.1 && ~/.config/hypr/scripts/colorpicker.sh &" :class "picker" "󰃉")
+;)
+
+;; control center ;;
 (defwidget picker []
-    (button :onclick "sleep 0.1 && ~/.config/hypr/scripts/colorpicker.sh &" :class "picker" "󰃉")
-)
+	(eventbox	
+        :onhover "${EWW_CMD} update notify=true"	
+				:onhoverlost "${EWW_CMD} update notify=false"
+	(box		
+        :orientation "h"					
+				:space-evenly "false" 	 
+				:vexpand "false" 	
+				
+	(revealer	
+        :transition "slideleft"				
+				:reveal notify			 
+				:duration {ANIM_DURATION}
+	(box	:orientation "h"					
+				:space-evenly "false"
+	(eventbox 	
+	(button		
+				:onclick "~/.config/hypr/scripts/notes.sh &"
+        :class "picker" "󱞁"))
+	
+	(eventbox 
+	(button		
+				:onclick "kitty --title 'Float' -e scripts/send.sh &"
+        :class "picker" ""))
+				
+	(eventbox 	
+	(button		
+				:onclick "kitty --title 'Float' -e scripts/send.sh &"
+        :class "picker" "󰐳"))))
+
+	(button										
+        :onclick "sleep 0.1 && ~/.config/hypr/scripts/colorpicker.sh &"
+        :class "picker" "󰃉" ))))
 
 ;;-------------------[Space]------------------------------
 
@@ -163,6 +198,6 @@
 				:text "${NOTIFI}")))
 	
 	(eventbox 
-	(button		  
+	(button		 
         :onclick "scripts/toggle_notifications.sh --toggle &"
-				:class "icon" "" )) )))
+        :class "icon" "")) )))

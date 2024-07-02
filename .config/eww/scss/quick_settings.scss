@@ -7,6 +7,10 @@
     border-radius: 1.5rem;
     padding: 0.75rem;
     font-size: 1.05rem;
+    margin-left: 0.25rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    margin-right: 0.25rem;
 }
 
 .quick_settings_button:hover {
@@ -45,26 +49,4 @@
 
 .quick-settings-state-enabled {
     color: $bg;
-}
-
-/*-------------------[Margin]------------------------------*/
-
-.left-top-plite {
-    margin-right: 0.25rem;
-    margin-bottom: 0.25rem;
-}
-
-.left-bottom-plite {
-    margin-right: 0.25rem;
-    margin-top: 0.25rem;
-}
-
-.right-top-plite {
-    margin-left: 0.25rem;
-    margin-bottom: 0.25rem;
-}
-
-.right-bottom-plite {
-    margin-left: 0.25rem;
-    margin-top: 0.25rem;
 }

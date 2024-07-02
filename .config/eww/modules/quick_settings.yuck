@@ -69,11 +69,9 @@
     )
 )
 
-
-
 (defwidget bluetooth []
-  (quick_settings_button    :condition {status == "on"} 
-                            :action "scripts/bluetooth.sh --toggle"
+  (quick_settings_button    :condition {status == "Disconnected"} 
+                            :action "scripts/bluetooth.sh --toggle &"
                             :icon "${icon}"
                             :label "${status}" 
                             :class "left-bottom-plite"
@@ -84,7 +82,7 @@
   (quick_settings_button  
     :condition {do-not-disturb == false} 
     :action "pamixer --togle-mute"
-    :icon ""
+    :icon  ""
     :label "Microphone"
     :class "right-bottom-plite"
   )

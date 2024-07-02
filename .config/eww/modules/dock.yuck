@@ -25,7 +25,8 @@
 (defwidget apps []
   (button 
          :onclick "rofi -show drun -theme ~/.config/rofi/themes/default.rasi &"
-         :class "icon" "󰀻" 
+         :onrightclick "~/.config/hypr/scripts/hyproot.sh &"
+         :class "app"    
   )
 )
 

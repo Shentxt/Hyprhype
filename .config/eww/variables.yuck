@@ -10,6 +10,7 @@
 (defvar tra false)
 (defvar mu false)
 (defvar no false)
+(defvar notify false)
 (defvar clipboard "[]")
 (defvar ANIM_DURATION "500ms")
 
@@ -20,6 +21,12 @@
 
 (defpoll quote_text   :interval "10m" "scripts/quotes.sh quote")
 (defpoll quote_author :interval "10m" "scripts/quotes.sh author")
+
+(defpoll memory :interval "5s" "scripts/info.sh mem")
+
+(defpoll disk :interval "1m" "scripts/info.sh disk")
+
+(defpoll cpu :interval "1m" "scripts/info.sh cpu")
 
 (defpoll TRASH :interval "1s" "scripts/apps.sh --ntrash")
 
@@ -54,7 +61,7 @@
 (defpoll musicartlink :interval "1s"
   `(url=$(playerctl metadata --format "{{ mpris:artUrl }}" | sed 's/b273/1e02/'); 
     if [ -z "$url" ]; then 
-        img="/home/shen/.config/eww/images/music.jpg"; 
+        img="/home/shen/.config/eww/images/Music.jpeg"; 
     else 
         img="$url"; 
     fi
@@ -74,10 +81,10 @@
 (defpoll playingorpaused :interval "0" `playerctl status || echo "NoTrack"`)
 
 (defpoll music :interval "1s"
-  "playerctl metadata --format '{{ title }} - {{ artist }}' | fold -w 100")
+  "playerctl metadata --format '{{ title }} - {{ artist }}' | fold -w 150")
 
 (defpoll musictitle :interval "1s"
-  `playerctl metadata --format '{{ title }}' | cut -c1-30 | fold -w 18`)
+  `playerctl metadata --format '{{ title }}' | cut -c1-30 | fold -w 20`)
 
 (defpoll musicartist :interval "1s"
   `playerctl metadata --format '{{ artist }}' | cut -c1-30 | fold -w 25`)

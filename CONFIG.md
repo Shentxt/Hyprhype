@@ -55,6 +55,13 @@
 - hypr
 - eww
 
+** Plugins **
+
+> :warning: **They are plugins that extend the wm. Dependency: hyprwayland-scanner,.cmake ,meson and cpio**: 
+
+- hyprpm add https://github.com/hyprwm/hyprland-plugins
+- hyprpm add https://github.com/outfoxxed/hy3
+
 ** Configurations **
 
 - hyprlock
@@ -62,7 +69,6 @@
 - rofi 
 - polkit-gnome
 - gnome-configuration
-- amdctl
 
 ** Scripts **
 
@@ -76,6 +82,9 @@
 - grimblast
 - viewnior
 - wal 
+- qrcp
+- yt-dlp
+- swayidle
 
 ** Terminal **
 

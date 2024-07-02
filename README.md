@@ -1,9 +1,11 @@
 ### 󰣇 shen ~ Hyprhype Dotfiles ⭐
 
-![Logotype](/assets/logotype.jpg "a logo")
+![Logotype](/assets/logo.jpeg "a logo")
+
 ** 🌿Sections**
 
 - 🌸 [Keys-Maps](https://github.com/Shentxt/Hyprhype/tree/master#Informations)
+- 🌸 [Desk](https://github.com/Shentxt/Hyprhype/tree/master#Desk)
 - 🌸 [Config](https://github.com/Shentxt/Hyprhype/tree/master#Configurations)
 - 🌸 [Contact and Base](https://github.com/Shentxt/Hyprhype/tree/master#Base)
 
@@ -36,9 +38,22 @@
 |   Grub       |          [Minegrub](https://github.com/Lxtharia/minegrub-theme)                |
 | statepage    |          [Tartarus](https://alljavi.github.io/tartarus-startpage/)             |
 
+## 🌿Desk
+
+> :warning: **I cannot guarantee the replication of my system, so if you have any questions, ask.**: 
+
+<details>
+<summary><b><code>Desktop</code></b></summary>
+
+|Popup|Notify|Widgets|Powermenu||Lockscreen|
+|--|--|--|--|--|
+|![demo](/assets/Screen/popup.png "demo")|![demo](/assets/Screen/notifi.png "demo")|![demo](/assets/Screen/widgets.png "demo")|![demo](/assets/Screen/power.png "demo")|![demo](/assets/Screen/lock.png "demo")|
+
+</details>
+
 ## 📦Configurations
 
-> :Info: **For organizational reasons, I have decided to separate the readme into two.**: 
+> :warning: **For organizational reasons, I have decided to separate the readme into two.**: 
 
 - [Guide](CONFIG.md)
 

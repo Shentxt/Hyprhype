@@ -44,6 +44,13 @@
     padding: 0.5rem 1rem;
     border-radius: 1rem;
     transition: 0.3s;
+    font-size: 1.65rem;
+}
+
+.notifications-bell-button {
+    color: $white;
+    transition: 0.3s;
+    font-size: 6.65rem;
 }
 
 .notifications-clear-button:hover {

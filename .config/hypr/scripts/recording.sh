@@ -56,27 +56,26 @@ if [[ ! -d "$dir" ]]; then
 	mkdir -p "$dir"
 fi
 
-# Start Recording
 start_recording() {
-  wf-recorder -f "${dir}/${file}"
+  wf-recorder -f "${dir}/${file}" --codec libx264 --pixel-format yuv420p --force-yuv --bitrate 1000K
   echo $! > /tmp/recording.pid
-	notify-send "Akechi" "Recording <span color='yellow'>Started</span>." -i  ~/.config/hypr/assets/icons/persona/akechi.png
-	paplay ~/.config/hypr/assets/effects/system.ogg &>/dev/null &
+  notify-send "Akechi" "Recording <span color='yellow'>Started</span>." -i ~/.config/hypr/assets/icons/persona/akechi.png
+  paplay ~/.config/hypr/assets/effects/system.ogg &>/dev/null &
 }
 
 # Start Recording with Sound
 start_recording_sound() {
-	wf-recorder -a -f "${dir}/${file}"
-	echo $! > /tmp/recording.pid
-	notify-send "Akechi" "Recording <span color='yellow'>(with sound)</span> started." -i  ~/.config/hypr/assets/icons/persona/akechi.png
+  wf-recorder -a -f "${dir}/${file}" --codec libx264 --pixel-format yuv420p --force-yuv --bitrate 1000K
+  echo $! > /tmp/recording.pid
+  notify-send "Akechi" "Recording <span color='yellow'>(with sound)</span> started." -i ~/.config/hypr/assets/icons/persona/akechi.png
   paplay ~/.config/hypr/assets/effects/system.ogg &>/dev/null &
 }
 
 # Stop Recording
 stop_recording() {
-	kill $(cat /tmp/recording.pid)
-	rm /tmp/recording.pid
-	notify-send "Akechi" "Recording <span color='yellow'>Stopped</span>."  -i  ~/.config/hypr/assets/icons/persona/akechi.png
+  kill $(cat /tmp/recording.pid)
+  rm /tmp/recording.pid
+  notify-send "Akechi" "Recording <span color='yellow'>Stopped</span>." -i ~/.config/hypr/assets/icons/persona/akechi.png
   paplay ~/.config/hypr/assets/effects/system.ogg &>/dev/null &
 }
 

@@ -1,7 +1,7 @@
 (defwidget notification [notify]
     (box :orientation "v" :space-evenly false :hexpand true
         (box :orientation "h" :space-evenly false :hexpand true :class "notification-info"
-            (image :valign "start" :class "notification-image" :visible {notify.image != "null" ? true :false} :path {notify.image} :image-width 48 :image-height 48)
+            (image :valign "start" :class "notification-image" :visible {notify.image != "null" ? true :false} :path {notify.image} :image-width 84 :image-height 64)
             (box :orientation "v" :space-evenly false :hexpand true
                 (box :orientation "h" :space-evenly false
                     (label :halign "start" :class "notification-app" :visible {notify.app != "null" ? true :false} :text {notify.app})
@@ -24,7 +24,7 @@
         (box :orientation "v" :space-evenly false :class "notifications-center"
             (box :orientation "h" :space-evenly true
                 (label :class "notifications-header-text" :halign "start" :text "Notifications")
-                (button :halign "end" :class "notifications-clear-button" :onclick "scripts/notifications.sh clear" "Clear all")
+                (button :halign "end" :class "notifications-clear-button" :onclick "scripts/notifications.sh clear" "󰃢")
             )
             (scroll :vscroll true :class "notifications-scroll"
                 (box :orientation "v" :space-evenly false
@@ -33,7 +33,7 @@
                             (notification :notify {notify})
                         )   
                     )
-                    (label :vexpand true :valign "center" :text "No notifications" :visible {notifications.notifications != "[]" ? false : true})
+                    (label :vexpand true :class "notifications-bell-button" :valign "center" :text "" :visible {notifications.notifications != "[]" ? false : true})
                 )
             )
         )

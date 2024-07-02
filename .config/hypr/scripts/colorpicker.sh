@@ -40,7 +40,7 @@ main() {
 	# generate preview
 	convert -size 48x48 xc:"$color" ${image}
 	# notify about it
-	dunstify -u low -h string:x-dunst-stack-tag:obcolorpicker -i ${image} "Ann" "That $color is so elegant"
+  notify-send "Ann" "That $color is so elegant" -i "$image"
 }
 
 # run the script

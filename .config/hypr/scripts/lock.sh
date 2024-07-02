@@ -18,22 +18,24 @@
 #
 # required to function
 # --------------------
-# rofi: launcher
-# kitty: terminal
+# lock: hyprlock
+# admi: swayidle
 # notify-send: really?
 #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+#!/bin/bash
+
 lock_screen() {
-    notify-send 'Mitsuru' 'The screen will <span color=yellow>lock in 10 seconds</span>' -i ~/.config/hypr/assets/icons/persona/mitsuru.png
-    sleep 30
+    notify-send 'Mitsuru' 'The screen will lock <span color="yellow">10 seconds</span>' -i ~/.config/hypr/assets/icons/persona/mitsuru.png
+    sleep 10
     hyprlock -c ~/.config/hypr/rules/hyprlock.conf
 }
 
 unlock_screen() {
-    notify-send 'Mitsuru' 'The screen <span color=yellow>has been unlocked</span>' -i ~/.config/hypr/assets/icons/persona/mitsuru.png
+    notify-send 'Mitsuru' 'The Screen <span color="yellow">Will Unlock</span>' -i ~/.config/hypr/assets/icons/persona/mitsuru.png
 }
 
-wayland-pipewire-idle-inhibit -w -d 30
-    "$(lock_screen)" \
-    "$(unlock_screen)"
+swayidle -w \
+    timeout 600 'lock_screen' \
+    resume 'unlock_screen'

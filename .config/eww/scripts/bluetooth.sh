@@ -2,14 +2,14 @@
 
 toggle(){
   STATUS="$(bluetoothctl show | grep Powered | awk '{print $2}')"
-  if [ $STATUS == "yes" ]; then
-    bluetoothctl power off
-    echo '{"status": "off"}'
-    notify-send 'Mitsuru' 'The <span color=yellow>Bluetooth is disconnected</span>' -i ~/.config/hypr/assets/icons/persona/mitsuru.png
+  if [ "$STATUS" == "yes" ]; then
+  bluetoothctl power off
+  echo '{"status": "off"}'
+  notify-send "Futaba" " The <span color='yellow'>Bluetooth is Disconnected</span>" -i ~/.config/hypr/assets/icons/persona/futaba.png
   else
-    bluetoothctl power on
-    echo '{"status": "on"}'
-    notify-send 'Mitsuru' 'The <span color=yellow>Bluetooth is connected</span>' -i ~/.config/hypr/assets/icons/persona/mitsuru.png 
+  bluetoothctl power on
+  echo '{"status": "on"}'
+  notify-send "Futaba" " The <span color='yellow'>Bluetooth is Connected</span>" -i ~/.config/hypr/assets/icons/persona/futaba.png
   fi
 }
 
@@ -30,20 +30,23 @@ icon() {
 status() {
     # not connected
     if [ $(bluetoothctl show | grep "Powered: yes" | wc -c) -eq 0 ]; then
-        echo "Desconectado"
+        echo "Disconnected"
     else
         # on
         if [ $(echo info | bluetoothctl | grep 'Device' | wc -c) -eq 0 ]; then
-            echo "Desconectado"
+            echo "Disconnected"
         else
             # get device alias
             DEVICE=$(echo info | bluetoothctl | grep 'Alias:' | awk -F:  '{ print $2 }')
             # Get the device path dynamically
-            # DEVICE_PATH=$(upower -e | grep 'headset')
             DEVICE_PATH=$(upower -e | grep -E 'headset|headphones')
             # Get the battery level
             BATTERY=$(upower -i $DEVICE_PATH | grep percentage | cut -b 26-28)
-            echo "$DEVICE - $BATTERY"
+            if [ -z "$DEVICE" ] || [ -z "$BATTERY" ]; then
+                echo "Connected"
+            else
+                echo "$DEVICE - $BATTERY"
+            fi
         fi
     fi
 }
