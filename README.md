@@ -1,4 +1,4 @@
-### 󰣇 shen ~ Hyprhype Dotfiles ⭐
+### 🌸 shen ~ Hyprhype Dotfiles 🌸 
 
 ![Logotype](/assets/logo.jpeg "a logo")
 
@@ -45,10 +45,17 @@
 <details>
 <summary><b><code>Desktop</code></b></summary>
 
-|Popup|Notify|Widgets|Powermenu||Lockscreen|
-|--|--|--|--|--|
-|![demo](/assets/Screen/popup.png "demo")|![demo](/assets/Screen/notifi.png "demo")|![demo](/assets/Screen/widgets.png "demo")|![demo](/assets/Screen/power.png "demo")|![demo](/assets/Screen/lock.png "demo")|
+|Desk|Update|Widgets|Popup|
+|--|--|--|--|
+|![demo](/assets/Screen/desk.png "demo")|![demo](/assets/Screen/update.png "demo")|![demo](/assets/Screen/widgets.png "demo")|![demo](/assets/Screen/popup.png "demo")|
+</details>
 
+<details>
+<summary><b><code>Firefox</code></b></summary>
+
+|Lock|Power|
+|--|--|
+|![demo](/assets/Screen/lock.png "demo")|![demo](/assets/Screen/power.png "demo")|
 </details>
 
 ## 📦Configurations
