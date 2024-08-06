@@ -13,7 +13,7 @@ export const substitutes = {
 }
 
 export default {
-    missing: "image-missing-symbolic",
+    missing: "avatar-default",
     nix: {
         nix: "nix-snowflake-symbolic",
     },
@@ -42,7 +42,6 @@ export default {
         toolbars: "toolbars-symbolic",
         warning: "dialog-warning-symbolic",
         avatar: "avatar-default-symbolic",
-        game: "caffeine-cup-full-symbolic",
         arrow: {
             right: "pan-end-symbolic",
             left: "pan-start-symbolic",
@@ -96,8 +95,8 @@ export default {
         disabled: "bluetooth-disabled-symbolic",
     },
     screenshot: {
-        shot: "gser-icon-playing-symbolic",
-        region: "bluetooth-disabled-symbolic",
+        shot: "image-straighten-symbolic",
+        region: "image-crop-symbolic",
     },
     brightness: {
         indicator: "display-brightness-symbolic",
@@ -147,5 +146,9 @@ export default {
     color: {
         dark: "dark-mode-symbolic",
         light: "light-mode-symbolic",
+    },
+    arch: {
+        normal: "arch-lit-symbolic",
+        update: "arch-unknown-symbolic",
     },
 }

@@ -7,7 +7,7 @@ const screenshotsPath = `${Utils.HOME}/Pictures/Screenshots`
 
 export const ScreenshotToggle = () => ArrowToggleButton({
     name: "screenshot",
-    icon: icons.ui.muted,
+    icon: icons.screenshot.shot,
     label: "Screenshot",
     connection: [], 
     deactivate: () => {},
@@ -16,7 +16,7 @@ export const ScreenshotToggle = () => ArrowToggleButton({
 
 export const ScreenshotMenu = () => Menu({
     name: "screenshot",
-    icon: icons.ui.shot,
+    icon: icons.screenshot.shot,
     title: "Screenshot Options",
     content: [
         Widget.Box({
@@ -48,7 +48,7 @@ export const ScreenshotMenu = () => Menu({
                     },
                     child: Widget.Box({
                         children: [
-                            Widget.Icon(icons.ui.camera),
+                            Widget.Icon(icons.screenshot.shot),
                             Widget.Label("Full Screenshot"),
                         ],
                     }),
@@ -82,7 +82,7 @@ export const ScreenshotMenu = () => Menu({
                     },
                     child: Widget.Box({
                         children: [
-                            Widget.Icon(icons.ui.camera),
+                            Widget.Icon(icons.screenshot.region),
                             Widget.Label("Region Screenshot"),
                         ],
                     }),

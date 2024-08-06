@@ -92,7 +92,7 @@ function Launcher() {
     })
 
     function focus() {
-        entry.text = "Search"
+        entry.text = "Search..."
         entry.set_position(-1)
         entry.select_region(0, -1)
         entry.grab_focus()

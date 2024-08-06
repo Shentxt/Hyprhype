@@ -1,7 +1,7 @@
 import { Menu, ArrowToggleButton } from "../ToggleButton"
-import icons from "lib/icons.js"
+import icons from "lib/icons"
+import apps from "lib/apps"
 import { dependencies, sh } from "lib/utils"
-import options from "options"
 const { wifi } = await Service.import("network")
 
 export const NetworkToggle = () => ArrowToggleButton({
@@ -52,7 +52,7 @@ export const WifiSelection = () => Menu({
         }),
         Widget.Separator(),
         Widget.Button({
-            on_clicked: () => sh(options.quicksettings.networkSettings.value),
+            on_clicked: () => sh(apps.services.networkSettings.value),
             child: Widget.Box({
                 children: [
                     Widget.Icon(icons.ui.settings),

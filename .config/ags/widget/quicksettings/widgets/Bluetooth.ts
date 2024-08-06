@@ -1,8 +1,8 @@
 import { type BluetoothDevice } from "types/service/bluetooth"
 import { Menu, ArrowToggleButton } from "../ToggleButton"
 import icons from "lib/icons"
+import apps from "lib/apps"
 import { dependencies, sh } from "lib/utils"
-import options from "options"
 const bluetooth = await Service.import("bluetooth")
 
 export const BluetoothToggle = () => ArrowToggleButton({
@@ -60,7 +60,7 @@ export const BluetoothDevices = () => Menu({
         }),
         Widget.Separator(),  
         Widget.Button({
-            on_clicked: () => sh(options.quicksettings.bluetoothSettings.value),
+            on_clicked: () => sh(apps.services.bluetoothSettings.value),
             child: Widget.Box({
                 children: [
                     Widget.Icon(icons.ui.settings),

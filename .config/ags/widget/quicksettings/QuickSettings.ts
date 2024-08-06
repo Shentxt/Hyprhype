@@ -9,7 +9,7 @@ import { DND } from "./widgets/DND";
 import { DarkModeToggle } from "./widgets/DarkMode";
 import { MicMute } from "./widgets/MicMute";
 import { Media } from "./widgets/Media";
-import { VideoToggle, VideoMenu } from "./widgets/Recording";
+import { UpdateWidget } from "./widgets/Update";
 import { ScreenshotToggle, ScreenshotMenu } from "./widgets/Screenshot";
 import PopupWindow from "widget/PopupWindow";
 import options from "options";
@@ -45,21 +45,18 @@ const Box1 = () => Widget.Box({
     children: [
         Row(
             [NetworkToggle, BluetoothToggle],
-            [WifiSelection, BluetoothDevices],
+            [WifiSelection, BluetoothDevices]
         ),
         Row(
-            [ProfileToggle, DarkModeToggle],
-            [ProfileSelector],
+           [UpdateWidget, DarkModeToggle],
         ),
         Row([MicMute, DND]),
-        Widget.ToggleButton({
+        Widget.Button({
             class_name: "sliders-box vertical",
             label: "Switch to Box2",
-            onToggled: ({ active }) => {
-                if (active) {
-                    activeBox.value = 'box2'; 
-                }
-            },
+            on_clicked: async () => {
+                activeBox.value = 'box2'; 
+            }
         }),
     ],
 });
@@ -69,18 +66,16 @@ const Box2 = () => Widget.Box({
     class_name: "quicksettings vertical",
     css: quicksettings.width.bind().as(w => `min-width: ${w}px;`),
     children: [ 
-       Row(
-           [ScreenshotToggle, VideoToggle],
-           [ScreenshotMenu, VideoMenu],
-       ),
-        Widget.ToggleButton({
-            class_name: "sliders-box vertical",
+        Row(
+            [ScreenshotToggle, ProfileToggle],
+            [ScreenshotMenu, ProfileSelector],
+        ),
+        Widget.Button({
+             class_name: "sliders-box vertical",
             label: "Switch to Box1",
-            onToggled: ({ active }) => {
-                if (active) {
-                    activeBox.value = 'box1';
-                }
-            },
+            on_clicked: async () => {
+                activeBox.value = 'box1';
+            }
         }),
     ],
 });

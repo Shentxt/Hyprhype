@@ -1,6 +1,7 @@
 import PanelButton from "../PanelButton"
 import icons from "lib/icons"
 import asusctl from "service/asusctl"
+import UpdateChecker from "service/update"
 
 const notifications = await Service.import("notifications")
 const bluetooth = await Service.import("bluetooth")
@@ -34,6 +35,37 @@ const ModeIndicator = () => {
         icon: asusctl.bind("mode").as(m => icons.asusctl.mode[m]),
     })
 }
+
+//const UpdateIndicator = () => {
+//    return Widget.Overlay({
+//        class_name: "update",
+//        visible: true,
+//        child: Widget.Icon({
+//            icon: icons.arch.update,
+//        }),
+//        overlay: Widget.Label({
+//            hpack: "end",
+//            vpack: "start",
+//            label: "20",  
+//            visible: true,
+//        }),
+//    });
+//}
+
+const UpdateIndicator = () => Widget.Overlay({
+    class_name: "bluetooth",
+    passThrough: true,
+    visible: bluetooth.bind("enabled"),
+    child: Widget.Icon({
+        icon: icons.arch.normal,
+    }),
+    overlay: Widget.Label({
+        hpack: "end",
+        vpack: "start",
+        label: UpdateChecker.bind("updateCount").as(count => `${count}`),
+        visible: UpdateChecker.bind("updateCount").as(count => count > 0),
+    }),
+})
 
 const MicrophoneIndicator = () => Widget.Icon()
     .hook(audio, self => self.visible =
@@ -92,6 +124,7 @@ export default () => PanelButton({
         DNDIndicator(),
         BluetoothIndicator(),
         NetworkIndicator(),
+        UpdateIndicator(),
         AudioIndicator(),
         MicrophoneIndicator(),
     ]),

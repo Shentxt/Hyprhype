@@ -62,7 +62,7 @@ const options = mkOptions(OPTIONS, {
     transition: opt(200),
 
     font: {
-        size: opt(12),
+        size: opt(10),
         name: opt("minecraft"),
     },
 
@@ -164,7 +164,7 @@ const options = mkOptions(OPTIONS, {
                 [
                     "firefox",
                     "kitty",
-                    "thunar",
+                    "org.gnome.Nautilus",
                     "steam",
                     "heroic",
                 ],
@@ -194,9 +194,7 @@ const options = mkOptions(OPTIONS, {
             size: opt(70),
         },
         width: opt(380),
-        position: opt<"left" | "center" | "right">("right"),
-        networkSettings: opt("kitty --title 'Float' networkctl"),
-        bluetoothSettings: opt("kitty --title 'Float' bluetoothctl"),
+        position: opt<"left" | "center" | "right">("right"), 
         media: {
             monochromeIcon: opt(true),
             coverSize: opt(100),
