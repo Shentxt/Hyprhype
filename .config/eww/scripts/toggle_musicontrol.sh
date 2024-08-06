@@ -1,4 +1,4 @@
-ya veo el problema que se esta verificando de una mala manera   #!/bin/bash
+#!/bin/bash
 
 state=$(eww get open_musiccenter)
 

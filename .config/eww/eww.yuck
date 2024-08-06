@@ -4,10 +4,13 @@
 
 (include "modules/bar.yuck")
 (include "modules/dock.yuck")
+(include "modules/recorder.yuck")
+(include "modules/screen.yuck")
+(include "modules/launcher.yuck")
+(include "modules/gamebar.yuck")
 (include "modules/notifications_popup.yuck")
 (include "modules/music_popup.yuck")
 (include "modules/control_center.yuck")
-(include "modules/variables.yuck")
 
 (include "modules/volume.yuck")
 (include "modules/notifications.yuck")

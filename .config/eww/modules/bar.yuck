@@ -73,10 +73,6 @@
 
 ;;-------------------[Picker]------------------------------
 
-;(defwidget picker []
-;   (button :onclick "sleep 0.1 && ~/.config/hypr/scripts/colorpicker.sh &" :class "picker" "󰃉")
-;)
-
 ;; control center ;;
 (defwidget picker []
 	(eventbox	
@@ -100,8 +96,8 @@
 	
 	(eventbox 
 	(button		
-				:onclick "kitty --title 'Float' -e scripts/send.sh &"
-        :class "picker" ""))
+				:onclick "scripts/toggle_screen.sh &"
+        :class "picker" ""))
 				
 	(eventbox 	
 	(button		

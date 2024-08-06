@@ -77,3 +77,22 @@
   )
 )
 
+;;-------------------[Separator]------------------------------
+
+(defwidget separator []
+ (box 
+    :class "separator" 
+    :valign "center" 
+    :orientation "v" 
+    :spacing 12
+  (box "")
+  (box "")
+  (box "")
+  (box "")
+  (box "")
+  (box "")
+  (box "")
+  (box "")
+  (box "")
+ ) 
+)

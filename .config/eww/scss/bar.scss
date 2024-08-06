@@ -14,6 +14,21 @@
     border-bottom-right-radius: 2rem;
 }
 
+.bar-mode {
+    background-color: $gm;
+    padding: 1rem;
+    color: $white;
+/*  box-shadow: 0 0 4px 2px $foreground;*/
+    padding: 0.4rem 1rem;
+    margin-top: 0rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    border: 1px solid $magenta;
+    border-bottom-left-radius: 12rem;
+    border-bottom-right-radius: 2rem;
+
+}
+
 /*-------------------[Workspace]------------------------------*/
 
 .workspaces {

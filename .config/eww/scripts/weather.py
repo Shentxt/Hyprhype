@@ -1,11 +1,6 @@
 #!/usr/bin/python
 
-import requests, json, sys, time
-
-API_TOKEN = "69c655f5c49d7a1612da1c5a0617d786"
-UNITS = 'metric'
-LANG = 'en'
-CITY = "Nur-Sultan"
+import subprocess, json, sys, time
 
 def get_icon(code):
     icons = {
@@ -28,22 +23,31 @@ def get_icon(code):
         "50d": "",
         "50n": "" 
     }
-
     try:
         return icons[code]
     except KeyError:
         return None
 
+def get_temperature():
+    try:
+        result = subprocess.run(
+            ["curl", "-s", "wttr.in?format=%t"],
+            capture_output=True,
+            text=True
+        )
+        temperature = result.stdout.strip().replace('+', '')
+        return temperature
+    except Exception as e:
+        return f"Error: {e}"
 
 def main():
-    response = requests.get(f"https://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={API_TOKEN}&lang={LANG}&units={UNITS}").json()
+    # Aquí puedes agregar la lógica para obtener el código del ícono si es necesario
+    icon_code = "01d"  # Ejemplo de código de ícono
     data = {
-        "icon": get_icon(response['weather'][0]['icon']),
-        "temp": str(round(response['main']['temp'])) + "°",
-        "desc": response['weather'][0]['description'].capitalize()
+        "icon": get_icon(icon_code),
+        "temp": get_temperature()
     }
     return data
-
 
 if __name__ == "__main__":
     try:
@@ -52,8 +56,8 @@ if __name__ == "__main__":
                 sys.stdout.write(json.dumps(main()) + "\n")
                 sys.stdout.flush()
                 time.sleep(1800)
-            except requests.exceptions.ConnectionError:
-                print("Connection error! Retrying...")
+            except Exception as e:
+                print(f"Error: {e}")
                 time.sleep(2)
 
     except KeyboardInterrupt:

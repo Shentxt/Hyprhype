@@ -13,6 +13,15 @@
     margin-right: 0.25rem;
 }
 
+.switch-page-button {
+  padding: 0rem;
+  margin-top: 0rem;
+  background-color: transparent;
+  color: $white;
+  transition: 0.3s;
+  font-size: 0.75rem;
+}
+
 .quick_settings_button:hover {
   background-image: $gradient; 
 }

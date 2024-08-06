@@ -1,3 +1,17 @@
+.dock-widget {
+    background-color: $bg;
+    padding: 1rem;
+    color: $white;
+/*  box-shadow: 0 0 4px 2px $fg;*/
+    padding: 0.4rem 1rem;
+    margin-bottom: 0rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    border: 1px solid $magenta;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+
 .icon {
     font-size: 1.5rem;
     color: $white;

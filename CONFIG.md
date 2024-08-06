@@ -85,11 +85,12 @@
 - qrcp
 - yt-dlp
 - swayidle
+- brightnessctl
 
 ** Terminal **
 
 - kitty
-- nvim
+- nvim (https://docs.astronvim.com/)
 - zsh
 - zsh-history-substring-search 
 - zsh-syntax-highlighting 
@@ -100,4 +101,14 @@
 - plymouth
 - sddm
 - youtube-music
-- brave
+
+- firefox 
+
+> :warning: **if you use firefox gx (https://github.com/Godiesc/firefox-gx) need to configure this in about:config**: 
+
+- firefoxgx.tree-tabs
+- firefoxgx.tab-shapes
+- firefoxgx.oneline
+- firefoxgx.main-image
+- firefoxgx.left-sidebar
+

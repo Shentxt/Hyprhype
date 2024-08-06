@@ -1,0 +1,95 @@
+;;-------------------[gamebar]------------------------------
+
+(defwidget gamebar []
+(revealer :transition "slideup" :reveal {open_gamebar == true ? true : false} :duration {ANIM_DURATION}
+    (box :class "bar-mode" :orientation "h" :space-evenly true
+    (box :orientation "h" :space-evenly false :halign "start"
+    (info)
+      )
+
+    (box :orientation "h" :space-evenly false :halign "center"
+    (noti)
+    (mg)
+    )
+
+    (box :orientation "h" :space-evenly false :halign "end"
+    (config)
+    (indicator)
+    )
+   )
+  )
+)
+
+;;-------------------[Music]------------------------------
+
+(defwidget mg []
+(eventbox :visible {playingorpaused != "NoTrack"}  
+  (box :orientation "v" :space-evenly false 
+    (box :class "musicbutton" :orientation "h" 
+      (button :class "musicbutton" :onclick "playerctl previous &" "󰒮")
+      (button :class "musicbutton" :onclick "playerctl play-pause &" {playingorpaused != "Paused" ? "󰏤" : "󰐊" })
+      (button :class "musicbutton" :onclick "playerctl next &" "󰒭")
+    )
+   )
+  )
+ )
+
+;;-------------------[Config]------------------------------
+
+;; control center ;;
+(defwidget config []
+	(eventbox	
+        :onhover "${EWW_CMD} update mode=true"	
+				:onhoverlost "${EWW_CMD} update mode=false"
+	(box		
+        :orientation "h"					
+				:space-evenly "false" 	 
+				:vexpand "false" 	
+				
+	(revealer	
+        :transition "slideleft"				
+				:reveal mode			 
+				:duration {ANIM_DURATION}
+	(box	:orientation "h"					
+				:space-evenly "false"
+	(eventbox 	
+	(button	
+        :tooltip "retroarch"
+				:onclick "retroarch &"
+        :class "picker" ""))
+	
+	(eventbox 
+	(button
+        :tooltip "epic"
+				:onclick "heroic &"
+        :class "picker" ""))
+				
+	(eventbox 	
+	(button
+        :tooltip "steam"
+				:onclick "steam &"
+        :class "picker" ""))))
+
+	(button					
+        :tooltip "config"
+        :onclick "corectrl &"
+        :class "picker" "" ))))
+
+;;-------------------[Info]------------------------------
+
+(defwidget info []
+(box :class "esta-box" :orientation "h" :space-evenly false
+  (box :class "esta_box" :orientation "h" :valign "center" :halign "center" :spacing 15 :space-evenly "false"
+  (circular-progress :class "cpu-icon" :value cpu :thickness 11
+				(label :tooltip "CPU: ${cpu}%" :class "esta-circle" :text "󰍛"))
+        (box :class "esta_box" :orientation "h" :valign "center" :halign "center" :spacing 15 :space-evenly "false"
+			  (circular-progress :class "memory-icon" :value memory :thickness 11
+			  (label :tooltip "Memory: ${memory}%" :class "esta-circle" :text "󰫗"))
+        (box :class "esta_box" :orientation "h" :valign "center" :halign "center" :spacing 15 :space-evenly "false"
+				(circular-progress :class "disk-icon" :value disk :thickness 11
+				(label :tooltip "Disk: ${disk}%" :class "esta-circle" :text "󰇑")) 
+      )
+    )
+   )
+  )
+)

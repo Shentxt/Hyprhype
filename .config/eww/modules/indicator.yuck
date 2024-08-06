@@ -5,7 +5,7 @@
             (network_icon)
             (bluetooth_icon)
             (do-not-disturb_icon)
-            (theme_icon)
+            (mode_icon)
             (volume_icon)
             (battery_icon)
         )
@@ -34,9 +34,9 @@
     )
 )
 
-(defwidget theme_icon []
-    (state_icon :condition true
-                :text {current_theme == "dark" ? "󱎖" : "󰖨"}
+(defwidget mode_icon []
+    (state_icon :condition false 
+                :text "󰺵"
     )
 )
 

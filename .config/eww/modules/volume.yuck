@@ -1,3 +1,5 @@
+;;-------------------[Volume]------------------------------
+
 (defwidget volume_osd []
     (revealer :transition "slideup" :reveal {open_osd} :duration {ANIM_DURATION}
         (box :orientation "h" :class "volume-osd" :space-evenly false
@@ -20,3 +22,28 @@
         (button :class "volume-arrow" :onclick "scripts/toggle_control_center.sh close && pavucontrol &" "󰅂")
     )
 )
+
+;;-------------------[Brighnes]------------------------------
+
+(defwidget brighness_osd []
+    (revealer :transition "slideup" :reveal {open_brighness} :duration {ANIM_DURATION}
+        (box :orientation "h" :class "volume-osd" :space-evenly false
+            (brighness_scale)
+        )
+    )
+)
+
+(defwidget brightness_scale []
+    (overlay :hexpand true
+        (scale :min 0 :max 100 :value {brightness} :onchange "brightnessctl s {}%" :class "volume-scale")
+        (label :class 'volume-icon ${brightness < 33 ? "less" : brightness < 67 ? "medium" : "high"}' :halign "start" :text {brightness < 33 ? "󰃞" : brightness < 67 ? "󰃟" : "󰃠"})
+    )
+)
+
+(defwidget brightness_control_center []
+    (box :orientation "h" :class "volume-control-center" :space-evenly false
+    (brightness_scale)
+    (button :class "volume-mute ${brightness == 'off' ? 'active' : ''}" :onclick "scripts/toggle_brightness.sh" "󰃞")
+    )
+)
+

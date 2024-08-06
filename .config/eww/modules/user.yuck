@@ -4,14 +4,11 @@
             (box :orientation "h" :space-evenly false)
             (button :onclick "XDG_CURRENT_DESKTOP=gnome mugshot &" :class "user-image"  )
             (button :class "open-button" :onclick "~/.config/hypr/scripts/powermenu.sh &" "󰐥")
-            (button :class "open-button" :onclick "XDG_CURRENT_DESKTOP=gnome gnome-control-center &" "")
+            (button :class "open-button" :onclick "XDG_CURRENT_DESKTOP=gnome gnome-control-center &" "")  
         )
-        (box :orientation "h" :space-evenly false :halign "end"
-            (box :orientation "h" :space-evenly false
+      (box :orientation "h" :space-evenly false
                 (label :class "user-clock-time" :text {formattime(EWW_TIME, "%I:%M")})
                 (label :class "user-clock-separator" :text "|")
-                (label :class "user-clock-date" :text {formattime(EWW_TIME, "%a, %b %d")})
-            )
-        )
+                (label :class "user-clock-date" :text {formattime(EWW_TIME, "%a, %b %d")}))
     )
 )

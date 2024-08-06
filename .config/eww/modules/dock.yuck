@@ -1,16 +1,14 @@
 ;;-------------------[Widgets]------------------------------
 
 (defwidget dock []
-    (box :class "bar-widget" :orientation "h" :space-evenly true
-
+(revealer :transition "slideup" :reveal {open_dock == true ? true : false} :duration {ANIM_DURATION} 
+(box :class "dock-widget" :orientation "h" :space-evenly true
         (box :orientation "h" :space-evenly false :halign "start"
         (apps)  
     )
 
-        (box :orientation "h" :space-evenly false :halign "center"
-        (browser)
-        (terminal)
-        (file)
+        (box :orientation "h" :space-evenly false :halign "center" 
+        (taskbar)
     )
 
         (box :orientation "h" :space-evenly false :halign "end"
@@ -18,39 +16,16 @@
       (pacman)
     )
   )
+ )
 )
 
 ;;-------------------[Top]------------------------------
 
 (defwidget apps []
   (button 
-         :onclick "rofi -show drun -theme ~/.config/rofi/themes/default.rasi &"
-         :onrightclick "~/.config/hypr/scripts/hyproot.sh &"
+         :onclick "~/.config/eww/scripts/toggle_launcher.sh &"
          :class "app"    
   )
-)
-
-;;-------------------[Mid]------------------------------
-
-(defwidget browser []
-    (button 
-         :onclick "~/.config/eww/scripts/apps.sh --browser"  
-         :class "icon" ""       
-    )
-)
-
-(defwidget terminal []
-    (button 
-         :onclick "~/.config/eww/scripts/apps.sh --terminal"  
-         :class "icon" ""       
-    )
-)
-
-(defwidget file []
-    (button 
-         :onclick "~/.config/eww/scripts/apps.sh --file-manager"  
-         :class "icon" ""       
-    )
 )
 
 ;;-------------------[Bottom]------------------------------
@@ -78,7 +53,7 @@
 	
 	(eventbox 
 	(button		
-			 	:onclick "~/.config/eww/scripts/apps.sh --trash"
+			 	:onclick "~/.config/eww/scripts/xdg.sh --trash"
 				:class "icon" "" )
     ) 
   )

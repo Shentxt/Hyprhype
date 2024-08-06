@@ -27,7 +27,7 @@ icon() {
         fi
 }
 
-status() {
+Status() {
     # not connected
     if [ $(bluetoothctl show | grep "Powered: yes" | wc -c) -eq 0 ]; then
         echo "Disconnected"
@@ -53,7 +53,7 @@ status() {
 
 
 if [[ $1 == "--status" ]]; then
-        status
+        Status
 elif [[ $1 == "--icon" ]]; then
         icon
 elif [[ $1 == "--toggle" ]]; then

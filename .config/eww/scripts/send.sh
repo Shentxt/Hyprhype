@@ -30,7 +30,7 @@ while true; do
     case $option in
         1) transfer ;;
         2) receive ;;
-        3) pkill kitty --title "Float";; 
+        3) pkill -f "kitty --title Float";; 
         *) echo "Invalid option" ;;
     esac
 done

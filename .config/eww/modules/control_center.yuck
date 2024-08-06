@@ -4,6 +4,7 @@
             (box :orientation "v" :space-evenly false :class "control-center"
                 (user)
                 (quick_settings)
+                (brightness_control_center)
                 (volume_control_center)
             )
         )

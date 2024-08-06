@@ -41,7 +41,7 @@ while true; do
             fi
             ;;
         2)
-            pkill kitty --title "Float"
+            pkill -f "kitty --title Float"
             ;;
         *)
             echo "invalid option"

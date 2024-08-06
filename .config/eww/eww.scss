@@ -28,6 +28,7 @@
 
 $bg: rgba(46, 52, 64, 0.6);
 $fg: rgba(46, 52, 64, 0.1);
+$gm: #2E3440;
 
 $gradient: linear-gradient(45deg, #5e81ac,#a69ae6, #BC9AD4);
 
@@ -41,7 +42,10 @@ $lavanda: #d1cfe5;
 /*@import "scripts/colors/colors.scss";*/
 
 @import "scss/bar.scss";
+@import "scss/gamebar.scss";
 @import "scss/dock.scss";
+@import "scss/recorder.scss";
+@import "scss/launcher.scss";
 
 @import "scss/control_center.scss";
 @import "scss/notifications_popup.scss";

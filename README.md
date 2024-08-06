@@ -33,7 +33,7 @@
 | :----------: | :----------------------------------------------------------------------------: |
 |    WM/comp   |                 [Hyprland](https://wiki.hyprland.org/)                         |
 |   Terminal   |                   [Kitty](https://github.com/kovidgoyal/kitty)                 |
-|   Browser    |                   [Brave](https://github.com/brave/brave-browser)              |
+|   Firefox    |        [Firefox](https://github.com/Godiesc/firefox-gx/tree/main)              |
 |  Widgets/bar |            [ElKowars wacky widgets](https://github.com/elkowar/eww)            |
 |    Shell     |                [Starship](https://github.com/starship/starship)                |
 |   Launcher   |                   [Rofi](https://github.com/davatorium/rofi)                   |
@@ -59,9 +59,9 @@
 <details>
 <summary><b><code>Menu</code></b></summary>
 
-|Lock|Power|Launcher|
-|--|--|--|
-|![demo](/assets/Screen/lock.png "demo")|![demo](/assets/Screen/power.png "demo")|![demo](/assets/Screen/rofi.png "demo")|
+|Lock|Power|Login|Launcher|
+|--|--|--|--|
+|![demo](/assets/Screen/lock.png "demo")|![demo](/assets/Screen/power.png "demo")|![demo](/assets/Screen/login.png "demo")|![demo](/assets/Screen/rofi.png "demo")|
 </details>
 
 ## 📦Configurations

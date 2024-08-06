@@ -1,0 +1,353 @@
+/* Source file made available under Mozilla Public License v. 2.0 See the main repository for updates as well as full license text. 
+   https://github.com/Godiesc/firefox-gx */
+
+/* "tab_line": "#126e82" */
+
+#tabbrowser-tabs {
+    --lwt-tab-line-color: transparent !important;
+}
+
+/* Color bolita de -cargando página- */
+
+#tabbrowser-tabs {
+    --tab-loading-fill: var(--identity-tab-color, var(--general-color)) !important;
+}
+
+/* Espacio top en ventana no maximizada */
+
+:root[tabsintitlebar][sizemode="normal"] {
+    --windowed-top-padding: 8px;
+}
+
+:root[tabsintitlebar][sizemode="normal"] #TabsToolbar {
+    padding-block-start: var(--windowed-top-padding, 0px) !important;
+}
+
+/* ------------------------------------- Pestaña activa ------------------------------------- */
+
+.tabbrowser-tab[selected] { z-index: 1 !important; }
+
+.tab-background{
+    border-top: 1px solid transparent !important;
+    border-inline: 1px solid transparent !important;
+    clip-path: polygon(5px 0%, 200% 0%, 0% 200%, 0% 5px) !important;
+}
+
+.tab-background[selected]{
+    border-color: var(--general-color) !important;
+    background-color: var(--toolbar-bgcolor, transparent) !important;
+    box-shadow: none !important;
+    background-clip: padding-box;
+    border-radius: 0px 0px 0px 0px !important;
+    clip-path: polygon(7px 0%, 200% 0%, 0% 200%, 0% 7px) !important;
+}
+
+.tabbrowser-tab[selected] > .tab-stack::before{
+    content: "" !important; display: -moz-box !important; position: absolute !important;
+    height: 8px !important;
+    width: 8px !important;
+    background: var(--general-color) !important;
+    border-radius: 0px 0px 0px 0px !important;
+    clip-path: polygon(60% 0, 95% 0, 0 95%, 0 60%);
+}
+
+/* Sombra label de pestañas - quita sombra bajo todas las pestañas */
+
+.tab-label { text-shadow: none !important; }
+
+#TabsToolbar #firefox-view-button[open] > .toolbarbutton-icon, #tabbrowser-tabs:not([noshadowfortests]) .tab-background:is([selected], [multiselected]) {
+    box-shadow: none !important; }
+
+#TabsToolbar{ --tabs-navbar-shadow-size: 0px !important; }
+
+/* Alinea los botones de la tabs-bar */
+
+#TabsToolbar .toolbarbutton-1 { margin: 0 0 1px !important; }
+
+/* Indispensable para mantener alineado el contenido de las pestañas */
+
+.tab-content { margin-bottom: 1px !important; }
+
+.tab-content:not([pinned]) { margin-inline-start: -1px !important; }
+
+/* ------------------------------------- Gradiente bajo pestañas ------------------------------------- */
+
+#nav-bar:not([tabs-hidden="true"]) { box-shadow: none !important; }
+
+.tabbrowser-tab:not([selected]){  box-shadow: inset 0 -1px var(--general-color) !important; }
+
+#tabbrowser-arrowscrollbox:not([overflowing]) #tabbrowser-arrowscrollbox-periphery::after {
+    content: "" !important; position: absolute !important; align-self: end !important;
+    height: 1px !important;
+    width: 180px !important;
+    margin-left: -2px !important;
+    border-bottom: 1px solid transparent !important;
+    border-image: linear-gradient(to right, var(--general-color) 0%, transparent) 1 !important;
+}
+
+/* Completar linea gradiente: dos pixeles faltantes */
+
+#tabbrowser-arrowscrollbox:not([overflowing]) .tabbrowser-tab[selected] ~ .tabbrowser-tab:not([hidden])::after{
+    content: ""; position: absolute !important; align-self: end !important;
+    background-color: var(--general-color)   !important;
+    height: 1px !important;
+    width: 4px !important;
+    margin-left: -2px !important;
+}
+
+/* Linea gradiente al mover pestaña */
+
+#tabbrowser-tabs:is([movingtab])::before{
+    content: "" !important; position: fixed !important; align-self: end !important;
+    left: 0 !important;
+    width: 100vw !important;
+    border-bottom: 1px solid var(--general-color) !important;
+    border-image: linear-gradient(to right, var(--general-color) 82%, var(--general-color) 82%, transparent 93%) 1 !important;
+}
+
+    /* Disimular la linea bajo la pestaña activa al moverla */
+    :root:is([lwtheme-image],[style*="--lwt-additional-images"]) #tabbrowser-tabs:is([movingtab]) .tab-background[selected]{
+        box-shadow: inset 0 -1px var(--toolbar-bgcolor) !important;
+    }
+
+/* Completar Linea gradiente al aparecer el scroll de pestañas */
+
+#scrollbutton-up::before{
+    content: ""; position: absolute; align-self: end;
+    height: 4px;
+    width: 32px;
+    margin-left: 6px;
+    border-bottom: 1px solid var(--general-color);
+    }
+
+#scrollbutton-down::after{
+    content: "" !important; position: absolute; align-self: end;
+    width: 180px;
+    margin-left: 142px;
+    border-bottom: 1px solid var(--general-color);
+    border-image: linear-gradient(to right, var(--general-color) 0%, transparent) 1;
+}
+
+/* Linea gradiente más grande al seleccionar las primeras pestañas */
+
+#tabbrowser-arrowscrollbox:not([overflowing]) .tabbrowser-tab:is(
+:nth-child(1 of :not([hidden],[pinned]))) + #tabbrowser-arrowscrollbox-periphery::after,
+#tabbrowser-arrowscrollbox:not([overflowing]) .tabbrowser-tab[hidden="true"][label="Firefox View"]:last-of-type + #tabbrowser-arrowscrollbox-periphery::after{
+    width: calc(180px + 25vw) !important;
+}
+
+#tabbrowser-arrowscrollbox:not([overflowing]) .tabbrowser-tab:is(
+:nth-child(2 of :not([hidden],[pinned]))) + #tabbrowser-arrowscrollbox-periphery::after,
+#tabbrowser-arrowscrollbox:not([overflowing]) .tabbrowser-tab[hidden="true"][label="Firefox View"]:last-of-type + #tabbrowser-arrowscrollbox-periphery::after{
+    width: calc(180px + 20vw) !important;
+}
+
+#tabbrowser-arrowscrollbox:not([overflowing]) .tabbrowser-tab:is(
+:nth-child(3 of :not([hidden],[pinned]))) + #tabbrowser-arrowscrollbox-periphery::after{
+    width: calc(180px + 15vw) !important;
+}
+
+#tabbrowser-arrowscrollbox:not([overflowing]) .tabbrowser-tab:is(
+:nth-child(4 of :not([hidden],[pinned]))) + #tabbrowser-arrowscrollbox-periphery::after{
+    width: calc(180px + 10vw) !important;
+}
+
+/* Color :hover de las pestañas no seleccionadas */
+
+.tabbrowser-tab:hover > .tab-stack > .tab-background:not([selected], [multiselected]) {
+    background-color: color-mix(in srgb, var(--general-color) 25%, transparent) !important;
+}
+
+/* Regla para visualizar mejor el seleccionar varias pestañas */
+
+@media not (-moz-bool-pref:"firefoxgx.tab-shapes") {
+    
+    .tab-background[multiselected]:not([selected]), tab-background:is([multiselected]):not([selected]) .tab-stack {
+        background: var(--button-hover-bgcolor) !important;
+        outline: none !important;
+    }
+
+    .tab-background[multiselected][selected] {
+        background: var(--general-color) !important;
+    }
+}
+
+/* Borde entre pestañas */
+
+.tabbrowser-tab {
+    padding-inline: 0px 2px !important;
+}
+
+#tabbrowser-arrowscrollbox[overflowing] > .tabbrowser-tab{
+    padding-inline: 0px !important;
+}
+
+/* Botón "Open Newtab" */
+
+#tabs-newtab-button, #TabsToolbar #new-tab-button {
+    fill: var(--general-color) !important;
+}
+
+#TabsToolbar #tabs-newtab-button image:not(.menu-iconic-icon), #TabsToolbar #new-tab-button image:not(.menu-iconic-icon) {
+    padding: 3px !important;
+    max-height: 22px !important;
+    min-height: 22px !important;
+    max-width: 22px !important;
+    min-width: 22px !important;
+    border-radius: 2px !important;
+}
+
+#tabs-newtab-button:hover .toolbarbutton-icon, #TabsToolbar #new-tab-button:hover .toolbarbutton-icon {
+    background: color-mix(in srgb, var(--general-color) 25%, transparent) !important;
+}
+
+/* Favicon de pagina newtab */
+
+.tab-icon-image[src="chrome://branding/content/icon32.png"] {
+    content: url("../images/foxlogofavicon.svg");
+    fill: var(--identity-icon-color, var(--general-color)) !important;
+}
+
+/* Medidas menores para scroll de pestañas */
+
+#tabbrowser-tabs { --uc-tabs-scrollbutton-border: 0px !important; }
+
+#scrollbutton-up, #scrollbutton-down {
+    border-block-width: var(--uc-tabs-scrollbutton-border, 0px) !important;
+}
+
+/* botón >> ALL tabs */
+
+.all-tabs-item {
+    margin-inline: 0px !important;
+}
+
+.all-tabs-item:hover {
+    background-color: transparent !important;
+}
+
+/* Quitar label "Navegación Privada" */
+
+#private-browsing-indicator-with-label > label {
+    display: none !important;
+}
+
+/* Tamaño horizontal pestañas */
+
+.tabbrowser-tab[fadein]:not([style^="max-width"]) {
+    max-width: 200px !important;
+}
+
+/* Reduce spacing between pinned and regular tabs */
+
+#tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab:nth-child(1 of :not([pinned], [hidden])) {
+    margin-inline-start: 0px !important;
+}
+
+/* Eliminar espacio de arrastre - izquierda */
+
+.titlebar-spacer[type="pre-tabs"] {
+    display: none !important
+}
+
+/* Color y posición "dot" de pestaña que necesita atención */
+
+.tabbrowser-tab > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]) {
+    background-image: radial-gradient(circle, var(--general-color), var(--general-color) 2px, transparent 2px) !important;
+    background-position: center top calc(2px + var(--tabs-navbar-shadow-size)) !important;
+}
+
+/* Code to tabs-bar reach lower height that 30px */
+
+#titlebar{ appearance: none !important; }
+
+.titlebar-buttonbox-container, .tab-close-button, .tab-label-container{
+  max-height: var(--tab-height-personal) !important;
+}
+
+/* My code - Borde redondeado barra de menú */
+
+#main-menubar>menu{
+    background-color: transparent !important;
+}
+
+#main-menubar>menu>.menubar-text{
+    padding: 1px 4px 3px 4px !important;
+    margin-block-start: 0px !important;
+    margin-block-end: 1px !important;
+    margin-inline: 0px 6px !important;
+}
+
+@media (-moz-platform: linux) {
+#main-menubar>menu>.menubar-text{
+    margin-inline: -5px !important;
+    }}
+
+#main-menubar>menu:is(:hover,[open])>.menubar-text {
+    background-color: var(--button-active-bgcolor) !important;
+    color: white !important;
+    border-radius: 2px !important;
+    width: -moz-available !important;
+}
+
+/* Firefox view icon */
+
+toolbar:is(#TabsToolbar) #firefox-view-button {
+    padding-inline: 4px !important;
+}
+
+toolbar:is(#TabsToolbar) #firefox-view-button:hover .toolbarbutton-icon {
+    background-color: color-mix(in srgb, var(--general-color) 25%, transparent) !important;
+    fill: var(--general-color) !important;
+}
+
+:root:not([privatebrowsingmode="temporary"]) :is(toolbarbutton, toolbarpaletteitem) + #tabbrowser-tabs, 
+:root[privatebrowsingmode="temporary"] :is(toolbarbutton:not(#firefox-view-button), toolbarpaletteitem:not(#wrapper-firefox-view-button)) + #tabbrowser-tabs {
+    border-inline-start: 0px solid transparent !important;
+}
+
+toolbar:is(#TabsToolbar) #firefox-view-button .toolbarbutton-icon {
+    border-radius: 4px !important;
+    height: calc(var(--tab-height-personal) - 6px) !important;
+    width: calc(var(--tab-height-personal) - 6px) !important;
+    padding: 4px !important;
+}
+
+toolbar:is(#TabsToolbar) #firefox-view-button[aria-pressed="true"] .toolbarbutton-icon {
+    outline: none !important;
+    background: var(--button-hover-bgcolor) !important;
+    fill: var(--arrowpanel-color, var(--lwt-tab-text)) !important;
+}
+
+toolbar #firefox-view-button[aria-pressed="true"] .toolbarbutton-icon {
+    background: var(--button-hover-bgcolor) !important;
+    fill: var(--arrowpanel-color, var(--lwt-tab-text)) !important;
+}
+
+    /* Firefox-view button + pinned tabs + scroll de pestañas */
+:root:not([privatebrowsingmode], [firefoxviewhidden]) :is(toolbarbutton, toolbarpaletteitem) + #tabbrowser-tabs{
+    padding-inline-start: var(--tab-overflow-pinned-tabs-width, 0px) !important;
+    margin-inline-start: 0px !important;
+}
+
+/* Completar linea bajo botones ubicados antes de la primera pestaña */
+    
+#TabsToolbar-customization-target toolbarbutton:not(#tabs-newtab-button, toolbaritem.toolbaritem-combined-buttons toolbarbutton):is(:nth-child(1)):after,
+#TabsToolbar-customization-target toolbarbutton:not(#tabs-newtab-button):is(:nth-child(1)) + toolbarbutton:not(#tabs-newtab-button):nth-child(2):after{
+    content: ""; position: absolute; align-self: end;
+    width: calc(32px + var(--uc-margin-left-right, 0px));
+    margin-bottom: -1px !important;
+    border-bottom: 1px solid var(--general-color);
+}
+
+/* ------------------------ config to MacOS ---------------------------
+   ------------- partial compatibility to window Controls ----------*/
+
+@media (-moz-platform: macos) {
+    #TabsToolbar {
+        padding-block-start: 6px !important;
+    }
+    :root:not([sizemode="fullscreen"]) #tabbrowser-tabs {
+        padding-inline-start: 10px !important;
+    }
+}

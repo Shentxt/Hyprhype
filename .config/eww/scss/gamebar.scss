@@ -1,0 +1,39 @@
+/*-------------------[Bar]------------------------------*/
+
+.bar-mode {
+    background-color: $gm;
+    padding: 1rem;
+    color: $white;
+/*  box-shadow: 0 0 4px 2px $foreground;*/
+    padding: 0.4rem 1rem;
+    margin-top: 0rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    border: 1px solid $magenta;
+    border-bottom-left-radius: 12rem;
+    border-bottom-right-radius: 2rem;
+
+}
+
+/*-------------------[Info]------------------------------*/
+
+.esta-box {
+    min-width: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 0rem;
+    margin-left: 0rem; 
+}
+
+.esta_box {
+  padding-top : 0rem;
+  padding-bottom : 0rem;
+  padding-right : 0.10rem;
+  padding-left : 0.10rem; 
+  font-size: 1rem;
+}
+
+.esta-circle {
+	border-radius: 100%;
+  padding: 0.75rem;
+  border: 1px none $white;
+}

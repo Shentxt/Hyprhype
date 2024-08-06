@@ -1,0 +1,2199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64"
+   height="64"
+   viewBox="0 0 64 64"
+   version="1.1"
+   id="svg69"
+   sodipodi:docname="default-user-desktop.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <metadata
+     id="metadata73">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1025"
+     id="namedview71"
+     showgrid="false"
+     inkscape:zoom="7.0655435"
+     inkscape:cx="62.0136"
+     inkscape:cy="0.5978656"
+     inkscape:window-x="0"
+     inkscape:window-y="26"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg69" />
+  <defs
+     id="defs48">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient2424">
+      <stop
+         style="stop-color:#fdfeff;stop-opacity:1"
+         offset="0"
+         id="stop2420" />
+      <stop
+         style="stop-color:#a3add0;stop-opacity:1"
+         offset="1"
+         id="stop2422" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient978">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop974" />
+      <stop
+         style="stop-color:#d7edfc;stop-opacity:1"
+         offset="1"
+         id="stop976" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient968">
+      <stop
+         style="stop-color:#00affe;stop-opacity:1;"
+         offset="0"
+         id="stop964" />
+      <stop
+         style="stop-color:#2a5bfe;stop-opacity:1"
+         offset="1"
+         id="stop966" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient909">
+      <stop
+         style="stop-color:#41cdfe;stop-opacity:1"
+         offset="0"
+         id="stop905" />
+      <stop
+         style="stop-color:#0086f7;stop-opacity:1"
+         offset="1"
+         id="stop907" />
+    </linearGradient>
+    <filter
+       id="folder-64px-a"
+       width="128.6%"
+       height="133.3%"
+       x="-14.3%"
+       y="-16.7%"
+       filterUnits="objectBoundingBox">
+      <feOffset
+         dy="1"
+         in="SourceAlpha"
+         result="shadowOffsetOuter1"
+         id="feOffset2" />
+      <feGaussianBlur
+         in="shadowOffsetOuter1"
+         result="shadowBlurOuter1"
+         stdDeviation="1.5"
+         id="feGaussianBlur4" />
+      <feComposite
+         in="shadowBlurOuter1"
+         in2="SourceAlpha"
+         operator="out"
+         result="shadowBlurOuter1"
+         id="feComposite6" />
+      <feColorMatrix
+         in="shadowBlurOuter1"
+         result="shadowMatrixOuter1"
+         values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0"
+         id="feColorMatrix8" />
+      <feMerge
+         id="feMerge14">
+        <feMergeNode
+           in="shadowMatrixOuter1"
+           id="feMergeNode10" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode12" />
+      </feMerge>
+    </filter>
+    <linearGradient
+       id="folder-64px-c"
+       x1="206.45581"
+       x2="206.45581"
+       y1="0"
+       y2="156.77427"
+       gradientTransform="scale(1.0752907,0.92998111)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0%"
+         stop-color="#00B8FF"
+         id="stop17" />
+      <stop
+         offset="100%"
+         stop-color="#2E5DFF"
+         id="stop19" />
+    </linearGradient>
+    <path
+       id="folder-64px-b"
+       d="M31.2792793,3 L31.2792793,3 C32.0434808,4.81770784 33.8230705,6 35.7948884,6 L49,6 C52.8659932,6 56,9.13400675 56,13 L56,41 C56,44.8659932 52.8659932,48 49,48 L7,48 C3.13400675,48 -4.92645439e-14,44.8659932 -4.97379915e-14,41 L-5.24025268e-14,7 C-5.28759744e-14,3.13400675 3.13400675,-2.7711538e-14 7,-2.84217094e-14 L26.7636702,-1.687539e-14 C28.735488,-1.7237607e-14 30.5150778,1.18229216 31.2792793,3 Z" />
+    <linearGradient
+       id="folder-64px-g"
+       x1="142.30375"
+       x2="142.30375"
+       y1="99.842768"
+       y2="130.39054"
+       gradientTransform="scale(1.5600432,0.64100787)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0%"
+         stop-color="#FFF"
+         id="stop23" />
+      <stop
+         offset="100%"
+         stop-color="#CEF5FF"
+         id="stop25" />
+    </linearGradient>
+    <rect
+       id="folder-64px-f"
+       width="50.955"
+       height="20.75"
+       x="2.523"
+       y="9"
+       rx="4.5" />
+    <filter
+       id="folder-64px-e"
+       width="111.8%"
+       height="128.9%"
+       x="-5.9%"
+       y="-14.5%"
+       filterUnits="objectBoundingBox">
+      <feOffset
+         in="SourceAlpha"
+         result="shadowOffsetOuter1"
+         id="feOffset29" />
+      <feGaussianBlur
+         in="shadowOffsetOuter1"
+         result="shadowBlurOuter1"
+         stdDeviation="1"
+         id="feGaussianBlur31" />
+      <feColorMatrix
+         in="shadowBlurOuter1"
+         values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0"
+         id="feColorMatrix33" />
+    </filter>
+    <filter
+       id="folder-64px-h"
+       width="109.8%"
+       height="124.1%"
+       x="-4.9%"
+       y="-12%"
+       filterUnits="objectBoundingBox">
+      <feOffset
+         dy="1"
+         in="SourceAlpha"
+         result="shadowOffsetInner1"
+         id="feOffset36" />
+      <feComposite
+         in="shadowOffsetInner1"
+         in2="SourceAlpha"
+         k2="-1"
+         k3="1"
+         operator="arithmetic"
+         result="shadowInnerInner1"
+         id="feComposite38" />
+      <feColorMatrix
+         in="shadowInnerInner1"
+         values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.5 0"
+         id="feColorMatrix40" />
+    </filter>
+    <radialGradient
+       id="folder-64px-i"
+       cx="50%"
+       cy="0%"
+       r="117.613%"
+       fx="50%"
+       fy="0%"
+       gradientTransform="matrix(.06171 .99538 -.63989 .096 .47 -.498)">
+      <stop
+         offset="0%"
+         stop-color="#48D5FF"
+         id="stop43" />
+      <stop
+         offset="100%"
+         stop-color="#0083F6"
+         id="stop45" />
+    </radialGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient909"
+       id="radialGradient911"
+       cx="-56.910568"
+       cy="13.519642"
+       fx="-56.910568"
+       fy="13.519642"
+       r="27.995493"
+       gradientTransform="matrix(1.6746023,0,0,1.8696134,127.27405,-3.1129092)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       gradientUnits="userSpaceOnUse"
+       id="folder-documents-512px-g"
+       cx="180.03333"
+       cy="0"
+       r="423.39877"
+       fx="180.03333"
+       fy="0"
+       gradientTransform="matrix(0.15488306,0,0,0.10186004,-167.02055,22.426179)">
+      <stop
+         offset="0%"
+         stop-color="#48D5FF"
+         id="stop42" />
+      <stop
+         offset="100%"
+         stop-color="#0083F6"
+         id="stop44" />
+    </radialGradient>
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.0752907,0,0,0.92998111,-354.90383,-157.02267)"
+       id="folder-documents-512px-b"
+       x1="206.45581"
+       x2="206.45581"
+       y1="0"
+       y2="156.77427">
+      <stop
+         offset="0%"
+         stop-color="#00B8FF"
+         id="stop17-3" />
+      <stop
+         offset="100%"
+         stop-color="#2E5DFF"
+         id="stop19-6" />
+    </linearGradient>
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.41263893,0,0,0.3568769,-460.90589,-32.890549)"
+       id="folder-documents-512px-b-7"
+       x1="206.45581"
+       x2="206.45581"
+       y1="0"
+       y2="156.77428">
+      <stop
+         offset="0%"
+         stop-color="#00B8FF"
+         id="stop17-3-5" />
+      <stop
+         offset="100%"
+         stop-color="#2E5DFF"
+         id="stop19-6-3" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient968"
+       id="linearGradient970"
+       x1="-63.632641"
+       y1="12.615495"
+       x2="-63.632641"
+       y2="27.334814"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(88.882051,0.84919157)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient978"
+       id="linearGradient980"
+       x1="-58.658943"
+       y1="19.429941"
+       x2="-58.658943"
+       y2="22.932678"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(88.882051,0.84919157)" />
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-14.1%"
+       x="-12.2%"
+       height="128.1%"
+       width="124.3%"
+       id="folder-documents-512px-a">
+      <feOffset
+         id="feOffset1018"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha"
+         dy="8" />
+      <feGaussianBlur
+         id="feGaussianBlur1020"
+         stdDeviation="10"
+         result="shadowBlurOuter1"
+         in="shadowOffsetOuter1" />
+      <feComposite
+         id="feComposite1022"
+         result="shadowBlurOuter1"
+         operator="out"
+         in2="SourceAlpha"
+         in="shadowBlurOuter1" />
+      <feColorMatrix
+         id="feColorMatrix1024"
+         values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0"
+         result="shadowMatrixOuter1"
+         in="shadowBlurOuter1" />
+      <feMerge
+         id="feMerge1030">
+        <feMergeNode
+           id="feMergeNode1026"
+           in="shadowMatrixOuter1" />
+        <feMergeNode
+           id="feMergeNode1028"
+           in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <rect
+       rx="36"
+       y="64"
+       x="20"
+       height="166"
+       width="404"
+       id="folder-documents-512px-d" />
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-10.8%"
+       x="-4.5%"
+       height="121.7%"
+       width="108.9%"
+       id="folder-documents-512px-c">
+      <feOffset
+         id="feOffset1044"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha" />
+      <feGaussianBlur
+         id="feGaussianBlur1046"
+         stdDeviation="6"
+         result="shadowBlurOuter1"
+         in="shadowOffsetOuter1" />
+      <feColorMatrix
+         id="feColorMatrix1048"
+         values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0"
+         in="shadowBlurOuter1" />
+    </filter>
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-8.4%"
+       x="-3.5%"
+       height="116.9%"
+       width="106.9%"
+       id="folder-documents-512px-f">
+      <feOffset
+         id="feOffset1051"
+         result="shadowOffsetInner1"
+         in="SourceAlpha"
+         dy="4" />
+      <feComposite
+         id="feComposite1053"
+         result="shadowInnerInner1"
+         operator="arithmetic"
+         k3="1"
+         k2="-1"
+         in2="SourceAlpha"
+         in="shadowOffsetInner1" />
+      <feColorMatrix
+         id="feColorMatrix1055"
+         values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.5 0"
+         in="shadowInnerInner1" />
+    </filter>
+    <radialGradient
+       gradientTransform="scale(1.233105,0.81096095)"
+       fy="0"
+       fx="180.03333"
+       r="423.39877"
+       cy="0"
+       cx="180.03333"
+       id="folder-documents-512px-g-2"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1058"
+         stop-color="#48D5FF"
+         offset="0%" />
+      <stop
+         id="stop1060"
+         stop-color="#0083F6"
+         offset="100%" />
+    </radialGradient>
+    <linearGradient
+       y2="178.19091"
+       y1="-1.6149522e-15"
+       x2="89.095454"
+       x1="89.095454"
+       id="folder-documents-512px-j"
+       gradientTransform="scale(0.90913729,1.0999439)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1063"
+         stop-color="#FFF"
+         offset="0%" />
+      <stop
+         id="stop1065"
+         stop-opacity=".6"
+         stop-color="#FFF"
+         offset="100%" />
+    </linearGradient>
+    <path
+       d="M16,0 L146,-1.77635684e-15 C154.836556,-3.39960584e-15 162,7.163444 162,16 L162,180 C162,188.836556 154.836556,196 146,196 L16,196 C7.163444,196 -4.53665185e-13,188.836556 -4.54747351e-13,180 L-4.54747351e-13,16 C-4.55829517e-13,7.163444 7.163444,1.623249e-15 16,0 Z M96,26 L96,32 L150,32 L150,26 L96,26 Z M96,40 L96,46 L150,46 L150,40 L96,40 Z M96,54 L96,60 L150,60 L150,54 L96,54 Z M96,68 L96,74 L150,74 L150,68 L96,68 Z M14,82 L14,88 L150,88 L150,82 L14,82 Z M14,96 L14,102 L150,102 L150,96 L14,96 Z M14,110 L14,116 L150,116 L150,110 L14,110 Z M14,124 L14,130 L150,130 L150,124 L14,124 Z M14,138 L14,144 L88,144 L88,138 L14,138 Z M14,168 L14,174 L150,174 L150,168 L14,168 Z"
+       id="folder-documents-512px-i" />
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-11.2%"
+       x="-16%"
+       height="126.5%"
+       width="132.1%"
+       id="folder-documents-512px-h">
+      <feOffset
+         id="feOffset1069"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha"
+         dy="4" />
+      <feGaussianBlur
+         id="feGaussianBlur1071"
+         stdDeviation="8"
+         result="shadowBlurOuter1"
+         in="shadowOffsetOuter1" />
+      <feColorMatrix
+         id="feColorMatrix1073"
+         values="0 0 0 0 0   0 0 0 0 0.42905776   0 0 0 0 0.968670281  0 0 0 0.5 0"
+         in="shadowBlurOuter1" />
+    </filter>
+    <radialGradient
+       gradientTransform="scale(1.2416387,0.80538727)"
+       fy="75.093515"
+       fx="58.928722"
+       r="59.598658"
+       cy="75.093515"
+       cx="58.928722"
+       id="folder-documents-512px-k"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1076"
+         stop-color="#FA9361"
+         offset="0%" />
+      <stop
+         id="stop1078"
+         stop-color="#5F1CF7"
+         offset="100%" />
+    </radialGradient>
+    <linearGradient
+       y2="102.00037"
+       y1="77.382868"
+       x2="26.563035"
+       x1="26.563035"
+       id="folder-documents-512px-l"
+       gradientTransform="scale(1.426309,0.70111033)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1081"
+         stop-color="#0E3BAC"
+         offset="0%" />
+      <stop
+         id="stop1083"
+         stop-color="#1A0570"
+         offset="100%" />
+    </linearGradient>
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-5.4%"
+       x="-80%"
+       height="110.8%"
+       width="260%"
+       id="folder-documents-512px-m">
+      <feGaussianBlur
+         id="feGaussianBlur1086"
+         stdDeviation="4"
+         in="SourceGraphic" />
+    </filter>
+    <linearGradient
+       y2="52.562919"
+       y1="7.1316523"
+       x2="22.715633"
+       x1="22.715633"
+       id="folder-documents-512px-n"
+       gradientTransform="scale(0.26413527,3.7859389)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1089"
+         stop-color="#242424"
+         offset="0%" />
+      <stop
+         id="stop1091"
+         offset="100%" />
+    </linearGradient>
+    <linearGradient
+       y2="224.63252"
+       y1="224.63252"
+       x2="10.954451"
+       x1="3.2201705"
+       id="folder-documents-512px-o"
+       gradientTransform="scale(1.0954451,0.91287093)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1094"
+         stop-color="#F6F6F6"
+         offset="0%" />
+      <stop
+         id="stop1096"
+         stop-color="#939393"
+         offset="100%" />
+    </linearGradient>
+    <linearGradient
+       y2="233.14468"
+       y1="231.94637"
+       x2="10.954451"
+       x1="3.5768473"
+       id="folder-documents-512px-p"
+       gradientTransform="scale(1.0954451,0.91287093)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1099"
+         stop-color="#FCAFD2"
+         offset="0%" />
+      <stop
+         id="stop1101"
+         stop-color="#FF4B8D"
+         offset="100%" />
+    </linearGradient>
+    <path
+       d="M0,209 L12,209 L12,215 C12,217.209139 10.209139,219 8,219 L4,219 C1.790861,219 2.705415e-16,217.209139 0,215 L0,209 Z"
+       id="folder-documents-512px-q" />
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-40%"
+       x="-33.3%"
+       height="180%"
+       width="166.7%"
+       id="folder-documents-512px-r">
+      <feGaussianBlur
+         id="feGaussianBlur1105"
+         stdDeviation="3"
+         result="shadowBlurInner1"
+         in="SourceAlpha" />
+      <feOffset
+         id="feOffset1107"
+         result="shadowOffsetInner1"
+         in="shadowBlurInner1"
+         dy="-2"
+         dx="-2" />
+      <feComposite
+         id="feComposite1109"
+         result="shadowInnerInner1"
+         operator="arithmetic"
+         k3="1"
+         k2="-1"
+         in2="SourceAlpha"
+         in="shadowOffsetInner1" />
+      <feColorMatrix
+         id="feColorMatrix1111"
+         values="0 0 0 0 0.376992985   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0"
+         in="shadowInnerInner1" />
+    </filter>
+    <linearGradient
+       y2="19.870789"
+       y1="16.006884"
+       x2="13.107795"
+       x1="13.151861"
+       id="folder-documents-512px-s"
+       gradientTransform="scale(0.15249857,6.5574385)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1114"
+         stop-color="#463417"
+         offset="0%" />
+      <stop
+         id="stop1116"
+         stop-color="#281212"
+         offset="100%" />
+    </linearGradient>
+    <linearGradient
+       y2="30.347215"
+       y1="4.1174614"
+       x2="65.574385"
+       x1="65.574385"
+       id="folder-documents-512px-t"
+       gradientTransform="scale(0.15249857,6.5574385)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1119"
+         stop-color="#080808"
+         offset="0%" />
+      <stop
+         id="stop1121"
+         stop-color="#481D1D"
+         offset="100%" />
+    </linearGradient>
+    <linearGradient
+       y2="3.2256062"
+       y1="3.2256062"
+       x2="9.8377238"
+       x1="7.5388565"
+       id="folder-documents-512px-u"
+       gradientTransform="scale(0.67419986,1.4832397)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1124"
+         stop-color="#6A6A6A"
+         offset="0%" />
+      <stop
+         id="stop1126"
+         stop-color="#0A0A0A"
+         offset="100%" />
+    </linearGradient>
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-16.7%"
+       x="-14.3%"
+       height="133.3%"
+       width="128.6%"
+       id="folder-bookmark-64px-a">
+      <feOffset
+         id="feOffset1275"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha"
+         dy="1" />
+      <feGaussianBlur
+         id="feGaussianBlur1277"
+         stdDeviation="1.5"
+         result="shadowBlurOuter1"
+         in="shadowOffsetOuter1" />
+      <feComposite
+         id="feComposite1279"
+         result="shadowBlurOuter1"
+         operator="out"
+         in2="SourceAlpha"
+         in="shadowBlurOuter1" />
+      <feColorMatrix
+         id="feColorMatrix1281"
+         values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0"
+         result="shadowMatrixOuter1"
+         in="shadowBlurOuter1" />
+      <feMerge
+         id="feMerge1287">
+        <feMergeNode
+           id="feMergeNode1283"
+           in="shadowMatrixOuter1" />
+        <feMergeNode
+           id="feMergeNode1285"
+           in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <linearGradient
+       y2="19.68486"
+       y1="-3.0698955e-14"
+       x2="25.922963"
+       x1="25.922963"
+       id="folder-bookmark-64px-c"
+       gradientTransform="scale(1.0801234,0.9258201)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1290"
+         stop-color="#00B8FF"
+         offset="0%" />
+      <stop
+         id="stop1292"
+         stop-color="#2E5DFF"
+         offset="100%" />
+    </linearGradient>
+    <path
+       d="M31.2792793,3 L31.2792793,3 C32.0434808,4.81770784 33.8230705,6 35.7948884,6 L49,6 C52.8659932,6 56,9.13400675 56,13 L56,41 C56,44.8659932 52.8659932,48 49,48 L7,48 C3.13400675,48 -4.92645439e-14,44.8659932 -4.97379915e-14,41 L-5.24025268e-14,7 C-5.28759744e-14,3.13400675 3.13400675,-2.7711538e-14 7,-2.84217094e-14 L26.7636702,-1.687539e-14 C28.735488,-1.7237607e-14 30.5150778,1.18229216 31.2792793,3 Z"
+       id="folder-bookmark-64px-b" />
+    <linearGradient
+       y2="17.939133"
+       y1="14.103499"
+       x2="17.868226"
+       x1="17.868226"
+       id="folder-bookmark-64px-g"
+       gradientTransform="scale(1.5670554,0.63813952)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1296"
+         stop-color="#FFF"
+         offset="0%" />
+      <stop
+         id="stop1298"
+         stop-color="#CEF5FF"
+         offset="100%" />
+    </linearGradient>
+    <rect
+       rx="4.5"
+       y="9"
+       x="2.523"
+       height="20.75"
+       width="50.955"
+       id="folder-bookmark-64px-f" />
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-14.5%"
+       x="-5.9%"
+       height="128.9%"
+       width="111.8%"
+       id="folder-bookmark-64px-e">
+      <feOffset
+         id="feOffset1302"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha" />
+      <feGaussianBlur
+         id="feGaussianBlur1304"
+         stdDeviation="1"
+         result="shadowBlurOuter1"
+         in="shadowOffsetOuter1" />
+      <feColorMatrix
+         id="feColorMatrix1306"
+         values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0"
+         in="shadowBlurOuter1" />
+    </filter>
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-12%"
+       x="-4.9%"
+       height="124.1%"
+       width="109.8%"
+       id="folder-bookmark-64px-h">
+      <feOffset
+         id="feOffset1309"
+         result="shadowOffsetInner1"
+         in="SourceAlpha"
+         dy="1" />
+      <feComposite
+         id="feComposite1311"
+         result="shadowInnerInner1"
+         operator="arithmetic"
+         k3="1"
+         k2="-1"
+         in2="SourceAlpha"
+         in="shadowOffsetInner1" />
+      <feColorMatrix
+         id="feColorMatrix1313"
+         values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.5 0"
+         in="shadowInnerInner1" />
+    </filter>
+    <radialGradient
+       gradientTransform="matrix(.06171 .99538 -.63989 .096 .47 -.498)"
+       fy="0%"
+       fx="50%"
+       r="117.613%"
+       cy="0%"
+       cx="50%"
+       id="folder-bookmark-64px-i">
+      <stop
+         id="stop1316"
+         stop-color="#48D5FF"
+         offset="0%" />
+      <stop
+         id="stop1318"
+         stop-color="#0083F6"
+         offset="100%" />
+    </radialGradient>
+    <linearGradient
+       y2="19.442222"
+       y1="0.95422425"
+       x2="10.126287"
+       x1="10.126287"
+       id="folder-bookmark-64px-l"
+       gradientTransform="scale(0.7200823,1.3887301)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1321"
+         stop-color="#FFF"
+         offset="0%" />
+      <stop
+         id="stop1323"
+         stop-opacity=".6"
+         stop-color="#FFF"
+         offset="100%" />
+    </linearGradient>
+    <polygon
+       points="0 0 14 0 14 27 7 21.33 0 27"
+       id="folder-bookmark-64px-k" />
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-40.7%"
+       x="-92.9%"
+       height="196.3%"
+       width="285.7%"
+       id="folder-bookmark-64px-j">
+      <feOffset
+         id="feOffset1327"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha"
+         dy="2" />
+      <feGaussianBlur
+         id="feGaussianBlur1329"
+         stdDeviation="4"
+         result="shadowBlurOuter1"
+         in="shadowOffsetOuter1" />
+      <feColorMatrix
+         id="feColorMatrix1331"
+         values="0 0 0 0 0   0 0 0 0 0.42745098   0 0 0 0 0.968627451  0 0 0 0.5 0"
+         in="shadowBlurOuter1" />
+    </filter>
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-16.7%"
+       x="-14.3%"
+       height="133.3%"
+       width="128.6%"
+       id="folder-documents-64px-a">
+      <feOffset
+         id="feOffset1534"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha"
+         dy="1" />
+      <feGaussianBlur
+         id="feGaussianBlur1536"
+         stdDeviation="1.5"
+         result="shadowBlurOuter1"
+         in="shadowOffsetOuter1" />
+      <feComposite
+         id="feComposite1538"
+         result="shadowBlurOuter1"
+         operator="out"
+         in2="SourceAlpha"
+         in="shadowBlurOuter1" />
+      <feColorMatrix
+         id="feColorMatrix1540"
+         values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0"
+         result="shadowMatrixOuter1"
+         in="shadowBlurOuter1" />
+      <feMerge
+         id="feMerge1546">
+        <feMergeNode
+           id="feMergeNode1542"
+           in="shadowMatrixOuter1" />
+        <feMergeNode
+           id="feMergeNode1544"
+           in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <linearGradient
+       y2="19.68486"
+       y1="-3.0698955e-14"
+       x2="25.922963"
+       x1="25.922963"
+       id="folder-documents-64px-c"
+       gradientTransform="scale(1.0801234,0.9258201)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1549"
+         stop-color="#00B8FF"
+         offset="0%" />
+      <stop
+         id="stop1551"
+         stop-color="#2E5DFF"
+         offset="100%" />
+    </linearGradient>
+    <path
+       d="M31.2792793,3 L31.2792793,3 C32.0434808,4.81770784 33.8230705,6 35.7948884,6 L49,6 C52.8659932,6 56,9.13400675 56,13 L56,41 C56,44.8659932 52.8659932,48 49,48 L7,48 C3.13400675,48 -4.92645439e-14,44.8659932 -4.97379915e-14,41 L-5.24025268e-14,7 C-5.28759744e-14,3.13400675 3.13400675,-2.7711538e-14 7,-2.84217094e-14 L26.7636702,-1.687539e-14 C28.735488,-1.7237607e-14 30.5150778,1.18229216 31.2792793,3 Z"
+       id="folder-documents-64px-b" />
+    <linearGradient
+       y2="17.939133"
+       y1="14.103499"
+       x2="17.868226"
+       x1="17.868226"
+       id="folder-documents-64px-g"
+       gradientTransform="scale(1.5670554,0.63813952)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1555"
+         stop-color="#FFF"
+         offset="0%" />
+      <stop
+         id="stop1557"
+         stop-color="#CEF5FF"
+         offset="100%" />
+    </linearGradient>
+    <rect
+       rx="4.5"
+       y="9"
+       x="2.523"
+       height="20.75"
+       width="50.955"
+       id="folder-documents-64px-f" />
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-14.5%"
+       x="-5.9%"
+       height="128.9%"
+       width="111.8%"
+       id="folder-documents-64px-e">
+      <feOffset
+         id="feOffset1561"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha" />
+      <feGaussianBlur
+         id="feGaussianBlur1563"
+         stdDeviation="1"
+         result="shadowBlurOuter1"
+         in="shadowOffsetOuter1" />
+      <feColorMatrix
+         id="feColorMatrix1565"
+         values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0"
+         in="shadowBlurOuter1" />
+    </filter>
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-12%"
+       x="-4.9%"
+       height="124.1%"
+       width="109.8%"
+       id="folder-documents-64px-h">
+      <feOffset
+         id="feOffset1568"
+         result="shadowOffsetInner1"
+         in="SourceAlpha"
+         dy="1" />
+      <feComposite
+         id="feComposite1570"
+         result="shadowInnerInner1"
+         operator="arithmetic"
+         k3="1"
+         k2="-1"
+         in2="SourceAlpha"
+         in="shadowOffsetInner1" />
+      <feColorMatrix
+         id="feColorMatrix1572"
+         values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.5 0"
+         in="shadowInnerInner1" />
+    </filter>
+    <radialGradient
+       gradientTransform="matrix(.06171 .99538 -.63989 .096 .47 -.498)"
+       fy="0%"
+       fx="50%"
+       r="117.613%"
+       cy="0%"
+       cx="50%"
+       id="folder-documents-64px-i">
+      <stop
+         id="stop1575"
+         stop-color="#48D5FF"
+         offset="0%" />
+      <stop
+         id="stop1577"
+         stop-color="#0083F6"
+         offset="100%" />
+    </radialGradient>
+    <linearGradient
+       y2="22.864214"
+       y1="-0.048664521"
+       x2="11.456439"
+       x1="11.456439"
+       id="folder-documents-64px-l"
+       gradientTransform="scale(0.91651514,1.0910895)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1580"
+         stop-color="#FFF"
+         offset="0%" />
+      <stop
+         id="stop1582"
+         stop-opacity=".6"
+         stop-color="#FFF"
+         offset="100%" />
+    </linearGradient>
+    <path
+       d="M2,-0.0530973451 L19,-0.0530973451 C20.1045695,-0.0530973451 21,0.842333155 21,1.94690265 L21,22.9469027 C21,24.0514722 20.1045695,24.9469027 19,24.9469027 L2,24.9469027 C0.8954305,24.9469027 -4.5461208e-13,24.0514722 -4.54747351e-13,22.9469027 L-4.54747351e-13,1.94690265 C-4.54882622e-13,0.842333155 0.8954305,-0.0530973451 2,-0.0530973451 Z M12,2.94690265 L12,3.94690265 L19,3.94690265 L19,2.94690265 L12,2.94690265 Z M12,4.94690265 L12,5.94690265 L19,5.94690265 L19,4.94690265 L12,4.94690265 Z M12,6.94690265 L12,7.94690265 L19,7.94690265 L19,6.94690265 L12,6.94690265 Z M12,8.94690265 L12,9.94690265 L19,9.94690265 L19,8.94690265 L12,8.94690265 Z M2,10.9469027 L2,11.9469027 L19,11.9469027 L19,10.9469027 L2,10.9469027 Z M2,12.9469027 L2,13.9469027 L19,13.9469027 L19,12.9469027 L2,12.9469027 Z M2,14.9469027 L2,15.9469027 L19,15.9469027 L19,14.9469027 L2,14.9469027 Z M2,16.9469027 L2,17.9469027 L19,17.9469027 L19,16.9469027 L2,16.9469027 Z M2,18.9469027 L2,19.9469027 L11,19.9469027 L11,18.9469027 L2,18.9469027 Z M2,21.9469027 L2,22.9469027 L19,22.9469027 L19,21.9469027 L2,21.9469027 Z"
+       id="folder-documents-64px-k" />
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-10%"
+       x="-16.7%"
+       height="128%"
+       width="133.3%"
+       id="folder-documents-64px-j">
+      <feOffset
+         id="feOffset1586"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha"
+         dy="1" />
+      <feGaussianBlur
+         id="feGaussianBlur1588"
+         stdDeviation="1"
+         result="shadowBlurOuter1"
+         in="shadowOffsetOuter1" />
+      <feColorMatrix
+         id="feColorMatrix1590"
+         values="0 0 0 0 0   0 0 0 0 0.42905776   0 0 0 0 0.968670281  0 0 0 0.5 0"
+         in="shadowBlurOuter1" />
+    </filter>
+    <radialGradient
+       gradientTransform="scale(1.1338934,0.8819171)"
+       fy="9.0430722"
+       fx="8.1102245"
+       r="7.9372539"
+       cy="9.0430722"
+       cx="8.1102245"
+       id="folder-documents-64px-m"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1593"
+         stop-color="#FA9361"
+         offset="0%" />
+      <stop
+         id="stop1595"
+         stop-color="#5F1CF7"
+         offset="100%" />
+    </radialGradient>
+    <linearGradient
+       y2="14.815929"
+       y1="11.101069"
+       x2="3.6925099"
+       x1="3.6925099"
+       id="folder-documents-64px-n"
+       gradientTransform="scale(1.4895018,0.67136544)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1598"
+         stop-color="#0E3BAC"
+         offset="0%" />
+      <stop
+         id="stop1600"
+         stop-color="#1A0570"
+         offset="100%" />
+    </linearGradient>
+    <linearGradient
+       y2="7.5377836"
+       y1="0.90453403"
+       x2="5.1374518"
+       x1="5.1374518"
+       id="folder-documents-64px-o"
+       gradientTransform="scale(0.30151134,3.3166248)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1603"
+         stop-color="#242424"
+         offset="0%" />
+      <stop
+         id="stop1605"
+         offset="100%" />
+    </linearGradient>
+    <linearGradient
+       y2="36.212423"
+       y1="36.212423"
+       x2="1.8024152"
+       x1="0.80392387"
+       id="folder-documents-64px-p"
+       gradientTransform="scale(1.4142136,0.70710678)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1608"
+         stop-color="#F6F6F6"
+         offset="0%" />
+      <stop
+         id="stop1610"
+         stop-color="#939393"
+         offset="100%" />
+    </linearGradient>
+    <linearGradient
+       y2="37.417149"
+       y1="37.361458"
+       x2="1.8024291"
+       x1="0.84998449"
+       id="folder-documents-64px-q"
+       gradientTransform="scale(1.4142136,0.70710678)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1613"
+         stop-color="#FCAFD2"
+         offset="0%" />
+      <stop
+         id="stop1615"
+         stop-color="#FF4B8D"
+         offset="100%" />
+    </linearGradient>
+    <path
+       d="M0.549019608,26 L2.54901961,26 L2.54901961,26.5 C2.54901961,26.7761424 2.32516198,27 2.04901961,27 L1.04901961,27 C0.772877233,27 0.549019608,26.7761424 0.549019608,26.5 L0.549019608,26 Z"
+       id="folder-documents-64px-r" />
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-100%"
+       x="-50%"
+       height="300%"
+       width="200%"
+       id="folder-documents-64px-s">
+      <feGaussianBlur
+         id="feGaussianBlur1619"
+         stdDeviation=".5"
+         result="shadowBlurInner1"
+         in="SourceAlpha" />
+      <feOffset
+         id="feOffset1621"
+         result="shadowOffsetInner1"
+         in="shadowBlurInner1"
+         dy="-1"
+         dx="-1" />
+      <feComposite
+         id="feComposite1623"
+         result="shadowInnerInner1"
+         operator="arithmetic"
+         k3="1"
+         k2="-1"
+         in2="SourceAlpha"
+         in="shadowOffsetInner1" />
+      <feColorMatrix
+         id="feColorMatrix1625"
+         values="0 0 0 0 0.376992985   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0"
+         in="shadowInnerInner1" />
+    </filter>
+    <linearGradient
+       y2="3.4566189"
+       y1="2.7656738"
+       x2="4.915415"
+       x1="4.9455744"
+       id="folder-documents-64px-t"
+       gradientTransform="scale(0.21320072,4.6904158)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1628"
+         stop-color="#463417"
+         offset="0%" />
+      <stop
+         id="stop1630"
+         stop-color="#281212"
+         offset="100%" />
+    </linearGradient>
+    <linearGradient
+       y2="5.3300179"
+       y1="0.63960215"
+       x2="9.6106619"
+       x1="9.6106619"
+       id="folder-documents-64px-u"
+       gradientTransform="scale(0.21320072,4.6904158)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1633"
+         stop-color="#080808"
+         offset="0%" />
+      <stop
+         id="stop1635"
+         stop-color="#481D1D"
+         offset="100%" />
+    </linearGradient>
+    <linearGradient
+       y2="1.9411961"
+       y1="1.9411961"
+       x2="2.5427904"
+       x1="0.96093436"
+       id="folder-documents-64px-v"
+       gradientTransform="scale(0.81649658,1.2247449)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1638"
+         stop-color="#6A6A6A"
+         offset="0%" />
+      <stop
+         id="stop1640"
+         stop-color="#0A0A0A"
+         offset="100%" />
+    </linearGradient>
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-16.7%"
+       x="-14.3%"
+       height="133.3%"
+       width="128.6%"
+       id="folder-downloads-a">
+      <feOffset
+         id="feOffset1849"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha"
+         dy="1" />
+      <feGaussianBlur
+         id="feGaussianBlur1851"
+         stdDeviation="1.5"
+         result="shadowBlurOuter1"
+         in="shadowOffsetOuter1" />
+      <feComposite
+         id="feComposite1853"
+         result="shadowBlurOuter1"
+         operator="out"
+         in2="SourceAlpha"
+         in="shadowBlurOuter1" />
+      <feColorMatrix
+         id="feColorMatrix1855"
+         values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0"
+         result="shadowMatrixOuter1"
+         in="shadowBlurOuter1" />
+      <feMerge
+         id="feMerge1861">
+        <feMergeNode
+           id="feMergeNode1857"
+           in="shadowMatrixOuter1" />
+        <feMergeNode
+           id="feMergeNode1859"
+           in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <linearGradient
+       y2="19.68486"
+       y1="-3.0698955e-14"
+       x2="25.922963"
+       x1="25.922963"
+       id="folder-downloads-c"
+       gradientTransform="scale(1.0801234,0.9258201)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1864"
+         stop-color="#00B8FF"
+         offset="0%" />
+      <stop
+         id="stop1866"
+         stop-color="#2E5DFF"
+         offset="100%" />
+    </linearGradient>
+    <path
+       d="M31.2792793,3 L31.2792793,3 C32.0434808,4.81770784 33.8230705,6 35.7948884,6 L49,6 C52.8659932,6 56,9.13400675 56,13 L56,41 C56,44.8659932 52.8659932,48 49,48 L7,48 C3.13400675,48 -4.92645439e-14,44.8659932 -4.97379915e-14,41 L-5.24025268e-14,7 C-5.28759744e-14,3.13400675 3.13400675,-2.7711538e-14 7,-2.84217094e-14 L26.7636702,-1.687539e-14 C28.735488,-1.7237607e-14 30.5150778,1.18229216 31.2792793,3 Z"
+       id="folder-downloads-b" />
+    <linearGradient
+       y2="17.939133"
+       y1="14.103499"
+       x2="17.868226"
+       x1="17.868226"
+       id="folder-downloads-g"
+       gradientTransform="scale(1.5670554,0.63813952)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1870"
+         stop-color="#FFF"
+         offset="0%" />
+      <stop
+         id="stop1872"
+         stop-color="#CEF5FF"
+         offset="100%" />
+    </linearGradient>
+    <rect
+       rx="4.5"
+       y="9"
+       x="2.523"
+       height="20.75"
+       width="50.955"
+       id="folder-downloads-f" />
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-14.5%"
+       x="-5.9%"
+       height="128.9%"
+       width="111.8%"
+       id="folder-downloads-e">
+      <feOffset
+         id="feOffset1876"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha" />
+      <feGaussianBlur
+         id="feGaussianBlur1878"
+         stdDeviation="1"
+         result="shadowBlurOuter1"
+         in="shadowOffsetOuter1" />
+      <feColorMatrix
+         id="feColorMatrix1880"
+         values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0"
+         in="shadowBlurOuter1" />
+    </filter>
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-12%"
+       x="-4.9%"
+       height="124.1%"
+       width="109.8%"
+       id="folder-downloads-h">
+      <feOffset
+         id="feOffset1883"
+         result="shadowOffsetInner1"
+         in="SourceAlpha"
+         dy="1" />
+      <feComposite
+         id="feComposite1885"
+         result="shadowInnerInner1"
+         operator="arithmetic"
+         k3="1"
+         k2="-1"
+         in2="SourceAlpha"
+         in="shadowOffsetInner1" />
+      <feColorMatrix
+         id="feColorMatrix1887"
+         values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.5 0"
+         in="shadowInnerInner1" />
+    </filter>
+    <radialGradient
+       gradientTransform="matrix(.06171 .99538 -.63989 .096 .47 -.498)"
+       fy="0%"
+       fx="50%"
+       r="117.613%"
+       cy="0%"
+       cx="50%"
+       id="folder-downloads-i">
+      <stop
+         id="stop1890"
+         stop-color="#48D5FF"
+         offset="0%" />
+      <stop
+         id="stop1892"
+         stop-color="#0083F6"
+         offset="100%" />
+    </radialGradient>
+    <linearGradient
+       y2="24"
+       y1="0"
+       x2="12"
+       x1="12"
+       id="folder-downloads-l"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1895"
+         stop-color="#FFF"
+         offset="0%" />
+      <stop
+         id="stop1897"
+         stop-opacity=".6"
+         stop-color="#FFF"
+         offset="100%" />
+    </linearGradient>
+    <circle
+       r="12"
+       cy="12"
+       cx="12"
+       id="folder-downloads-k" />
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-10.4%"
+       x="-14.6%"
+       height="129.2%"
+       width="129.2%"
+       id="folder-downloads-j">
+      <feOffset
+         id="feOffset1901"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha"
+         dy="1" />
+      <feGaussianBlur
+         id="feGaussianBlur1903"
+         stdDeviation="1"
+         result="shadowBlurOuter1"
+         in="shadowOffsetOuter1" />
+      <feColorMatrix
+         id="feColorMatrix1905"
+         values="0 0 0 0 0   0 0 0 0 0.42905776   0 0 0 0 0.968670281  0 0 0 0.5 0"
+         in="shadowBlurOuter1" />
+    </filter>
+    <linearGradient
+       y2="17.803024"
+       y1="4.324106"
+       x2="13.8757"
+       x1="13.8757"
+       id="folder-downloads-m"
+       gradientTransform="scale(0.8648212,1.1563084)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop1908"
+         stop-color="#FF3D3D"
+         offset="0%" />
+      <stop
+         id="stop1910"
+         stop-color="#E3FF00"
+         offset="19.361%" />
+      <stop
+         id="stop1912"
+         stop-color="#00A2EF"
+         offset="48.269%" />
+      <stop
+         id="stop1914"
+         stop-color="#790EED"
+         offset="100%" />
+    </linearGradient>
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-16.7%"
+       x="-14.3%"
+       height="133.3%"
+       width="128.6%"
+       id="folder-music-64px-a">
+      <feOffset
+         id="feOffset2050"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha"
+         dy="1" />
+      <feGaussianBlur
+         id="feGaussianBlur2052"
+         stdDeviation="1.5"
+         result="shadowBlurOuter1"
+         in="shadowOffsetOuter1" />
+      <feComposite
+         id="feComposite2054"
+         result="shadowBlurOuter1"
+         operator="out"
+         in2="SourceAlpha"
+         in="shadowBlurOuter1" />
+      <feColorMatrix
+         id="feColorMatrix2056"
+         values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0"
+         result="shadowMatrixOuter1"
+         in="shadowBlurOuter1" />
+      <feMerge
+         id="feMerge2062">
+        <feMergeNode
+           id="feMergeNode2058"
+           in="shadowMatrixOuter1" />
+        <feMergeNode
+           id="feMergeNode2060"
+           in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <linearGradient
+       y2="19.68486"
+       y1="-3.0698955e-14"
+       x2="25.922963"
+       x1="25.922963"
+       id="folder-music-64px-c"
+       gradientTransform="scale(1.0801234,0.9258201)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop2065"
+         stop-color="#00B8FF"
+         offset="0%" />
+      <stop
+         id="stop2067"
+         stop-color="#2E5DFF"
+         offset="100%" />
+    </linearGradient>
+    <path
+       d="M31.2792793,3 L31.2792793,3 C32.0434808,4.81770784 33.8230705,6 35.7948884,6 L49,6 C52.8659932,6 56,9.13400675 56,13 L56,41 C56,44.8659932 52.8659932,48 49,48 L7,48 C3.13400675,48 -4.92645439e-14,44.8659932 -4.97379915e-14,41 L-5.24025268e-14,7 C-5.28759744e-14,3.13400675 3.13400675,-2.7711538e-14 7,-2.84217094e-14 L26.7636702,-1.687539e-14 C28.735488,-1.7237607e-14 30.5150778,1.18229216 31.2792793,3 Z"
+       id="folder-music-64px-b" />
+    <linearGradient
+       y2="17.939133"
+       y1="14.103499"
+       x2="17.868226"
+       x1="17.868226"
+       id="folder-music-64px-g"
+       gradientTransform="scale(1.5670554,0.63813952)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop2071"
+         stop-color="#FFF"
+         offset="0%" />
+      <stop
+         id="stop2073"
+         stop-color="#CEF5FF"
+         offset="100%" />
+    </linearGradient>
+    <rect
+       rx="4.5"
+       y="9"
+       x="2.523"
+       height="20.75"
+       width="50.955"
+       id="folder-music-64px-f" />
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-14.5%"
+       x="-5.9%"
+       height="128.9%"
+       width="111.8%"
+       id="folder-music-64px-e">
+      <feOffset
+         id="feOffset2077"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha" />
+      <feGaussianBlur
+         id="feGaussianBlur2079"
+         stdDeviation="1"
+         result="shadowBlurOuter1"
+         in="shadowOffsetOuter1" />
+      <feColorMatrix
+         id="feColorMatrix2081"
+         values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0"
+         in="shadowBlurOuter1" />
+    </filter>
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-12%"
+       x="-4.9%"
+       height="124.1%"
+       width="109.8%"
+       id="folder-music-64px-h">
+      <feOffset
+         id="feOffset2084"
+         result="shadowOffsetInner1"
+         in="SourceAlpha"
+         dy="1" />
+      <feComposite
+         id="feComposite2086"
+         result="shadowInnerInner1"
+         operator="arithmetic"
+         k3="1"
+         k2="-1"
+         in2="SourceAlpha"
+         in="shadowOffsetInner1" />
+      <feColorMatrix
+         id="feColorMatrix2088"
+         values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.5 0"
+         in="shadowInnerInner1" />
+    </filter>
+    <radialGradient
+       gradientTransform="matrix(.06171 .99538 -.63989 .096 .47 -.498)"
+       fy="0%"
+       fx="50%"
+       r="117.613%"
+       cy="0%"
+       cx="50%"
+       id="folder-music-64px-i">
+      <stop
+         id="stop2091"
+         stop-color="#48D5FF"
+         offset="0%" />
+      <stop
+         id="stop2093"
+         stop-color="#0083F6"
+         offset="100%" />
+    </radialGradient>
+    <linearGradient
+       y2="24"
+       y1="1.17792"
+       x2="12.50016"
+       x1="12.50016"
+       id="folder-music-64px-l"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop2096"
+         stop-color="#FFF"
+         offset="0%" />
+      <stop
+         id="stop2098"
+         stop-opacity=".6"
+         stop-color="#FFF"
+         offset="100%" />
+    </linearGradient>
+    <path
+       d="M12,24 C5.372583,24 0,18.627417 0,12 C0,5.372583 5.372583,0 12,0 C18.627417,0 24,5.372583 24,12 C24,18.627417 18.627417,24 12,24 Z M12,20 C16.418278,20 20,16.418278 20,12 C20,7.581722 16.418278,4 12,4 C7.581722,4 4,7.581722 4,12 C4,16.418278 7.581722,20 12,20 Z"
+       id="folder-music-64px-k" />
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-12.5%"
+       x="-12.5%"
+       height="125%"
+       width="125%"
+       id="folder-music-64px-j">
+      <feOffset
+         id="feOffset2102"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha" />
+      <feGaussianBlur
+         id="feGaussianBlur2104"
+         stdDeviation="1"
+         result="shadowBlurOuter1"
+         in="shadowOffsetOuter1" />
+      <feColorMatrix
+         id="feColorMatrix2106"
+         values="0 0 0 0 0   0 0 0 0 0.42745098   0 0 0 0 0.968627451  0 0 0 0.5 0"
+         in="shadowBlurOuter1" />
+    </filter>
+    <linearGradient
+       y2="19"
+       y1="5"
+       x2="7.6278"
+       x1="10.00766"
+       id="folder-music-64px-m"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop2109"
+         stop-color="#4B20FF"
+         offset="0%" />
+      <stop
+         id="stop2111"
+         stop-color="#9600F1"
+         offset="100%" />
+    </linearGradient>
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-16.7%"
+       x="-14.3%"
+       height="133.3%"
+       width="128.6%"
+       id="folder-pictures-64px-a">
+      <feOffset
+         id="feOffset2245"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha"
+         dy="1" />
+      <feGaussianBlur
+         id="feGaussianBlur2247"
+         stdDeviation="1.5"
+         result="shadowBlurOuter1"
+         in="shadowOffsetOuter1" />
+      <feComposite
+         id="feComposite2249"
+         result="shadowBlurOuter1"
+         operator="out"
+         in2="SourceAlpha"
+         in="shadowBlurOuter1" />
+      <feColorMatrix
+         id="feColorMatrix2251"
+         values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0"
+         result="shadowMatrixOuter1"
+         in="shadowBlurOuter1" />
+      <feMerge
+         id="feMerge2257">
+        <feMergeNode
+           id="feMergeNode2253"
+           in="shadowMatrixOuter1" />
+        <feMergeNode
+           id="feMergeNode2255"
+           in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <linearGradient
+       y2="37.968%"
+       y1="0%"
+       x2="50%"
+       x1="50%"
+       id="folder-pictures-64px-c">
+      <stop
+         id="stop2260"
+         stop-color="#00B8FF"
+         offset="0%" />
+      <stop
+         id="stop2262"
+         stop-color="#2E5DFF"
+         offset="100%" />
+    </linearGradient>
+    <path
+       d="M31.2792793,3 L31.2792793,3 C32.0434808,4.81770784 33.8230705,6 35.7948884,6 L49,6 C52.8659932,6 56,9.13400675 56,13 L56,41 C56,44.8659932 52.8659932,48 49,48 L7,48 C3.13400675,48 -4.92645439e-14,44.8659932 -4.97379915e-14,41 L-5.24025268e-14,7 C-5.28759744e-14,3.13400675 3.13400675,-2.7711538e-14 7,-2.84217094e-14 L26.7636702,-1.687539e-14 C28.735488,-1.7237607e-14 30.5150778,1.18229216 31.2792793,3 Z"
+       id="folder-pictures-64px-b" />
+    <linearGradient
+       y2="11.796%"
+       y1="0%"
+       x2="50%"
+       x1="50%"
+       id="folder-pictures-64px-g">
+      <stop
+         id="stop2266"
+         stop-color="#FFF"
+         offset="0%" />
+      <stop
+         id="stop2268"
+         stop-color="#CEF5FF"
+         offset="100%" />
+    </linearGradient>
+    <rect
+       rx="4.5"
+       y="9"
+       x="2.523"
+       height="20.75"
+       width="50.955"
+       id="folder-pictures-64px-f" />
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-14.5%"
+       x="-5.9%"
+       height="128.9%"
+       width="111.8%"
+       id="folder-pictures-64px-e">
+      <feOffset
+         id="feOffset2272"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha" />
+      <feGaussianBlur
+         id="feGaussianBlur2274"
+         stdDeviation="1"
+         result="shadowBlurOuter1"
+         in="shadowOffsetOuter1" />
+      <feColorMatrix
+         id="feColorMatrix2276"
+         values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0"
+         in="shadowBlurOuter1" />
+    </filter>
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-12%"
+       x="-4.9%"
+       height="124.1%"
+       width="109.8%"
+       id="folder-pictures-64px-h">
+      <feOffset
+         id="feOffset2279"
+         result="shadowOffsetInner1"
+         in="SourceAlpha"
+         dy="1" />
+      <feComposite
+         id="feComposite2281"
+         result="shadowInnerInner1"
+         operator="arithmetic"
+         k3="1"
+         k2="-1"
+         in2="SourceAlpha"
+         in="shadowOffsetInner1" />
+      <feColorMatrix
+         id="feColorMatrix2283"
+         values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.5 0"
+         in="shadowInnerInner1" />
+    </filter>
+    <radialGradient
+       gradientTransform="matrix(.06171 .99538 -.63989 .096 .47 -.498)"
+       fy="0%"
+       fx="50%"
+       r="117.613%"
+       cy="0%"
+       cx="50%"
+       id="folder-pictures-64px-i">
+      <stop
+         id="stop2286"
+         stop-color="#48D5FF"
+         offset="0%" />
+      <stop
+         id="stop2288"
+         stop-color="#0083F6"
+         offset="100%" />
+    </radialGradient>
+    <linearGradient
+       y2="98.783%"
+       y1="0%"
+       x2="50%"
+       x1="50%"
+       id="folder-pictures-64px-l">
+      <stop
+         id="stop2291"
+         stop-color="#FFF"
+         offset="0%" />
+      <stop
+         id="stop2293"
+         stop-opacity=".6"
+         stop-color="#FFF"
+         offset="100%" />
+    </linearGradient>
+    <path
+       d="M-1.77635684e-15,0.581604142 C-1.77635684e-15,-0.291891706 0.708921459,-1 1.58727786,-1 L24.4127221,-1 C25.2893515,-1 26,-0.294378668 26,0.581604142 L26,15.4183959 C26,16.2918917 25.2910785,17 24.4127221,17 L1.58727786,17 C0.710648504,17 -1.77635684e-15,16.2943787 -1.77635684e-15,15.4183959 L-1.77635684e-15,0.581604142 Z M20.92,4.11428571 C21.5827417,4.11428571 22.12,3.60261114 22.12,2.97142857 C22.12,2.340246 21.5827417,1.82857143 20.92,1.82857143 C20.2572583,1.82857143 19.72,2.340246 19.72,2.97142857 C19.72,3.60261114 20.2572583,4.11428571 20.92,4.11428571 Z"
+       id="folder-pictures-64px-j" />
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-19.4%"
+       x="-13.5%"
+       height="138.9%"
+       width="126.9%"
+       id="folder-pictures-64px-k">
+      <feOffset
+         id="feOffset2297"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha"
+         dy="1" />
+      <feGaussianBlur
+         id="feGaussianBlur2299"
+         stdDeviation="1"
+         result="shadowBlurOuter1"
+         in="shadowOffsetOuter1" />
+      <feColorMatrix
+         id="feColorMatrix2301"
+         values="0 0 0 0 0   0 0 0 0 0.42905776   0 0 0 0 0.968670281  0 0 0 0.5 0"
+         in="shadowBlurOuter1" />
+    </filter>
+    <linearGradient
+       y2="70.248%"
+       y1="33.995%"
+       x2="41.314%"
+       x1="50%"
+       id="folder-pictures-64px-m">
+      <stop
+         id="stop2304"
+         stop-opacity=".8"
+         stop-color="#FF3C14"
+         offset="0%" />
+      <stop
+         id="stop2306"
+         stop-opacity=".8"
+         stop-color="#6E00F5"
+         offset="43.748%" />
+      <stop
+         id="stop2308"
+         stop-opacity=".655"
+         stop-color="#3900FF"
+         offset="100%" />
+    </linearGradient>
+    <linearGradient
+       y2="100%"
+       y1="11.914%"
+       x2="50%"
+       x1="50%"
+       id="folder-pictures-64px-o">
+      <stop
+         id="stop2311"
+         stop-opacity=".8"
+         stop-color="#32F8FF"
+         offset="0%" />
+      <stop
+         id="stop2313"
+         stop-color="#0097FF"
+         offset="100%" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2424"
+       id="linearGradient2426"
+       x1="-10.608288"
+       y1="46.035965"
+       x2="-10.608288"
+       y2="63.749805"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(42.60111,-14.011661)" />
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-16.7%"
+       x="-14.3%"
+       height="133.3%"
+       width="128.6%"
+       id="folder-desktop-64px-a">
+      <feOffset
+         id="feOffset1161"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha"
+         dy="1" />
+      <feGaussianBlur
+         id="feGaussianBlur1163"
+         stdDeviation="1.5"
+         result="shadowBlurOuter1"
+         in="shadowOffsetOuter1" />
+      <feComposite
+         id="feComposite1165"
+         result="shadowBlurOuter1"
+         operator="out"
+         in2="SourceAlpha"
+         in="shadowBlurOuter1" />
+      <feColorMatrix
+         id="feColorMatrix1167"
+         values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0"
+         result="shadowMatrixOuter1"
+         in="shadowBlurOuter1" />
+      <feMerge
+         id="feMerge1173">
+        <feMergeNode
+           id="feMergeNode1169"
+           in="shadowMatrixOuter1" />
+        <feMergeNode
+           id="feMergeNode1171"
+           in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <path
+       d="M31.2792793,3 L31.2792793,3 C32.0434808,4.81770784 33.8230705,6 35.7948884,6 L49,6 C52.8659932,6 56,9.13400675 56,13 L56,41 C56,44.8659932 52.8659932,48 49,48 L7,48 C3.13400675,48 -4.92645439e-14,44.8659932 -4.97379915e-14,41 L-5.24025268e-14,7 C-5.28759744e-14,3.13400675 3.13400675,-2.7711538e-14 7,-2.84217094e-14 L26.7636702,-1.687539e-14 C28.735488,-1.7237607e-14 30.5150778,1.18229216 31.2792793,3 Z"
+       id="folder-desktop-64px-b" />
+    <rect
+       rx="4.5"
+       y="9"
+       x="2.523"
+       height="20.75"
+       width="50.955"
+       id="folder-desktop-64px-f" />
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-14.5%"
+       x="-5.9%"
+       height="128.9%"
+       width="111.8%"
+       id="folder-desktop-64px-e">
+      <feOffset
+         id="feOffset1188"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha" />
+      <feGaussianBlur
+         id="feGaussianBlur1190"
+         stdDeviation="1"
+         result="shadowBlurOuter1"
+         in="shadowOffsetOuter1" />
+      <feColorMatrix
+         id="feColorMatrix1192"
+         values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0"
+         in="shadowBlurOuter1" />
+    </filter>
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-12%"
+       x="-4.9%"
+       height="124.1%"
+       width="109.8%"
+       id="folder-desktop-64px-h">
+      <feOffset
+         id="feOffset1195"
+         result="shadowOffsetInner1"
+         in="SourceAlpha"
+         dy="1" />
+      <feComposite
+         id="feComposite1197"
+         result="shadowInnerInner1"
+         operator="arithmetic"
+         k3="1"
+         k2="-1"
+         in2="SourceAlpha"
+         in="shadowOffsetInner1" />
+      <feColorMatrix
+         id="feColorMatrix1199"
+         values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.5 0"
+         in="shadowInnerInner1" />
+    </filter>
+    <radialGradient
+       gradientTransform="matrix(.06171 .99538 -.63989 .096 .47 -.498)"
+       fy="0%"
+       fx="50%"
+       r="117.613%"
+       cy="0%"
+       cx="50%"
+       id="folder-desktop-64px-i">
+      <stop
+         id="stop1202"
+         stop-color="#48D5FF"
+         offset="0%" />
+      <stop
+         id="stop1204"
+         stop-color="#0083F6"
+         offset="100%" />
+    </radialGradient>
+    <linearGradient
+       y2="100%"
+       y1="4.908%"
+       x2="52.084%"
+       x1="52.084%"
+       id="folder-desktop-64px-l">
+      <stop
+         id="stop1207"
+         stop-color="#FFF"
+         offset="0%" />
+      <stop
+         id="stop1209"
+         stop-opacity=".6"
+         stop-color="#FFF"
+         offset="100%" />
+    </linearGradient>
+    <path
+       d="M5.68434189e-14,1.99508929 C5.68434189e-14,0.893231902 0.894978851,0 1.99700466,0 L24.0029953,0 C25.1059106,0 26,0.892622799 26,1.99508929 L26,16.0049107 C26,17.1067681 25.1050211,18 24.0029953,18 L1.99700466,18 C0.89408944,18 5.68434189e-14,17.1073772 5.68434189e-14,16.0049107 L5.68434189e-14,1.99508929 Z"
+       id="folder-desktop-64px-j" />
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-30.6%"
+       x="-25%"
+       height="172.2%"
+       width="150%"
+       id="folder-desktop-64px-k">
+      <feOffset
+         id="feOffset1213"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha"
+         dy="1" />
+      <feGaussianBlur
+         id="feGaussianBlur1215"
+         stdDeviation="2"
+         result="shadowBlurOuter1"
+         in="shadowOffsetOuter1" />
+      <feColorMatrix
+         id="feColorMatrix1217"
+         values="0 0 0 0 0   0 0 0 0 0.42745098   0 0 0 0 0.968627451  0 0 0 0.5 0"
+         in="shadowBlurOuter1" />
+    </filter>
+    <linearGradient
+       y2="49.75%"
+       y1="49.75%"
+       x2="100%"
+       x1=".258%"
+       id="folder-desktop-64px-m">
+      <stop
+         id="stop1220"
+         stop-color="#9005FF"
+         offset="0%" />
+      <stop
+         id="stop1222"
+         stop-color="#E7F100"
+         offset="45.847%" />
+      <stop
+         id="stop1224"
+         stop-color="#06B9FF"
+         offset="100%" />
+    </linearGradient>
+    <linearGradient
+       y2="100%"
+       y1="0%"
+       x2="50%"
+       x1="50%"
+       id="folder-desktop-64px-q">
+      <stop
+         id="stop1227"
+         stop-color="#F5515F"
+         offset="0%" />
+      <stop
+         id="stop1229"
+         stop-color="#AF001A"
+         offset="100%" />
+    </linearGradient>
+    <rect
+       rx="1"
+       y="2"
+       x="2"
+       height="3"
+       width="3"
+       id="folder-desktop-64px-p" />
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-183.3%"
+       x="-216.7%"
+       height="533.3%"
+       width="533.3%"
+       id="folder-desktop-64px-o">
+      <feOffset
+         id="feOffset1233"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha"
+         dy="1" />
+      <feGaussianBlur
+         id="feGaussianBlur1235"
+         stdDeviation="2"
+         result="shadowBlurOuter1"
+         in="shadowOffsetOuter1" />
+      <feColorMatrix
+         id="feColorMatrix1237"
+         values="0 0 0 0 0   0 0 0 0 0.42745098   0 0 0 0 0.968627451  0 0 0 0.5 0"
+         in="shadowBlurOuter1" />
+    </filter>
+    <linearGradient
+       y2="100%"
+       y1="0%"
+       x2="50%"
+       x1="50%"
+       id="folder-desktop-64px-t">
+      <stop
+         id="stop1240"
+         stop-color="#B4EC51"
+         offset="0%" />
+      <stop
+         id="stop1242"
+         stop-color="#429321"
+         offset="100%" />
+    </linearGradient>
+    <rect
+       rx="1"
+       y="7"
+       x="2"
+       height="3"
+       width="3"
+       id="folder-desktop-64px-s" />
+    <filter
+       filterUnits="objectBoundingBox"
+       y="-183.3%"
+       x="-216.7%"
+       height="533.3%"
+       width="533.3%"
+       id="folder-desktop-64px-r">
+      <feOffset
+         id="feOffset1246"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha"
+         dy="1" />
+      <feGaussianBlur
+         id="feGaussianBlur1248"
+         stdDeviation="2"
+         result="shadowBlurOuter1"
+         in="shadowOffsetOuter1" />
+      <feColorMatrix
+         id="feColorMatrix1250"
+         values="0 0 0 0 0   0 0 0 0 0.42745098   0 0 0 0 0.968627451  0 0 0 0.5 0"
+         in="shadowBlurOuter1" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#folder-desktop-64px-m"
+       id="linearGradient1387"
+       gradientUnits="userSpaceOnUse"
+       x1="22.645109"
+       y1="47.228466"
+       x2="43.025707"
+       y2="47.228466" />
+  </defs>
+  <image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA0CAYAAADWr1sfAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz AAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAALwSURB VGiB7dvdaxRXGMfxz76YaKNt40uUtnf1oiD25UpBQW+81X+3V6X0QtCripQWSqFQ0GiJUZqoMdld L57zZNZ0065ZMzHj/OBwZtiZ2fM9z3meM7C/7ZisDrrolePOLtftRaPShqXleS3aCdIRkMfwKRax gDkxATnQWQY4xCs8wwr+weaMz5xanR3HcziN87iAL7EkoHtlUAOzQQ8E5F+4h/t4iI0Znjm1+qVP 2M9wGdfxNc75d4QzynvVUMA9wVf4GD8J6M0ZnjuVErgnInsJt0q/pALdjxw+iRMC8m8R9Wdmm8z/ VRalBbGEb+KaiPS8N4vWu2xZEOfFpK7hUYEe7DdwD2dwBTdE3s57t1GdpCyQCb2BlyrgnliB07a8 /j9XZF6wKEDPlS/fb9hUVyzri2LAX+BXLOM5tt7iWUORHut4KtLjhR0FNoEXRM4eL+d1qi8m/FsB fLUMNoGnrdyDcs9j/IHfSv9EbIOj/LIOjoi994j6ojuuvqjWCwJ6q7S3KWAjEeE1UfHvi+p/Fw+U bW98W8oCdVDqqPJxbg/350o4hbP4vBz3jW17/cn3Hrj2MvF5T6bonAjiC2PbXt35WpcyTc/gG3wn ot1tKjDV2+NZsQMtajgwsbyP4pPSNx6Y6q2umycfgraL4IcCvK0WuOlqgZuuFrjpaoGbrha46WqB m64WuOlqgZuuFrjpaoGbrha46WqBm64ETv9VbY64GvUGW3qvNsXvqLU54mpSsj0v/agrbAXrwhux Zp99UjVrKJgeC8ZhAq8KA8iymiyANWgkWJYF2yqGvfLhUPykuCSsSx85eM/HLBoJ584ybuMH/ImN ceCM7AnhqEnb4WFSFqiXAvYOvsfPiq0xTS0DYeW9U86fqsylxx0O+LQlrwnYe/hRMK0oDr9J9uFT KvvweZV9+H11/KS2VMX3d/wicnfFmDFtN4P4UWEC2WkQf5+VEV4XBWpV5d3cLsK7FaV0vGY7LMVr /K8FE03srwHg9L7VccUQJQAAAABJRU5ErkJggg== "
+     width="60"
+     height="52"
+     id="image997"
+     transform="translate(2,10)"
+     style="opacity:0.218" />
+  <path
+     style="opacity:1;fill:url(#linearGradient970);fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 11.755669,11.77888 c -3.9721983,0 -7.1699223,3.197723 -7.1699223,7.169921 v 6.085938 27.669922 c 0,3.972198 3.197724,7.169922 7.1699223,7.169922 h 13.517578 2.384766 4.316406 21.44336 c 3.972198,0 7.169921,-3.197724 7.169921,-7.169922 V 25.034739 L 60.56744,23.275371 C 59.742322,20.225667 56.735555,17.864817 53.41777,17.864817 H 40.990035 C 39.616885,17.743731 38.603203,17.495044 37.804488,17.064036 36.20639,16.201659 35.997403,14.772922 35.28691,13.802317 34.409799,12.604082 33.238651,11.849192 31.550591,11.849192 Z"
+     id="rect883"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cscsscccssccscsscc" />
+  <rect
+     style="opacity:1;fill:url(#linearGradient980);fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="rect972"
+     width="45.856346"
+     height="16.983831"
+     x="9.9072351"
+     y="19.993629"
+     rx="3.5094571"
+     ry="3.5094571" />
+  <path
+     inkscape:connector-curvature="0"
+     style="opacity:1;fill:url(#radialGradient911);fill-opacity:1;stroke:none;stroke-width:0.18878138;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 4.5764587,23.375449 v 28.988832 c 0,4.104566 3.30438,7.418911 7.4089343,7.408934 l 41.173116,-0.100078 c 4.10455,-0.01 7.408935,-3.304368 7.408935,-7.408934 V 23.275371 Z"
+     id="rect978"
+     sodipodi:nodetypes="ccssccc" />
+  <path
+     style="opacity:1;fill:#000000;fill-opacity:0.22340429;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 13.417207,19.993723 c -1.944239,0 -3.5097653,1.565527 -3.5097653,3.509766 v 0.527344 c 0,-1.94424 1.5655263,-3.507813 3.5097653,-3.507813 h 38.837891 c 1.944239,0 3.507812,1.563573 3.507812,3.507813 v -0.527344 c 0,-1.944239 -1.563573,-3.509766 -3.507812,-3.509766 z"
+     id="rect982"
+     inkscape:connector-curvature="0" />
+  <image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAdCAYAAAAtt6XDAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz AAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAIRSURB VFiF7ZhdT+JAFIYfaEHxg40as17o//9rJmZ3I9SFiqV7Me9pT8ca3ClELpzkpDDQc568c5h5y4ju GO247mPUO67kEZCPscLeD4XzxWtgq6ijzxooD5IpckXWA5cKZTAV8KaoFFv7ni9kIBPgVHECTDU/ ZjjUViCvQAmsFRsH2ChlSzUBzoFLYA5cADPBZaSrZSpVglkBBbAAlsAL7VJuc1coJ6hzAdwAt7rO NT8hXS1TaUNQZgH8Uk6DtSUceaUMai6ge+AOuBbohFatFKhKUAXwm7AC0C5lSVjCRimDOhHAtYAe BDin7a1UKOulBaFFAP4Cz5pr+tb/+jKCGjNBXAnoJ/BDwEOhSlqFCtWZEa2C7ynrqylhGX3DG1RK s8dNXhMUOlcdvwIjIqX8PmVwU8FYDFUK2m3GYN7tgx/t6LZFZD0xZEvweeITo8mb9ySIj5u+SBmf zjdOLHDQ8Q312XGUUH2NXu+IlPFfOfMPbjQDVkUxxCXEuewAfgeXu5tiA/ZK97BE80N39FJ5vYfq ONA8IjWYNcHjLIEzQezr7PMeaqV6b57DK2XWYqUb/xAcA5rbp0t4Uv6lcm9Uv6OU2dSS1u+cKeEL h/FTj7oWOC+FU8qgzBVONb8iOMRDOc8nvV47qE5PGZSpsdENh/LoS0XhoGqO9WnGP2Qew3Nfo5SN r35CbvapuMhR/JfwD7REDBDbQ+gQAAAAAElFTkSuQmCC "
+     width="37"
+     height="29"
+     id="image2475"
+     transform="translate(14,26)"
+     style="opacity:0.241" />
+  <rect
+     style="opacity:1;fill:url(#linearGradient2426);fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="rect2418"
+     width="25.92025"
+     height="18.114151"
+     x="19.98344"
+     y="32.074345"
+     rx="1.7013291"
+     ry="1.7013291" />
+  <rect
+     style="opacity:1;fill:url(#linearGradient1387);fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="rect1377"
+     width="22.362045"
+     height="1.9814464"
+     x="21.795918"
+     y="47.016167"
+     rx="0"
+     ry="0" />
+  <rect
+     style="opacity:1;fill:#e55339;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="rect1389"
+     width="3.2552345"
+     height="3.2552345"
+     x="21.795918"
+     y="34.136765"
+     rx="1.1352006"
+     ry="1.1352006" />
+  <rect
+     ry="1.1352006"
+     rx="1.1352006"
+     y="39.090382"
+     x="21.795918"
+     height="3.2552345"
+     width="3.2552345"
+     id="rect1391"
+     style="opacity:1;fill:#8de539;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+</svg>
