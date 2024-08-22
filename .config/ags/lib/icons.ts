@@ -1,3 +1,13 @@
+import GLib from "gi://GLib";
+
+const ICONS_PATH = `${GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_CONFIG)}/hypr/assets/icons/persona`;
+
+export const custom = {
+    fuuka: `${ICONS_PATH}/fuuka.png`,
+    ann: `${ICONS_PATH}/ann.png`,
+    iwai: `${ICONS_PATH}/iwai.png`,
+}
+
 export const substitutes = {
     "transmission-gtk": "transmission",
     "blueberry.py": "blueberry",
@@ -38,7 +48,7 @@ export default {
         settings: "emblem-system-symbolic",
         themes: "preferences-desktop-theme-symbolic",
         tick: "object-select-symbolic",
-        time: "hourglass-symbolic",
+        time: "change-date-symbolic",
         toolbars: "toolbars-symbolic",
         warning: "dialog-warning-symbolic",
         avatar: "avatar-default-symbolic",
@@ -114,7 +124,7 @@ export default {
         recording: "media-record-symbolic",
     },
     notifications: {
-        noisy: "org.gnome.Settings-notifications-symbolic",
+        noisy: "notification-symbolic",
         silent: "notifications-disabled-symbolic",
         message: "chat-bubbles-symbolic",
     },

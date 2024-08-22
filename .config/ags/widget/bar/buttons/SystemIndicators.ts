@@ -36,36 +36,32 @@ const ModeIndicator = () => {
     })
 }
 
-//const UpdateIndicator = () => {
-//    return Widget.Overlay({
-//        class_name: "update",
-//        visible: true,
-//        child: Widget.Icon({
-//            icon: icons.arch.update,
-//        }),
-//        overlay: Widget.Label({
-//            hpack: "end",
-//            vpack: "start",
-//            label: "20",  
-//            visible: true,
-//        }),
-//    });
-//}
-
-const UpdateIndicator = () => Widget.Overlay({
-    class_name: "bluetooth",
-    passThrough: true,
-    visible: bluetooth.bind("enabled"),
-    child: Widget.Icon({
-        icon: icons.arch.normal,
-    }),
-    overlay: Widget.Label({
+export const UpdateIndicator = () => {
+    const updateCount = UpdateChecker.updateCount; 
+    const label = Widget.Label({
         hpack: "end",
         vpack: "start",
-        label: UpdateChecker.bind("updateCount").as(count => `${count}`),
-        visible: UpdateChecker.bind("updateCount").as(count => count > 0),
-    }),
-})
+        label: `${updateCount}`, 
+        visible: updateCount > 0, 
+    });
+
+    const overlay = Widget.Overlay({
+        class_name: "bluetooth",
+        passThrough: true,
+        visible: updateCount > 0, 
+        child: Widget.Icon({
+            icon: icons.arch.normal,
+        }),
+        overlay: label,
+    });
+
+    UpdateChecker.subscribe((newUpdateCount) => {
+        label.label = `${newUpdateCount}`;
+        overlay.visible = newUpdateCount > 0;
+    });
+
+    return overlay;
+}
 
 const MicrophoneIndicator = () => Widget.Icon()
     .hook(audio, self => self.visible =

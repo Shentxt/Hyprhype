@@ -104,10 +104,10 @@ const updateSettings = () => {
                     Brightness()
                 ]
             }),
-            Widget.Box({
-                visible: media.as(l => l.length > 0),
-                child: Media()
-            })
+           // Widget.Box({
+           //     visible: media.as(l => l.length > 0),
+           //     child: Media()
+           // })
         ]
     });
     return settingsBox;

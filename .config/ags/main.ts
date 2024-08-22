@@ -14,11 +14,13 @@ import Verification from "widget/powermenu/Verification"
 import { forMonitors } from "lib/utils"
 import { setupQuickSettings } from "widget/quicksettings/QuickSettings"
 import { setupDateMenu } from "widget/datemenu/DateMenu"
+import { setupMediaWindow } from "widget/media/media";
 
 App.config({
     onConfigParsed: () => {
         setupQuickSettings()
         setupDateMenu()
+        setupMediaWindow()
         init()
     },
     closeWindowDelay: {
@@ -26,6 +28,7 @@ App.config({
         "overview": options.transition.value,
         "quicksettings": options.transition.value,
         "datemenu": options.transition.value,
+        "media": options.transition.value,
     },
     windows: () => [
         ...forMonitors(Bar),

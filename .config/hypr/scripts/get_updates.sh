@@ -71,14 +71,12 @@ update_system() {
  while true; do
         notify-send "Akihiko" "Updating and install your equipment improves <span color='yellow'>performance</span>." -i ~/.config/hypr/assets/icons/persona/akihiko.png
         echo "1. Update"
-        echo "2. Install"
-        echo "3. Exit"
-        read -p "Please enter your choice (1, 2 or 3): " choice
+        echo "2. Exit"
+        read -p "Please enter your choice (1 or 2): " choice
 
         case "$choice" in
             1) update ;;
-            2) install ;;
-            3) pkill -f "kitty --title Float";;
+            2) pkill -f "kitty --title Float";;
             *) echo "Invalid option." ;;
         esac
     done
@@ -273,25 +271,6 @@ Main() {
 }
 
 Main "$@"   
-}
-
-install() {
-while true; do
-    echo "Please enter the name of the package you want to search for:"
-    read package
-    # Use yay to search for the package and then fzf and awk to select it interactively
-    selected=$(yay -Ss $package | awk -F' ' '/^aur\// || /^extra\// {print $1 " - " $NF}' | fzf --multi --preview 'yay -Si {1}')
-   
-    if [[ ! -z "$selected" ]]; then
-        package_to_install=$(echo "$selected" | awk '{print $1}')
-        echo "Installing $package_to_install..."
-        yay -S --noconfirm "$package_to_install"
-        echo "Installation completed. You can continue selecting packages."
-    else
-        echo -e "\033[1m\033[32mThere are no more packages to install!\033[0m"
-        break
-    fi
-  done
 }
 
 case "$1" in

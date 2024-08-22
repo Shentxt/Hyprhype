@@ -53,7 +53,13 @@
 ** Visual **
 
 - hypr
-- eww
+#- eww
+- matugen
+
+** AGS (necessary if using ags) **
+
+- aylurs-gtk-shell
+- dart-sass
 
 ** Plugins **
 
@@ -66,9 +72,12 @@
 
 - hyprlock
 - swww
-- rofi 
+#- rofi 
 - polkit-gnome
-- gnome-configuration
+- bun
+- fd
+- brightnessctl
+- nm-connection-editor
 
 ** Scripts **
 
@@ -99,7 +108,8 @@
 ** Extra **
 
 - plymouth
-- sddm
+#- sddm
+- gdm
 - youtube-music
 
 - firefox 

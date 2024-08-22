@@ -122,7 +122,7 @@ alias music="ncmpcpp"
 alias ls='lsd -a --group-directories-first'
 alias ll='lsd -la --group-directories-first'
 
-alias su='pkexec'
+alias sudo='pkexec'
 alias pkill='pkill -f'
 alias cp='cp -r'
 

@@ -78,7 +78,7 @@ export default () => {
         const content = Content(player)
         const { revealer } = content.attribute
         btn.child = content
-        btn.on_primary_click = () => { player.playPause() }
+        btn.on_primary_click = () => { App.toggleWindow("media") }
         btn.on_secondary_click = () => { player.playPause() }
         btn.on_scroll_up = () => { player.next() }
         btn.on_scroll_down = () => { player.previous() }
