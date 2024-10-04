@@ -2,7 +2,7 @@ import icons from "lib/icons"
 import { bash, dependencies } from "lib/utils"
 
 const COLORS_CACHE = Utils.CACHE_DIR + "/colorpicker.json"
-const MAX_NUM_COLORS = 10
+const MAX_NUM_COLORS = 5
 
 class ColorPicker extends Service {
     static {
@@ -48,7 +48,8 @@ class ColorPicker extends Service {
         this.#notifID = await Utils.notify({
             id: this.#notifID,
             iconName: icons.ui.colorpicker,
-            summary: color,
+            summary: 'Ann',
+            body: 'That ' + color + ' is so elegant',
         })
     }
 }

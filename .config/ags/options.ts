@@ -50,11 +50,11 @@ const options = mkOptions(OPTIONS, {
         widget: { opacity: opt(85) },
         border: {
             width: opt(1),
-            opacity: opt(45),
+            opacity: opt(1),
         },
 
         shadows: opt(true),
-        padding: opt(4),
+        padding: opt(6),
         spacing: opt(10),
         radius: opt(21),
     },
@@ -70,7 +70,7 @@ const options = mkOptions(OPTIONS, {
         flatButtons: opt(false),
         position: opt<"top" | "bottom">("top"),
         corners: opt(65),
-        transparent: opt(false),
+        transparent: opt(true),
         layout: {
             start: opt<Array<import("widget/bar/Bar").BarWidget>>([
                 "launcher",
@@ -105,7 +105,7 @@ const options = mkOptions(OPTIONS, {
             action: opt(() => App.toggleWindow("launcher")),
         },
         date: {
-            format: opt("%H:%M %p"),
+            format: opt("%H:%M:%S %p"),
             action: opt(() => App.toggleWindow("datemenu")),
         },
         battery: {
@@ -120,9 +120,9 @@ const options = mkOptions(OPTIONS, {
             workspaces: opt(6),
         },
         taskbar: {
-            iconSize: opt(21),
+            iconSize: opt(16),
             monochrome: opt(true),
-            exclusive: opt(false),
+            exclusive: opt(true),
         },
         messages: {
             action: opt(() => App.toggleWindow("datemenu")),
@@ -163,10 +163,9 @@ const options = mkOptions(OPTIONS, {
             favorites: opt([
                 [
                     "firefox",
-                    "kitty",
+                    "stremio",
                     "org.gnome.Nautilus",
                     "steam",
-                    "heroic",
                 ],
             ]),
         },
@@ -175,7 +174,7 @@ const options = mkOptions(OPTIONS, {
     overview: {
         scale: opt(8),
         workspaces: opt(6),
-        monochromeIcon: opt(false),
+        monochromeIcon: opt(true),
     },
 
     powermenu: {
@@ -236,7 +235,7 @@ const options = mkOptions(OPTIONS, {
         blacklist: opt(["Spotify"]),
         width: opt(440),
     },
-
+ 
     hyprland: {
         gaps: opt(2.0),
         inactiveBorder: opt("#282828"),

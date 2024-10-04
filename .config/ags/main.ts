@@ -3,6 +3,7 @@ import "style/style"
 import init from "lib/init"
 import options from "options"
 import Bar from "widget/bar/Bar"
+import Dock from "widget/bar/Dock"
 import Launcher from "widget/launcher/Launcher"
 import NotificationPopups from "widget/notifications/NotificationPopups"
 import OSD from "widget/osd/OSD"
@@ -32,6 +33,7 @@ App.config({
     },
     windows: () => [
         ...forMonitors(Bar),
+        ...forMonitors(Dock),
         ...forMonitors(NotificationPopups),
         ...forMonitors(ScreenCorners),
         ...forMonitors(OSD),

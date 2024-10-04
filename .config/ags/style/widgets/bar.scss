@@ -24,7 +24,7 @@ $button-radius: $radius;
 .bar {
     transition: $transition;
     background-color: $bg;
-
+    
     .panel-button {
         @include panel-button;
 

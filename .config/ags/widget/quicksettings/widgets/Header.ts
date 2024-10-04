@@ -1,17 +1,21 @@
 import icons from "lib/icons"
-import { uptime } from "lib/variables"
+//import { uptime } from "lib/variables"
+import { uptime, userAndHost } from "lib/variables";
 import options from "options"
+import apps from "lib/apps"
+import { dependencies, sh } from "lib/utils"
 
 const battery = await Service.import("battery")
 const { image, size } = options.quicksettings.avatar
+const marginRight = '5px';
 
 function up(up: number) {
     const h = Math.floor(up / 60)
     const m = Math.floor(up % 60)
     return `${h}h ${m < 10 ? "0" + m : m}m`
-}
-
-const Avatar = () => Widget.Box({
+} 
+ 
+const Avatar = () => Widget.Button({
     class_name: "avatar",
     css: Utils.merge([image.bind(), size.bind()], (img, size) => `
         min-width: ${size}px;
@@ -19,13 +23,8 @@ const Avatar = () => Widget.Box({
         background-image: url('${img}');
         background-size: cover;
     `),
-})
-
-const SysButton = (action: Action) => Widget.Button({
-    vpack: "center",
-    child: Widget.Icon(icons.powermenu[action]),
-    on_clicked: () => powermenu.action(action),
-})
+    on_clicked: () => sh(apps.services.profile.value),
+});
 
 export const Header = () => Widget.Box(
     { class_name: "header horizontal" },
@@ -42,12 +41,29 @@ export const Header = () => Widget.Box(
                 ],
             }),
             Widget.Box([
-                Widget.Icon({ icon: icons.ui.time }),
+                  Widget.Label({ label: userAndHost.bind().as(info => info) }),
+            ]),
+            Widget.Label({
+                label: "----- -----",
+                class_name: "section-label",
+            }),
+            Widget.Box([
+            Widget.Icon({
+            icon: icons.ui.time,
+            css: `margin-right: ${marginRight};`
+            }),
                 Widget.Label({ label: uptime.bind().as(up) }),
             ]),
-        ],
+       ],
     }),
     Widget.Box({ hexpand: true }),
+    Widget.Button({
+        vpack: "center",
+        child: Widget.Icon(icons.system.disk),
+        on_clicked: () => {
+          sh(apps.execs.list.value);
+        },
+    }),
     Widget.Button({
         vpack: "center",
         child: Widget.Icon(icons.ui.settings),

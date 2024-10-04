@@ -16,10 +16,10 @@ mod_disable () {
     hyprctl keyword general:gaps_in 0
     hyprctl keyword general:gaps_out 0
     hyprctl keyword general:border_size 0
-#    ~/.config/eww/scripts/notifications.sh togglednd
-#    eww close bar
-#    eww close dock
-#    eww close bg_widgets
+    pkill swww
+    pkill wlsunset
+    pkill ~/.config/hypr/scripts/song.sh
+    pkill ~/.config/hypr/scripts/brightnes.sh
 }
 
 mod_enable () {
@@ -35,10 +35,9 @@ mod_enable () {
     hyprctl keyword general:gaps_in 5
     hyprctl keyword general:gaps_out 20
     hyprctl keyword general:border_size 2
-#    ~/.config/eww/scripts/notifications.sh togglednd
-#    eww open bar
-#    eww open dock
-#    eww open bg_widgets
+    swww-daemon --format xrgb
+    ~/.config/hypr/scripts/song.sh &
+    ~/.config/hypr/scripts/brightnes.sh &
 }
 
 if [ -f "$gamemode_file" ]; then

@@ -14,6 +14,13 @@ export const uptime = Variable(0, {
     ],
 })
 
+export const userAndHost = Variable(0, {
+    poll: [60_000, "bash -c 'whoami && hostname'", output => {
+        const lines = output.split("\n");
+        return `${lines[0]} - ${lines[1]}`;
+    }],
+});
+
 export const distro = {
     id: GLib.get_os_info("ID"),
     logo: GLib.get_os_info("LOGO"),

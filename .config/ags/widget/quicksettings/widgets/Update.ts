@@ -7,8 +7,8 @@ import options from "options"
 export const UpdateWidget = () => {
     const handleClick = () => {
       sh(apps.execs.update.value);
-    };
-
+   }; 
+ 
     return SimpleToggleButton({
         icon: icons.arch.update, 
         label: "Update",   

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<defs>
+<linearGradient id="linear0" gradientUnits="userSpaceOnUse" x1="8.9723" y1="2.147" x2="14.8541" y2="8.0287" >
+<stop offset="0" style="stop-color:rgb(34.901961%,85.490196%,100%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(18.431373%,72.54902%,100%);stop-opacity:1;"/>
+</linearGradient>
+<linearGradient id="linear1" gradientUnits="userSpaceOnUse" x1="2.2332" y1="2.2332" x2="7.9403" y2="7.9403" >
+<stop offset="0" style="stop-color:rgb(46.27451%,94.901961%,100%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(30.980392%,82.352941%,100%);stop-opacity:1;"/>
+</linearGradient>
+<linearGradient id="linear2" gradientUnits="userSpaceOnUse" x1="2.1457" y1="8.9706" x2="8.029" y2="14.8539" >
+<stop offset="0" style="stop-color:rgb(29.411765%,81.568627%,100%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(12.941176%,68.235294%,100%);stop-opacity:1;"/>
+</linearGradient>
+<linearGradient id="linear3" gradientUnits="userSpaceOnUse" x1="9.059" y1="9.0599" x2="14.7663" y2="14.7672" >
+<stop offset="0" style="stop-color:rgb(22.745098%,76.078431%,99.215686%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(5.490196%,54.509804%,87.843137%);stop-opacity:1;"/>
+</linearGradient>
+</defs>
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:url(#linear0);" d="M 9.203125 2 L 14.203125 2 C 14.644531 2 15 2.355469 15 2.796875 L 15 7.800781 C 15 7.910156 14.910156 8 14.800781 8 L 9.199219 8 C 9.089844 8 9 7.910156 9 7.800781 L 9 2.203125 C 9 2.089844 9.089844 2 9.203125 2 Z M 9.203125 2 "/>
+<path style=" stroke:none;fill-rule:nonzero;fill:url(#linear1);" d="M 2.796875 2 L 7.796875 2 C 7.910156 2 8 2.089844 8 2.203125 L 8 7.796875 C 8 7.910156 7.910156 8 7.796875 8 L 2.203125 8 C 2.089844 8 2 7.910156 2 7.796875 L 2 2.796875 C 2 2.355469 2.355469 2 2.796875 2 Z M 2.796875 2 "/>
+<path style=" stroke:none;fill-rule:nonzero;fill:url(#linear2);" d="M 2.199219 9 L 7.800781 9 C 7.910156 9 8 9.089844 8 9.199219 L 8 14.800781 C 8 14.910156 7.910156 15 7.800781 15 L 2.796875 15 C 2.355469 15 2 14.644531 2 14.203125 L 2 9.199219 C 2 9.089844 2.089844 9 2.199219 9 Z M 2.199219 9 "/>
+<path style=" stroke:none;fill-rule:nonzero;fill:url(#linear3);" d="M 9.203125 9 L 14.796875 9 C 14.910156 9 15 9.089844 15 9.203125 L 15 14.203125 C 15 14.644531 14.644531 15 14.203125 15 L 9.199219 15 C 9.089844 15 9 14.910156 9 14.800781 L 9 9.203125 C 9 9.089844 9.089844 9 9.203125 9 Z M 9.203125 9 "/>
+</g>
+</svg>

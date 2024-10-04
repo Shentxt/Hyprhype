@@ -3,6 +3,7 @@ import Row from "./Row"
 import Group from "./Group"
 import Page from "./Page"
 import Wallpaper from "./Wallpaper"
+import About from "./About"
 import options from "options"
 import icons from "lib/icons"
 
@@ -34,11 +35,15 @@ const {
 
 export default [
     Page("Theme", icons.ui.themes,
-        Group("",
-            Wallpaper() as ReturnType<typeof Row>,
+        Group("Theme",
             Row({ opt: at, title: "Auto Generate Color Scheme" }),
-            Row({ opt: scheme, title: "Color Scheme", type: "enum", enums: ["dark", "light"] }),
-        ),
+//          Row({ opt: scheme, title: "Color Scheme", type: "enum", enums: ["dark", "light"] }),
+            Row({ opt: shadows, title: "Shadows" }),
+            Row({ opt: widget.opacity, title: "Widget Opacity", max: 100 }),
+            Row({ opt: border.opacity, title: "Border Opacity", max: 100 }),
+            Row({ opt: border.width, title: "Border Width" }),
+            Row({ opt: blur, title: "Blur", note: "0 to disable", max: 70 }),
+        ), 
         Group("Dark Colors",
             Row({ opt: dark.bg, title: "Background", type: "color" }),
             Row({ opt: dark.fg, title: "Foreground", type: "color" }),
@@ -59,13 +64,6 @@ export default [
             Row({ opt: light.widget, title: "Widget", type: "color" }),
             Row({ opt: light.border, title: "Border", type: "color" }),
         ),
-        Group("Theme",
-            Row({ opt: shadows, title: "Shadows" }),
-            Row({ opt: widget.opacity, title: "Widget Opacity", max: 100 }),
-            Row({ opt: border.opacity, title: "Border Opacity", max: 100 }),
-            Row({ opt: border.width, title: "Border Width" }),
-            Row({ opt: blur, title: "Blur", note: "0 to disable", max: 70 }),
-        ),
         Group("UI",
             Row({ opt: padding, title: "Padding" }),
             Row({ opt: spacing, title: "Spacing" }),
@@ -78,7 +76,7 @@ export default [
         Group("General",
             Row({ opt: b.transparent, title: "Transparent Bar", note: "Works best on empty-ish wallpapers" }),
             Row({ opt: b.flatButtons, title: "Flat Buttons" }),
-            Row({ opt: b.position, title: "Position", type: "enum", enums: ["top", "bottom"] }),
+        //    Row({ opt: b.position, title: "Position", type: "enum", enums: ["top", "bottom"] }),
             Row({ opt: b.corners, title: "Corners" }),
         ),
         Group("Launcher",
@@ -135,7 +133,6 @@ export default [
             Row({ opt: pm.labels, title: "Show Labels" }),
         ),
         Group("Quicksettings",
-            Row({ opt: qs.avatar.image, title: "Avatar", type: "img" }),
             Row({ opt: qs.avatar.size, title: "Avatar Size" }),
             Row({ opt: qs.media.monochromeIcon, title: "Media Monochrome Icons" }),
             Row({ opt: qs.media.coverSize, title: "Media Cover Art Size" }),
@@ -146,4 +143,9 @@ export default [
             Row({ opt: osd.progress.pack.v, title: "Vertical Alignment", type: "enum", enums: ["start", "center", "end"] }),
         ),
     ),
+Page("About", icons.ui.info,
+//         Row({ opt: qs.avatar.image, title: "Avatar", type: "img" }),
+           Wallpaper() as ReturnType<typeof Row>,
+           About() as ReturnType<typeof Row>,
+ ),
 ] as const

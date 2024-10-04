@@ -1,17 +1,6 @@
 import options from "options"
 import { dependencies, sh } from "lib/utils"
 
-export type Resolution = 1920 | 1366 | 3840
-export type Market =
-    | "random"
-    | "en-US"
-    | "ja-JP"
-    | "en-AU"
-    | "en-GB"
-    | "de-DE"
-    | "en-NZ"
-    | "en-CA"
-
 const WP = `${Utils.HOME}/.config/background`
 const Cache = `${Utils.HOME}/Pictures/Wallpapers`
 
@@ -41,7 +30,7 @@ class Wallpaper extends Service {
         })
     }
 
-    async #setWallpaper(path: string) {
+    async #setWallpaper(path) {
         this.#blockMonitor = true
 
         await sh(`cp ${path} ${WP}`)
@@ -50,32 +39,37 @@ class Wallpaper extends Service {
         this.#blockMonitor = false
     }
 
-    async #fetchBing() {
-        const res = await Utils.fetch("https://bing.biturl.top/", {
-            params: {
-                resolution: options.wallpaper.resolution.value,
-                format: "json",
-                image_format: "jpg",
-                index: "random",
-                mkt: options.wallpaper.market.value,
-            },
-        }).then(res => res.text())
+    async #fetchReddit() {
+        const REDDIT_URL = "https://www.reddit.com/r/wallpaper/random.json";
 
-        if (!res.startsWith("{"))
-            return console.warn("bing api", res)
+        const response = await Utils.fetch(REDDIT_URL, {
+            headers: {
+                "User-Agent": "WallpaperFetcher/0.1" 
+          } 
+        });
 
-        const { url } = JSON.parse(res)
-        const file = `${Cache}/${url.replace("https://www.bing.com/th?id=", "")}`
+        if (!response.ok) {
+            return console.warn("Error getting images from Reddit:", response.statusText);
+        }
 
-        if (dependencies("curl")) {
-            Utils.ensureDirectory(Cache)
-            await sh(`curl "${url}" --output ${file}`)
-            this.#setWallpaper(file)
+        const data = await response.json();
+        const post = data[0].data.children[0].data;
+
+        if (post.url.endsWith('.jpg') || post.url.endsWith('.png')) {
+            const file = `${Cache}/${post.url.split('/').pop()}`; 
+
+            if (dependencies("curl")) {
+                Utils.ensureDirectory(Cache);
+                await sh(`curl "${post.url}" --output ${file}`);
+                this.#setWallpaper(file);
+            }
+        } else {
+            console.warn("The post does not contain a valid image.");
         }
     }
 
-    readonly random = () => { this.#fetchBing() }
-    readonly set = (path: string) => { this.#setWallpaper(path) }
+    readonly random = () => { this.#fetchReddit() }
+    readonly set = (path) => { this.#setWallpaper(path) }
     get wallpaper() { return WP }
 
     constructor() {
@@ -96,5 +90,4 @@ class Wallpaper extends Service {
     }
 }
 
-export default new Wallpaper
-
+export default new Wallpaper();

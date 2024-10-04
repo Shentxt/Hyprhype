@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="22px" viewBox="0 0 22 22" version="1.1">
+<defs>
+<linearGradient id="linear0" gradientUnits="userSpaceOnUse" x1="11.0047" y1="7.8084" x2="11.0047" y2="6.6595" >
+<stop offset="0" style="stop-color:rgb(99.607843%,74.901961%,9.411765%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(93.72549%,71.764706%,18.823529%);stop-opacity:1;"/>
+</linearGradient>
+<linearGradient id="linear1" gradientUnits="userSpaceOnUse" x1="0" y1="12.5" x2="21.9953" y2="12.5" >
+<stop offset="0" style="stop-color:rgb(99.607843%,74.901961%,9.411765%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(93.72549%,71.764706%,18.823529%);stop-opacity:1;"/>
+</linearGradient>
+<linearGradient id="linear2" gradientUnits="userSpaceOnUse" x1="5.0207" y1="5" x2="5.0207" y2="8" >
+<stop offset="0" style="stop-color:rgb(0%,0%,0%);stop-opacity:0;"/>
+<stop offset="1" style="stop-color:rgb(0%,0%,0%);stop-opacity:0.2;"/>
+</linearGradient>
+<linearGradient id="linear3" gradientUnits="userSpaceOnUse" x1="6.1085" y1="7.3264" x2="18.6136" y2="19.8314" >
+<stop offset="0" style="stop-color:rgb(100%,89.803922%,60%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(100%,78.823529%,21.960784%);stop-opacity:1;"/>
+</linearGradient>
+<filter id="alpha" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%">
+  <feColorMatrix type="matrix" in="SourceGraphic" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"/>
+</filter>
+<mask id="mask0">
+  <g filter="url(#alpha)">
+<rect x="0" y="0" width="22" height="22" style="fill:rgb(0%,0%,0%);fill-opacity:0.301961;stroke:none;"/>
+  </g>
+</mask>
+<linearGradient id="linear4" gradientUnits="userSpaceOnUse" x1="7.4241" y1="3.6328" x2="15.5537" y2="11.7624" >
+<stop offset="0.5196" style="stop-color:rgb(100%,100%,100%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(99.215686%,74.509804%,9.411765%);stop-opacity:0;"/>
+</linearGradient>
+<clipPath id="clip1">
+  <rect x="0" y="0" width="22" height="22"/>
+</clipPath>
+<g id="surface5" clip-path="url(#clip1)">
+<path style=" stroke:none;fill-rule:nonzero;fill:url(#linear4);" d="M 0.0078125 8.0625 C 0.0117188 7.785156 0.125 7.515625 0.320312 7.316406 C 0.527344 7.113281 0.808594 7 1.101562 7 L 8.128906 7 L 8.152344 6.996094 C 8.761719 6.800781 9.308594 6.460938 9.753906 6 L 21.082031 6 C 21.585938 6 21.996094 6.410156 21.996094 6.914062 L 21.996094 5.914062 C 21.996094 5.410156 21.585938 5 21.082031 5 L 9.753906 5 C 9.308594 5.460938 8.761719 5.800781 8.152344 5.996094 L 8.128906 6 L 1.101562 6 C 0.808594 6 0.527344 6.113281 0.320312 6.316406 C 0.125 6.515625 0.0117188 6.785156 0.0078125 7.0625 L 0.0078125 7.769531 C 0.00390625 7.804688 0 7.84375 0 7.878906 L 0 8.878906 C 0 8.84375 0.00390625 8.804688 0.0078125 8.769531 Z M 0.0078125 8.0625 "/>
+</g>
+</defs>
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:url(#linear0);" d="M 21.089844 4 L 9.488281 4 L 8.472656 2.691406 C 8.113281 2.253906 7.574219 2 7.007812 2 L 0.925781 2 C 0.382812 2.039062 -0.0234375 2.511719 0.0117188 3.054688 L 0.0117188 4 L 0.0195312 4 L 0.0195312 6.757812 C 0.015625 6.792969 0.0117188 6.828125 0.0078125 6.863281 L 0.0078125 8 L 22 8 L 22 4.953125 C 22.011719 4.441406 21.605469 4.015625 21.089844 4 Z M 21.089844 4 "/>
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(90.196078%,66.27451%,15.686275%);fill-opacity:1;" d="M 0 17 L 21.996094 17 L 21.996094 19.074219 C 21.996094 19.585938 21.578125 20 21.066406 20 L 0.925781 20 C 0.414062 20 0 19.585938 0 19.074219 Z M 0 17 "/>
+<path style=" stroke:none;fill-rule:nonzero;fill:url(#linear1);" d="M 0 8 L 21.996094 8 L 21.996094 17 L 0 17 Z M 0 8 "/>
+<path style=" stroke:none;fill-rule:nonzero;fill:url(#linear2);" d="M 0 5 L 10.042969 5 L 10.042969 8 L 0 8 Z M 0 5 "/>
+<path style=" stroke:none;fill-rule:nonzero;fill:url(#linear3);" d="M 21.996094 16.921875 L 21.996094 5.914062 C 21.996094 5.410156 21.585938 5 21.082031 5 L 9.753906 5 C 9.308594 5.460938 8.761719 5.800781 8.152344 5.996094 L 8.128906 6 L 1.101562 6 C 0.808594 6 0.527344 6.113281 0.320312 6.316406 C 0.125 6.515625 0.0117188 6.785156 0.0078125 7.0625 L 0.0078125 7.769531 C 0.00390625 7.804688 0 7.84375 0 7.878906 L 0 18.453125 C -0.0078125 19.023438 0.445312 19.492188 1.015625 19.5 L 20.984375 19.5 C 21.554688 19.492188 22.007812 19.023438 22 18.453125 L 22 16.921875 Z M 21.996094 16.921875 "/>
+<use xlink:href="#surface5" mask="url(#mask0)"/>
+</g>
+</svg>

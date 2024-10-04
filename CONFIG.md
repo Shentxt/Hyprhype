@@ -53,8 +53,12 @@
 ** Visual **
 
 - hypr
-#- eww
 - matugen
+
+** ASZTAL (necessary if using greeter) **
+
+- curl -fsSL https://deno.land/x/install/install.sh | sh 
+- curl -fsSL https://bun.sh/install | bash
 
 ** AGS (necessary if using ags) **
 
@@ -95,6 +99,7 @@
 - yt-dlp
 - swayidle
 - brightnessctl
+- swappy
 
 ** Terminal **
 
@@ -108,8 +113,9 @@
 ** Extra **
 
 - plymouth
-#- sddm
+- sddm
 - gdm
+- gdm-settings
 - youtube-music
 
 - firefox 
