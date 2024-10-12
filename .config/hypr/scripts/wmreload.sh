@@ -25,7 +25,7 @@
 # notify-send: notify
 #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-sleep 1 && hyprctl reload
+sleep 1 && hyprctl reload && ags -q; ags 
 
 name=$(whoami)
 

@@ -1,33 +1,76 @@
 > :warning: **If something fails or doesn't work check the dependencies.**: 
 
+<p align="center">
+  <picture>
+    <img src="/assets/persona.jpg">
+  </picture>
+</p>
+
 - 🌸 [Directory](https://github.com/Shentxt/Hyprhype/tree/master#Dir)
 - 🌸 [Install](https://github.com/Shentxt/Hyprhype/tree/master#Install)
 - 🌸 [Apps and Font](https://github.com/Shentxt/Hyprhype/tree/master#Pack)
 
-## Dir
+## 📦Dir
 
 <div style="background-color: black; color: white; padding: 10px;">
 <pre><code>
-- /Hyprland
-  - /.config
-  - /.local
-  - /boot
-  - /extensions
-  - /usr
+
+Hyprhype
+├── .config
+│   ├── ags
+│   ├── hypr
+│   ├── kitty
+│   ├── starship
+│   ├── cava
+│   └── nvim
+├── .local
+│   ├── bin
+│   └── share
+├── boot
+│   └── grub
+├── etc
+│   └── greetd
+├── .zshrc
+├── firefox
+│   ├── chrome
+│   ├── extensions
+│   └── user.js
+└── usr
+    ├── fonts
+    ├── icons
+    ├── nsa-plymounth
+    └── slice
+
 </code></pre>
 </div>
 
 ## 💾Install
 
-** 💾Download **
+** Download **
 
 <div style="background-color: black; color: white; padding: 10px;">
 <pre><code>
  git clone https://github.com/Shentxt/Hyprhype
+ cd Hyprhype
+ cp -r .config ~/.config 
+ cp -r .local ~/.local
+ cp -r chrome extensions user.js /u directory of firefox 
 </code></pre>
 </div>
- 
-** 💾Removed **
+
+** Dowload Dependencies **
+
+> :warning: **If you don't want to download all the dependencies, read dependencies.txt**:
+
+<div style="background-color: black; color: white; padding: 10px;">
+<pre><code>
+ yay -S --needed - < dependencies.txt
+ or 
+ paru -S --needed - < dependencies.txt
+</code></pre>
+</div>
+
+** Removed **
 
 <div style="background-color: black; color: white; padding: 10px;">
 <pre><code>
@@ -35,96 +78,44 @@
 </code></pre>
 </div>
 
-## Pack
+## 📦Pack
 
-** Font Icon **
-
-- ttf-jetbrains-mono-nerd 
-- ttf-roboto-mono-nerd 
-- nerd-fonts-git 
-- ttf-font-awesome 
-- ttf-dejavu
-
-** Font User **
+** Font user **
 
 - monocraft
 - minecraft
 
-** Visual **
+** Apps **
 
-- hypr
-- matugen
+amdctl or asusctl (This works for the modes)
 
-** ASZTAL (necessary if using greeter) **
+** greetd (necessary if using greeter) **
 
-- curl -fsSL https://deno.land/x/install/install.sh | sh 
-- curl -fsSL https://bun.sh/install | bash
+> :warning: **Read https://aylur.github.io/ags-docs/services/greetd/ and https://sr.ht/~kennylevinsen/greetd/**:
 
-** AGS (necessary if using ags) **
-
-- aylurs-gtk-shell
-- dart-sass
+It works, although I had a problem with pam, maybe you guys will have better luck.
+The files are in usr. If anyone has been able to run it without problems, let me know and tell me what steps you followed and the distro, I would really appreciate it.
 
 ** Plugins **
 
-> :warning: **They are plugins that extend the wm. Dependency: hyprwayland-scanner,.cmake ,meson and cpio**: 
+> :warning: **Read https://hyprland.org/plugins/**: 
 
 - hyprpm add https://github.com/hyprwm/hyprland-plugins
 - hyprpm add https://github.com/outfoxxed/hy3
+- hyprpm add borders-plus-plus
+- hyprpm add hyprbars
 
-** Configurations **
-
-- hyprlock
-- swww
-#- rofi 
-- polkit-gnome
-- bun
-- fd
-- brightnessctl
-- nm-connection-editor
-
-** Scripts **
-
-- wlsunset 
-- notify-send
-- hyprpicker
-- imagemagick
-- wf-recorder 
-- wl-paste
-- wl-copy 
-- grimblast
-- viewnior
-- wal 
-- qrcp
-- yt-dlp
-- swayidle
-- brightnessctl
-- swappy
-
-** Terminal **
-
-- kitty
 - nvim (https://docs.astronvim.com/)
-- zsh
-- zsh-history-substring-search 
-- zsh-syntax-highlighting 
-- zsh-autosuggestions
 
-** Extra **
+> :warning: **if you use firefox theme Gx (https://github.com/Godiesc/firefox-gx) need to configure this in about:support and about:config**: 
 
-- plymouth
-- sddm
-- gdm
-- gdm-settings
-- youtube-music
-
-- firefox 
-
-> :warning: **if you use firefox gx (https://github.com/Godiesc/firefox-gx) need to configure this in about:config**: 
-
-- firefoxgx.tree-tabs
+- firefoxgx.tree-tabs (use it with Tree Style Tab) 
 - firefoxgx.tab-shapes
-- firefoxgx.oneline
 - firefoxgx.main-image
 - firefoxgx.left-sidebar
 
+- ui.systemUsesDarkTheme = 1
+- ui.useDefaultToolbarTheme = 0
+- MOZ_ENABLE_WAYLAND=1 
+- browser.tabs.remote.force-enable = true
+- extensions.webRequest.allowRequest

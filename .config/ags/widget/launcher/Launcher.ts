@@ -6,12 +6,15 @@ import nix from "service/nix"
 import * as AppLauncher from "./AppLauncher"
 import * as NixRun from "./NixRun"
 import * as ShRun from "./ShRun"
+import GLib from 'gi://GLib';
 
 const { width, margin } = options.launcher
 const isnix = nix.available
 
+const homeDir = GLib.get_home_dir();
+const imagePath = `${homeDir}/.config/ags/assets/icon.jpg`; 
+
 function Launcher() {
-    const favs = AppLauncher.Favorites()
     const applauncher = AppLauncher.Launcher()
     const sh = ShRun.ShRun()
     const shicon = ShRun.Icon()
@@ -73,7 +76,6 @@ function Launcher() {
         },
         on_change: ({ text }) => {
             text ||= ""
-            favs.reveal_child = text === ""
             help.reveal_child = text.split(" ").length === 1 && text?.startsWith(":")
 
             if (text?.startsWith(":nx"))
@@ -88,16 +90,22 @@ function Launcher() {
 
             if (!text?.startsWith(":"))
                 applauncher.filter(text)
-        },
-    })
+        },    
+     css: ` 
+                    background-image: url('${imagePath}'); 
+                    background-size: cover;
+                    background-position: center;
+                    color: #c0caf5;
+                    padding: 10px;
+                `
+  })
 
     function focus() {
         entry.text = "Search..."
         entry.set_position(-1)
         entry.select_region(0, -1)
         entry.grab_focus()
-        favs.reveal_child = true
-    }
+   }  
 
     const layout = Widget.Box({
         css: width.bind().as(v => `min-width: ${v}pt;`),
@@ -110,11 +118,10 @@ function Launcher() {
 
             entry.text = ""
             if (visible)
-                focus()
+                focus() 
         }),
-        children: [
+            children: [
             Widget.Box([entry, nixload, shicon]),
-            favs,
             help,
             applauncher,
             nix,
@@ -130,7 +137,7 @@ function Launcher() {
         }),
         layout,
     )
-}
+  }
 
 export default () => PopupWindow({
     name: "launcher",

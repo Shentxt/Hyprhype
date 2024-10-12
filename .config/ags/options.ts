@@ -56,7 +56,7 @@ const options = mkOptions(OPTIONS, {
         shadows: opt(true),
         padding: opt(6),
         spacing: opt(10),
-        radius: opt(21),
+        radius: opt(12),
     },
 
     transition: opt(200),
@@ -120,7 +120,7 @@ const options = mkOptions(OPTIONS, {
             workspaces: opt(6),
         },
         taskbar: {
-            iconSize: opt(16),
+            iconSize: opt(20),
             monochrome: opt(true),
             exclusive: opt(true),
         },
@@ -158,11 +158,11 @@ const options = mkOptions(OPTIONS, {
             max: opt(16),
         },
         apps: {
-            iconSize: opt(45),
+            iconSize: opt(25),
             max: opt(6),
             favorites: opt([
-                [
-                    "firefox",
+                [ 
+                  "firefox",
                     "stremio",
                     "org.gnome.Nautilus",
                     "steam",

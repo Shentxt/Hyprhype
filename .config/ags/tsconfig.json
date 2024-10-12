@@ -10,6 +10,9 @@
     "strict": true,
     "noImplicitAny": false,
     "baseUrl": ".",
+    "paths": {
+      "colrandom": ["./lib/colrandom"] 
+    },
     "typeRoots": [
       "./types",
       "./node_modules/@girs"

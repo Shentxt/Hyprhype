@@ -7,14 +7,14 @@ const current = Variable(layout[0].attribute.name)
 
 const Header = () => Widget.CenterBox({
     class_name: "header",
-    start_widget: Widget.Button({
-        class_name: "reset",
-        on_clicked: options.reset,
-        hpack: "start",
-        vpack: "start",
-        child: Widget.Icon(icons.ui.refresh),
-        tooltip_text: "Reset",
-    }),
+ //   start_widget: Widget.Button({
+     //   class_name: "reset",
+     //   on_clicked: options.reset,
+     //   hpack: "start",
+     //   vpack: "start",
+     //   child: Widget.Icon(icons.ui.refresh),
+     //   tooltip_text: "Reset",
+   // }),
     center_widget: Widget.Box({
         class_name: "pager horizontal",
         children: layout.map(({ attribute: { name, icon } }) => Widget.Button({
@@ -27,13 +27,13 @@ const Header = () => Widget.CenterBox({
             ]),
         })),
     }),
-    end_widget: Widget.Button({
-        class_name: "close",
-        hpack: "end",
-        vpack: "start",
-        child: Widget.Icon(icons.ui.close),
-        on_clicked: () => App.closeWindow("settings-dialog"),
-    }),
+  //  end_widget: Widget.Button({
+  //      class_name: "close",
+  //      hpack: "end",
+  //      vpack: "start",
+  //      child: Widget.Icon(icons.ui.close),
+  //      on_clicked: () => App.closeWindow("settings-dialog"),
+ //   }),
 })
 
 const PagesStack = () => Widget.Stack({

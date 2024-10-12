@@ -1,4 +1,5 @@
 import options from "options"
+import { active1, active2, inactive1, inactive2 } from "colrandom"
 const { messageAsync } = await Service.import("hyprland")
 
 const {
@@ -52,13 +53,13 @@ function sendBatch(batch: string[]) {
 
 async function setupHyprland() {
     const wm_gaps = Math.floor(hyprland.gaps.value * spacing.value)
-
+ 
     sendBatch([
         `general:border_size ${width}`,
         `general:gaps_out ${wm_gaps}`,
-        `general:gaps_in ${Math.floor(wm_gaps / 4)}`,
-//      `general:col.active_border ${rgba(primary())}`,
-//      `general:col.inactive_border ${rgba(hyprland.inactiveBorder.value)}`,
+        `general:gaps_in ${Math.floor(wm_gaps / 4)}`, 
+        `general:col.active_border ${rgba(active1())} ${rgba(active2())}`,
+        `general:col.inactive_border ${rgba(inactive1())} ${rgba(inactive2())}`,       
         `decoration:rounding ${radius}`,
         `decoration:drop_shadow ${shadows.value ? "yes" : "no"}`,
         `dwindle:no_gaps_when_only ${hyprland.gapsWhenOnly.value ? 0 : 1}`,
@@ -74,6 +75,15 @@ async function setupHyprland() {
             `layerrule ignorealpha ${/* based on shadow color */.20}, ${name}`,
         ]))
     }
+
+    function updateBorderColors() {
+        sendBatch([
+            `general:col.active_border ${rgba(active1())} ${rgba(active2())}`,
+            `general:col.inactive_border ${rgba(inactive1())} ${rgba(inactive2())}`
+        ]);
+    }
+
+    setInterval(updateBorderColors, 2300);
 }
 
 export default function init() {

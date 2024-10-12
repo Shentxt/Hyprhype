@@ -64,25 +64,6 @@ const AppItem = (app: Application) => {
         },
     })
 }
-export function Favorites() {
-    const favs = options.launcher.apps.favorites.bind()
-    return Widget.Revealer({
-        visible: favs.as(f => f.length > 0),
-        child: Widget.Box({
-            vertical: true,
-            children: favs.as(favs => favs.flatMap(fs => [
-                Widget.Separator(),
-                Widget.Box({
-                    class_name: "quicklaunch horizontal",
-                    children: fs
-                        .map(f => query(f)?.[0])
-                        .filter(f => f)
-                        .map(QuickAppButton),
-                }),
-            ])),
-        }),
-    })
-}
 
 export function Launcher() {
     const applist = Variable(query(""))

@@ -8,7 +8,7 @@
   </picture>
 </p>
 
-** 🌿Sections**
+## 🌿Sections
 
 - 🌸 [Keys-Maps](https://github.com/Shentxt/Hyprhype/tree/master#Informations)
 - 🌸 [Desk](https://github.com/Shentxt/Hyprhype/tree/master#Desk)
@@ -18,6 +18,13 @@
 ## 🌿Informations
 
 > :warning: **Because this is a custom configuration, I hope for your complete understanding. If you have any questions or problems in my configuration, contact me to get more feedback and make it efficient.**: 
+
+** Bug **
+
+- moving the notification widget to the middle breaks the interactivity of the environment
+
+> :warning: **Any other bug or problem let me know**
+
 
 ** 🌿Keys-Map **
 
@@ -74,6 +81,12 @@
 
 ## 🌿Base 
 
+<p align="center">
+  <picture>
+    <img src="/assets/icon.jpg">
+  </picture>
+</p>
+
 - [Reddit](https://www.reddit.com/user/ProfessionLower9249)
 
 ** 🌿Inspirations**
@@ -87,5 +100,4 @@
 ** 🌿Thanks**
 
 - 🌸 **Bing-Ia**
-- 🌸 [Ags Disc](https://discord.com/channels/1143610930542944377/1143612651759489054)
 - 🌸 [Hypr Red](https://www.reddit.com/r/hyprland/)
