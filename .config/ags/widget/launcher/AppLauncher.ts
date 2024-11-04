@@ -14,7 +14,7 @@ const QuickAppButton = (app: Application) => Widget.Button({
         App.closeWindow("launcher")
         launchApp(app)
     },
-    child: Widget.Icon({
+        child: Widget.Icon({
         size: iconSize.bind(),
         icon: icon(app.icon_name, icons.fallback.executable),
     }),
@@ -59,9 +59,28 @@ const AppItem = (app: Application) => {
             children: [appicon, textBox],
         }),
         on_clicked: () => {
-            App.closeWindow("launcher")
+           App.closeWindow("launcher")
             launchApp(app)
         },
+   })
+}
+export function Favorites() {
+    const favs = options.launcher.apps.favorites.bind()
+    return Widget.Revealer({
+        visible: favs.as(f => f.length > 0),
+        child: Widget.Box({
+            vertical: true,
+            children: favs.as(favs => favs.flatMap(fs => [
+                Widget.Separator(),
+                Widget.Box({
+                    class_name: "quicklaunch horizontal",
+                    children: fs
+                        .map(f => query(f)?.[0])
+                        .filter(f => f)
+                        .map(QuickAppButton),
+                }),
+            ])),
+        }),
     })
 }
 

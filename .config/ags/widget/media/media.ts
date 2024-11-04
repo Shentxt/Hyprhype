@@ -19,6 +19,7 @@ const updateSettings = () => Widget.Box({
         Widget.Box({
             class_name: "sliders-box vertical",
             vertical: true,
+            visible: media.as(l => l.length > 0),
             children: [
                 Media(),
             ],

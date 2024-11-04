@@ -1,25 +1,25 @@
-import { type Binding } from "lib/utils"
-import PopupWindow, { Padding } from "widget/PopupWindow"
-import icons from "lib/icons"
-import options from "options"
-import nix from "service/nix"
-import * as AppLauncher from "./AppLauncher"
-import * as NixRun from "./NixRun"
-import * as ShRun from "./ShRun"
+import { type Binding } from "lib/utils";
+import PopupWindow, { Padding } from "widget/PopupWindow";
+import icons from "lib/icons";
+import options from "options";
+import nix from "service/nix";
+import * as AppLauncher from "./AppLauncher";
+import * as NixRun from "./NixRun";
+import * as ShRun from "./ShRun";
 import GLib from 'gi://GLib';
 
-const { width, margin } = options.launcher
-const isnix = nix.available
-
+const { width, margin } = options.launcher;
+const isnix = nix.available;
 const homeDir = GLib.get_home_dir();
-const imagePath = `${homeDir}/.config/ags/assets/icon.jpg`; 
+const imagePath = `${homeDir}/.config/ags/assets/icon.jpg`;
 
 function Launcher() {
-    const applauncher = AppLauncher.Launcher()
-    const sh = ShRun.ShRun()
-    const shicon = ShRun.Icon()
-    const nix = NixRun.NixRun()
-    const nixload = NixRun.Spinner()
+    const favs = AppLauncher.Favorites();
+    const applauncher = AppLauncher.Launcher();
+    const sh = ShRun.ShRun();
+    const shicon = ShRun.Icon();
+    const nix = NixRun.NixRun();
+    const nixload = NixRun.Spinner();
 
     function HelpButton(cmd: string, desc: string | Binding<string>) {
         return Widget.Box(
@@ -29,9 +29,9 @@ function Launcher() {
                 {
                     class_name: "help",
                     on_clicked: () => {
-                        entry.grab_focus()
-                        entry.text = `:${cmd} `
-                        entry.set_position(-1)
+                        entry.grab_focus();
+                        entry.text = `:${cmd} `;
+                        entry.set_position(-1);
                     },
                 },
                 Widget.Box([
@@ -47,7 +47,7 @@ function Launcher() {
                     }),
                 ]),
             ),
-        )
+        );
     }
 
     const help = Widget.Revealer({
@@ -58,54 +58,68 @@ function Launcher() {
                 `run a nix package from ${pkg}`,
             )) : Widget.Box(),
         ),
-    })
+    });
 
     const entry = Widget.Entry({
         hexpand: true,
         primary_icon_name: icons.ui.search,
         on_accept: ({ text }) => {
             if (text?.startsWith(":nx"))
-                nix.run(text.substring(3))
+                nix.run(text.substring(3));
             else if (text?.startsWith(":sh"))
-                sh.run(text.substring(3))
+                sh.run(text.substring(3));
             else
-                applauncher.launchFirst()
+                applauncher.launchFirst();
 
-            App.toggleWindow("launcher")
-            entry.text = ""
+            App.toggleWindow("launcher");
+            entry.text = "";
         },
         on_change: ({ text }) => {
-            text ||= ""
-            help.reveal_child = text.split(" ").length === 1 && text?.startsWith(":")
+            text ||= "";
+            favs.reveal_child = text === "";
+            help.reveal_child = text.split(" ").length === 1 && text?.startsWith(":");
 
             if (text?.startsWith(":nx"))
-                nix.filter(text.substring(3))
+                nix.filter(text.substring(3));
             else
-                nix.filter("")
+                nix.filter("");
 
             if (text?.startsWith(":sh"))
-                sh.filter(text.substring(3))
+                sh.filter(text.substring(3));
             else
-                sh.filter("")
+                sh.filter("");
 
             if (!text?.startsWith(":"))
-                applauncher.filter(text)
-        },    
-     css: ` 
-                    background-image: url('${imagePath}'); 
-                    background-size: cover;
-                    background-position: center;
-                    color: #c0caf5;
-                    padding: 10px;
-                `
-  })
+                applauncher.filter(text);
+        },
+              class_name: "selection",
+       css: `
+             background: transparent;
+             color: #c0caf5;
+             padding: 6px;
+         `
+    });
+
+    const entryContainer = Widget.Box({
+       css: ` 
+            background-image: url('${imagePath}'); 
+            background-size: cover;
+            background-position: center;
+            border-color: #a69ae6;
+            border-width: 2px;
+            border-radius: 12px;
+            border-style: inset;
+        `,
+        children: [entry]  
+    });
 
     function focus() {
-        entry.text = "Search..."
-        entry.set_position(-1)
-        entry.select_region(0, -1)
-        entry.grab_focus()
-   }  
+        entry.text = "Search";
+        entry.set_position(-1);
+        entry.select_region(0, -1);
+        entry.grab_focus();
+        favs.reveal_child = true;
+    }
 
     const layout = Widget.Box({
         css: width.bind().as(v => `min-width: ${v}pt;`),
@@ -114,20 +128,21 @@ function Launcher() {
         vpack: "start",
         setup: self => self.hook(App, (_, win, visible) => {
             if (win !== "launcher")
-                return
+                return;
 
-            entry.text = ""
+            entry.text = "";
             if (visible)
-                focus() 
+                focus();
         }),
-            children: [
-            Widget.Box([entry, nixload, shicon]),
+        children: [
+            Widget.Box([entryContainer, nixload, shicon]),  
+            favs,
             help,
             applauncher,
             nix,
             sh,
         ],
-    })
+    });
 
     return Widget.Box(
         { vertical: true, css: "padding: 1px" },
@@ -136,11 +151,11 @@ function Launcher() {
             vexpand: false,
         }),
         layout,
-    )
-  }
+    );
+}
 
 export default () => PopupWindow({
     name: "launcher",
     layout: "top",
     child: Launcher(),
-})
+});

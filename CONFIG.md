@@ -2,7 +2,7 @@
 
 <p align="center">
   <picture>
-    <img src="/assets/persona.jpg">
+    <img src="/assets/koi.gif">
   </picture>
 </p>
 
@@ -10,7 +10,7 @@
 - 🌸 [Install](https://github.com/Shentxt/Hyprhype/tree/master#Install)
 - 🌸 [Apps and Font](https://github.com/Shentxt/Hyprhype/tree/master#Pack)
 
-## 📦Dir
+# 📦Dir
 
 <div style="background-color: black; color: white; padding: 10px;">
 <pre><code>
@@ -44,9 +44,9 @@ Hyprhype
 </code></pre>
 </div>
 
-## 💾Install
+# 💾Install
 
-** Download **
+## Download 
 
 <div style="background-color: black; color: white; padding: 10px;">
 <pre><code>
@@ -58,7 +58,7 @@ Hyprhype
 </code></pre>
 </div>
 
-** Dowload Dependencies **
+## Dowload Dependencies 
 
 > :warning: **If you don't want to download all the dependencies, read dependencies.txt**:
 
@@ -70,7 +70,7 @@ Hyprhype
 </code></pre>
 </div>
 
-** Removed **
+## Removed 
 
 <div style="background-color: black; color: white; padding: 10px;">
 <pre><code>
@@ -78,25 +78,42 @@ Hyprhype
 </code></pre>
 </div>
 
-## 📦Pack
+# 📦Pack
 
-** Font user **
+## Font user 
 
 - monocraft
 - minecraft
 
-** Apps **
+## Apps 
 
-amdctl or asusctl (This works for the modes)
+<div style="background-color: black; color: white; padding: 10px;">
+<pre><code>
+ amdctl or asusctl (This works for the modes)
+</code></pre>
+</div>
 
-** greetd (necessary if using greeter) **
+## Script
+
+<div style="background-color: black; color: white; padding: 10px;">
+<pre><code>
+  npm install node-notifier sharp chokidar @types/chokidar --save-dev
+</code></pre>
+</div>
+
+## greetd (necessary if using greeter) 
 
 > :warning: **Read https://aylur.github.io/ags-docs/services/greetd/ and https://sr.ht/~kennylevinsen/greetd/**:
 
 It works, although I had a problem with pam, maybe you guys will have better luck.
 The files are in usr. If anyone has been able to run it without problems, let me know and tell me what steps you followed and the distro, I would really appreciate it.
 
-** Plugins **
+Try this, it worked for me
+
+useradd -M -G video greeter
+chmod -R go+r /etc/greetd/
+
+## Plugins 
 
 > :warning: **Read https://hyprland.org/plugins/**: 
 
@@ -105,7 +122,7 @@ The files are in usr. If anyone has been able to run it without problems, let me
 - hyprpm add borders-plus-plus
 - hyprpm add hyprbars
 
-- nvim (https://docs.astronvim.com/)
+- nvim https://docs.astronvim.com/
 
 > :warning: **if you use firefox theme Gx (https://github.com/Godiesc/firefox-gx) need to configure this in about:support and about:config**: 
 

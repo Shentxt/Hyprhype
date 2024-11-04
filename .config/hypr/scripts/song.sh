@@ -3,37 +3,35 @@
 prev_title=""
 
 check_and_notify() {
-    players=$(playerctl -l)
+    players=$(playerctl -l 2>/dev/null)
+    if [ -z "$players" ]; then
+        return
+    fi
 
     for player in $players; do
         state=$(playerctl -p "$player" status)
-
         if [ "$state" = "Playing" ]; then
             artist=$(playerctl -p "$player" metadata --format '{{ artist }}')
             title=$(playerctl -p "$player" metadata --format '{{ title }}')
-            url=$(playerctl -p "$player" metadata --format "{{ mpris:artUrl }}" | sed 's/b273/1e02/') 
+            url=$(playerctl -p "$player" metadata --format "{{ mpris:artUrl }}" | sed 's/b273/1e02/')
 
             if [[ "$title" != "$prev_title" && -n "$title" ]]; then
                 prev_title="$title"
-
                 if [ -z "$artist" ]; then
-                    artist="Uknow"
+                    artist="Unknown"
                 fi
-
                 if [ -z "$title" ]; then
-                    title="Uknow Title"
+                    title="Unknown Title"
+                fi
+                if [ -z "$url" ]; then
+                    img="/home/shen/.config/hypr/assets/music.jpg"
+                else
+                    img="$url"
                 fi
 
-                if [ -z "$url" ]; then 
-                   img="/home/shen/.config/eww/images/music.jpg"
-                else 
-                   img="$url"
-                fi
-
-                convert "$img" /tmp/cover.jpg
+                convert "$img" -blur 0x3 /tmp/cover.jpg
                 notify-send "$artist" "$title" -i /tmp/cover.jpg
             fi
-
             break
         fi
     done
@@ -41,5 +39,5 @@ check_and_notify() {
 
 while true; do
     check_and_notify
-    sleep 1  
+    sleep 1
 done

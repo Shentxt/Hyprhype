@@ -1,8 +1,8 @@
 import GLib from "gi://GLib"
-// import options from "options"
-//
-// const intval = options.system.fetchInterval.value
-// const tempPath = options.system.temperature.value
+import options from "options"
+
+//const intval = options.system.fetchInterval.value
+//const tempPath = options.system.temperature.value
 
 export const clock = Variable(GLib.DateTime.new_now_local(), {
     poll: [1000, () => GLib.DateTime.new_now_local()],
@@ -19,7 +19,7 @@ export const userAndHost = Variable(0, {
         const lines = output.split("\n");
         return `${lines[0]} - ${lines[1]}`;
     }],
-});
+})
 
 export const distro = {
     id: GLib.get_os_info("ID"),

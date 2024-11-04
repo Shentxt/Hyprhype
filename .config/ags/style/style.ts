@@ -35,16 +35,18 @@ const t = (dark: Opt<any> | string, light: Opt<any> | string) => scheme.value ==
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const $ = (name: string, value: string | Opt<any>) => `$${name}: ${value};`
 
+//const bg = blur.value ? `transparentize(${t(dark.bg, light.bg)}, ${blur.value / 100})` : t(dark.bg, light.bg)
+
 const variables = () => [
     $("bg", blur.value ? `transparentize(${t(dark.bg, light.bg)}, ${blur.value / 100})` : t(dark.bg, light.bg)),
     $("fg", t(dark.fg, light.fg)),
-
+   
     $("primary-bg", t(dark.primary.bg, light.primary.bg)),
     $("primary-fg", t(dark.primary.fg, light.primary.fg)),
 
     $("error-bg", t(dark.error.bg, light.error.bg)),
     $("error-fg", t(dark.error.fg, light.error.fg)),
-
+        
     $("scheme", scheme),
     $("padding", `${padding}pt`),
     $("spacing", `${spacing}pt`),

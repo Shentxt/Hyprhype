@@ -18,10 +18,10 @@ export default () => Widget.Box({
                     class_name: "clock",
                     label: clock.bind().as(t => t.format("%H:%M")!),
                 }),
-                Widget.Label({
-                    class_name: "uptime",
-                    label: uptime.bind().as(up),
-                }),
+                            //  Widget.Label({
+              //      class_name: "uptime",
+              //      label: uptime.bind().as(up),
+              //  }),
             ],
         }),
         Widget.Box({

@@ -33,7 +33,11 @@ async function login(pw: string) {
 const avatar = Widget.Box({
     class_name: "avatar",
     hpack: "center",
-    css: `background-image: url('${iconFile}')`,
+    css:`min-width: ${size}px;
+        min-height: ${size}px;
+        background-image: url('${img}');
+        background-size: cover;`,
+       `background-image: url('${iconFile}')`,
 })
 
 const password = Widget.Entry({

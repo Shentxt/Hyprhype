@@ -9,6 +9,7 @@ import SystemIndicators from "./buttons/SystemIndicators"
 import Workspaces from "./buttons/Workspaces"
 import ScreenRecord from "./buttons/ScreenRecord"
 import Messages from "./buttons/Messages"
+import Taskbar from "./buttons/Taskbar"
 import options from "options"
 
 const { transparent, position } = options.bar
@@ -18,6 +19,7 @@ export default (monitor: number) => Widget.Window({
     class_name: "bar",
     name: `bar${monitor}`,
     exclusivity: "exclusive",
+    layer: "bottom",
     anchor: position.bind().as(pos => [pos, "right", "left"]),
     child: Widget.CenterBox({
         css: "min-width: 2px; min-height: 2px;",
@@ -26,6 +28,7 @@ export default (monitor: number) => Widget.Window({
             children: [
             Launcher(),
             Workspaces(),
+            Taskbar(),
       ],
         }),
         centerWidget: Widget.Box({

@@ -2,7 +2,6 @@
 import Row from "./Row"
 import Group from "./Group"
 import Page from "./Page"
-import Wallpaper from "./Wallpaper"
 import About from "./About"
 import options from "options"
 import icons from "lib/icons"
@@ -38,7 +37,6 @@ export default [
     Page("Theme", icons.ui.themes,
         Group("Theme",
             Row({ opt: at, title: "Auto Generate Color Scheme" }),
-//          Row({ opt: scheme, title: "Color Scheme", type: "enum", enums: ["dark", "light"] }),
             Row({ opt: shadows, title: "Shadows" }),
             Row({ opt: widget.opacity, title: "Widget Opacity", max: 100 }),
             Row({ opt: border.opacity, title: "Border Opacity", max: 100 }),
@@ -75,9 +73,9 @@ export default [
     ),
     Page("Bar", icons.ui.toolbars,
         Group("General",
-            Row({ opt: b.transparent, title: "Transparent Bar", note: "Works best on empty-ish wallpapers" }),
+            Row({ opt: b.transparent, title: "Transparent Bar", note: "Works best on empty-ish wallpapers" }),       
             Row({ opt: b.flatButtons, title: "Flat Buttons" }),
-        //    Row({ opt: b.position, title: "Position", type: "enum", enums: ["top", "bottom"] }),
+            Row({ opt: b.position, title: "Position", type: "enum", enums: ["top", "bottom"] }),
             Row({ opt: b.corners, title: "Corners" }),
         ),
         Group("Launcher",
@@ -116,14 +114,12 @@ export default [
     ),
     Page("General", icons.ui.settings,
        Group("Notifications",
-            Row({ opt: n.position, title: "position"}),
             Row({ opt: n.blacklist, title: "blacklist" }),
             Row({ opt: n.width, title: "width" }),
         ),
         Group("Hyprland",
             Row({ opt: h.gaps, title: "Gaps"}),
             Row({ opt: h.gapsWhenOnly, title: "Gaps When Only" }),
-        //  Row({ opt: h.inactiveBorder, type: "color", title: "Inactive Border Color" }),
         ),
         Group("Launcher",
             Row({ opt: l.width, title: "Width" }),
@@ -152,8 +148,6 @@ export default [
         ),
     ),
 Page("About", icons.ui.info,
-//         Row({ opt: qs.avatar.image, title: "Avatar", type: "img" }),
-           Wallpaper() as ReturnType<typeof Row>,
            About() as ReturnType<typeof Row>,
  ),
 ] as const

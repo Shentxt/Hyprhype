@@ -53,10 +53,10 @@ const options = mkOptions(OPTIONS, {
             opacity: opt(1),
         },
 
-        shadows: opt(true),
+        shadows: opt(false),
         padding: opt(6),
         spacing: opt(10),
-        radius: opt(12),
+        radius: opt(8),
     },
 
     transition: opt(200),
@@ -117,7 +117,7 @@ const options = mkOptions(OPTIONS, {
             low: opt(30),
         },
         workspaces: {
-            workspaces: opt(6),
+            workspaces: opt(0),
         },
         taskbar: {
             iconSize: opt(20),
@@ -158,14 +158,14 @@ const options = mkOptions(OPTIONS, {
             max: opt(16),
         },
         apps: {
-            iconSize: opt(25),
+            iconSize: opt(45),
             max: opt(6),
             favorites: opt([
                 [ 
                   "firefox",
                     "stremio",
                     "org.gnome.Nautilus",
-                    "steam",
+                    "heroic",
                 ],
             ]),
         },
@@ -173,7 +173,7 @@ const options = mkOptions(OPTIONS, {
 
     overview: {
         scale: opt(8),
-        workspaces: opt(6),
+        workspaces: opt(0),
         monochromeIcon: opt(true),
     },
 
@@ -183,7 +183,7 @@ const options = mkOptions(OPTIONS, {
         logout: opt("pkill Hyprland"),
         shutdown: opt("shutdown now"),
         lock: opt("bash -c 'hyprlock -c ~/.config/hypr/rules/hyprlock.conf'"),
-        layout: opt<"line" | "box">("line"),
+        layout: opt<"line" | "box">("box"),
         labels: opt(true),
     },
 

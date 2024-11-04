@@ -3,7 +3,6 @@ import "style/style"
 import init from "lib/init"
 import options from "options"
 import Bar from "widget/bar/Bar"
-import Dock from "widget/dock/Dock"
 import Launcher from "widget/launcher/Launcher"
 import NotificationPopups from "widget/notifications/NotificationPopups"
 import OSD from "widget/osd/OSD"
@@ -12,6 +11,8 @@ import PowerMenu from "widget/powermenu/PowerMenu"
 import ScreenCorners from "widget/bar/ScreenCorners"
 import SettingsDialog from "widget/settings/SettingsDialog"
 import Verification from "widget/powermenu/Verification"
+import WallpaperWindow from "widget/desktop/wallpaper" 
+import Mapkey from "widget/desktop/Mapkey" 
 import { forMonitors } from "lib/utils"
 import { setupQuickSettings } from "widget/quicksettings/QuickSettings"
 import { setupDateMenu } from "widget/datemenu/DateMenu"
@@ -30,10 +31,11 @@ App.config({
         "quicksettings": options.transition.value,
         "datemenu": options.transition.value,
         "media": options.transition.value,
+        "wallpaper": options.transition.value,
+        "mapkey": options.transition.value, 
     },
     windows: () => [
         ...forMonitors(Bar),
-        ...forMonitors(Dock),
         ...forMonitors(NotificationPopups),
         ...forMonitors(ScreenCorners),
         ...forMonitors(OSD),
@@ -42,5 +44,7 @@ App.config({
         PowerMenu(),
         SettingsDialog(),
         Verification(),
+        WallpaperWindow(),
+        Mapkey(),
     ],
 })

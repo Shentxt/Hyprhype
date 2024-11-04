@@ -10,7 +10,7 @@ import { DarkModeToggle } from "./widgets/DarkMode";
 import { MicMute } from "./widgets/MicMute";
 import { Media } from "./widgets/Media";
 import { UpdateWidget } from "./widgets/Update";
-import { ScreenshotToggle, ScreenshotMenu } from "./widgets/Screenshot";
+import { GameWidgets } from "./widgets/Gamemode";
 import PopupWindow from "widget/PopupWindow";
 import options from "options";
 
@@ -55,9 +55,9 @@ const Box1 = () => Widget.Box({
             class_name: "sliders-box vertical",
             label: "Switch to Box2",
             on_clicked: async () => {
-                activeBox.value = 'box2'; 
+            activeBox.value = 'box2'; 
             }
-        }),
+       }), 
     ],
 });
 
@@ -67,8 +67,8 @@ const Box2 = () => Widget.Box({
     css: quicksettings.width.bind().as(w => `min-width: ${w}px;`),
     children: [ 
         Row(
-            [ScreenshotToggle, ProfileToggle],
-            [ScreenshotMenu, ProfileSelector],
+            [GameWidgets, ProfileToggle],
+            [ProfileSelector],
         ),
         Widget.Button({
              class_name: "sliders-box vertical",

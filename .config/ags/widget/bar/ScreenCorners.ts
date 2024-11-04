@@ -5,6 +5,8 @@ const { corners, transparent } = options.bar
 export default (monitor: number) => Widget.Window({
     monitor,
     name: `corner${monitor}`,
+    exclusivity: "exclusive",
+    layer: "bottom",
     class_name: "screen-corner",
     anchor: ["top", "bottom", "right", "left"],
     click_through: true,
@@ -22,8 +24,8 @@ export default (monitor: number) => Widget.Window({
     setup: self => self
         .hook(corners, () => {
             self.toggleClassName("corners", corners.value > 0)
-        })
-        .hook(transparent, () => {
-            self.toggleClassName("hidden", transparent.value)
         }),
+    //    .hook(transparent, () => {
+     //       self.toggleClassName("hidden", transparent.value)
+      //  }),
 })

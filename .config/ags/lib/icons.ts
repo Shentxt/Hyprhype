@@ -161,5 +161,6 @@ export default {
     arch: {
         normal: "arch-lit-symbolic",
         update: "arch-unknown-symbolic",
+        game: "input-gaming-symbolic",
     },
 }

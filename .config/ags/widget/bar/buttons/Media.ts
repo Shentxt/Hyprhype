@@ -46,8 +46,9 @@ const Content = (player: MprisPlayer) => {
         }),
     })
 
+ 
     const playericon = Widget.Icon({
-        icon: Utils.merge([player.bind("entry"), monochrome.bind()], (entry => {
+            icon: Utils.merge([player.bind("entry"), monochrome.bind()], (entry => {
             const name = `${entry}${monochrome.value ? "-symbolic" : ""}`
             return icon(name, icons.fallback.audio)
         })),
@@ -63,7 +64,7 @@ const Content = (player: MprisPlayer) => {
 export default () => {
     let player = getPlayer()
 
-    const btn = PanelButton({
+   const btn = PanelButton({
         class_name: "media",
         child: Widget.Icon(icons.fallback.audio),
     })
