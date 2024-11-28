@@ -27,6 +27,9 @@ export default {
     nix: {
         nix: "nix-snowflake-symbolic",
     },
+    hypr: {
+        hypr: "hypr-symbolic"
+    },
     app: {
         terminal: "terminal-symbolic",
     },

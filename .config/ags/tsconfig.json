@@ -11,7 +11,7 @@
     "noImplicitAny": false,
     "baseUrl": ".",
     "paths": {
-      "colrandom": ["./lib/colrandom"] 
+      "colrandom": ["./lib/colrandom"]
     },
     "typeRoots": [
       "./types",

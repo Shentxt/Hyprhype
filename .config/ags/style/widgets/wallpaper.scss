@@ -8,7 +8,7 @@
 
 & .list {  
     & .wallpaper {
-      background-color: transparent;
+        background-color: transparent;
       & .overlay {
         & box {
          background-color: $widget-bg; 
@@ -22,13 +22,20 @@
  }
 
 .img {
-      border-color: $primary-bg;
+      border-color: $primary-bg;   
       border-width: $border-width;
       border-radius: 8px;
       border-style: inset; 
 }
 
 .random {
-    background-color: transparent; 
-    color: $fg;
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: $button-radius;
+    color: transparentize($fg, 0.5);
+
+  &:hover { 
+      background-color: transparent;
+      color: $fg; 
+    }
 }

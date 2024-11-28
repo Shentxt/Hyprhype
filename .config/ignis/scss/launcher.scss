@@ -1,0 +1,57 @@
+.launcher {
+    @include window;
+    margin-top: 5rem;
+}
+
+.launcher-search {
+    all: unset;
+}
+
+.launcher-search-box {
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center; 
+    padding: 1.50rem;
+    border-style: solid;
+    border-width: 2px; 
+    border-color: $primary $primary $error $error;
+    border-radius: 0.50rem;
+    min-width: 30rem;
+}
+
+.launcher-scroll {
+    min-height: 30rem;
+}
+
+.launcher-pinned {
+    all: unset;
+    @include hover($surface);
+    border-radius: 1rem;
+    border: 2px solid $surface;
+    transition: 0.3s;
+    font-size: 1.2rem;
+    margin: 0.25rem;
+
+    &:focus {
+    text-shadow: 1px 1px 4px $primary;
+  }
+}
+
+.launcher-app {
+    all: unset;
+    @include hover($surface);
+    border-radius: 1rem;
+    padding: 0.5rem 0.25rem;
+    border: 2px solid $surface;
+    margin-top: 0.25rem;
+    transition: 0.3s;
+    
+    &:focus {
+    text-shadow: 1px 1px 4px $primary;
+  }
+}
+
+.launcher-app-label {
+    font-size: 1.1rem;
+    margin-left: 1rem;
+}

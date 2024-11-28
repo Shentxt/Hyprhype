@@ -4,12 +4,15 @@ window#overview .overview {
 
     .workspace {
         &.active>widget {
-            border-color: $primary-bg
+            border-color: $primary-bg;
+            border-style: inset;
         }
 
         >widget {
             @include widget;
             border-radius: if($radius ==0, 0, $radius + $padding);
+            border-style: inset; 
+
 
             &:hover {
                 background-color: $hover-bg;

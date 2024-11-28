@@ -15,7 +15,13 @@ export VISUAL="${EDITOR}"
 export EDITOR='nvim'
 export TERMINAL='kitty'
 export BROWSER='firefox'
+export FILE_MANAGER='nautilus'
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
+export PATH="$HOME/.deno/bin:$PATH"
+export SDL_VIDEODRIVER=wayland
+
+export PYTHONPYCACHEPREFIX=~/.cache/__pycache__
+export MYPY_CACHE_DIR=~/.cache/.mypy_cache
 
 #|||----- Load -----|||#
 
@@ -122,7 +128,7 @@ alias music="ncmpcpp"
 alias ls='lsd -a --group-directories-first'
 alias ll='lsd -la --group-directories-first'
 
-alias sudo='pkexec'
+alias pk='pkexec'
 alias pkill='pkill -f'
 alias cp='cp -r'
 
@@ -137,3 +143,7 @@ precmd() { pwd > "${HOME}/.lastdir"; }
 if [ -f "${HOME}/.lastdir" ]; then
     cd "$(cat "${HOME}/.lastdir")"
 fi
+
+# bun completions
+[ -s "/home/shen/.bun/_bun" ] && source "/home/shen/.bun/_bun"
+. "/home/shen/.deno/env"

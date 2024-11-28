@@ -11,9 +11,6 @@ function Wallpaper(wallpaperPath) {
       Utils.exec(`rm ${WALLPAPERS_PATH}/current.set`);
       Utils.exec(`ln -s ${wallpaperPath} ${WALLPAPERS_PATH}/current.set`);
 
-      Utils.exec(`bash -c "${App.configDir}/shared/scripts/sidebar.sh close"`);
-      Utils.exec(`bash -c "${App.configDir}/shared/scripts/sidebar.sh toggle-wallpapers"`);
-
       Utils.exec(`swww img ${wallpaperPath} --transition-type "wipe" --transition-duration 2`);
 
       wallpaper.set(wallpaperPath);
@@ -49,7 +46,6 @@ function WallpaperList() {
 function RandomWallpaperButton() {
   return Widget.Button({
     className: 'random',
-    cursor: 'pointer',
     child: Widget.Box({
       vertical: false,
       children: [

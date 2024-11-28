@@ -46,9 +46,8 @@
 |    WM/comp   |                 [Hyprland](https://wiki.hyprland.org/)                         |
 |   Terminal   |                   [Kitty](https://github.com/kovidgoyal/kitty)                 |
 |   Firefox    |        [Firefox](https://github.com/Godiesc/firefox-gx/tree/main)              |
-|  Widgets/bar |            [AGS](https://aylur.github.io/ags-docs/config/widgets/)             |
+|  Widgets/bar |          [Ignis](https://aylur.github.io/ags-docs/config/widgets/)             |
 |    Shell     |                [Starship](https://github.com/starship/starship)                |
-|   Launcher   |                   [AGS](https://aylur.github.io/ags-docs/config/examples/)     |
 |    Editor    | [Neovim](https://github.com/neovim/neovim)-[Vs](https://code.visualstudio.com/)|
 | File Manager |              [Thunar](https://github.com/xfce-mirror/thunar)                   |
 | Lockscreen   |              [Hyprlock](https://github.com/hyprwm/hyprlock)                    |

@@ -36,7 +36,7 @@ if ! pgrep -x "pkexec" > /dev/null; then
     hyprctl keyword general:gaps_out 0
     hyprctl keyword general:border_size 0
     
-    pkill -f swww
+#    pkill -f swww
 
 for script in \
     ~/.config/hypr/scripts/song.sh \
@@ -83,8 +83,7 @@ if ! pgrep -x "pkexec" > /dev/null; then
     hyprctl keyword general:gaps_out 20
     hyprctl keyword general:border_size 2 
 
-    ags -q; ags 
-    swww-daemon --format xrgb &
+#    ags -q; ags 
     ~/.config/hypr/scripts/song.sh &
     setsid node ~/.config/hypr/scripts/processingpng.js > ~/.cache/output.log 2>&1 &
     } 2> "$error_file"

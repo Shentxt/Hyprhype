@@ -1,0 +1,10 @@
+.date-center {
+    @include window;
+    min-width: 28rem;
+    padding: 0;
+}
+
+.date-center-widget {
+    padding: 1rem;
+    margin-bottom: 1rem;
+}

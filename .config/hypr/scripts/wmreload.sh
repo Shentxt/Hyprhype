@@ -25,7 +25,8 @@
 # notify-send: notify
 #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-sleep 1 && hyprctl reload && ags -q; ags 
+sleep 1 && hyprctl reload && ignis reload
+systemctl --user restart wireplumber pipewire pipewire-pulse
 
 name=$(whoami)
 

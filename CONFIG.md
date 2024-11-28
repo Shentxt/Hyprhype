@@ -52,9 +52,10 @@ Hyprhype
 <pre><code>
  git clone https://github.com/Shentxt/Hyprhype
  cd Hyprhype
- cp -r .config ~/.config 
- cp -r .local ~/.local
- cp -r chrome extensions user.js /u directory of firefox 
+ cp -R .config ~/.config 
+ cp -R .local ~/.local
+ cp -R chrome extensions user.js /u directory of firefox 
+ cp -R Material ~/.local/share/themes
 </code></pre>
 </div>
 
