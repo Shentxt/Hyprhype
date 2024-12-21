@@ -1,6 +1,6 @@
 from ignis.widgets import Widget
 from ignis.utils import Utils
-from .qs_button import QSButton
+from ..qs_button import QSButton
 from typing import List
 from ignis.services.network import NetworkService, VpnConnection
 

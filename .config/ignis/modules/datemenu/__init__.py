@@ -1,21 +1,17 @@
 from ignis.widgets import Widget
 from ignis.app import IgnisApp
 from .notification_center import notification_center
+from .calendar import calendar
 
 app = IgnisApp.get_default()
 
 def date_center() -> Widget.Box:
     return Widget.Box(
-        vertical=True,
+        vertical=False,  
         css_classes=["date-center"],
         child=[
-            Widget.Box(
-                vertical=True,
-                css_classes=["date-widget"],
-                child=[
-                ],
-            ),
-            notification_center(),
+            notification_center(), 
+            calendar(),            
         ],
     )
 
@@ -43,7 +39,7 @@ def date_window() -> Widget.RevealerWindow:
         kb_mode="on_demand",
         layer="top",
         css_classes=["unset"],
-        anchor=["top", "right", "bottom", "left"],
+        anchor=["top"],
         namespace="ignis_DATE",
         child=box,
         revealer=revealer,

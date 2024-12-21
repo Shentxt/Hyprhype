@@ -1,10 +1,19 @@
 .date-center {
     @include window;
-    min-width: 28rem;
-    padding: 0;
+    padding: 1rem;
+    min-height: 20rem;
 }
 
 .date-center-widget {
     padding: 1rem;
     margin-bottom: 1rem;
+}
+
+.holiday-day {
+    border-style: solid;
+    border-width: 2px;
+    border-color: $primary $primary $tertiary $tertiary;
+    border-radius: 0.50rem;
+    padding: 1rem;
+    color: $onSurface;
 }

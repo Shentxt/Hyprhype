@@ -12,29 +12,40 @@ def about_entry(active_page):
     about_page = SettingsPage(
         name="About",
         groups=[
+            Widget.Separator(css_classes=["settings-separator"]),
             Widget.Box(
                 child=[
+                    Widget.Box(
+                        child=[
+                            SettingsRow(label="OS 󰟀", sublabel=fetch.os_name),
+                            SettingsRow(label="Ignis version ", sublabel=Utils.get_ignis_version()),
+                            SettingsRow(label="Session ", sublabel=fetch.session_type),
+                            SettingsRow(label="Compositor ", sublabel=fetch.current_desktop),
+                            SettingsRow(label="Kernel ", sublabel=fetch.kernel),
+                        ],
+                        orientation="vertical",  
+                        halign="start",  
+                    ),
                     Widget.Picture(
-                        image=material.bind(
-                            "dark_mode",
-                            transform=lambda value: fetch.os_logo_text_dark
-                            if value
-                            else fetch.os_logo_text,
-                        ),
-                        width=300,
-                        height=100,
-                    )
+                       # image=material.bind(
+                       #     "dark_mode",
+                       #     transform=lambda value: fetch.os_logo_text_dark
+                       #     if value
+                       #     else fetch.os_logo_text,
+                       # ),
+                        image="/home/shen/.config/ignis/assets/linux.png", 
+                        width=350,
+                        height=200,
+                    ),
                 ],
+                orientation="horizontal",  
                 halign="center",
                 width_request=300,
                 height_request=100,
-            ),
-            SettingsRow(label="OS 󰟀", sublabel=fetch.os_name),
-            SettingsRow(label="Ignis version ", sublabel=Utils.get_ignis_version()),
-            SettingsRow(label="Session type ", sublabel=fetch.session_type),
-            SettingsRow(label="Wayland compositor ", sublabel=fetch.current_desktop),
-            SettingsRow(label="Kernel ", sublabel=fetch.kernel),
-        ],
+            ), 
+            Widget.Separator(css_classes=["settings-separator"]),
+            SettingsRow(label="Developer", sublabel="-> Shen", halign="center"),
+        ], 
     )
     return SettingsEntry(
         label="About",

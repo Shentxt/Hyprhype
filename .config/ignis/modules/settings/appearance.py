@@ -3,19 +3,56 @@ from services.material import MaterialService
 from .elements import SwitchRow, SettingsPage, SettingsGroup, FileRow, SettingsEntry
 from ignis.widgets import Widget
 from ignis.services.wallpaper import WallpaperService
-
+from options import avatar_opt
 
 wallpaper = WallpaperService.get_default()
 material = MaterialService.get_default()
-
 
 def appearance_entry(active_page):
     appearance_page = SettingsPage(
         name="Appearance",
         groups=[
             SettingsGroup(
-                name=None,
+                name="User",
+                style="margin-top: 2rem;",
                 rows=[
+                    Widget.Separator(css_classes=["settings-separator"]),
+                    Widget.Box(
+                        halign="start",
+                        style="margin-left: 2rem;",
+                        child=[
+                            Widget.Picture(
+                                image=avatar_opt.bind(
+                                    "value",
+                                    lambda value: "user-info"
+                                    if not os.path.exists(value)
+                                    else value,
+                                ),
+                                width=96,
+                                height=96,
+                                style="border-radius: 0.50rem;",
+                            ),
+                            Widget.Label(
+                                label=os.getenv("USER"), css_classes=["settings-user-name"]
+                            ),
+                        ],
+                    ),
+                    FileRow(
+                        label="Avatar",
+                        dialog=Widget.FileDialog(
+                            initial_path=avatar_opt.bind("value"),
+                            on_file_set=lambda x, gfile: avatar_opt.set_value(
+                                gfile.get_path()
+                            ),
+                        ),
+                    ),
+                ],
+            ),
+            Widget.Separator(css_classes=["separator-mp"]),
+            SettingsGroup(
+                name="Wallpaper",
+                rows=[
+                    Widget.Separator(css_classes=["settings-separator"]),
                     Widget.ListBoxRow(
                         child=Widget.Picture(
                             image=wallpaper.bind("wallpaper"),
@@ -28,12 +65,6 @@ def appearance_entry(active_page):
                         selectable=False,
                         activatable=False,
                     ),
-                  #  SwitchRow(
-                  #      label="Dark mode",
-                  #      active=material.bind("dark_mode"),
-                  #      on_change=lambda x, state: material.set_dark_mode(state),
-                  #      style="margin-top: 1rem;",
-                  #  ),
                     FileRow(
                         label="Wallpaper path",
                         button_label=os.path.basename(wallpaper.wallpaper)
@@ -54,7 +85,7 @@ def appearance_entry(active_page):
                         ),
                     ),
                 ],
-            )
+            ),
         ],
     )
     return SettingsEntry(

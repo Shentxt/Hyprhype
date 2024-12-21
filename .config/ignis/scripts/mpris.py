@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-import sys
 import subprocess
+import sys
 
 PLAYER_ICONS = {"spotify": "󰓇", "firefox": "󰈹", "chrome": "󰊯", None: ""}
 
@@ -23,28 +23,27 @@ def detect_player_status() -> str:
             check=True
         )
         status = result.stdout.strip()
-        if status == "Playing":
-            artist = subprocess.run(
-                ["playerctl", "metadata", "xesam:artist"],
-                capture_output=True,
-                text=True,
-                check=True
-            ).stdout.strip()
+        
+        artist = subprocess.run(
+            ["playerctl", "metadata", "xesam:artist"],
+            capture_output=True,
+            text=True,
+            check=True
+        ).stdout.strip()
 
-            title = subprocess.run(
-                ["playerctl", "metadata", "xesam:title"],
-                capture_output=True,
-                text=True,
-                check=True
-            ).stdout.strip()
+        title = subprocess.run(
+            ["playerctl", "metadata", "xesam:title"],
+            capture_output=True,
+            text=True,
+            check=True
+        ).stdout.strip()
 
-            icon = get_player_icon(artist)
-
-            return f"{title} - {artist}"
+        if status in ["Playing", "Paused"]:
+            return f"{title} \n {artist}"
         else:
-            return "No music is currently playing."
+            return ""
     except subprocess.CalledProcessError:
-        return "No active players found."
+        return ""
 
 def detect_player_icon() -> str:
     try:
@@ -58,10 +57,16 @@ def detect_player_icon() -> str:
         if not players:
             return PLAYER_ICONS[None]
 
-        player_name = players[0]
-        return get_player_icon(player_name.lower())
+        player_name = players[0].split('.')[0].lower()  
+        return get_player_icon(player_name)
     except subprocess.CalledProcessError:
         return PLAYER_ICONS[None]
+
+def get_player_info():
+    return detect_player_status()
+
+def get_player_icon_script():
+    return detect_player_icon()
 
 if __name__ == "__main__":
     if len(sys.argv) != 2 or sys.argv[1] not in {"status", "icon"}:

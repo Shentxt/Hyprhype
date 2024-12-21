@@ -1,12 +1,78 @@
 from ignis.widgets import Widget
 from ignis.app import IgnisApp
 from .buttons.volume import volume_control
-from .buttons.quick_settings import quick_settings
+from .quick_settings import quick_settings
 from .buttons.user import user
 from .buttons.brightness import brightness_slider
-from scripts.manager_box import update_state, get_state
+from scripts.manager_box import update_state, get_state  
 
 app = IgnisApp.get_default()
+
+main_container = Widget.Box()
+
+def box1() -> Widget.Box:
+    return Widget.Box(
+        vertical=True,
+        css_classes=["control-center"],
+        child=[
+            quick_settings(),
+            Widget.ToggleButton(
+                css_classes=["box_button"],
+                label="Switch to Box2",
+                on_toggled=lambda x, active: (
+                    print(f"Button toggled, active: {active}"),
+                    redraw_container("box2") if active else None,
+                ),
+            ),
+        ],
+    )
+
+def box2() -> Widget.Box:
+    return Widget.Box(
+        vertical=True,
+        css_classes=["control-center"],
+        child=[
+            quick_settings(),
+            Widget.ToggleButton(
+                css_classes=["box_button"],
+                label="Switch to Box1",
+                on_toggled=lambda x, active: (
+                    print(f"Button toggled, active: {active}"),
+                    redraw_container("box1") if active else None,
+                ),
+            ),
+        ],
+    )
+
+def toggle_boxes() -> Widget.Box:
+    current_state = get_state()
+    print(f"Current state: {current_state['box_visible']}")
+    if current_state["box_visible"] == "box1":
+        return box1()
+    else:
+        return box2()
+
+def redraw_container(new_box: str):
+    print(f"Redrawing main_container with: {new_box}")
+    main_container.set_child(toggle_boxes())  
+
+def control_center_widget() -> Widget.Box:
+    global main_container
+    main_container = Widget.Box(
+        vertical=True,
+        child=[
+            toggle_boxes(),
+        ],
+    )
+    return Widget.Box(
+        vertical=True,
+        css_classes=["control-center"],
+        child=[
+            user_buttons(),
+            main_container,
+            slider(),
+        ],
+    )
 
 def user_buttons() -> Widget.Box:
     return Widget.Box(
@@ -26,25 +92,6 @@ def slider() -> Widget.Box:
             brightness_slider(),
         ],
     )
-
-def control_center_widget() -> Widget.Box:
-    return Widget.Box(
-        vertical=True,
-        css_classes=["control-center"],
-        child=[
-            user_buttons(),
-            Widget.Box(
-                vertical=True,
-                css_classes=["control-center"],
-                child=[
-                    quick_settings(),
-                ],
-            ),
-            slider(),
-        ],
-    )
-
-
 
 def control_center() -> Widget.RevealerWindow:
     revealer = Widget.Revealer(

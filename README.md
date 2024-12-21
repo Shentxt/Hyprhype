@@ -109,6 +109,7 @@
 - 🌸 [Juminai](https://github.com/juminai/dotfiles)
 - 🌸 [Gh0stzk](https://github.com/gh0stzk/dotfiles)
 - 🌸 [Aylur](https://github.com/Aylur/dotfiles)
+- 🌸 [Linkfrg](https://github.com/linkfrg/dotfiles)
 
 ## 🌿Thanks
 

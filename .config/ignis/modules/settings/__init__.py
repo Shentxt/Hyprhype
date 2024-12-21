@@ -4,8 +4,7 @@ from gi.repository import GObject  # type: ignore
 from .notifications import notifications_entry
 from .about import about_entry
 from .appearance import appearance_entry
-from .recorder import recorder_entry
-from .user import user_entry
+from .media import media_entry
 from .elements import SettingsPage
 from ignis.app import IgnisApp
 from ignis.exceptions import WindowNotFoundError
@@ -47,9 +46,8 @@ def settings_widget():
     listbox = Widget.ListBox(
         rows=[
             notifications_entry(active_page),
-            recorder_entry(active_page),
+            media_entry(active_page),
             appearance_entry(active_page),
-            user_entry(active_page),
             about_entry(active_page),
         ],
     )

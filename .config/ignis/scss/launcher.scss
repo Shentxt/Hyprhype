@@ -1,6 +1,6 @@
 .launcher {
     @include window;
-    margin-top: 5rem;
+    margin-top: 4rem;
 }
 
 .launcher-search {
@@ -8,14 +8,11 @@
 }
 
 .launcher-search-box {
+    @include window;
     background-repeat: no-repeat; 
     background-size: cover; 
     background-position: center; 
-    padding: 1.50rem;
-    border-style: solid;
-    border-width: 2px; 
-    border-color: $primary $primary $error $error;
-    border-radius: 0.50rem;
+    padding: 2.50rem;
     min-width: 30rem;
 }
 

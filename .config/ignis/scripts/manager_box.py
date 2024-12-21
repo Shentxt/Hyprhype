@@ -1,21 +1,30 @@
-state = {
-    "box1_visible": True,
-    "box2_visible": False,
-    "icon1": "",
-    "icon2": "",
-}
+class BoxStateManager:
+    def __init__(self):
+        self.state = {
+            "visible_box": "box1",
+            "icons": {
+                "box1": "",
+                "box2": "",
+            },
+        }
+
+    def update_state(self, box_to_show: str):
+        if box_to_show in self.state["icons"]:
+            self.state["visible_box"] = box_to_show
+        else:
+            raise ValueError(f"Box '{box_to_show}' no está definida.")
+
+    def get_state(self):
+        return {
+            "box_visible": self.state["visible_box"],
+            "icon": self.state["icons"][self.state["visible_box"]],
+        }
+
+manager = BoxStateManager()
 
 def update_state(box_to_show: str):
-    if box_to_show == "box1":
-        state["box1_visible"] = True
-        state["box2_visible"] = False
-        state["icon1"] = ""
-        state["icon2"] = ""
-    elif box_to_show == "box2":
-        state["box1_visible"] = False
-        state["box2_visible"] = True
-        state["icon1"] = ""
-        state["icon2"] = ""
+    manager.update_state(box_to_show)
 
 def get_state():
-    return state
+    return manager.get_state()
+

@@ -24,7 +24,7 @@ check_and_notify() {
                     title="Unknown Title"
                 fi
                 if [ -z "$url" ]; then
-                    img="/home/shen/.config/hypr/assets/music.jpg"
+                    img="/home/shen/.config/ignis/assets/music.jpg"
                 else
                     img="$url"
                 fi

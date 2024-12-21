@@ -25,8 +25,13 @@
 # notify-send: notify
 #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-sleep 1 && hyprctl reload && ignis reload
-systemctl --user restart wireplumber pipewire pipewire-pulse
+if ! pgrep -x "ignis" > /dev/null; then
+    ignis init &
+else
+    ignis reload
+fi
+
+sleep 2
 
 name=$(whoami)
 

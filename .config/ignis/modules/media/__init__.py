@@ -1,6 +1,9 @@
 from ignis.widgets import Widget
 from ignis.app import IgnisApp
 from .media import media
+from scripts.mpris  import get_player_info, get_player_icon_script 
+import threading
+import time
 
 app = IgnisApp.get_default()
 
@@ -10,9 +13,10 @@ def media_center() -> Widget.Box:
         css_classes=["media-center"],
         child=[
             Widget.Box(
+                visible=lambda: get_player_info() != "",
                 vertical=True,
                 css_classes=["media-widget"],
-                child=[ 
+                child=[
                   media(),
                 ],
             ),
@@ -48,3 +52,11 @@ def media_window() -> Widget.RevealerWindow:
         child=box,
         revealer=revealer,
     )
+
+def update_music_info(): 
+    while True: 
+        player_info = get_player_info() 
+        media_widget.visible = player_info != "" 
+        time.sleep(1) 
+
+threading.Thread(target=update_music_info, daemon=True).start()

@@ -212,13 +212,7 @@ def notification_center() -> Widget.Box:
         child=[
             Widget.Box(
                 css_classes=["notification-center-header", "rec-unset"],
-                child=[
-                    Widget.Label(
-                        label=notifications.bind(
-                            "notifications", lambda value: str(len(value))
-                        ),
-                        css_classes=["notification-count"],
-                    ),
+                child=[ 
                     Widget.Label(
                         label="notifications",
                         css_classes=["notification-header-label"],

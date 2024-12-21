@@ -6,8 +6,8 @@
     @include hover($surfaceContainer);
     transition: 0.3s;
     border-style: solid;
-    border-width: 2px; 
-    border-color: $primary $primary $error $error;
+    border-width: 2px;
+    border-color: $primary $primary $tertiary $tertiary;
     border-radius: 0.50rem;
     min-width: 8rem;
     min-height: 8rem;

@@ -16,7 +16,7 @@ class SettingsPage(Widget.Scroll):
                 css_classes=["settings-page"],
                 child=[
                     Widget.Label(
-                        label=name, css_classes=["settings-page-name"], halign="start"
+                        label=name, css_classes=["settings-page-name"], halign="center"
                     ),
                     *groups,
                 ],

@@ -83,194 +83,94 @@ update_system() {
 }
 
 update() {
-echo2()   { echo "$@" >&2 ; }
-printf2() { printf "$@" >&2 ; }
-WARN()    { echo2 "==> $progname: warning: $1"; }
-DIE()     { echo2 "==> $progname: error: $1"; exit 1;  }
+    echo2() { echo "$@" >&2; }
+    printf2() { printf "$@" >&2; }
+    DIE() { echo2 "Error: $1"; exit 1; }
 
-SetHelper() {
-    for helper in "$@" "$EOS_AUR_HELPER" "$EOS_AUR_HELPER_OTHER" yay paru pacman ; do
-        which "${helper%% *}" &>/dev/null && return 0
-    done
-    WARN "AUR helper not found"
-    helper=pacman
-}
-
-Cmd() {                           # Show a command, run it, and exit on issues.
-    echo2 "==>" "$@"
-    "$@" || DIE "'$*' failed."
-}
-
-ResetKeyrings() {
-    Cmd sudo mv /etc/pacman.d/gnupg /root/pacman-key.bak.$(date +%Y%m%d-%H%M).by.$progname
-    Cmd sudo pacman-key --init
-    Cmd sudo pacman-key --populate archlinux endeavouros
-    Cmd sudo pacman -Syy --noconfirm archlinux-keyring endeavouros-keyring
-    Cmd sudo pacman -Syu
-    echo2 "Keyrings reset."
-    exit 0
-}
-
-ClearDatabases() {
-    Cmd sudo rm /var/lib/pacman/sync/*
-    echo2 "Package databases cleared."
-    exit 0
-}
-
-
-Options() {
-    local opts
-    local lopts="aur,clear-databases,dump-options,keyrings-reset,nvidia,no-keyring,no-sync,helper:,min-free-bytes:,paru,yay,pacman,help"
-    local sopts="h"
-
-    opts="$(/usr/bin/getopt -o=$sopts --longoptions $lopts --name "$progname" -- "$@")" || {
-        Options -h
-        return 1
+    SetHelper() {
+        for helper in "$@" yay paru pacman; do
+            which "${helper%% *}" &>/dev/null && return 0
+        done
+        echo2 "Warning: AUR helper not found. Defaulting to pacman."
+        helper=pacman
     }
-    eval set -- "$opts"
 
-    while true ; do
-        case "$1" in
-            --nvidia)
-                IsEndeavourOS && nvidia=yes || WARN "sorry, option $1 works only in EndeavourOS. Option ignored."
-                ;;
-            --no-keyring)                        keyring=no ;;
-            --no-sync)                           sync=":" ;;
-            --keyrings-reset)                    ResetKeyrings ;;
-            --clear-databases)                   ClearDatabases ;;
-            --min-free-bytes)                    min_free_bytes="$2" ; shift ;;
-            --helper)                            SetHelper "$2" ; shift ;;
-            --aur)                               SetHelper ;;
-            --paru | --yay | --pacman)           SetHelper "${1/--/}" ;;
-            --dump-options)
-                lopts="${lopts//:/}"
-                lopts="--${lopts//,/ --}"
-                sopts="${sopts//:/}"
-                sopts="$(echo "$sopts" | sed -E 's|([a-z])| -\1|g')"
-                echo $lopts $sopts
-                exit 0
-                ;;
+    Cmd() {
+        echo2 "==> $@"
+        "$@" || DIE "'$*' failed."
+    }
 
-            -h | --help)
-                cat <<EOF >&2
-Package updater for EndeavourOS and Arch
-Handles/updates:
-- keyrings
-- pacman db lock
-- disk space check
-- sync after update (unless disabled by --no-sync)
-and optionally
-- AUR with given AUR helper
-- Nvidia driver vs. kernel updates (only on EndeavourOS)
+    ResetKeyrings() {
+        Cmd sudo mv /etc/pacman.d/gnupg /root/pacman-key.bak.$(date +%Y%m%d-%H%M)
+        Cmd sudo pacman-key --init
+        Cmd sudo pacman-key --populate archlinux
+        Cmd sudo pacman -Syy --noconfirm archlinux-keyring
+        Cmd sudo pacman -Syu
+        echo2 "Keyrings reset."
+        exit 0
+    }
 
-Usage: $progname [options]
-Options:
-  --help, -h         This help.
-  --nvidia           Check also nvidia driver vs. kernel updates.
-  --clear-databases  Clears package database files.
-                     Use this only if package database issues constantly make system update fail.
-  --keyrings-reset   Resets Arch and EndeavourOS keyrings.
-                     Use this only if keyring issues constantly make system update fail.
-  --no-keyring       Do not try to update keyrings first.
-  --no-sync          Do not run 'sync' after update.
-  --helper           AUR helper name. Supported: yay, paru, pacman.
-                     Default: pacman
-                     Other AUR helpers supporting option -Sua like yay should work as well.
-  --paru             Same as --helper=paru.
-  --yay              Same as --helper=yay.
-  --aur              Uses the AUR helper configured in /etc/eos-script-lib-yad.conf.
-  --pacman           Same as --helper=pacman. Default. (Note: pacman does not support AUR directly).
-  --min-free-bytes   Minimal amount of free space (in bytes) that the root partition should have
-                     before updating. Otherwise a warning message will be displayed.
-                     Default: $min_free_bytes
-  --dump-options     Shows all supported options. Used for bash command completion.
-EOF
-                exit 0
-                ;;
-            
-            --) shift ; break ;;
-        esac
-        shift
-    done
-}
+    ClearDatabases() {
+        Cmd sudo rm /var/lib/pacman/sync/*
+        echo2 "Package databases cleared."
+        exit 0
+    }
 
-IsEndeavourOS() {
-    if [ "$isEndeavourOS" = "yes" ] || [ -r /usr/lib/endeavouros-release ] || [ -n "$(grep -iw endeavouros /etc/*-release)" ] ; then
-        isEndeavourOS=yes
-        return 0
-    fi
-    isEndeavourOS=no
-    return 1
-}
+    HandleConflicts() {
+        echo2 "Attempting to resolve package conflicts..."
+        conflict_pkg=$(pacman -Qoq /usr/lib/libhyprgraphics.so 2>/dev/null)
+        if [ -n "$conflict_pkg" ]; then
+            echo2 "Removing conflicting package: $conflict_pkg"
+            Cmd sudo pacman -Rdd --noconfirm "$conflict_pkg"
+        else
+            echo2 "No specific conflicting package identified."
+        fi
+    }
 
-DiskSpace() {
-    local available=$(findmnt / -nbo avail)
-    local min=$min_free_bytes
+    DiskSpace() {
+        local available=$(findmnt / -nbo avail)
+        local min=$((1000 * 1000 * 1000))
 
-    if [ $available -lt $min ] ; then
-        {
-            WARN "your root partition (/) has only $available bytes of free space."
-            if [ $(du -b -d0 /var/cache/pacman/pkg | awk '{print $1}') -gt $min ] ; then
-                printf "\nFor example, cleaning up the package cache may help.\n"
-                printf "Command 'sudo paccache -rk1' would do this:"
-                paccache -dk1
-                printf "Command 'sudo paccache -ruk0' would do this:"
-                paccache -duk0
-                echo ""
-            fi
-        } >&2
-    fi
-}
+        if [ $available -lt $min ]; then
+            echo2 "Warning: Low disk space on root partition. Only $available bytes available."
+            echo2 "Consider cleaning package cache with 'sudo paccache -rk1'."
+        fi
+    }
 
-echo2blue()  { echo2 "${BLUE}$1${RESET}" ; }
-echo2green() { echo2 "${GREEN}$1${RESET}" ; }
+    Main() {
+        local lock=/var/lib/pacman/db.lck
+        local rmopt=f
 
-Main() {
-    local progname="${0##*/}"
-    source /usr/share/endeavouros/scripts/eos-script-lib-yad || return 1
-    local helper="pacman"
-    local min_free_bytes=$((1000 * 1000 * 1000))  # default: 1 GB
+        echo2 "Starting package update..."
 
-    local helper2=":"
-    local lock=/var/lib/pacman/db.lck
-    local rmopt=f
-    local isEndeavourOS=""
+        DiskSpace
 
-    local subopts=()
-    local afteropts=()
-    local keyring=yes                             # user may disable keyring check with --no-keyring
-    local nvidia=no                               # user may enable Nvidia check with --nvidia
-    local sync="sync"
+        if [ -e $lock ] && fuser $lock &>/dev/null; then
+            rmopt=i
+        fi
 
-    local -r RED=$'\e[0;91m'
-    local -r GREEN=$'\e[0;92m'
-    local -r BLUE=$'\e[0;94m'
-    local -r MAGENTA=$'\e[0;95m'
-    local -r RESET=$'\e[0m'
+        SetHelper "$1"
 
-    Options "$@"
+        if [ "$helper" = "pacman" ]; then
+            echo2 "Updating native packages..."
+            sudo bash -c "rm -$rmopt $lock; [ ! -e $lock ] && pacman -Syyu --noconfirm" || HandleConflicts
+        else
+            echo2 "Updating native and AUR packages..."
+            sudo bash -c "rm -$rmopt $lock; [ ! -e $lock ] && pacman -Syyu --noconfirm && $helper -Sua --noconfirm" || HandleConflicts
+        fi
+    }
 
-    [ $nvidia  = yes ] && subopts+=(--nvidia)
-    [ $keyring = yes ] && subopts+=(--keyrings)
-
-    echo2blue "$progname: package updater with additional features"
-
-    DiskSpace
-
-    if [ -e $lock ] && fuser $lock &>/dev/null ; then
-        rmopt=i
-    fi
-    if [ "$helper" = "pacman" ] ; then
-        echo2green "Updating native apps..."
-        sudo bash -c "rm -$rmopt $lock; [ -e $lock ] || { pacman -Sy && eos-update-extras ${subopts[*]} && pacman -Su && $sync ; }"
-    else
-        echo2green "Updating native and AUR apps..."
-        helper2="/usr/bin/sudo -u $LOGNAME $helper -Sua"
-        sudo bash -c "rm -$rmopt $lock; [ -e $lock ] || { pacman -Sy && eos-update-extras ${subopts[*]} && pacman -Su && $helper2 ; $sync ; }"
-    fi
-}
-
-Main "$@"   
+    case "$1" in
+        --keyrings-reset)
+            ResetKeyrings
+            ;;
+        --clear-databases)
+            ClearDatabases
+            ;;
+        *)
+            Main "$1"
+            ;;
+    esac
 }
 
 case "$1" in

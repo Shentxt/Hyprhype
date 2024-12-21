@@ -4,6 +4,16 @@
     padding: 0.50rem;
 }
 
+.box_button {
+    @include window;
+    padding: 0.50rem;
+    transition: 0.3s;
+}
+
+.box_button:hover {
+    background-color: rgba(white, 0.2);
+}
+
 .control-center-widget {
     padding: 0.50rem;
     marging: 0.50rem;
@@ -21,9 +31,13 @@
     @include hover($surfaceContainerHigh);
     color: $onSurface;
     min-height: 2.4rem;
-    border-radius: 1.2rem;
+    border-style: solid;
+    border-width: 2px; 
+    border-color: $primary $primary $tertiary $tertiary;
+    border-radius: 0.50rem;
     transition: 0.3s;
     padding: 0.3rem 0.8rem;
+    margin: 0rem 0.4rem 0rem 0.4rem;
 
     &.active {
         @include hover($primary);

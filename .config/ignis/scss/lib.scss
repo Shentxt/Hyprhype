@@ -81,22 +81,49 @@ tooltip {
 }
 
 .font {
-  padding: 0 0.65rem;
+  padding: 0 0.45rem;
+  font-size: 0.65rem;
 }
 
 .icon {
     color: $primary;
-    font-size: 1.30rem;
+    font-size: 1.40rem;
     font-family: "JetBrains Mono Nerd Font";
+}
+
+.img {
+    filter:sepia(1) saturate(5) hue-rotate(180deg) brightness(1) contrast(1); 
+    width: 3.50rem;            
+    height: 6.50rem;           
+    object-fit: contain;     
+    transition: transform 0.2s ease, box-shadow 0.2s ease; 
+
+    &:hover {
+        transform: scale(1.1);  
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    }
 }
 
 .widgets {
     border-radius: 0.50rem;
-    padding: 0 0.1rem;
-    margin: 0 0.25rem;
+    padding: 0 0.45rem;
+    margin: 0 0rem;
     transition: 0.3s;
 }
 
 .widgets:hover {
     background-color: rgba(white, 0.2);
+}
+
+.separator{
+   margin: 0 0.45rem;
+   background-color: $primary;
+}
+
+.separator-mp{
+     margin: 0.45rem;
+}
+
+.awk {
+   font-size: 16px;
 }

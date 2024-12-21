@@ -1,5 +1,5 @@
 from ignis.widgets import Widget
-from .qs_button import QSButton
+from ..qs_button import QSButton
 from ignis.services.recorder import RecorderService
 
 recorder = RecorderService.get_default()

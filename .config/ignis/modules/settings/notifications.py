@@ -10,12 +10,7 @@ def notifications_entry(active_page):
         groups=[
             SettingsGroup(
                 name="General",
-                rows=[
-                    SwitchRow(
-                        label="Do not disturb",
-                        active=notifications.bind("dnd"),
-                        on_change=lambda x, state: notifications.set_dnd(state),
-                    ),
+                rows=[ 
                     SpinRow(
                         label="Maximum popups count",
                         sublabel="The first popup will automatically dismiss",

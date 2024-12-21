@@ -59,18 +59,8 @@ def settings_button() -> Widget.Button:
         on_click=lambda x: settings_window(),
     )
 
-
-def power_button() -> Widget.Button:
-    return Widget.Button(
-        child=Widget.Icon(image="system-shutdown-symbolic", pixel_size=20),
-        halign="end",
-        css_classes=["user-power", "unset"],
-        on_click=lambda x: app.toggle_window("ignis_POWERMENU"),
-    )
-
-
 def user() -> Widget.Box:
     return Widget.Box(
-        child=[user_image(), username(), settings_button(), power_button()],
+        child=[user_image(), username(), settings_button()],
         css_classes=["user"],
     )

@@ -1,14 +1,12 @@
 from ignis.widgets import Widget
 from ignis.services.network import NetworkService
 from ignis.services.notifications import NotificationService
-from ignis.services.recorder import RecorderService
 from ignis.services.audio import AudioService
+from services.update import UpdateService
 
 network = NetworkService.get_default()
 notifications = NotificationService.get_default()
-recorder = RecorderService.get_default()
 audio = AudioService.get_default()
-
 
 def indicator_icon(**kwargs):
     return Widget.Icon(style="margin-right: 0.5rem;", css_classes=["unset"], **kwargs)
@@ -60,25 +58,32 @@ def dnd_icon():
         visible=notifications.bind("dnd"),
     )
 
+def update_icon():
+    update_service = UpdateService.get_default()
 
-def recorder_icon():
-    def check_state(icon: Widget.Icon) -> None:
-        if recorder.is_paused:
-            icon.remove_css_class("active")
-        else:
-            icon.add_css_class("active")
-
-    icon = indicator_icon(
-        image="media-record-symbolic",
-        visible=recorder.bind("active"),
+    widget = Widget.Box(
+        visible=False,  
+        child=[
+            Widget.Label(
+                label="0",  
+                css_classes=["count"],  
+            ),
+            Widget.Icon(
+                image="aptdaemon-upgrade-symbolic",
+                pixel_size=21,
+            ),
+        ]
     )
 
-    icon.add_css_class("record-indicator")
+    label = widget.child[0]
 
-    recorder.connect("notify::is-paused", lambda x, y: check_state(icon))
+    def on_update_count(updates_count):
+        widget.visible = updates_count > 0
+        label.label = str(updates_count)
 
-    return icon
+    update_service.bind(on_update_count)
 
+    return widget
 
 def volume_icon():
     return indicator_icon(
@@ -88,5 +93,5 @@ def volume_icon():
 
 def status_icons():
     return Widget.Box(
-        child=[recorder_icon(), wifi_icon(), ethernet_icon(), volume_icon(), dnd_icon()]
+        child=[wifi_icon(), ethernet_icon(), volume_icon(), update_icon(), dnd_icon()]
     )

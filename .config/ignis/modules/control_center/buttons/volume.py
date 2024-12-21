@@ -157,5 +157,5 @@ def volume_control():
 
     return Widget.Box(
         vertical=True,
-        child=[speaker_control, microphone_control],
+        child=[speaker_control,microphone_control],
     )

@@ -40,14 +40,15 @@
     background-color: rgba(white, 0.2);
 }
 
-.pinned-app {
-    margin: 0 0.25rem;
+.launch {
+    margin: 0 0.45rem;
     transition: 0.3s;
-    padding: 0 0.1rem;
+    padding: 0 0.25rem;
     border-radius: 0.50rem;
+    fill: $primary; 
 }
 
-.pinned-app:hover {
+.launch:hover {
     background-color: rgba(white, 0.2);
 }
 
@@ -129,4 +130,17 @@
 .battery-percent {
     color: $onSurface;
     margin-right: 0.3rem;
+}
+
+.curved{ 
+    background-color: rgba($surface, 0.3);
+    border-style: solid;
+    border-width: 2px; 
+    border-color: $primary transparent transparent transparent;
+    border-radius: 1rem; 
+}
+
+.count {
+    font-size: 0.65rem;
+    margin-bottom: 0.65rem;
 }

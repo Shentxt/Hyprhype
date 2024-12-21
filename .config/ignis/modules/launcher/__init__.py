@@ -63,7 +63,7 @@ class LauncherAppItem(Widget.Button):
     def __sync_menu(self) -> None:
         self._menu = Widget.PopoverMenu(
             items=[
-                Widget.MenuItem(label="Launch", on_activate=lambda x: self.launch()),
+                Widget.MenuItem(label="󱓞  Launch", on_activate=lambda x: self.launch()),
                 Widget.Separator(),
             ]
             + [
@@ -76,7 +76,7 @@ class LauncherAppItem(Widget.Button):
             + [
                 Widget.Separator(),
                 Widget.MenuItem(
-                    label="Pin", on_activate=lambda x: self._application.pin()
+                    label="󰐃  Pin", on_activate=lambda x: self._application.pin()
                 )
                 if not self._application.is_pinned
                 else Widget.MenuItem(
@@ -134,24 +134,29 @@ class SearchWebButton(Widget.Button):
 
 class AppItem(Widget.Button):
     def __init__(self, app):
+        self._app = app  
         menu = Widget.PopoverMenu(
             items=[
-                Widget.MenuItem(label="Launch", on_activate=lambda x: app.launch()),  
+                Widget.MenuItem(label="󱓞  Launch", on_activate=lambda x: self.launch()),  
                 Widget.Separator(),
-                Widget.MenuItem(label="Unpin", on_activate=lambda x: app.unpin())  
+                Widget.MenuItem(label="󰐄  Unpin", on_activate=lambda x: app.unpin())  
             ]
         )
         
         super().__init__(
             child=Widget.Box(child=[Widget.Icon(image=app.icon, pixel_size=48), menu]),
-            on_click=lambda x: app.launch(),  
+            on_click=lambda x: self.launch(),  
             on_right_click=lambda x: menu.popup(),  
             css_classes=["launcher-pinned", "unset"]
         )
 
+    def launch(self):
+        self._app.launch()
+        IgnisApp.get_default().close_window("ignis_LAUNCHER")
 
-def pinned_apps():
+def pinned_apps(): 
     return Widget.Box(
+        halign="center",
         child=applications.bind(
             "pinned",  
             transform=lambda value: [
@@ -168,6 +173,7 @@ def launcher() -> Widget.Window:
         if query == "":
             entry.grab_focus()
             app_list.visible = False
+            pinned_box.visible = True  
             return
 
         apps = applications.search(applications.apps, query)
@@ -175,7 +181,12 @@ def launcher() -> Widget.Window:
             app_list.child = [SearchWebButton(query)]
         else:
             app_list.visible = True
-            app_list.child = [LauncherAppItem(i) for i in apps[:5]]
+            pinned_box.visible = False  
+            app_list.child = [
+            item
+            for app in apps[:5]
+            for item in (LauncherAppItem(app), Widget.Separator())
+        ][:-1]   
 
     def on_open(window: Widget.Window, entry: Widget.Entry) -> None:
         if not window.visible:
@@ -185,6 +196,7 @@ def launcher() -> Widget.Window:
         entry.grab_focus()
 
     app_list = Widget.Box(vertical=True, visible=False, style="margin-top: 1rem;")
+    pinned_box = pinned_apps()  
     entry = Widget.Entry(
         hexpand=True,
         placeholder_text="Search",
@@ -213,7 +225,8 @@ def launcher() -> Widget.Window:
                     entry,
                 ],
             ),
-            pinned_apps(),
+            pinned_box,
+            Widget.Separator(),
             app_list,
         ],
     )

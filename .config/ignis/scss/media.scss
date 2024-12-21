@@ -14,11 +14,11 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    min-height: 11rem;
+    min-height: 11rem; 
     border-radius: 0.50rem; 
 }
 
-.media-image-gradient-{{ desktop_entry }} {
+.media-image-gradient-{{ desktop_entry }} { 
     border-radius: 0.50rem;
     background: linear-gradient(90deg, rgba({{ onPrimary }}, 0.9) 0%, rgba({{ onPrimary }}, 0.4) 50%, rgba({{ onPrimary }}, 0.9) 100%);
 }
