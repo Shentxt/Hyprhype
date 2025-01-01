@@ -124,6 +124,17 @@ tooltip {
      margin: 0.45rem;
 }
 
-.awk {
-   font-size: 16px;
+.keybindings {
+    @include window; 
+    min-width: 20rem;
+    min-height: 20rem;
+    font-size: 0.85rem;
+    padding: 1.0rem;
+    margin: 0.45rem;
+}
+
+.notes {
+    @include window;  
+    padding: 0.85rem;
+    margin: 0.45rem;
 }

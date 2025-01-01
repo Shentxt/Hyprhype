@@ -23,17 +23,18 @@ from modules.launcher import launcher  # noqa: E402
 from modules.media import media_window #noq E402
 from modules.datemenu import date_window #noq E402
 from modules.mapkey import map_window #noq E402
-from modules.popup import popup #noq E402
+from modules.notes import notes_window #noq E402
 
+Utils.exec_sh("sudo sync; sudo echo 3 > /proc/sys/vm/drop_caches")
 Utils.exec_sh("hyprctl reload")
 app = IgnisApp.get_default()
 app.apply_css(Utils.get_current_dir() + "/style.scss")
 
-from services.hyprland import *
-
 launcher()
-media_window()
+
 control_center()
+notes_window()
+media_window()
 date_window()
 map_window()
 
@@ -42,7 +43,6 @@ for monitor in range(Utils.get_n_monitors()):
     desktop(monitor)
 for monitor in range(Utils.get_n_monitors()):
     notification_popup(monitor)
-    popup(monitor)
 
 powermenu()
 OSD()

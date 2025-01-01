@@ -5,7 +5,6 @@ from gi.repository import GLib  # type: ignore
 
 notifications = NotificationService.get_default()
 
-
 class ScreenshotLayout(Widget.Box):
     def __init__(self, notification: Notification) -> None:
         super().__init__(
@@ -72,7 +71,7 @@ class NormalLayout(Widget.Box):
                             image=notification.icon
                             if notification.icon
                             else "dialog-information-symbolic",
-                            pixel_size=48,
+                            pixel_size=64,
                             halign="start",
                             valign="start",
                         ),
@@ -203,7 +202,6 @@ def notification_list() -> Widget.Box:
 
     return box
 
-
 def notification_center() -> Widget.Box:
     main_box = Widget.Box(
         vertical=True,
@@ -214,21 +212,40 @@ def notification_center() -> Widget.Box:
                 css_classes=["notification-center-header", "rec-unset"],
                 child=[ 
                     Widget.Label(
-                        label="notifications",
+                        label="Notifications",
                         css_classes=["notification-header-label"],
-                    ),
-                    Widget.Button(
-                        child=Widget.Label(label=""),
-                        halign="end",
-                        hexpand=True,
-                        on_click=lambda x: notifications.clear_all(),
-                        css_classes=["notification-clear-all"],
-                    ),
+                    ),  
+                ], 
+            ), 
+            
+            Widget.Separator(css_classes=["settings-separator"]),
+
+            Widget.Box(
+                child=[ 
+                    Widget.Label(
+                        label="Do Not Disturb",
+                        css_classes=["notification-header-label"],
+                    ), 
+                    Widget.Switch(
+                        active=notifications.bind("dnd"),
+                        on_change=lambda x, state: notifications.set_dnd(state),
+                        css_classes=["dnd-button"],
+                    ), 
                 ],
-            ),
+            ), 
+
             Widget.Scroll(
                 child=notification_list(),
                 vexpand=True,
+            ),
+
+            Widget.Button(
+                child=Widget.Label(label="Clear-all "),
+                halign="end",
+                hexpand=True,
+                visible=notifications.bind("notifications", lambda value: len(value) > 0),
+                on_click=lambda x: notifications.clear_all(),
+                css_classes=["notification-clear-all"],
             ),
         ],
     )

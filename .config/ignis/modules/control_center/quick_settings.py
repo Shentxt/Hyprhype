@@ -1,7 +1,6 @@
 from ignis.widgets import Widget
 from .buttons.wifi import wifi_control
 from .buttons.record import record_control
-from .buttons.dnd import dnd_button
 from .buttons.dark_mode import dark_mode_button
 from .buttons.gamemode import gamemode_button
 from .buttons.ethernet import ethernet_control
@@ -45,7 +44,6 @@ def qs_config(main_box: Widget.Box) -> None:
         *wifi_control(),
         *ethernet_control(),
         *vpn_control(),
-        dnd_button(),
         dark_mode_button(),
         record_control(),
         gamemode_button(),

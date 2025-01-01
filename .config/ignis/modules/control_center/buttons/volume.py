@@ -133,9 +133,14 @@ def volume_control():
 
     speaker_scale = volume_scale(audio.speaker)
     microphone_scale = volume_scale(audio.microphone)
+    microphone_scale_box = Widget.Box(
+        child=[microphone_icon, microphone_scale, device_list_arrow(microphones_list)]
+    )
+    microphone_scale_box.visible = audio.microphone.bind("is_default")
 
     speaker_arrow = device_list_arrow(speakers_list)
     microphone_arrow = device_list_arrow(microphones_list)
+    microphone_arrow.visible = audio.microphone.bind("is_default")
 
     speaker_control = Widget.Box(
         vertical=True,
@@ -149,7 +154,7 @@ def volume_control():
     microphone_control = Widget.Box(
         vertical=True,
         child=[
-            Widget.Box(child=[microphone_icon, microphone_scale, microphone_arrow]),
+            microphone_scale_box,
             microphones_list,
         ],
         style="margin-top: 0.25rem;",
@@ -157,5 +162,5 @@ def volume_control():
 
     return Widget.Box(
         vertical=True,
-        child=[speaker_control,microphone_control],
+        child=[speaker_control, microphone_control],
     )

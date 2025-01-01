@@ -1,6 +1,6 @@
 .notification-popup {
     @include window;
-    min-width: 25rem;
+    min-width: 25rem; 
 
     & .notification-close {
         @include hover($surface);

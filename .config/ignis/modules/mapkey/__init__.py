@@ -6,11 +6,11 @@ app = IgnisApp.get_default()
 
 def map_center() -> Widget.Box:
     return Widget.Box(
-        vertical=False,  
-        css_classes=["date-center"],
+        vertical=False, 
+        css_classes=["keybindings"],
         child=[
         get_keybindings(),
-        ],
+        ], 
     )
 
 def map_window() -> Widget.RevealerWindow:

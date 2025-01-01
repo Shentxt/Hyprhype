@@ -14,6 +14,14 @@
     background-color: rgba(white, 0.2);
 }
 
+.image{
+    background-color: $surface;
+    border-style: solid;
+    border-width: 2px; 
+    border-color: $primary $primary $tertiary $tertiary;
+    border-radius: 0.50rem;
+}
+
 .control-center-widget {
     padding: 0.50rem;
     marging: 0.50rem;

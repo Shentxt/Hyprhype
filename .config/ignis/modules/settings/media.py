@@ -76,7 +76,7 @@ def media_entry(active_page):
 
     return SettingsEntry(
         label="Media",
-        icon="media-record-symbolic",
+        icon="video-x-generic-symbolic",
         active_page=active_page,
         page=recorder_page,
     )

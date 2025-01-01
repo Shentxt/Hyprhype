@@ -8,7 +8,7 @@ def desktop(monitor: int) -> Widget.Window:
         exclusivity="exclusive",
         monitor=monitor,
         namespace=f"ignis_DESKTOP_{monitor}",
-        layer="background",
+        layer="bottom",
         kb_mode="none",  
         child=Widget.Box(
             vertical=True,  
@@ -28,4 +28,4 @@ def desktop(monitor: int) -> Widget.Window:
             ],
         ),
        css_classes=["desktop"],
-    )
+    ) 

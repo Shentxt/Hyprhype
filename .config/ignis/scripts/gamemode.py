@@ -2,12 +2,6 @@ import subprocess
 import os
 import sys
 
-services_dir = os.path.expanduser('~/.config/ignis/services')
-if services_dir not in sys.path:
-    sys.path.append(services_dir)
-
-from hyprland import set_border_colors
-
 gamemode_file = "/tmp/gamemode.txt"
 error_file = "/tmp/gamemode_error.txt"
 
@@ -67,8 +61,7 @@ def mod_disable():
             subprocess.run(["hyprctl", "keyword", "general:gaps_in", "5"], check=True, stderr=err_file)
             subprocess.run(["hyprctl", "keyword", "general:gaps_out", "20"], check=True, stderr=err_file)
             subprocess.run(["hyprctl", "keyword", "general:border_size", "2"], check=True, stderr=err_file)
-         
-            set_border_colors()
+        
             os.system("ignis open ignis_DESKTOP_0")
 
             with open(gamemode_file, 'w') as f:

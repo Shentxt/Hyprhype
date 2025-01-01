@@ -80,7 +80,7 @@ class LauncherAppItem(Widget.Button):
                 )
                 if not self._application.is_pinned
                 else Widget.MenuItem(
-                    label="Unpin", on_activate=lambda x: self._application.unpin()
+                    label="󰐄 Unpin", on_activate=lambda x: self._application.unpin()
                 ),
             ]
         )

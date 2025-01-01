@@ -27,7 +27,7 @@ def user_image() -> Widget.Picture:
         width=54,
         height=54,
         content_fit="cover",
-        style="border-radius: 0.50rem;",
+        css_classes=["image"],
     )
 
 

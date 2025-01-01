@@ -3,8 +3,10 @@ from services.material import MaterialService
 from .elements import SwitchRow, SettingsPage, SettingsGroup, FileRow, SettingsEntry
 from ignis.widgets import Widget
 from ignis.services.wallpaper import WallpaperService
-from options import avatar_opt
+from options import avatar_opt, replace_face_with_avatar
+from services.randomwall import WallpaperManager
 
+randomwall = WallpaperManager()
 wallpaper = WallpaperService.get_default()
 material = MaterialService.get_default()
 
@@ -41,9 +43,8 @@ def appearance_entry(active_page):
                         label="Avatar",
                         dialog=Widget.FileDialog(
                             initial_path=avatar_opt.bind("value"),
-                            on_file_set=lambda x, gfile: avatar_opt.set_value(
-                                gfile.get_path()
-                            ),
+                            on_file_set=lambda x, gfile: (avatar_opt.set_value(gfile.get_path()),
+                            replace_face_with_avatar(gfile)),
                         ),
                     ),
                 ],
@@ -53,6 +54,12 @@ def appearance_entry(active_page):
                 name="Wallpaper",
                 rows=[
                     Widget.Separator(css_classes=["settings-separator"]),
+                    Widget.Button(
+                        child=Widget.Icon(image="media-playlist-repeat-symbolic", pixel_size=20),
+                        halign="end",
+                        css_classes=["launch", "unset"],
+                        on_click=lambda x: randomwall.fetch_wallpapers(),
+                    ),
                     Widget.ListBoxRow(
                         child=Widget.Picture(
                             image=wallpaper.bind("wallpaper"),

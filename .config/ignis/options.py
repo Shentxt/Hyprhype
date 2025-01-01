@@ -1,12 +1,21 @@
 import os
+import shutil
 from ignis.services.options import OptionsService
 
 options = OptionsService.get_default()
 
+def replace_face_with_avatar(gfile):
+    face_path = os.path.expanduser("~/.face")
+    
+    try:
+        shutil.copy(gfile.get_path(), face_path)
+    except Exception as e:
+       pass
+
 user_opt_group = options.create_group("user", exists_ok=True)
 avatar_opt = user_opt_group.create_option(
     "avatar",
-    default=f"/var/lib/AccountsService/icons/{os.getenv('USER')}",
+    default=f"{os.path.expanduser('~')}/.face",
     exists_ok=True,
 )
 

@@ -1,10 +1,12 @@
 from ignis.widgets import Widget
 from ignis.gobject import IgnisGObject
 from gi.repository import GObject  # type: ignore
+
 from .notifications import notifications_entry
 from .about import about_entry
 from .appearance import appearance_entry
 from .media import media_entry
+
 from .elements import SettingsPage
 from ignis.app import IgnisApp
 from ignis.exceptions import WindowNotFoundError

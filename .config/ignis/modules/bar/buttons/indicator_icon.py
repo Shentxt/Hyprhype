@@ -93,5 +93,5 @@ def volume_icon():
 
 def status_icons():
     return Widget.Box(
-        child=[wifi_icon(), ethernet_icon(), volume_icon(), update_icon(), dnd_icon()]
+        child=[wifi_icon(), ethernet_icon(), volume_icon(), dnd_icon(), update_icon()]
     )

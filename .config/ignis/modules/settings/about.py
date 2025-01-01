@@ -3,10 +3,11 @@ from ignis.utils import Utils
 from ignis.widgets import Widget
 from services.material import MaterialService
 from ignis.services.fetch import FetchService
+from datetime import datetime
 
 fetch = FetchService.get_default()
 material = MaterialService.get_default()
-
+current_year = datetime.now().year
 
 def about_entry(active_page):
     about_page = SettingsPage(
@@ -44,7 +45,7 @@ def about_entry(active_page):
                 height_request=100,
             ), 
             Widget.Separator(css_classes=["settings-separator"]),
-            SettingsRow(label="Developer", sublabel="-> Shen", halign="center"),
+            SettingsRow(label=f"© Copyright {current_year}, Shen", halign="center"),
         ], 
     )
     return SettingsEntry(

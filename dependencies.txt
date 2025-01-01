@@ -1,33 +1,37 @@
-plymouth
-supergfxctl
+nm-connection-editor
+notify-send
+
 go 
 npm 
 gjs
-sass
 
 udis86-git
 epoll-shim
 matugen
-greetd 
-greetd-agreety
-ignis-git
-firefox
-polkit-gnome
-bun
-fd
-brightnessctl
-nm-connection-editor
-notify-send
-imagemagick 
 
-grimblast
+ignis-git
+
+firefox
+fd
+
+bun
+brightnessctl
+
+imagemagick 
+syncthing
+
 wal 
-qrcp
 kitty
 
+supergfxctl
+sass
+syncthing
 swayidle
 swappy
 
+greetd 
+greetd-agreety
+grimblast
 gst-plugin-pipewire
 gst-plugins-good
 gst-plugins-ugly
@@ -43,23 +47,25 @@ hyprland-git
 hyprlock
 hyprpicker
 hyprland-protocols
+hyprpolkitagent
+hyprsunset
 
 wf-recorder 
 wl-paste
 wl-copy 
 wl-clipboard
 
-pipewire
-pipewire-alsa
-pipewire-pulse
-pipewire-jack
-pavucontrol
-
 zsh
 zsh-history-substring-search 
 zsh-syntax-highlighting 
 zsh-autosuggestions
 
+pipewire
+pipewire-alsa
+pipewire-pulse
+pipewire-jack
+pavucontrol
+plymouth
 python-requests
 python-jinja
 python-materialyoucolor

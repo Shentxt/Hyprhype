@@ -39,7 +39,7 @@ def detect_player_status() -> str:
         ).stdout.strip()
 
         if status in ["Playing", "Paused"]:
-            return f"{title} \n {artist}"
+            return f"{artist} \n{title}"
         else:
             return ""
     except subprocess.CalledProcessError:
