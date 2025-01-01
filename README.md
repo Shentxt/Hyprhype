@@ -23,17 +23,9 @@
   </picture>
 </p>
 
-> :warning: **Because this is a custom configuration, I hope for your complete understanding. If you have any questions or problems in my configuration, contact me to get more feedback and make it efficient.**: 
-
-# 🌿Bug 
-
-- moving the notification widget to the middle breaks the interactivity of the environment
-
-> :warning: **Any other bug or problem let me know**
+> :warning: **This is a custom configuration, so I appreciate your understanding. If you have any questions or encounter any issues, feel free to contact me for feedback or suggestions to improve it.**: 
 
 # 🌿Keys-Map 
-
-> :warning: **Before using this function install rofi**: 
 
 |     Info     |    Keys      |
 | :----------: | :----------: |
@@ -57,7 +49,7 @@
 
 # 🌿Desk
 
-> :warning: **I cannot guarantee the replication of my system, so if you have any questions, ask.**: 
+> :warning: **I cannot guarantee that my system can be fully replicated. If you have any questions, please don’t hesitate to ask.**: 
 
 <details>
 <summary><b><code>Desktop</code></b></summary>
@@ -85,7 +77,7 @@
 
 # 📦Configurations
 
-> :warning: **For organizational reasons, I have decided to separate the readme into two.**: 
+> :warning: **For better organization, I have split the README into two separate files.**: 
 
 - [Guide](CONFIG.md)
 
