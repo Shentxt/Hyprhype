@@ -38,14 +38,14 @@
 |    WM/comp   |                 [Hyprland](https://wiki.hyprland.org/)                         |
 |   Terminal   |                   [Kitty](https://github.com/kovidgoyal/kitty)                 |
 |   Firefox    |        [Firefox](https://github.com/Godiesc/firefox-gx/tree/main)              |
-|  Widgets/bar |          [Ignis](https://aylur.github.io/ags-docs/config/widgets/)             |
+|  Widgets/bar |                       [Fabric](https://wiki.ffpy.org/)                         |
 |    Shell     |                [Starship](https://github.com/starship/starship)                |
-|    Editor    | [Neovim](https://github.com/neovim/neovim)-[Vs](https://code.visualstudio.com/)|
+|    Editor    |                 [Neovim](https://github.com/neovim/neovim)                     |
 | File Manager |              [Thunar](https://github.com/xfce-mirror/thunar)                   |
 | Lockscreen   |              [Hyprlock](https://github.com/hyprwm/hyprlock)                    |
-| Sesion UI    |              [Sddm](https://github.com/sddm/sddm)                              |
+| Sesion UI    |              [Ly](https://github.com/fairyglade/ly)                            |
 |   Grub       |          [Minegrub](https://github.com/Lxtharia/minegrub-theme)                |
-| statepage    |          [Tartarus](https://alljavi.github.io/tartarus-startpage/)             |
+| statepage    |                  [Night](https://shentxt.github.io/Night/)                     |
 
 # 🌿Desk
 
@@ -54,26 +54,17 @@
 <details>
 <summary><b><code>Desktop</code></b></summary>
 
-|Desk|Date|Widgets|Popup|
+|Launcher|Config|Lock|Popup|
 |--|--|--|--|
-|![demo](/assets/Screen/desk.png "demo")|![demo](/assets/Screen/date.png "demo")|![demo](/assets/Screen/music.png "demo")|![demo](/assets/Screen/panel.png "demo")|
+|![demo](/assets/Screen/launcher.png "demo")|![demo](/assets/Screen/config.png "demo")|![demo](/assets/Screen/lock.png "demo")|![demo](/assets/Screen/power.png "demo")|
 </details>
 
 <details>
-<summary><b><code>Menu</code></b></summary>
+<summary><b><code>Extra</code></b></summary>
 
-|Lock|Power|Login|Launcher|Windows|
-|--|--|--|--|--|
-|![demo](/assets/Screen/lock.png "demo")|![demo](/assets/Screen/power.png "demo")|![demo](/assets/Screen/login.png "demo")|![demo](/assets/Screen/launch.png "demo")|![demo](/assets/Screen/config.png "demo")|
-</details>
-
-<details>
-<summary><b><code>Firefox</code></b></summary>
-
-|Lock|Power|
-|--|--|
-|![demo](/assets/Screen/home.png "demo")|![demo](/assets/Screen/yt.png "demo")|
-</details>
+|HomePage|
+|--|
+|![demo](/assets/Screen/home.png "demo")
 
 # 📦Configurations
 
@@ -102,6 +93,7 @@
 - 🌸 [Gh0stzk](https://github.com/gh0stzk/dotfiles)
 - 🌸 [Aylur](https://github.com/Aylur/dotfiles)
 - 🌸 [Linkfrg](https://github.com/linkfrg/dotfiles)
+- 🌸 [BlazinLock](https://github.com/Thunder-Blaze/BlazinLock/tree/critical)
 
 ## 🌿Thanks
 

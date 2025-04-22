@@ -1,15 +1,23 @@
+thunar
+thunar-archive-plugin 
+thunar-volman 
+
+gvfs 
+gvfs-mtp 
+gvfs-afc 
+gvfs-gphoto2  
+go 
+gjs
+
 nm-connection-editor
 notify-send
-
-go 
 npm 
-gjs
 
 udis86-git
 epoll-shim
 matugen
 
-ignis-git
+lua-language-server-gi
 
 firefox
 fd
@@ -18,10 +26,11 @@ bun
 brightnessctl
 
 imagemagick 
-syncthing
 
 wal 
 kitty
+
+cage
 
 supergfxctl
 sass
@@ -29,8 +38,6 @@ syncthing
 swayidle
 swappy
 
-greetd 
-greetd-agreety
 grimblast
 gst-plugin-pipewire
 gst-plugins-good
@@ -43,22 +50,27 @@ nerd-fonts-git
 ttf-font-awesome 
 ttf-dejavu
 
+nvchad-git
+neovim-git
+
 hyprland-git
 hyprlock
 hyprpicker
 hyprland-protocols
-hyprpolkitagent
 hyprsunset
 
 wf-recorder 
 wl-paste
 wl-copy 
 wl-clipboard
+wlinhibit
 
 zsh
 zsh-history-substring-search 
 zsh-syntax-highlighting 
 zsh-autosuggestions
+zathura 
+zathura-pdf-poppler
 
 pipewire
 pipewire-alsa
@@ -70,3 +82,6 @@ python-requests
 python-jinja
 python-materialyoucolor
 python-pillow
+polkit-gnome
+
+fabric-cli

@@ -1,0 +1,17 @@
+.GtkNotebook {
+    background-color: #f0f0f0;  /* Color de fondo del notebook */
+}
+
+.GtkNotebook tab {
+    background-color: #3498db;  /* Color de fondo de las pestañas */
+    color: white;               /* Color del texto de las pestañas */
+    border-radius: 5px;         /* Esquinas redondeadas de las pestañas */
+}
+
+.GtkNotebook tab:selected {
+    background-color: #2980b9;  /* Color de la pestaña seleccionada */
+}
+
+.GtkNotebook tab:hover {
+    background-color: #1abc9c;  /* Color cuando el ratón pasa por encima */
+}

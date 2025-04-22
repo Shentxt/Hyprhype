@@ -1,0 +1,21 @@
+{
+  "commands": {
+    ":wp": "launcher.open(\"wallpapers\")",
+    ":em": "launcher.open(\"emoji\")",
+    ":ch": "launcher.open(\"cliphist\")",
+    ":td": "launcher.open(\"todo\")",
+    ":bt": "launcher.open(\"bluetooth\")",
+    ":sh": "launcher.open(\"sh\")",
+    ":pw": "launcher.open(\"power\")",
+    ":nw": "launcher.open(\"wifi\")",
+    ":cl": "launcher.open(\"calendar\")"
+  },
+  "pinned_apps": [
+    "zen-browser",
+    "steam",
+    "kitty",
+    "thunar", 
+    "libreoffice",
+    "pavucontrol"
+  ]
+}

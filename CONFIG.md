@@ -37,9 +37,8 @@ Hyprhype
 │   └── user.js
 └── usr
     ├── fonts
-    ├── icons
-    ├── nsa-plymounth
-    └── slice
+    ├── icons 
+    └── nsa-plymounth
 
 </code></pre>
 </div>
@@ -52,10 +51,11 @@ Hyprhype
 <pre><code>
  git clone https://github.com/Shentxt/Hyprhype
  cd Hyprhype
- cp -R .config ~/.config 
- cp -R .local ~/.local
- cp -R chrome extensions user.js /u directory of firefox 
- cp -R Material ~/.local/share/themes
+ cp -r .config ~/.config 
+ cp -r .local ~/.local
+ cp -r /etc/greetd /etc/greetd                   
+ cp -r chrome extensions user.js /u directory of firefox 
+ cp -r Material ~/.local/share/themes
 </code></pre>
 </div>
 
@@ -75,7 +75,7 @@ Hyprhype
 
 <div style="background-color: black; color: white; padding: 10px;">
 <pre><code>
- sudo rm -r Hyprhype
+ sudo rm -r Hyprhype and reversed
 </code></pre>
 </div>
 
@@ -85,6 +85,10 @@ Hyprhype
 
 - monocraft
 - minecraft
+
+## Cursor 
+
+- nier-cursors-bin
 
 ## Apps 
 
@@ -101,18 +105,6 @@ Hyprhype
   npm install node-notifier sharp chokidar @types/chokidar --save-dev
 </code></pre>
 </div>
-
-## greetd (necessary if using greeter) 
-
-> :warning: **Read https://aylur.github.io/ags-docs/services/greetd/ and https://sr.ht/~kennylevinsen/greetd/**:
-
-It works, although I had a problem with pam, maybe you guys will have better luck.
-The files are in usr. If anyone has been able to run it without problems, let me know and tell me what steps you followed and the distro, I would really appreciate it.
-
-Try this, it worked for me
-
-useradd -M -G video greeter
-chmod -R go+r /etc/greetd/
 
 ## Plugins 
 
