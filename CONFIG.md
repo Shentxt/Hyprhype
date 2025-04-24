@@ -17,19 +17,15 @@
 
 Hyprhype
 ├── .config
-│   ├── ags
+│   ├── Modus (includes route script)
 │   ├── hypr
-│   ├── kitty
 │   ├── starship
-│   ├── cava
-│   └── nvim
+│   └── cava
 ├── .local
 │   ├── bin
 │   └── share
 ├── boot
 │   └── grub
-├── etc
-│   └── greetd
 ├── .zshrc
 ├── firefox
 │   ├── chrome

@@ -27,6 +27,8 @@
 
 # 🌿Keys-Map 
 
+> :warning: **not available in this version**:
+
 |     Info     |    Keys      |
 | :----------: | :----------: |
 | Open Keymaps |  Win+Shift+D |
@@ -54,17 +56,10 @@
 <details>
 <summary><b><code>Desktop</code></b></summary>
 
-|Launcher|Config|Lock|Popup|
-|--|--|--|--|
-|![demo](/assets/Screen/launcher.png "demo")|![demo](/assets/Screen/config.png "demo")|![demo](/assets/Screen/lock.png "demo")|![demo](/assets/Screen/power.png "demo")|
+|Launcher|Config|Lock|Powermenu|Browser|Editor|
+|--|--|--|--|--|--|
+|![demo](/assets/Screen/launcher.png "demo")|![demo](/assets/Screen/config.png "demo")|![demo](/assets/Screen/lock.png "demo")|![demo](/assets/Screen/power.png "demo")|![demo](/assets/Screen/home.png "demo")|![demo](/assets/Screen/editor.png "demo")|
 </details>
-
-<details>
-<summary><b><code>Extra</code></b></summary>
-
-|HomePage|
-|--|
-|![demo](/assets/Screen/home.png "demo")
 
 # 📦Configurations
 
@@ -87,6 +82,9 @@
 
 ## 🌿Inspirations
 
+- 🌸 [Credits](CREDITS.md)
+
+- 🌸 [Koeqaife](https://github.com/koeqaife)
 - 🌸 [Cenunix](https://github.com/cenunix)
 - 🌸 [AlphaTecnolog](https://github.com/AlphaTechnolog/dotfiles)
 - 🌸 [Juminai](https://github.com/juminai/dotfiles)
