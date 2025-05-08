@@ -1,7 +1,3 @@
-<div align="center"
- <h1> 🌸 shen ~ Hyprhype Dotfiles 🌸 </h1>
- </div>
-
 <p align="center">
   <picture>
     <img src="/assets/souls.gif">
@@ -63,7 +59,7 @@
 
 > :warning: **For better organization, I have split the README into two separate files.**: 
 
-- [Guide](CONFIG.md)
+- [Guide](config.md)
 
 ## 🌿Credits
 
