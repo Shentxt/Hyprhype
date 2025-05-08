@@ -23,6 +23,10 @@ export SDL_VIDEODRIVER=wayland
 export PYTHONPYCACHEPREFIX=~/.cache/__pycache__
 export MYPY_CACHE_DIR=~/.cache/.mypy_cache
 
+export WAYLAND_DISPLAY=wayland-1
+export XDG_SESSION_TYPE=wayland
+export SDL_VIDEO_DRIVER=wayland
+export DISPLAY=$DISPLAY 
 #|||----- Load -----|||#
 
 autoload -Uz compinit
@@ -131,6 +135,8 @@ alias ll='lsd -la --group-directories-first'
 alias pk='pkexec'
 alias pkill='pkill -f'
 alias cp='cp -r'
+alias x+='xhost +SI:localuser:root'
+alias x-='xhost -SI:localuser:root'
 
 #|||----- Start -----|||#
 

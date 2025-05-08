@@ -31,6 +31,7 @@ wal
 kitty
 
 cage
+amdctl
 
 supergfxctl
 sass
@@ -49,6 +50,7 @@ ttf-roboto-mono-nerd
 nerd-fonts-git 
 ttf-font-awesome 
 ttf-dejavu
+ttf-tabler-icons
 
 nvchad-git
 neovim-git

@@ -157,8 +157,8 @@ class ThemeSection(Gtk.Box):
         
         if not selected_dir or not os.path.exists(selected_dir):
             selected_dir = WALLPAPERS_DIR_DEFAULT
-        self.copy_wallpapers(selected_dir)
-        subprocess.run(["bash", "-c", f'notify-send "Copy" "Successfully copied to {WALLPAPERS_DIR_DEFAULT}" -i ~/.config/Modus/assets/Icon/futaba.png']) 
+        self.copy_wallpapers(selected_dir) 
+        subprocess.run(["notify-send","Ann - WallCopy",f"Successfully: {WALLPAPERS_DIR_DEFAULT}","-i",os.path.expanduser("~/.config/Modus/assets/Icon/ann.png")])
 
 
     def copy_wallpapers(self, selected_dir):

@@ -21,24 +21,20 @@ def backup(src, dest):
         if not os.path.exists(backup_path):
             try:
                 shutil.move(dest, backup_path)
-                subprocess.run(["bash", "-c", f'notify-send "Backup" "Backup created successfully at {backup_path}" -i ~/.config/Modus/assets/Icon/futaba.png'])
             except PermissionError:
                 subprocess.run(f"sudo mv {dest} {backup_path}", shell=True, check=True)
-                subprocess.run(["bash", "-c", f'notify-send "Backup" "Backup created successfully at {backup_path}" -i ~/.config/Modus/assets/Icon/futaba.png'])
 
 def copy(src, dest):
     try:
         if os.path.isdir(src):
-            shutil.copytree(src, dest)  # Si es un directorio
+            shutil.copytree(src, dest)  
         else:
-            shutil.copy(src, dest)  # Si es un archivo
-        subprocess.run(["bash", "-c", f'notify-send "Copy" "Successfully copied to {dest}" -i ~/.config/Modus/assets/Icon/futaba.png'])
+            shutil.copy(src, dest)  
     except PermissionError:
         if os.path.isdir(src):
             subprocess.run(f"sudo cp -r {src} {dest}", shell=True, check=True)
         else:
             subprocess.run(f"sudo cp {src} {dest}", shell=True, check=True)
-        subprocess.run(["bash", "-c", f'notify-send "Copy" "Successfully copied to {dest}" -i ~/.config/Modus/assets/Icon/futaba.png'])
 
 class EnvSection(Gtk.Box):
     def __init__(self, show_enviroment: bool):
@@ -75,249 +71,95 @@ class EnvSection(Gtk.Box):
 
         self.pack_start(tips_box, False, False, 0)
 
-        # Conten
-        # Hypr
-        self.hypr_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
-        self.hypr_box.set_margin_start(20)
-        self.hypr_box.set_margin_end(20)
+        # Content 
+        # Hypr  
+        self.hypr_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)  
+        self.hypr_box.set_margin_start(20)  
+        self.hypr_box.set_margin_end(20)  
         self.pack_start(self.hypr_box, False, False, 0)
 
-        # Extra
-        self.ex_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
-        self.ex_box.set_margin_start(20)
-        self.ex_box.set_margin_end(20)
-        self.pack_start(self.ex_box, False, False, 0) 
+        # Extra  
+        self.ex_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10) 
+        self.ex_box.set_margin_start(20) 
+        self.ex_box.set_margin_end(20) 
+        self.pack_start(self.ex_box, False, False, 0)
 
-        # Hypr  
-        self.land_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2) 
-        self.land_checkbox = Gtk.CheckButton(label=" Hyprland") 
-        self.land_checkbox.set_margin_bottom(4) 
-        self.land_checkbox.set_active(False) 
-        self.land_box.pack_start(self.land_checkbox, False, False, 0)
+        # Create all config sections
+        self.create_config_sections()
+    
+    def create_config_section(self, name, config_file, dest_path, is_directory=False):
+        """Helper function to create a consistent config section"""
+        box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
+        checkbox = Gtk.CheckButton(label=f" {name}")
+        checkbox.set_margin_bottom(4)
+        checkbox.set_active(False)
+        box.pack_start(checkbox, False, False, 0)
 
-        self.land_button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10) 
-        self.copy_button = Gtk.Button(label="Copy") 
-        self.backup_button = Gtk.Button(label="Backup") 
+        button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10) 
 
-        self.land_button_box.pack_start(self.copy_button, False, False, 0) 
-        self.land_button_box.pack_start(self.backup_button, False, False, 0)  
-        self.land_button_box.set_visible(False) 
-        self.land_box.pack_start(self.land_button_box, False, False, 0) 
+        copy_button = Gtk.Button(label="Copy")
+        backup_button = Gtk.Button(label="Backup")
 
-        def on_land_toggled(checkbox): 
-            if checkbox.get_active(): 
-                self.land_button_box.set_visible(True)
-            else: 
-                self.land_button_box.set_visible(False)  
-
-        def on_copy_button_clicked(button): 
-            if self.land_checkbox.get_active(): 
-                src_land = os.path.expanduser("~/.config/Modus/config/config/hyprland.conf") 
-                dest_land = os.path.expanduser("~/.config/hypr/hyprland.conf") 
-                copy(src_land, dest_land)  
-                subprocess.run(["hyprctl", "reload"], check=True) 
-
-        def on_backup_button_clicked(button): 
-            if self.land_checkbox.get_active(): 
-                src_land = os.path.expanduser("~/.config/Modus/config/config/hyprland.conf") 
-                dest_land = os.path.expanduser("~/.config/hypr/hyprland.conf") 
-                backup(src_land, dest_land)  
-                
-        self.land_checkbox.connect("toggled", on_land_toggled) 
-        self.copy_button.connect("clicked", on_copy_button_clicked) 
-        self.backup_button.connect("clicked", on_backup_button_clicked) 
-        self.hypr_box.pack_start(self.land_box, False, False, 0)
- 
-        # Idle   
-        self.idle_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)  
-        self.idle_checkbox = Gtk.CheckButton(label=" Hypridle")  
-        self.idle_checkbox.set_margin_bottom(4)  
-        self.idle_checkbox.set_active(False)  
-        self.idle_box.pack_start(self.idle_checkbox, False, False, 0) 
+        button_box.pack_start(copy_button, False, False, 0)
+        button_box.pack_start(backup_button, False, False, 0)  
         
-        self.idle_button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)  
-        self.idle_copy_button = Gtk.Button(label="Copy")  
-        self.idle_backup_button = Gtk.Button(label="Backup")  
+        button_box.set_visible(False) 
+        box.pack_start(button_box, False, False, 0)
 
-        self.idle_button_box.pack_start(self.idle_copy_button, False, False, 0)  
-        self.idle_button_box.pack_start(self.idle_backup_button, False, False, 0)   
-        self.idle_button_box.set_visible(False)  
-        self.idle_box.pack_start(self.idle_button_box, False, False, 0) 
-
-        def on_idle_toggled(checkbox):  
+        # Callback functions
+        def on_toggled(checkbox):
+            button_box.set_visible(checkbox.get_active()) 
+        
+        def on_copy_clicked(button): 
             if checkbox.get_active():  
-                self.idle_button_box.set_visible(True)   
-            else:  
-                self.idle_button_box.set_visible(False)   
-
-        def on_idle_copy_button_clicked(button):  
-            if self.idle_checkbox.get_active():  
-                src_idle = os.path.expanduser("~/.config/Modus/config/config/hypridle.conf")  
-                dest_idle = os.path.expanduser("~/.config/hypr/hypridle.conf")  
-                copy(src_idle, dest_idle)   
-
-        def on_idle_backup_button_clicked(button):  
-            if self.idle_checkbox.get_active():  
-                src_idle = os.path.expanduser("~/.config/Modus/config/config/hypridle.conf")  
-                dest_idle = os.path.expanduser("~/.config/hypr/hypridle.conf")  
-                backup(src_idle, dest_idle)   
-
-        self.idle_checkbox.connect("toggled", on_idle_toggled)  
-        self.idle_copy_button.connect("clicked", on_idle_copy_button_clicked) 
-        self.idle_backup_button.connect("clicked", on_idle_backup_button_clicked)  
-        self.hypr_box.pack_start(self.idle_box, False, False, 0)  
-
-        # Lock   
-        self.lock_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)  
-        self.lock_checkbox = Gtk.CheckButton(label=" Hyprlock")  
-        self.lock_checkbox.set_margin_bottom(4)  
-        self.lock_checkbox.set_active(False)  
-        self.lock_box.pack_start(self.lock_checkbox, False, False, 0) 
-        self.lock_button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)  
-        self.lock_copy_button = Gtk.Button(label="Copy")  
-        self.lock_backup_button = Gtk.Button(label="Backup")  
-        self.lock_button_box.pack_start(self.lock_copy_button, False, False, 0)  
-        self.lock_button_box.pack_start(self.lock_backup_button, False, False, 0)   
-        self.lock_button_box.set_visible(False)  
-        self.lock_box.pack_start(self.lock_button_box, False, False, 0)  
-
-        def on_lock_toggled(checkbox):  
-            if checkbox.get_active():  
-                self.lock_button_box.set_visible(True)   
-            else:  
-                self.lock_button_box.set_visible(False)   
-        
-        def on_lock_copy_button_clicked(button):  
-            if self.lock_checkbox.get_active():  
-                src_lock = os.path.expanduser("~/.config/Modus/config/config/hyprlock.conf")  
-                dest_lock = os.path.expanduser("~/.config/hypr/hyprlock.conf")  
-                copy(src_lock, dest_lock)   
-        
-        def on_lock_backup_button_clicked(button):  
-            if self.lock_checkbox.get_active():  
-                src_lock = os.path.expanduser("~/.config/Modus/config/config/hyprlock.conf")  
-                dest_lock = os.path.expanduser("~/.config/hypr/hyprlock.conf")  
-                backup(src_lock, dest_lock)   
-
-        self.lock_checkbox.connect("toggled", on_lock_toggled)  
-        self.lock_copy_button.connect("clicked", on_lock_copy_button_clicked)  
-        self.lock_backup_button.connect("clicked", on_lock_backup_button_clicked)  
-        self.hypr_box.pack_start(self.lock_box, False, False, 0)
-
-        # Kitty   
-        self.kitty_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)  
-        self.kitty_checkbox = Gtk.CheckButton(label=" Kitty")  
-        self.kitty_checkbox.set_margin_bottom(4)  
-        self.kitty_checkbox.set_active(False)  
-        self.kitty_box.pack_start(self.kitty_checkbox, False, False, 0) 
-
-        self.kitty_button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)  
-        self.kitty_copy_button = Gtk.Button(label="Copy")  
-        self.kitty_backup_button = Gtk.Button(label="Backup")  
-        self.kitty_button_box.pack_start(self.kitty_copy_button, False, False, 0) 
-        self.kitty_button_box.pack_start(self.kitty_backup_button, False, False, 0)  
-        self.kitty_button_box.set_visible(False)  
-        self.kitty_box.pack_start(self.kitty_button_box, False, False, 0) 
-
-        def on_kitty_toggled(checkbox): 
+                src = os.path.expanduser(f"~/.config/Modus/config/config/{config_file}") 
+                dest = os.path.expanduser(dest_path) 
+                try: 
+                    if is_directory: 
+                        shutil.copytree(src, dest, dirs_exist_ok=True) 
+                    else: 
+                        shutil.copy(src, dest)  
+                        subprocess.run(["notify-send","Fuuka - Copy",f"Successfully: {dest}","-i",os.path.expanduser("~/.config/Modus/assets/Icon/fuuka.png")])
+                        if name == "Hyprland": 
+                            subprocess.run(["hyprctl", "reload"], check=True) 
+                except Exception as e: 
+                    subprocess.run(["notify-send","Morgana - Copy",f"failed: {str(e)}","-i",os.path.expanduser("~/.config/Modus/assets/Icon/morgana.png")])
+                   
+        def on_backup_clicked(button): 
             if checkbox.get_active(): 
-                self.kitty_button_box.set_visible(True)  
-            else: 
-                self.kitty_button_box.set_visible(False)   
+                src = os.path.expanduser(dest_path)  
+                backup_path = src + ".bak"
+                try: 
+                    if os.path.exists(src): 
+                        shutil.move(src, backup_path)  
+                        subprocess.run(["notify-send","Fuuka - Backup",f"Successfully: {backup_path}","-i",os.path.expanduser("~/.config/Modus/assets/Icon/fuuka.png")])
+                except Exception as e:  
+                    subprocess.run(["notify-send","Morgana - Backup",f"Failed: {srt(e)}","-i",os.path.expanduser("~/.config/Modus/assets/Icon/morgana.png")])
 
-        def on_kitty_copy_button_clicked(button): 
-            if self.kitty_checkbox.get_active(): 
-                src_kitty = os.path.expanduser("~/.config/Modus/config/config/kitty.conf")  
-                dest_kitty = os.path.expanduser("~/.config/kitty/kitty.conf")  
-                copy(src_kitty, dest_kitty)   
-
-        def on_kitty_backup_button_clicked(button):  
-            if self.kitty_checkbox.get_active():  
-                src_kitty = os.path.expanduser("~/.config/Modus/config/config/kitty.conf")  
-                dest_kitty = os.path.expanduser("~/.config/kitty/kitty.conf")  
-                backup(src_kitty, dest_kitty)   
-                
-        self.kitty_checkbox.connect("toggled", on_kitty_toggled)  
-        self.kitty_copy_button.connect("clicked", on_kitty_copy_button_clicked)  
-        self.kitty_backup_button.connect("clicked", on_kitty_backup_button_clicked)  
-        self.ex_box.pack_start(self.kitty_box, False, False, 0)  
-
-        # NVim   
-        self.vi_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)  
-        self.vi_checkbox = Gtk.CheckButton(label=" Neovim")  
-        self.vi_checkbox.set_margin_bottom(4)  
-        self.vi_checkbox.set_active(False)  
-        self.vi_box.pack_start(self.vi_checkbox, False, False, 0) 
-
-        self.vi_button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)  
-        self.vi_copy_button = Gtk.Button(label="Copy")  
-        self.vi_backup_button = Gtk.Button(label="Backup")  
-
-        self.vi_button_box.pack_start(self.vi_copy_button, False, False, 0)  
-        self.vi_button_box.pack_start(self.vi_backup_button, False, False, 0)   
-        self.vi_button_box.set_visible(False)  
-        self.vi_box.pack_start(self.vi_button_box, False, False, 0) 
-
-        def on_vi_toggled(checkbox):  
-            if checkbox.get_active():  
-                self.vi_button_box.set_visible(True)   
-            else:  
-                self.vi_button_box.set_visible(False)   
-
-        def on_vi_copy_button_clicked(button): 
-            if self.vi_checkbox.get_active(): 
-                src_vi = os.path.expanduser("~/.config/Modus/config/config/nvim") 
-                dest_vi = os.path.expanduser("~/.config/nvim") 
-                copytree(src_vi, dest_vi)  
-
-        def on_vi_backup_button_clicked(button): 
-            if self.vi_checkbox.get_active(): 
-                src_vi = os.path.expanduser("~/.config/Modus/config/config/nvim") 
-                dest_vi = os.path.expanduser("~/.config/nvim") 
-                backup(src_vi, dest_vi)  
-
-        self.vi_checkbox.connect("toggled", on_vi_toggled) 
-        self.vi_copy_button.connect("clicked", on_vi_copy_button_clicked) 
-        self.vi_backup_button.connect("clicked", on_vi_backup_button_clicked) 
-        self.ex_box.pack_start(self.vi_box, False, False, 0) 
-
-        # Ly   
-        self.ly_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)  
-        self.ly_checkbox = Gtk.CheckButton(label=" Ly")  
-        self.ly_checkbox.set_margin_bottom(4)  
-        self.ly_checkbox.set_active(False)  
-        self.ly_box.pack_start(self.ly_checkbox, False, False, 0) 
-
-        self.ly_button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)  
-        self.ly_copy_button = Gtk.Button(label="Copy")  
-        self.ly_backup_button = Gtk.Button(label="Backup")  
-
-        self.ly_button_box.pack_start(self.ly_copy_button, False, False, 0)  
-        self.ly_button_box.pack_start(self.ly_backup_button, False, False, 0)   
-        self.ly_button_box.set_visible(False)  
-        self.ly_box.pack_start(self.ly_button_box, False, False, 0)  
+        # Connect signals
+        checkbox.connect("toggled", on_toggled)
+        copy_button.connect("clicked", on_copy_clicked)
+        backup_button.connect("clicked", on_backup_clicked)
         
-        def on_ly_toggled(checkbox):  
-            if checkbox.get_active(): 
-                self.ly_button_box.set_visible(True)  
-            else: 
-                self.ly_button_box.set_visible(False)  
+        return box
 
-        def on_ly_copy_button_clicked(button): 
-            if self.ly_checkbox.get_active(): 
-                src_ly = os.path.expanduser("~/.config/Modus/config/config/config.ini") 
-                dest_ly = os.path.expanduser("/etc/ly/config.ini") 
-                copy(src_ly, dest_ly)  
+    def create_config_sections(self):
+        """Create and add all configuration sections"""
+        sections = [
+            # (name, config_file, dest_path, is_directory)
+            ("Hyprland", "hyprland.conf", "~/.config/hypr/hyprland.conf"),
+            ("Hypridle", "hypridle.conf", "~/.config/hypr/hypridle.conf"),
+            ("Hyprlock", "hyprlock.conf", "~/.config/hypr/hyprlock.conf"),
+            ("Kitty", "kitty.conf", "~/.config/kitty/kitty.conf"),
+            ("Neovim", "nvim", "~/.config/nvim", True),
+            ("Ly", "config.ini", "/etc/ly/config.ini"),
+        ]
 
-        def on_ly_backup_button_clicked(button): 
-            if self.ly_checkbox.get_active(): 
-                src_ly = os.path.expanduser("~/.config/Modus/config/config/config.ini") 
-                dest_ly = os.path.expanduser("/etc/ly/config.ini") 
-                backup(src_ly, dest_ly)  
+        for i, section in enumerate(sections):
+            config_section = self.create_config_section(*section)
+            if i < 3:  # First 3 go to hypr_box
+                self.hypr_box.pack_start(config_section, False, False, 0)
+            else:       # Others go to ex_box
+                self.ex_box.pack_start(config_section, False, False, 0)
 
-        self.ly_checkbox.connect("toggled", on_ly_toggled) 
-        self.ly_copy_button.connect("clicked", on_ly_copy_button_clicked) 
-        self.ly_backup_button.connect("clicked", on_ly_backup_button_clicked) 
-        self.ex_box.pack_start(self.ly_box, False, False, 0)
-
-        self.pack_start(create_separator(), False, False, 10)   
+        self.pack_start(create_separator(), False, False, 10)

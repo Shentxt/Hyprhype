@@ -183,7 +183,7 @@ async def main():
         print(":: Using swww")
 
         cursor_pos = subprocess.getoutput("hyprctl cursorpos").replace(", ", ",")
-
+        
         subprocess.run(
             [
                 "swww",
