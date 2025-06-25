@@ -7,7 +7,15 @@ from fabric.utils.helpers import exec_shell_command_async, exec_shell_command, g
 import gi 
 import os
 from gi.repository import Gtk, Gdk, GLib  # Added Gdk import
-from services.gamemode import gamemode_file
+
+def toggle_gamemode():
+    gamemode_path = os.path.expanduser("~/.config/Modus/scripts/gamemode.sh")
+    subprocess.run(["bash", gamemode_path, "toggle"])
+
+def check_gamemode():
+    gamemode_path = os.path.expanduser("~/.config/Modus/scripts/gamemode.sh")
+    result = subprocess.run(["bash", gamemode_path, "check"], capture_output=True, text=True)
+    return result.stdout.strip() == "t"
 
 gi.require_version("Gtk", "3.0")
 import utils.icons as icons
@@ -28,10 +36,18 @@ def add_hover_cursor(widget):
         "leave-notify-event",
         lambda w, e: w.get_window().set_cursor(None) if w.get_window() else None,
     )
-
-
 class NetworkButton(Box):
-    def __init__(self):
+    def __init__(self, launcher):
+        super().__init__(
+            name="network-button",
+            orientation="h",
+            h_align="fill",
+            v_align="fill",
+            h_expand=True,
+            v_expand=True,
+        )
+        self.launcher = launcher
+
         self.network_icon = Label(
             name="network-icon",
             markup=icons.wifi,
@@ -41,21 +57,24 @@ class NetworkButton(Box):
             label="Wi-Fi",
             justification="left",
         )
-        self.network_label_box = Box(children=[self.network_label, Box(h_expand=True)])
+        self.network_label_box = Box(
+            children=[self.network_label, Box(h_expand=True)]
+        )
         self.network_ssid = Label(
             name="network-ssid",
             label="Hello_World!!",
             justification="left",
         )
-        self.network_ssid_box = Box(children=[self.network_ssid, Box(h_expand=True)])
+        self.network_ssid_box = Box(
+            children=[self.network_ssid, Box(h_expand=True)]
+        )
         self.network_text = Box(
-            name="network-text",
             orientation="v",
             h_align="start",
             v_align="center",
             children=[self.network_label_box, self.network_ssid_box],
         )
-        self.network_status_box = Box(
+        self.network_status_container = Box(
             h_align="start",
             v_align="center",
             spacing=10,
@@ -64,31 +83,23 @@ class NetworkButton(Box):
         self.network_status_button = Button(
             name="network-status-button",
             h_expand=True,
-            child=self.network_status_box,
+            child=self.network_status_container,
+            on_clicked=lambda *_: self.launcher.wifi.toggle(),
         )
-        add_hover_cursor(self.network_status_button)  # <-- Added hover
-
+        add_hover_cursor(self.network_status_button)
         self.network_menu_label = Label(
             name="network-menu-label",
             markup=icons.chevron_right,
         )
         self.network_menu_button = Button(
             name="network-menu-button",
+            on_clicked=lambda *_: self.launcher.open("wifi"),
             child=self.network_menu_label,
         )
-        add_hover_cursor(self.network_menu_button)  # <-- Added hover
+        add_hover_cursor(self.network_menu_button)
 
-        super().__init__(
-            name="network-button",
-            orientation="h",
-            h_align="fill",
-            v_align="fill",
-            h_expand=True,
-            v_expand=True,
-            spacing=0,
-            children=[self.network_status_button, self.network_menu_button],
-        )
-
+        self.add(self.network_status_button)
+        self.add(self.network_menu_button)
 
 class BluetoothButton(Box):
     def __init__(self, launcher):
@@ -140,7 +151,7 @@ class BluetoothButton(Box):
             child=self.bluetooth_status_container,
             on_clicked=lambda *_: self.launcher.bluetooth.client.toggle_power(),
         )
-        add_hover_cursor(self.bluetooth_status_button)  # <-- Added hover
+        add_hover_cursor(self.bluetooth_status_button) # <-- Added hover 
         self.bluetooth_menu_label = Label(
             name="bluetooth-menu-label",
             markup=icons.chevron_right,
@@ -154,7 +165,6 @@ class BluetoothButton(Box):
 
         self.add(self.bluetooth_status_button)
         self.add(self.bluetooth_menu_button)
-
 
 class NightModeButton(Button):
     def __init__(self):
@@ -290,50 +300,33 @@ class GameModeButton(Button):
             self.gamemode_status,
             self.gamemode_icon,
         ]
-        self.check_gamemode()
+        active = self.check_gamemode() 
+        self.gamemode_status.set_label("Enabled" if active else "Disabled") 
+        for widget in self.widgets: 
+            if active: 
+                widget.remove_style_class("disabled") 
+            else: 
+                widget.add_style_class("disabled")
 
     def toggle_gamemode(self, *args):
         """
-        Toggle GameMode on or off: 
-        - If enabled, disables it. 
-        - If not enabled, starts it. 
+        Toggle GameMode on or off by calling the imported toggle_gamemode function.
         """
-        try:
-            subprocess.check_output(["pgrep", "-f", "gamemoded"])  
-            exec_shell_command_async(f"pkill gamemoded")  
-            self.gamemode_status.set_label("Disabled")
-            for widget in self.widgets:
+        toggle_gamemode()
+
+        self.gamemode_status.set_label("Enabled" if self.check_gamemode() else "Disabled")
+        for widget in self.widgets:
+            if self.check_gamemode():
+                widget.remove_style_class("disabled")
+            else:
                 widget.add_style_class("disabled")
-        except subprocess.CalledProcessError:
-            gamemode_script = get_relative_path("../../../services/gamemode.py")
-            exec_shell_command_async(f"python3 {gamemode_script}") 
-            self.gamemode_status.set_label("Enabled")
-            for widget in self.widgets:
-                widget.remove_style_class("disabled")  
 
-    def check_gamemode(self, *args):  
+    def check_gamemode(self, *args):
         """ 
-        Check whether GameMode is active or not using the gamemode.txt file. 
-        """ 
-        gamemode_file = "/tmp/gamemode.txt"
+        Check whether GameMode is active or not by calling the imported check_gamemode function. 
+        """
+        return check_gamemode()
 
-        try: 
-            with open(gamemode_file, "r") as f:
-                gamemode_status = f.read().strip()
-
-            if gamemode_status == "true": 
-                self.gamemode_status.set_label("Enabled") 
-                for widget in self.widgets: 
-                    widget.remove_style_class("disabled")  
-            else:   
-                self.gamemode_status.set_label("Disabled") 
-                for widget in self.widgets: 
-                    widget.add_style_class("disabled")  
-        except FileNotFoundError:  
-            self.gamemode_status.set_label("Disabled") 
-            for widget in self.widgets: 
-                widget.add_style_class("disabled")  
- 
 class CaffeineButton(Button):
     def __init__(self):
         self.caffeine_icon = Label(
@@ -508,7 +501,7 @@ class Dashboard(Gtk.Grid):
         self.launcher = kwargs["launcher"]
 
         # Instantiate each button
-        self.network_button = NetworkButton()
+        self.network_button = NetworkButton(self.launcher)
         self.bluetooth_button = BluetoothButton(self.launcher)
         self.night_mode_button = NightModeButton()
         self.caffeine_button = CaffeineButton()

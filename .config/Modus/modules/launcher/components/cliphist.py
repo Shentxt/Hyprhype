@@ -11,7 +11,6 @@ from fabric.widgets.scrolledwindow import ScrolledWindow
 from gi.repository import GLib
 import utils.icons as icons
 
-
 class Cliphist(Box):
     def __init__(self, **kwargs):
         super().__init__(
@@ -89,8 +88,9 @@ class CliphistManager:
     def __init__(self, launcher):
         self.launcher = launcher
         self.cliphist_history = []
+        subprocess.run(["pkill", "-f", "wl-paste --watch"])
         self.wl_paste_watcher = Fabricator(
-            poll_from="wl-paste --watch echo", stream=True, interval=-1
+            poll_from="""wl-paste --watch sh -c 'notify-send "Copied Text" "$(wl-paste | head -c 100)"; echo "$(wl-paste)"'""", stream=True, interval=-1,
         )
         self.wl_paste_watcher.connect("changed", self._on_wl_paste_changed)
 
@@ -122,7 +122,6 @@ class CliphistManager:
                 ["cliphist", "decode", clip_id], capture_output=True, check=True
             )
             subprocess.run(["wl-copy"], input=decode_result.stdout, check=True)
-            self.launcher.close()
         except subprocess.CalledProcessError as e:
             print(f"Error copying clip {clip_id}: {e}")
 
@@ -186,14 +185,38 @@ class CliphistManager:
             ),
             on_clicked=partial(self._on_clip_clicked, item["id"]),
             name="clip-item",
-        )
+        )  
 
     def arrange_viewport(self, query: str = ""):
         if not self.launcher.viewport:
             return
+
         self.launcher.viewport.children = []
         filtered_clips = self.query_clips(query)
-        for clip in filtered_clips:
-            button = self.bake_clip_slot(clip)
-            if button:
-                self.launcher.viewport.add(button)
+
+        if not filtered_clips:
+            self.launcher.viewport.add(
+                Box(
+                    name="box-placeholder",
+                    orientation="vertical",   
+                    v_expand=True,
+                    h_expand=True,
+                    h_align="center",
+                    v_align="center",
+                    children=[
+                        Label(
+                            name="icon-placeholder",
+                            markup=f"{icons.paper_off}", 
+                        ),
+                        Label(
+                            name="text-placeholder",
+                            markup="<b>Clipboard is empty</b>",      
+                        )
+                    ],
+                )
+            )
+        else:
+            for clip in filtered_clips:
+                button = self.bake_clip_slot(clip)
+                if button:
+                    self.launcher.viewport.add(button) 

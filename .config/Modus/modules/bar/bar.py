@@ -39,7 +39,6 @@ class StatusBarCorner(Box):
             ),
         )
 
-
 class Tray(Box):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -76,7 +75,6 @@ class Tray(Box):
         self.revealer.set_reveal_child(new_state)
         new_icon = icons.chevron_right if new_state else icons.chevron_left
         self.profile.get_child().set_markup(new_icon)
-
 
 class Bar(Window):
     def __init__(self):

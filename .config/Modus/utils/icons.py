@@ -14,6 +14,7 @@ windows: str = "&#xefe6;"
 # Bar
 colorpicker: str = "&#xebe6;"
 media: str = "&#xf00d;"
+arch: str = "&#xf08c7;"
 
 # Circles
 temp: str = "&#xeb38;"
@@ -110,6 +111,7 @@ circle_plus: str = "&#xea69;"
 # Pins
 copy_plus: str = "&#xfdae;"
 paperclip: str = "&#xeb02;"
+paper_off: str = "&#xf014f;"
 
 # Confirm
 accept: str = "&#xea5e;"

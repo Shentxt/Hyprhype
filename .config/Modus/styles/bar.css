@@ -16,9 +16,9 @@
 }
 
 #bar.end-container {
-  padding-top: 2px;
-  padding-bottom: 2px;
-  border-bottom-left-radius: 15px;
+   padding-top: 2px;
+   padding-bottom: 2px; 
+   border-bottom-left-radius: 15px;
 }
 
 #center-bar {
@@ -27,7 +27,7 @@
 
 #bar,
 #bar-corner * {
-  background-color: alpha(@background, 0.6);
+  background-color: @background;
 }
 
 #bar.hidden {
@@ -38,14 +38,16 @@
 #bar.visible {
   opacity: 1;
   transition: all 0.5s cubic-bezier(0.5, 0.25, 0, 1);
-}
+} 
 
 /*
  * ── button bar ────────────────────────────────────────────────────────
 */
 
 #button-bar {
-  background-color: @surfaceContainer;
+  background-color: alpha(@surfaceContainer,0.6);
+  box-shadow: 0 8px 4px alpha(@base00, 0.3), 
+  inset 0 4px 12px rgba(255, 255, 255, 0.15);
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 0px 1px 0px 1px;
@@ -63,7 +65,7 @@
 }
 
 #button-bar:hover { 
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
+  text-shadow: 1px 1px 2px @primary;
 }
 
 #button-bar:active #button-bar-label {
@@ -77,7 +79,9 @@
 
 #workspaces {
   font-style: normal;
-  background: @surfaceContainer;
+  background-color: alpha(@surfaceContainer,0.6);
+  box-shadow: 0 8px 4px alpha(@base00, 0.3), 
+  inset 0 4px 12px rgba(255, 255, 255, 0.15);
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 0px 8px 0px;
@@ -122,13 +126,15 @@
 
 #window-box,
 #datetime {
-  background-color: @surfaceContainer;
+  background-color: alpha(@surfaceContainer,0.6);
+  box-shadow: 0 8px 4px alpha(@base00, 0.3), 
+  inset 0 4px 12px rgba(255, 255, 255, 0.15);
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 0px 8px 0px;
   border-radius: 8px;
   min-width: 24px;
-  min-height: 24px;
+  min-height: 24px; 
 }
 
 /*
@@ -136,7 +142,9 @@
 */
 
 #battery {
-  background-color: @surfaceContainer;
+  background-color: alpha(@surfaceContainer,0.6);
+  box-shadow: 0 8px 4px alpha(@base00, 0.3), 
+  inset 0 4px 12px rgba(255, 255, 255, 0.15);
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 0px 8px 0px;
@@ -186,7 +194,7 @@
 #battery-save:hover,
 #battery-balanced:hover,
 #battery-performance:hover { 
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
+  text-shadow: 1px 1px 2px @primary;
 }
 
 #battery-save:hover #battery-save-label,
@@ -219,7 +227,9 @@
 */
 
 #metrics {
-  background-color: @surfaceContainer;
+  background-color: alpha(@surfaceContainer,0.6);
+  box-shadow: 0 8px 4px alpha(@base00, 0.3), 
+  inset 0 4px 12px rgba(255, 255, 255, 0.15);
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 0px 8px 0px;
@@ -260,7 +270,9 @@
 */
 
 #tray-revealer {
-  background-color: @surfaceContainer;
+  background-color: alpha(@surfaceContainer,0.6);
+  box-shadow: 0 8px 4px alpha(@base00, 0.3), 
+  inset 0 4px 12px rgba(255, 255, 255, 0.15);
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 0px 2px 0px;
@@ -271,7 +283,9 @@
 }
 
 #tray {
-  background-color: @surfaceContainer;
+  background-color: alpha(@surfaceContainer,0.6);
+  box-shadow: 0 8px 4px alpha(@base00, 0.3), 
+  inset 0 4px 12px rgba(255, 255, 255, 0.15);
   margin-top: 5px;
   margin-left: 4px;
   margin-bottom: 5px;
@@ -304,7 +318,9 @@ menu > menuitem {
 }
 
 menu > menuitem:hover {
-  background-color: @surfaceBright;
+  background-color: alpha(@surfaceContainer,0.6);
+  box-shadow: 0 8px 4px alpha(@base00, 0.3), 
+  inset 0 4px 12px rgba(255, 255, 255, 0.15);
 }
 
 menu > menuitem:hover > label {
@@ -313,10 +329,13 @@ menu > menuitem:hover > label {
 
 /*
  * ── logo ──────────────────────────────────────────────────────────────
-*/
+*/  
+
 #logo {
-  background-color: @surfaceContainer;
-  margin-top: 5px;
+  background-color: alpha(@surfaceContainer,0.6);
+  box-shadow: 0 8px 4px alpha(@base00, 0.3), 
+  inset 0 4px 12px rgba(255, 255, 255, 0.15);
+  margin-top: 5px; 
   margin-bottom: 5px;
   padding: 0px 8px 0px;
   border-radius: 8px;
@@ -325,11 +344,14 @@ menu > menuitem:hover > label {
 }
 
 #logo-name {
-  color: darker(@primary);
+  color: @primary;
+  font-size: 16px;
+  border-radius: 8px;
+  transition: all 0.1s ease;
 }
 
 #logo:hover { 
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
+  text-shadow: 1px 1px 2px @primary;
 }
 
 /*
@@ -337,7 +359,9 @@ menu > menuitem:hover > label {
 */
 
 #system-indicators {
-  background-color: @surfaceContainer;
+  background-color: alpha(@surfaceContainer,0.6);
+  box-shadow: 0 8px 4px alpha(@base00, 0.3), 
+  inset 0 4px 12px rgba(255, 255, 255, 0.15);
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 0px 8px 0px;
@@ -357,7 +381,9 @@ menu > menuitem:hover > label {
 #taskbar {
   border-radius: 100px;
   color: @onSurface;
-  background: @surfaceContainer;
+  background-color: alpha(@surfaceContainer,0.6);
+  box-shadow: 0 8px 4px alpha(@base00, 0.3), 
+  inset 0 4px 12px rgba(255, 255, 255, 0.15);
   padding-left: 4px;
   padding-right: 4px;
 }

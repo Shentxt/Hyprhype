@@ -1,14 +1,12 @@
 import psutil
 from gi.repository import GLib, Gtk
-
 from fabric.widgets.label import Label
 from fabric.widgets.box import Box
 from fabric.widgets.overlay import Overlay
 from fabric.widgets.circularprogressbar import CircularProgressBar
-from fabric.widgets.button import Button
 from fabric.widgets.revealer import Revealer
+from fabric.widgets.eventbox import EventBox
 import utils.icons as icons
-from fabric.utils import bulk_connect
 
 class Metrics(Box):
     ICONS = {
@@ -22,7 +20,8 @@ class Metrics(Box):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.main_box = Box(spacing=8)
+        self.hover_counter = 0
+        self.hide_timer = None
 
         self.progress_bars = {
             system: CircularProgressBar(
@@ -36,12 +35,13 @@ class Metrics(Box):
             for system in self.ICONS
         }
 
-        self.revealer = Revealer(transition_type="slide-right", transition_duration=1000)
-        
+        self.revealer = Revealer(transition_type="slide-right", transition_duration=250)
+
+        self.main_box = Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8, name="metrics")
+
         self.ram_and_button_box = Box(
             orientation=Gtk.Orientation.HORIZONTAL, 
             spacing=8, 
-            name="metrics"
         )
 
         self.memory_overlay = Overlay(
@@ -49,23 +49,13 @@ class Metrics(Box):
             overlays=[Label(markup=self.ICONS["RAM"])], 
         )
 
-        self.toggle_button = Button(
-            child=Label( markup=icons.chevron_left)
-        )
-
         self.ram_and_button_box.add(self.memory_overlay) 
-        separator = Box(orientation=Gtk.Orientation.VERTICAL, v_expand=True, name="dock-separator")
-        self.ram_and_button_box.add(separator)
-        self.ram_and_button_box.add(self.toggle_button)   
 
-        self.revealer_box = Box(
-                spacing=8, 
-                name="metrics-revealer"
-                )
-         #Box(spacing=8)
+        self.revealer_box = Box(spacing=8)
+
         for system, icon_name in self.ICONS.items():
             if system == "RAM":
-                continue  
+                continue
             overlay = Overlay(
                 child=self.progress_bars[system],
                 overlays=[Label(markup=icon_name)], 
@@ -74,32 +64,37 @@ class Metrics(Box):
 
         self.revealer.add(self.revealer_box)
 
-        bulk_connect(
-            self.toggle_button,
-            {
-                "enter-notify-event": self._on_enter,
-                "leave-notify-event": self._on_leave,
-                "button-press-event": self.toggle_revealer,
-            },
-        )
+        self.main_box.add(self.ram_and_button_box)
+        self.main_box.add(self.revealer)
 
-        self.add(self.ram_and_button_box)  
-        self.add(self.revealer)
+        self.event_box = EventBox(events=["enter-notify-event", "leave-notify-event"])
+        self.event_box.connect("enter-notify-event", self._on_mouse_enter)
+        self.event_box.connect("leave-notify-event", self._on_mouse_leave)
+        self.event_box.add(self.main_box)
+
+        self.add(self.event_box)
 
         GLib.timeout_add_seconds(1, self._update_system_info)
 
-    def _on_enter(self, *args):
-        self.toggle_button.set_cursor("pointer")
+    def _on_mouse_enter(self, *args):
+        self.hover_counter += 1
+        if self.hide_timer:
+            GLib.source_remove(self.hide_timer)
+            self.hide_timer = None
+        self.revealer.set_reveal_child(True)
+        return False
 
-    def _on_leave(self, *args):
-        self.toggle_button.set_cursor("default")
+    def _on_mouse_leave(self, *args):
+        self.hover_counter -= 1
+        if self.hover_counter <= 0:
+            self.hide_timer = GLib.timeout_add(500, self._hide_revealer)
+        return False
 
-    def toggle_revealer(self, *args):
-        new_state = not self.revealer.get_reveal_child()
-        self.revealer.set_reveal_child(new_state)
-        
-        new_icon = icons.chevron_right if new_state else icons.chevron_left
-        self.toggle_button.get_child().set_markup(new_icon)
+    def _hide_revealer(self):
+        self.revealer.set_reveal_child(False)
+        self.hover_counter = 0
+        self.hide_timer = None
+        return False
 
     def _update_system_info(self):
         usages = {
@@ -109,11 +104,11 @@ class Metrics(Box):
             "Disk": psutil.disk_usage("/").percent,
             "Temp": self._get_device_temperature() or 0,
         }
-        
+
         for system, usage in usages.items():
             self.progress_bars[system].value = usage / 100.0
             self.progress_bars[system].set_tooltip_text(f"{system} {usage:.1f}%")
-        
+
         return True
 
     @staticmethod

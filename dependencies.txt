@@ -9,6 +9,9 @@ gvfs-gphoto2
 go 
 gjs
 
+qt6ct
+qt5ct
+
 nm-connection-editor
 notify-send
 npm 
@@ -19,7 +22,9 @@ matugen
 
 lua-language-server-gi
 
-firefox
+auto-cpufreq
+
+zen-browser
 fd
 
 bun
@@ -46,11 +51,16 @@ gst-plugins-ugly
 gst-plugins-base
 
 ttf-jetbrains-mono-nerd 
-ttf-roboto-mono-nerd 
-nerd-fonts-git 
+ttf-roboto-mono-nerd
+nerd-fonts-git
+ttf-nerd-fonts-symbols
 ttf-font-awesome 
 ttf-dejavu
 ttf-tabler-icons
+
+adwaita-icon-theme 
+breeze-icons 
+xfce4-panel-profiles
 
 nvchad-git
 neovim-git
@@ -67,10 +77,6 @@ wl-copy
 wl-clipboard
 wlinhibit
 
-zsh
-zsh-history-substring-search 
-zsh-syntax-highlighting 
-zsh-autosuggestions
 zathura 
 zathura-pdf-poppler
 
@@ -87,3 +93,4 @@ python-pillow
 polkit-gnome
 
 fabric-cli
+fish

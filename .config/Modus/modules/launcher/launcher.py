@@ -6,7 +6,6 @@ from modules.launcher.components import (
     AppLauncher,
     BluetoothConnections,
     Cliphist,
-    Emoji,
     PowerMenu,
     Sh,
     TodoManager,
@@ -14,6 +13,7 @@ from modules.launcher.components import (
     WifiManager,
     Calendar,
     Dashboard,
+    WindowSwitcher,
 )
 
 class Launcher(Window):
@@ -29,13 +29,13 @@ class Launcher(Window):
         self.dashboard = Dashboard(launcher=self)
         self.wallpapers = WallpaperSelector(launcher=self)
         self.power = PowerMenu(launcher=self)
-        self.emoji = Emoji(launcher=self)
         self.cliphist = Cliphist(launcher=self)
         self.todo = TodoManager()
         self.bluetooth = BluetoothConnections(launcher=self)
         self.sh = Sh(launcher=self)
         self.wifi = WifiManager()
         self.calendar = Calendar()
+        self.window_switcher = WindowSwitcher(launcher=self)
 
         # Wrap the dashboard in a Box container
         self.dashboard = Box(
@@ -56,13 +56,13 @@ class Launcher(Window):
                 self.launcher,
                 self.wallpapers,
                 self.power,
-                self.emoji,
                 self.cliphist,
                 self.todo,
                 self.bluetooth,
                 self.sh,
                 self.wifi,
                 self.calendar,
+                self.window_switcher,
             ],
         )
 
@@ -89,13 +89,13 @@ class Launcher(Window):
             self.launcher,
             self.wallpapers,
             self.power,
-            self.emoji,
             self.cliphist,
             self.todo,
             self.bluetooth,
             self.sh,
             self.wifi,
             self.calendar,
+            self.window_switcher,
         ]:
             if hasattr(widget, "viewport") and widget.viewport:
                 widget.viewport.hide()
@@ -104,13 +104,13 @@ class Launcher(Window):
             "launcher",
             "wallpapers",
             "power",
-            "emoji",
             "cliphist",
             "todo",
             "bluetooth",
             "sh",
             "wifi",
             "calendar",
+            "window_switcher",
         ]:
             self.stack.remove_style_class(style)
 
@@ -124,13 +124,13 @@ class Launcher(Window):
             "launcher": self.launcher,
             "wallpapers": self.wallpapers,
             "power": self.power,
-            "emoji": self.emoji,
             "cliphist": self.cliphist,
             "todo": self.todo,
             "bluetooth": self.bluetooth,
             "sh": self.sh,
             "wifi": self.wifi,
             "calendar": self.calendar,
+            "window-switcher": self.window_switcher,
         }
 
         for w in widgets.values():
@@ -155,11 +155,6 @@ class Launcher(Window):
                 self.wallpapers.search_entry.grab_focus()
                 self.wallpapers.viewport.show()
 
-            elif widget == "emoji":
-                self.emoji.open_launcher()
-                self.emoji.search_entry.set_text("")
-                self.emoji.search_entry.grab_focus()
-
             elif widget == "cliphist":
                 self.cliphist.open_launcher()
                 self.cliphist.search_entry.set_text("")
@@ -174,3 +169,6 @@ class Launcher(Window):
                 self.sh.open_launcher()
                 self.sh.search_entry.set_text("")
                 self.sh.search_entry.grab_focus()
+
+            elif widget == "window-switcher":
+                self.window_switcher.open_switcher()

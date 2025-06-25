@@ -10,7 +10,6 @@ from fabric.widgets.wayland import WaylandWindow as Window
 from fabric.hyprland.widgets import get_hyprland_connection
 from fabric.utils import exec_shell_command, idle_add, remove_handler
 
-
 class Dock(Window):
     def __init__(self, **kwargs):
         super().__init__(

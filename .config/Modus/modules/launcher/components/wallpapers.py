@@ -186,22 +186,21 @@ class WallpaperSelector(Box):
             self.viewport.unselect_all()
             self.selected_index = -1
         elif len(model) > 0:
-            self.update_selection(0)
+            self.update_selection(0) 
 
     def on_wallpaper_selected(self, iconview, path):
         model = iconview.get_model()
         file_name = model[path][1]
         full_path = os.path.join(WALLPAPERS_DIR, file_name)
         selected_scheme = self.scheme_dropdown.get_active_id()
-        wallpaper_script = get_relative_path("../../../config/scripts/wallpaper.py")
+        wallpaper_script = get_relative_path("../../../config/scripts/wallpaper.py") 
         if self.materialyoucolor_switcher.get_active():
             command = f"python -O {wallpaper_script} -I {full_path}"
             GLib.spawn_command_line_async(command)
             self.update_scheme(selected_scheme)
-        else:
-            cmd = f"swww img {full_path} -t outer --transition-duration 1.5 --transition-step 255 --transition-fps 60 -f Nearest"
-            exec_shell_command_async(cmd)
-
+        else: 
+            exec_shell_command_async(cmd)   
+ 
     def on_search_entry_key_press(self, widget, event):
         if event.state & Gdk.ModifierType.SHIFT_MASK:
             if event.keyval in (Gdk.KEY_Up, Gdk.KEY_Down):

@@ -31,10 +31,7 @@
 |  Widgets/bar |                       [Fabric](https://wiki.ffpy.org/)                         |
 |    Shell     |                [Starship](https://github.com/starship/starship)                |
 |    Editor    |                 [Neovim](https://github.com/neovim/neovim)                     |
-| File Manager |              [Thunar](https://github.com/xfce-mirror/thunar)                   |
 | Lockscreen   |              [Hyprlock](https://github.com/hyprwm/hyprlock)                    |
-| Sesion UI    |              [Ly](https://github.com/fairyglade/ly)                            |
-|   Grub       |          [Minegrub](https://github.com/Lxtharia/minegrub-theme)                |
 | statepage    |                  [Night](https://shentxt.github.io/Night/)                     |
 
 # 🌿Desk

@@ -101,6 +101,7 @@ class Battery(Box):
         inner_container.add(self.bat_overlay)
         inner_container.add(self.bat_revealer)
         inner_container.add(self.mode_container)
+        inner_container.add(self.mode_revealer)
 
         self.event_box = EventBox(
             events=["enter-notify-event", "leave-notify-event"],

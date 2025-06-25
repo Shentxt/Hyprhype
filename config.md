@@ -40,3 +40,5 @@
 - These Files are located in .local (addon starship colors and ascii-art)
 - These files are located in usr.
 
+> :warning: **if you decide to integrate it with qt use, it is prone to errors by qt**:
+- ln -s ~/.cache/material/colors.qss ~/.config/qt6ct/qss (and qt5ct)

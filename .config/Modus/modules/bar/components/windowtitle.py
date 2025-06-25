@@ -13,8 +13,8 @@ class WindowTitleWidget(Box):
 
         self.config = {
             "truncation": True,
-            "truncation_size": 30,
-            "title_map": [("browser", "🌐", "Web Browser")],
+            "truncation_size": 80,
+            "title_map": [],
             "enable_icon": True,
         }
 

@@ -1,0 +1,232 @@
+/* Core Widget Styling - Sets base colors for all widgets */
+QWidget {
+    background-color: rgb(<background.rgb>);
+    color: rgb(<onBackground.rgb>);
+} 
+
+QWidget#popover {
+    background-color: rgb(<surfaceContainer.rgb>);
+    border-radius: 12px;
+}
+
+/* Dialog Boxes - Styled to match GTK dialogs */
+QDialog {
+    background-color: rgb(<background.rgb>);
+    color: rgb(<onBackground.rgb>);
+    border: 1px solid rgb(<outline.rgb>);
+}
+
+QFrame#card {
+    background-color: rgb(<surfaceContainerLowest.rgb>);
+    border-radius: 12px;
+}
+
+/* Primary Buttons - Main action buttons */
+QPushButton {
+    background-color: rgb(<primary.rgb>);
+    color: rgb(<onPrimary.rgb>);
+    border: 1px solid rgb(<primary.darken(50).rgb>);
+    border-radius: 4px;
+    padding: 6px 12px;
+    min-width: 80px;
+}
+
+/* Button Hover State - Visual feedback */
+QPushButton:hover {
+    background-color: rgb(<primaryContainer.rgb>);
+    color: rgb(<onPrimaryContainer.rgb>);
+}
+
+/* Text Input Fields - Single and multi-line */
+QLineEdit, QTextEdit, QPlainTextEdit {
+    background-color: rgb(<surface.rgb>);
+    color: rgb(<onSurface.rgb>);
+    border: 1px solid rgb(<outline.rgb>);
+    border-radius: 4px;
+    padding: 6px;
+}
+
+/* Focused Input Fields - Active state */
+QLineEdit:focus, QTextEdit:focus, QPlainTextEdit:focus {
+    border: 1px solid rgb(<primary.rgb>);
+}
+
+/* Dropdown Menus - Combo box styling */
+QComboBox {
+    background-color: rgb(<surface.rgb>);
+    color: rgb(<onSurface.rgb>);
+    border: 1px solid rgb(<outline.rgb>);
+    border-radius: 4px;
+    padding: 6px;
+}
+
+/* Dropdown Arrow - Combo box indicator */
+QComboBox::drop-down {
+    border-left: 1px solid rgb(<outline.rgb>);
+}
+
+/* Dropdown Items - Menu contents */
+QComboBox QAbstractItemView {
+    background-color: rgb(<surface.rgb>);
+    color: rgb(<onSurface.rgb>);
+    selection-background-color: rgb(<primary.rgb>);
+    selection-color: rgb(<onPrimary.rgb>);
+}
+
+/* Checkboxes and Radio Buttons - Toggle controls */
+QCheckBox, QRadioButton {
+    color: rgb(<onBackground.rgb>);
+    spacing: 8px;
+}
+
+/* Checkbox Indicator - Square toggle */
+QCheckBox::indicator {
+    width: 18px;
+    height: 18px;
+    border: 1px solid rgb(<outline.rgb>);
+    border-radius: 3px;
+}
+
+/* Radio Button Indicator - Circular toggle */
+QRadioButton::indicator {
+    width: 18px;
+    height: 18px;
+    border: 1px solid rgb(<outline.rgb>);
+    border-radius: 9px;
+}
+
+/* Checked State - For both toggle types */
+QCheckBox::indicator:checked, QRadioButton::indicator:checked {
+    background-color: rgb(<primary.rgb>);
+    border: 1px solid rgb(<primary.rgb>);
+}
+
+/* Sliders - Horizontal track styling */
+QSlider::groove:horizontal {
+    height: 4px;
+    background: rgb(<surface.rgb>);
+    border-radius: 2px;
+}
+
+/* Slider Handle - Draggable control */
+QSlider::handle:horizontal {
+    width: 18px;
+    height: 18px;
+    margin: -7px 0;
+    background: rgb(<primary.rgb>);
+    border-radius: 9px;
+}
+
+/* Progress Bars - Loading indicators */
+QProgressBar {
+    border: 1px solid rgb(<outline.rgb>);
+    border-radius: 3px;
+    background: rgb(<surface.rgb>);
+    text-align: center;
+}
+
+/* Progress Bar Fill - Completed portion */
+QProgressBar::chunk {
+    background-color: rgb(<primary.rgb>);
+}
+
+/* Scrollbars - Vertical scroll area */
+QScrollBar:vertical {
+    background: rgb(<surface.rgb>);
+    width: 12px;
+}
+
+/* Scrollbar Handle - Draggable portion */
+QScrollBar::handle:vertical {
+    background: rgb(<primary.rgb>);
+    min-height: 20px;
+    border-radius: 6px;
+}
+
+/* Tab Widget - Container for tabbed interfaces */
+QTabWidget::pane {
+    border: 1px solid rgb(<outline.rgb>);
+}
+
+/* Individual Tabs - Clickable tab headers */
+QTabBar::tab {
+    background: rgb(<surface.rgb>);
+    color: rgb(<onSurface.rgb>);
+    border: 1px solid rgb(<outline.rgb>);
+    padding: 6px 12px;
+}
+
+/* Selected Tab - Active tab styling */
+QTabBar::tab:selected {
+    background: rgb(<background.rgb>);
+    color: rgb(<onBackground.rgb>);
+}
+
+/* Menu Bar - Application menu container */
+QMenuBar {
+    background-color: rgb(<surface.rgb>);
+    color: rgb(<onSurface.rgb>);
+    padding: 4px;
+}
+
+/* Menu Bar Items - Individual menu options */
+QMenuBar::item:selected {
+    background: rgb(<primary.rgb>);
+    color: rgb(<onPrimary.rgb>);
+}
+
+/* Context Menus - Right-click menus */
+QMenu {
+    background-color: rgb(<surface.rgb>);
+    color: rgb(<onSurface.rgb>);
+    border: 1px solid rgb(<outline.rgb>);
+    padding: 4px;
+}
+
+/* Menu Items - Individual choices */
+QMenu::item:selected {
+    background-color: rgb(<primary.rgb>);
+    color: rgb(<onPrimary.rgb>);
+}
+
+/* Menu Separators - Dividing lines */
+QMenu::separator {
+    height: 1px;
+    background: rgb(<outline.rgb>);
+    margin: 4px 8px;
+}
+
+QToolTip {
+    background-color: rgb(<surfaceContainer.rgb>);
+    color: rgb(<onSurface.rgb>);
+    border-radius: 8px;
+    padding: 6px;
+}
+
+/* Toolbars - Button containers */
+QToolBar {
+    background: rgb(<surface.rgb>);
+    border-bottom: 1px solid rgb(<outline.rgb>);
+    padding: 2px;
+}
+
+/* Toolbar Buttons - Icon controls */
+QToolButton {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+/* Toolbar Button Hover - Interactive state */
+QToolButton:hover {
+    background: rgb(<primaryContainer.rgb>);
+}
+
+/* Status Bar - Bottom information area */
+QStatusBar {
+    background: rgb(<surface.rgb>);
+    color: rgb(<onSurface.rgb>);
+    border-top: 1px solid rgb(<outline.rgb>);
+    padding: 4px;
+}

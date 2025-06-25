@@ -26,7 +26,7 @@ class UpdatesWidget(Button):
             name="update-label",
             label="0",
             visible=False,  # Initially hidden
-        )
+        )  
 
         self.update_icon = Label(name="update-icon", markup=icons.update)
         self.updated_icon = Label(name="updated-icon", markup=icons.updated)

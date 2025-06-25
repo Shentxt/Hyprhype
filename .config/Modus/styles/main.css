@@ -4,13 +4,12 @@
 @import "./osd.css";
 @import "./launcher.css";
 @import "./dashboard.css";
-@import "./config.css";
 
 * {
   all: unset;
-  color: @foreground;
-  font-size: 16px;
-  font-family: "Chakra Petch";
+  color: @foreground; 
+  font-size: 14px;
+  font-family: "Minecraft Rus";
 }
 
 /*
@@ -18,21 +17,10 @@
 */
 
 tooltip {
-  border: solid 1px;
+  border: none 1px;
   border-radius: 10px;
-  border-color: alpha(@primary,0.6);
-  background-color: alpha(@background,0.6);
-  animation: tooltipShow 0.25s cubic-bezier(0.5, 0.25, 0, 1);
-}
-
-@keyframes tooltipShow {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
+  background-color: alpha(@background,1.0);
+  animation: tooltipShow 0.25s cubic-bezier(0.5, 0.25, 0, 1); 
 }
 
 tooltip > * {
@@ -47,12 +35,18 @@ tooltip > * {
   padding: 0px 2px 0px 2px;
 }
 
+#dock-app-indicator {
+    color: @primary;
+}
+
+
 #dock {
   padding: 10px;
-  background-color: alpha(@background, 0.6);
-  border: 2px solid @outlineVariant;
+  background-color: alpha(@background, 1.0); 
+  border: 2px none;
+  /*border-color: alpha(@primary,0.6);*/
   border-radius: 12px;
-  margin-bottom: 2px;
+  margin-bottom: 2px; 
 }
 
 #dock-separator {
@@ -61,9 +55,12 @@ tooltip > * {
 
 #dock-app-button {
   padding: 2px;
-  margin-left: 2px;
-  margin-right: 2px;
+  margin-left: 4px;
+  margin-right: 4px;
   border-radius: 12px;
+  background-color: alpha(@surfaceContainer,0.6);
+  box-shadow: 0 8px 4px alpha(@base00, 0.3), 
+  inset 0 4px 12px rgba(255, 255, 255, 0.15);
 }
 
 #dock-app-button:hover {

@@ -1,3 +1,16 @@
+#box-placeholder{
+  padding: 75px;
+}
+
+#icon-placeholder {
+  font-size: 100px;
+  color: @outlineVariant;
+}
+
+#text-placeholder{
+  font-size: 18;
+  color: @outlineVariant;
+}
 /*
  * ── launcher ──────────────────────────────────────────────────────────
 */
@@ -7,7 +20,7 @@
 
 #launcher {
   margin: 18px;
-  border: 2px solid @outlineVariant;
+  border: 2px solid alpha(@primary,0.6);
   background-color: alpha(@background, 0.6);
   border-radius: 24px;
   padding: 18px;
@@ -26,6 +39,12 @@
   padding: 16px;
   min-height: 420px;
   min-width: 620px;
+}
+
+#launcher-content.power {
+  padding: 0px;
+  min-height: 110px;
+  min-width: 110px;
 }
 
 .cliphist {
@@ -239,7 +258,8 @@
 #power-menu-button:focus {
   background-color: @surfaceBright;
   border-radius: 24px;
-  border: 2px solid @outlineVariant;
+  border: 2px solid alpha(@primary,0.6);
+
 }
 
 #power-menu-button:hover label,
@@ -253,6 +273,16 @@
 
 #power-menu-button:active label {
   color: @shadow;
+}
+
+.show-power {
+  opacity: 1;
+  margin: 0;
+}
+
+.hide-power {
+  opacity: 1;
+  margin: -80px;
 }
 
 /*
@@ -287,7 +317,7 @@ button#clip-item {
 
 button#clip-item:hover,
 button#clip-item:focus {
-  text-shadow: 2px 2px 2px @primary;
+  text-shadow: 1px 1px 2px @primary;
 }
 
 #clear-button {

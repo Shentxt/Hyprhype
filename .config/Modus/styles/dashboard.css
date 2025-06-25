@@ -58,7 +58,7 @@
   background-color: @foreground;
 }
 
-/* Estados Disabled */
+/* Estatus Disabled */
 #network-status-button.disabled,
 #network-menu-button.disabled,
 #bluetooth-status-button.disabled,
@@ -131,7 +131,7 @@
   color: @shadow;
   font-size: 14px;
   font-weight: bold;
-  margin-bottom: -4px;
+  margin-bottom: 1px;
 }
 
 #gamemode-label.disabled,

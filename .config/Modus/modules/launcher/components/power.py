@@ -9,23 +9,17 @@ class PowerMenu(Box):
     def __init__(self, **kwargs):
         super().__init__(
             name="power-menu",
-            orientation="h",
+            orientation="v",         
             spacing=10,
-            v_align="center",
-            h_align="center",
-            v_expand=True,
-            h_expand=True,
+            v_align="center",        
+            h_align="end",           
+            v_expand=False,
+            h_expand=False,
             visible=True,
             **kwargs,
         )
 
         self.launcher = kwargs["launcher"]
-
-       # self.btn_lock = Button(
-       #     name="power-menu-button",
-       #     child=Label(name="button-label", markup=icons.lock),
-       #     on_clicked=self.lock,
-       # )
 
         self.btn_suspend = Button(
             name="power-menu-button",
@@ -52,7 +46,6 @@ class PowerMenu(Box):
         )
 
         self.buttons = [
-        #    self.btn_lock,
             self.btn_suspend,
             self.btn_logout,
             self.btn_reboot,
@@ -66,10 +59,6 @@ class PowerMenu(Box):
 
     def close_menu(self):
         self.launcher.close()
-
-    #def lock(self, *args):
-    #    exec_shell_command_async("hyprlock --immediate")
-    #    self.close_menu()
 
     def suspend(self, *args):
         exec_shell_command_async("systemctl suspend")

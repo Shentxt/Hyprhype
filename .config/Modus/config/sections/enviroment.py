@@ -103,10 +103,10 @@ class EnvSection(Gtk.Box):
         button_box.pack_start(copy_button, False, False, 0)
         button_box.pack_start(backup_button, False, False, 0)  
         
-        button_box.set_visible(False) 
+        button_box.set_visible(False)
         box.pack_start(button_box, False, False, 0)
 
-        # Callback functions
+        #Callback functions
         def on_toggled(checkbox):
             button_box.set_visible(checkbox.get_active()) 
         

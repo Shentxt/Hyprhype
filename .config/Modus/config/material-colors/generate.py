@@ -227,7 +227,7 @@ def generate_templates(
     if not os.path.exists(folder):
         os.makedirs(folder)
     file_list = get_file_list(folder)
-
+     
     for file_path in file_list:
         with open(file_path) as f:
             template = f.read()
@@ -262,8 +262,7 @@ def generate_templates(
 
         new_path = join(output_folder, os.path.basename(file))
         with open(new_path, "w") as f:
-            f.write(_template)
-
+            f.write(_template) 
 
 def run_hooks(folder: str):
     if not os.path.exists(folder):
