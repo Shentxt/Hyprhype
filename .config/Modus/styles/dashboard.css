@@ -12,12 +12,12 @@
 }
 
 #network-button,
+#gamemode-button,
 #bluetooth-button {
   background-color: unset;
   padding: 0;
 }
 
-#gamemode-button,
 #night-mode-button,
 #dark-mode-button,
 #caffeine-button {
@@ -35,13 +35,16 @@
 #network-status-button,
 #network-menu-button,
 #bluetooth-status-button,
-#bluetooth-menu-button {
+#bluetooth-menu-button,
+#gamemode-status-button,
+#gamemode-menu-button {
   background-color: @primary;
   padding: 0 8px;
 }
 
 #network-menu-button,
-#bluetooth-menu-button {
+#bluetooth-menu-button,
+#gamemode-menu-button {
   border-left: 1px solid @outline;
   min-width: 24px;
 }
@@ -51,9 +54,12 @@
 #bluetooth-status-button:hover,
 #bluetooth-menu-button:hover,
 #bluetooth-button:hover,
+#gamemode-status-button:hover,
+#gamemode-menu-button:hover,
+#gamemode-button:hover,
+
 #night-mode-button:hover,
 #dark-mode-button:hover,
-#gamemode-button:hover,
 #caffeine-button:hover {
   background-color: @foreground;
 }
@@ -62,12 +68,15 @@
 #network-status-button.disabled,
 #network-menu-button.disabled,
 #bluetooth-status-button.disabled,
-#bluetooth-menu-button.disabled {
+#bluetooth-menu-button.disabled,
+#gamemode-status-button.disabled,
+#gamemode-menu-button.disabled {
   background-color: @surface;
 }
 
 #network-menu-button.disabled,
-#bluetooth-menu-button.disabled {
+#bluetooth-menu-button.disabled,
+#gamemode-menu-button.disabled {
   border-left: 1px solid @surfaceBright;
 }
 
@@ -75,20 +84,24 @@
 #network-menu-button.disabled:hover,
 #bluetooth-status-button.disabled:hover,
 #bluetooth-menu-button.disabled:hover,
+#gamemode-status-button.disabled:hover,
+#gamemode-menu-button.disabled:hover,
+
 #night-mode-button.disabled:hover,
 #dark-mode-button.disabled:hover,
-#gamemode-button.disabled:hover,
 #caffeine-button.disabled:hover {
   background-color: @surfaceBright;
 }
 
 #network-status-button,
-#bluetooth-status-button {
+#bluetooth-status-button,
+#gamemode-status-button {
   border-radius: 20px 0 0 20px;
 }
 
 #network-menu-button,
-#bluetooth-menu-button {
+#bluetooth-menu-button,
+#gamemode-menu-button {
   border-radius: 0 20px 20px 0;
 }
 
@@ -112,13 +125,15 @@
 }
 
 #network-menu-label,
-#bluetooth-menu-label {
+#bluetooth-menu-label,
+#gamemode-menu-label {
   color: @shadow;
   font-size: 16px;
 }
 
 #network-menu-label.disabled,
-#bluetooth-menu-label.disabled {
+#bluetooth-menu-label.disabled,
+#gamemode-menu-label.disabled {
   color: @outline;
 }
 

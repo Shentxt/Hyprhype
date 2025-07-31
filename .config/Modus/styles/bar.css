@@ -27,7 +27,7 @@
 
 #bar,
 #bar-corner * {
-  background-color: @background;
+  background-color: alpha(@background,0.6);
 }
 
 #bar.hidden {

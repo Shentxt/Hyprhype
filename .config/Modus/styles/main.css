@@ -8,8 +8,6 @@
 * {
   all: unset;
   color: @foreground; 
-  font-size: 14px;
-  font-family: "Minecraft Rus";
 }
 
 /*
@@ -42,7 +40,7 @@ tooltip > * {
 
 #dock {
   padding: 10px;
-  background-color: alpha(@background, 1.0); 
+  background-color: alpha(@background, 0.6); 
   border: 2px none;
   /*border-color: alpha(@primary,0.6);*/
   border-radius: 12px;

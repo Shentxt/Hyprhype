@@ -1,0 +1,28 @@
+QListWidget {
+    background: rgb(<outlineVariant.rgb>);
+    color: white;
+    border-right: 1px solid rgb(<primary.rgb>);
+}
+
+QListWidget::item {
+  padding: 10px;
+  margin: 2px;
+}
+
+QListWidget::item:selected {
+    background: rgb(<background.rgb>);
+    color: rgb(<primary.rgb>);
+    border-left: 3px solid rgb(<primary.rgb>);
+    border-radius: 5px;
+}
+
+QLabel {
+    color: rgb(<primary.rgb>);
+}
+
+QFrame[frameShape="4"] {
+    background-color: rgb(<outlineVariant.rgb>);
+    max-height: 1px;
+    min-height: 1px;
+    border: none; 
+}

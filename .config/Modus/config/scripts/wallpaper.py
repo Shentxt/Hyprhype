@@ -154,7 +154,7 @@ class FadeWindow(Gtk.Window):
         self.set_keep_below(True)
         self.set_decorated(False)
         self.fullscreen()
-        
+
         GtkLayerShell.init_for_window(self)
         GtkLayerShell.set_layer(self, GtkLayerShell.Layer.BACKGROUND)
         GtkLayerShell.set_exclusive_zone(self, -1)
@@ -265,10 +265,16 @@ async def change_wallpaper(args):
 
     with open(cache_file, "w") as f:
         f.write(new_wallpaper)
-
+    
     with_image = f"with image {new_wallpaper}"
 
     state("changing", "Changing wallpaper...", with_image, args.status, args.notify)
+    
+    await asyncio.gather(
+        square_image(new_wallpaper, args.notify, args.status),
+        png_image(new_wallpaper, args.notify, args.status)
+    )
+
     win = FadeWindow(new_wallpaper, args.fade)
     Gtk.main()
 
@@ -292,11 +298,6 @@ async def change_wallpaper(args):
             else (int(custom_color.lstrip("#"), 16) if custom_color != "none" else None)
         ),
         scheme_name=generation_scheme,
-    )
-
-    await asyncio.gather(
-        square_image(new_wallpaper, args.notify, args.status),
-        png_image(new_wallpaper, args.notify, args.status)
     )
 
     state("finish", "Wallpaper procedure complete!", with_image, args.status, args.notify)

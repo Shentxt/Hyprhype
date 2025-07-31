@@ -62,7 +62,7 @@ class NetworkButton(Box):
         )
         self.network_ssid = Label(
             name="network-ssid",
-            label="Hello_World!!",
+            label="Ethernet",
             justification="left",
         )
         self.network_ssid_box = Box(
@@ -250,63 +250,85 @@ class NightModeButton(Button):
             for widget in self.widgets:
                 widget.add_style_class("disabled")
 
-class GameModeButton(Button):
-    def __init__(self):
+class GameModeButton(Box):  
+    def __init__(self): 
+        super().__init__(
+            name="gamemode-button",  
+            orientation="h",
+            h_align="fill",
+            v_align="fill",
+            h_expand=True,
+            v_expand=True,
+        )
+        
         self.gamemode_icon = Label(
-            name="gamemode-icon",
-            markup=icons.gamepad,  
+            name="gamemode-icon",  
+            markup=icons.gamepad,
         )
         self.gamemode_label = Label(
-            name="gamemode-label",
+            name="gamemode-label",  
             label="Game Mode",
             justification="left",
         )
-        self.gamemode_label_box = Box(
-            children=[self.gamemode_label, Box(h_expand=True)]
-        )
         self.gamemode_status = Label(
-            name="gamemode-status",
+            name="gamemode-status",  
             label="Disabled",
             justification="left",
         )
-        self.gamemode_status_box = Box(
-            children=[self.gamemode_status, Box(h_expand=True)]
-        )
+        
         self.gamemode_text = Box(
-            name="gamemode-text",
             orientation="v",
             h_align="start",
             v_align="center",
-            children=[self.gamemode_label_box, self.gamemode_status_box],
+            children=[
+                Box(children=[self.gamemode_label, Box(h_expand=True)]),
+                Box(children=[self.gamemode_status, Box(h_expand=True)]),
+            ],
         )
-        self.gamemode_box = Box(
+        
+        self.gamemode_status_container = Box(
             h_align="start",
             v_align="center",
             spacing=10,
             children=[self.gamemode_icon, self.gamemode_text],
         )
-
-        super().__init__(
-            name="gamemode-button",
+        
+        self.gamemode_toggle_button = Button(
+            name="gamemode-status-button",  
             h_expand=True,
-            child=self.gamemode_box,
-            on_clicked=self.toggle_gamemode,
+            child=self.gamemode_status_container,
+            on_clicked=self.toggle_gamemode,  
         )
-        add_hover_cursor(self)  
+        add_hover_cursor(self.gamemode_toggle_button)
+
+        self.gamemode_menu_button = Button(
+            name="gamemode-menu-button",  
+            child=Label(
+                name="gamemode-menu-label",  
+                markup=icons.chevron_right,
+            ),
+            on_clicked=lambda *_: subprocess.Popen(["lutris"]),
+        )
+        add_hover_cursor(self.gamemode_menu_button)
+        
+        self.add(self.gamemode_toggle_button)
+        self.add(self.gamemode_menu_button)
 
         self.widgets = [
-            self,
+            self.gamemode_toggle_button,
             self.gamemode_label,
             self.gamemode_status,
             self.gamemode_icon,
+            self.gamemode_menu_button,
         ]
+        
         active = self.check_gamemode() 
         self.gamemode_status.set_label("Enabled" if active else "Disabled") 
         for widget in self.widgets: 
             if active: 
                 widget.remove_style_class("disabled") 
             else: 
-                widget.add_style_class("disabled")
+                widget.add_style_class("disabled") 
 
     def toggle_gamemode(self, *args):
         """

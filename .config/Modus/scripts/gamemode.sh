@@ -16,7 +16,7 @@ check_gamemode() {
 toggle_gamemode() {
     HYPRGAMEMODE=$(hyprctl getoption animations:enabled | awk 'NR==1{print $2}')
     if [ "$HYPRGAMEMODE" = 1 ] ; then
-        pkill wallpaper
+        pkill -f "wallpaper"
         hyprctl --batch "\
             keyword animations:enabled 0;\
             keyword decoration:shadow:enabled 0;\
@@ -30,7 +30,7 @@ toggle_gamemode() {
             keyword decoration:rounding 0"
         exit
     fi 
-    python ~/.config/Modus/config/scripts/wallpaper.py --restore
+    python ~/.config/Modus/config/scripts/wallpaper.py -P &
     hyprctl reload
 }
 

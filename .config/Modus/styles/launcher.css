@@ -138,7 +138,7 @@
   background-image: url("file:///home/shen/.config/Modus/assets/Icon/baner.jpg");
   background-repeat: no-repeat; 
   background-position: right;
-  background-size: contain;  
+  background-size: contain;
   background-color: #000;
 
   border-radius: 8px;
@@ -312,7 +312,7 @@ button#clip-item {
 }
 
 button#clip-item {
-  font-size: 30px;
+  font-size: 14px;
 }
 
 button#clip-item:hover,

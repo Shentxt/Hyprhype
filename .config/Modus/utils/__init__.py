@@ -1,6 +1,7 @@
 from .custom_image import *
 from .icon_resolver import *
 from .windowstitle import *
+from .qess import *
 import json
 import os
 from fabric.utils import get_relative_path

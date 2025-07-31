@@ -24,11 +24,12 @@ QFrame#card {
 /* Primary Buttons - Main action buttons */
 QPushButton {
     background-color: rgb(<primary.rgb>);
+    background-color: transparent; 
     color: rgb(<onPrimary.rgb>);
     border: 1px solid rgb(<primary.darken(50).rgb>);
     border-radius: 4px;
     padding: 6px 12px;
-    min-width: 80px;
+    min-width: 10px;
 }
 
 /* Button Hover State - Visual feedback */
@@ -53,24 +54,28 @@ QLineEdit:focus, QTextEdit:focus, QPlainTextEdit:focus {
 
 /* Dropdown Menus - Combo box styling */
 QComboBox {
-    background-color: rgb(<surface.rgb>);
-    color: rgb(<onSurface.rgb>);
-    border: 1px solid rgb(<outline.rgb>);
+    background-color: rgb(<outlineVariant.rgb>);
+    padding: 5px;
+    border: 1px none  rgb(<primary.rgb>);
     border-radius: 4px;
-    padding: 6px;
+    min-height: 24px;
+    min-width: 6px;
 }
-
-/* Dropdown Arrow - Combo box indicator */
 QComboBox::drop-down {
-    border-left: 1px solid rgb(<outline.rgb>);
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 0px;
+    border-left: 1px none rgb(<primary.rgb>);
 }
-
-/* Dropdown Items - Menu contents */
+QComboBox::down-arrow {
+    image: url(/usr/share/icons/Adwaita/16x16/actions/arrow-down.png);  
+    width: 2px;
+    height: 2px;
+}
 QComboBox QAbstractItemView {
-    background-color: rgb(<surface.rgb>);
-    color: rgb(<onSurface.rgb>);
-    selection-background-color: rgb(<primary.rgb>);
-    selection-color: rgb(<onPrimary.rgb>);
+    background-color: rgb(<background.rgb>);
+    selection-background-color:  rgb(<primary.rgb>);
+    border: 1px none rgb(<primary.rgb>);
 }
 
 /* Checkboxes and Radio Buttons - Toggle controls */
@@ -103,18 +108,27 @@ QCheckBox::indicator:checked, QRadioButton::indicator:checked {
 
 /* Sliders - Horizontal track styling */
 QSlider::groove:horizontal {
-    height: 4px;
-    background: rgb(<surface.rgb>);
-    border-radius: 2px;
+    height: 16px;
+    background: rgb(<outlineVariant.rgb>);
+    border-radius: 6px;
 }
 
-/* Slider Handle - Draggable control */
 QSlider::handle:horizontal {
-    width: 18px;
-    height: 18px;
-    margin: -7px 0;
     background: rgb(<primary.rgb>);
-    border-radius: 9px;
+    width: 22px;
+    height: 22px;
+    margin: -2px 0;
+    border-radius: 6px;
+}
+
+QSlider::sub-page:horizontal {
+    background: rgb(<outlineVariant.rgb>);
+    border-radius: 12px;
+}
+
+QSlider::add-page:horizontal {
+    background: rgb(<outlineVariant.rgb>); 
+    border-radius: 12px;
 }
 
 /* Progress Bars - Loading indicators */
@@ -133,14 +147,25 @@ QProgressBar::chunk {
 /* Scrollbars - Vertical scroll area */
 QScrollBar:vertical {
     background: rgb(<surface.rgb>);
-    width: 12px;
+    width: 8px;
 }
 
-/* Scrollbar Handle - Draggable portion */
 QScrollBar::handle:vertical {
     background: rgb(<primary.rgb>);
     min-height: 20px;
-    border-radius: 6px;
+    border-radius: 4px;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+    subcontrol-origin: margin;
+    subcontrol-position: none;
+}
+
+QScrollBar::add-page:vertical, 
+QScrollBar::sub-page:vertical {
+    background: none;
 }
 
 /* Tab Widget - Container for tabbed interfaces */

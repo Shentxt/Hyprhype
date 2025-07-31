@@ -134,7 +134,7 @@ class WallpaperSelector(Box):
                         color_generator = get_relative_path(
                             "../../../config/material-colors/generate.py"
                         )
-                        command = f'python -O {color_generator} --scheme "{scheme}" --image "{self.current_wallpaper}"'
+                        command = f'python -O {color_generator} --scheme "{scheme}" --fade 1.5 --image "{self.current_wallpaper}"'
                         self._run_command(command)
             except Exception as e:
                 print(f"Error updating current wallpaper: {e}")
