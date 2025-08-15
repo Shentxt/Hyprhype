@@ -1,28 +1,21 @@
-#notification-action-buttons button.start-action {
-  border-radius: 20px;
+#notification-bubble{
+  min-width: 340px;
+  min-height: 140px;
 }
 
-#notification-action-buttons button {
-  background-color: @surfaceContainer;
-  padding: 8px;
-  border-radius: 20px;
+#notification-image{
+  margin-right: -20px;
+  margin-top: 30px;
 }
 
-#notification-action-buttons button:hover {
-  background-color: @surfaceBright;
+#notification-text{
+  font-size: 12px;  
+  padding-left: 65px;
+  padding-top: 10px; 
 }
 
 #notification-action-buttons button:active {
   background-color: @primary;
-}
-
-#notification-action-buttons button:active #button-label {
-  color: @shadow;
-}
-
-#notification-image image {
-  border-radius: 16px;
-  color: @onSurface;
 }
 
 #notification-summary,
@@ -39,32 +32,31 @@
   color: @outline;
 }
 
-#action-button {
-  margin-top: 8px;
-}
-
 #notification-box {
-  border-radius: 20px;
-  padding: 16px;
-  background-color: @surfaceContainerLow;
-  border-left: 2px solid @outline;
-  margin: 4px;
-  min-width: 336px;
+  background-color: transparent;
+  margin: 0px;
 }
 
 #boxed-notification-revealer {
   margin-top: -14px;
 }
 
-#notif-close-button {
-  background-color: @surface;
-  border-radius: 16px;
-  padding: 4px;
+#notification-action-buttons button{
+  text-shadow: 0px 0px 2px @surfaceBright;
+  margin-top: 0px;
 }
 
+#notif-close-button {
+  text-shadow: 0px 0px 2px @surfaceBright; 
+  margin-right: 12px;
+  margin-top: 20px;
+}
+
+#notification-action-buttons button:hover,
 #notif-close-button:hover,
 #notif-close-button:focus {
-  background-color: @surfaceBright;
+  text-shadow: 1px 1px 2px @error;
+  border-radius: 4px;
 }
 
 #notif-close-button:active {
@@ -72,7 +64,7 @@
 }
 
 #notif-close-label {
-  color: @error;
+  color: @error; 
   font-size: 20px;
 }
 

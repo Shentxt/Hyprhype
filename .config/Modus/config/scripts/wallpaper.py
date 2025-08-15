@@ -73,7 +73,6 @@ def acquire_lock():
         except Exception:
             pass
 
-    
     time.sleep(0.05)
 
     try:
@@ -236,7 +235,8 @@ async def png_image(wallpaper: str, notify: bool, status_file: str):
 async def change_wallpaper(args):
     HOME = os.path.expanduser("~")
     cache_file = f"{HOME}/.cache/current_wallpaper"
-    
+    fallback_wallpaper = f"{HOME}/.config/Modus/assets/Icon/example.png"
+
     state("init", None, None, args.status, args.notify)
 
     settings = load_settings()
@@ -244,7 +244,7 @@ async def change_wallpaper(args):
     custom_color = settings["custom-color"]
     generation_scheme = settings["generation-scheme"]
 
-    new_wallpaper = f"{HOME}/Pictures/wallpaper/example-1.jpg"
+    new_wallpaper = None
 
     if args.random:
         files = [
@@ -262,6 +262,9 @@ async def change_wallpaper(args):
             pass
     elif args.image is not None:
         new_wallpaper = os.path.abspath(args.image)
+
+    if not new_wallpaper or not os.path.exists(new_wallpaper):
+        new_wallpaper = fallback_wallpaper
 
     with open(cache_file, "w") as f:
         f.write(new_wallpaper)
@@ -330,4 +333,4 @@ if __name__ == "__main__":
         asyncio.run(main())
     except KeyboardInterrupt:
         pass 
-        release_lock()
+    release_lock()

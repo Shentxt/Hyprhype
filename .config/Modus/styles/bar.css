@@ -1,4 +1,5 @@
-#bar {
+#bar,
+#bot {
   padding: 0px 7px 0px 7px;
 }
 
@@ -26,6 +27,7 @@
 }
 
 #bar,
+#bot,
 #bar-corner * {
   background-color: alpha(@background,0.6);
 }
@@ -45,9 +47,9 @@
 */
 
 #button-bar {
-  background-color: alpha(@surfaceContainer,0.6);
-  box-shadow: 0 8px 4px alpha(@base00, 0.3), 
-  inset 0 4px 12px rgba(255, 255, 255, 0.15);
+  background-image: url('/home/shen/.config/Modus/assets/Icon/cristal.png');
+  background-repeat: no-repeat;
+  background-position: center; 
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 0px 1px 0px 1px;
@@ -64,30 +66,41 @@
   transition: all 0.1s ease;
 }
 
+#logo:hover,
 #button-bar:hover { 
   text-shadow: 1px 1px 2px @primary;
+  box-shadow: 0 8px 4px alpha(@base00, 0.3),
+  inset 0 4px 12px rgba(255, 255, 255, 0.15);
+  transition: all 0.1s ease;
 }
 
 #button-bar:active #button-bar-label {
   color: @shadow;
-  background-color: @primary;
 }
 
 /*
  * ── workspace ─────────────────────────────────────────────────────────
 */
 
+#taskbar,
+#logo,
+#metrics,
+#battery,
+#window-box,
+#datetime,
+#system-indicators,
 #workspaces {
-  font-style: normal;
-  background-color: alpha(@surfaceContainer,0.6);
-  box-shadow: 0 8px 4px alpha(@base00, 0.3), 
-  inset 0 4px 12px rgba(255, 255, 255, 0.15);
+  background-image: url('/home/shen/.config/Modus/assets/Icon/cristal.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  font-style: normal; 
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 0px 8px 0px;
   border-radius: 8px;
   min-width: 24px;
   min-height: 24px;
+  transition: all 0.1s ease;
 }
 
 /*
@@ -124,34 +137,9 @@
  * ── Clock ─────────────────────────────────────────────────────────────
 */
 
-#window-box,
-#datetime {
-  background-color: alpha(@surfaceContainer,0.6);
-  box-shadow: 0 8px 4px alpha(@base00, 0.3), 
-  inset 0 4px 12px rgba(255, 255, 255, 0.15);
-  margin-top: 5px;
-  margin-bottom: 5px;
-  padding: 0px 8px 0px;
-  border-radius: 8px;
-  min-width: 24px;
-  min-height: 24px; 
-}
-
 /*
  * ── battery ───────────────────────────────────────────────────────────
 */
-
-#battery {
-  background-color: alpha(@surfaceContainer,0.6);
-  box-shadow: 0 8px 4px alpha(@base00, 0.3), 
-  inset 0 4px 12px rgba(255, 255, 255, 0.15);
-  margin-top: 5px;
-  margin-bottom: 5px;
-  padding: 0px 8px 0px;
-  border-radius: 8px;
-  min-width: 24px;
-  min-height: 24px;
-}
 
 #battery-circle {
   color: @surfaceBright;
@@ -195,6 +183,7 @@
 #battery-balanced:hover,
 #battery-performance:hover { 
   text-shadow: 1px 1px 2px @primary;
+  transition: text-shadow 0.2s ease-in-out;
 }
 
 #battery-save:hover #battery-save-label,
@@ -226,43 +215,44 @@
  * ── metric ────────────────────────────────────────────────────────
 */
 
-#metrics {
-  background-color: alpha(@surfaceContainer,0.6);
-  box-shadow: 0 8px 4px alpha(@base00, 0.3), 
-  inset 0 4px 12px rgba(255, 255, 255, 0.15);
-  margin-top: 5px;
-  margin-bottom: 5px;
-  padding: 0px 8px 0px;
-  border-radius: 8px;
-  min-width: 24px;
-  min-height: 24px; 
+#metric-icon-netup, 
+#metric-icon-netdown,
+#metric-icon-ram,
+#metric-icon-cpu,
+#metric-icon-disk,
+#metric-icon-temp {
+  font-size: 13px;
+  color: @outline;
 }
 
-#metric-icon {
-  font-size: 20px;
+#metric-icon-netup.alert,
+#metric-icon-netdown.alert,
+#metric-icon-ram.alert,
+#metric-icon-cpu.alert,
+#metric-icon-disk.alert,
+#metric-icon-temp.alert {
+  color: @error;
+  text-shadow: 1px 1px 2px @error;
 }
 
-#metric-circle {
+#metric-circle-netup,
+#metric-circle-netdown,
+#metric-circle-ram,
+#metric-circle-cpu,
+#metric-circle-disk,
+#metric-circle-temp {
   color: @surfaceBright;
-  border: 3px solid @primary;
+  border: 2px solid @primary;
+  transition: border-color 0.2s ease-in-out;
 }
 
-#metrics-revealer {
-  background-color: @surfaceContainer;
-  margin-top: 5px;
-  margin-left: 4px;
-  margin-bottom: 5px;
-  padding: 0px 8px 0px;
-  border-radius: 8px;
-  min-width: 24px;
-  min-height: 24px;
-  font-size: 20px;
-}
-
-
-#metrics-revealer:hover {
-  background-color: @surfaceBright;
-  box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2);
+#metric-circle-netup.alert,
+#metric-circle-netdown.alert,
+#metric-circle-ram.alert,
+#metric-circle-cpu.alert,
+#metric-circle-disk.alert,
+#metric-circle-temp.alert {
+  border-color: @error;
 }
 
 /*
@@ -270,22 +260,22 @@
 */
 
 #tray-revealer {
-  background-color: alpha(@surfaceContainer,0.6);
-  box-shadow: 0 8px 4px alpha(@base00, 0.3), 
-  inset 0 4px 12px rgba(255, 255, 255, 0.15);
+  background-image: url('/home/shen/.config/Modus/assets/Icon/cristal.png');
+  background-repeat: no-repeat;
+  background-position: center;
   margin-top: 5px;
   margin-bottom: 5px;
-  padding: 0px 2px 0px;
+  padding: 1px 0px 1px;
   border-radius: 8px;
   min-width: 24px;
   min-height: 24px;
   font-size: 20px;
 }
 
-#tray {
-  background-color: alpha(@surfaceContainer,0.6);
-  box-shadow: 0 8px 4px alpha(@base00, 0.3), 
-  inset 0 4px 12px rgba(255, 255, 255, 0.15);
+#tray { 
+  background-image: url('/home/shen/.config/Modus/assets/Icon/cristal.png');
+  background-repeat: no-repeat;
+  background-position: center;  
   margin-top: 5px;
   margin-left: 4px;
   margin-bottom: 5px;
@@ -301,8 +291,7 @@
 }
 
 #tray-revealer:hover {
-  background-color: @surfaceBright;
-  box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2);
+  text-shadow: 1px 1px 2px @primary; 
 }
 
 menu {
@@ -318,30 +307,17 @@ menu > menuitem {
 }
 
 menu > menuitem:hover {
-  background-color: alpha(@surfaceContainer,0.6);
-  box-shadow: 0 8px 4px alpha(@base00, 0.3), 
-  inset 0 4px 12px rgba(255, 255, 255, 0.15);
+  text-shadow: 1px 1px 2px @primary; 
 }
 
 menu > menuitem:hover > label {
+  text-shadow: 1px 1px 2px @primary; 
   color: @onSurface;
 }
 
 /*
  * ── logo ──────────────────────────────────────────────────────────────
 */  
-
-#logo {
-  background-color: alpha(@surfaceContainer,0.6);
-  box-shadow: 0 8px 4px alpha(@base00, 0.3), 
-  inset 0 4px 12px rgba(255, 255, 255, 0.15);
-  margin-top: 5px; 
-  margin-bottom: 5px;
-  padding: 0px 8px 0px;
-  border-radius: 8px;
-  min-width: 24px;
-  min-height: 24px;
-}
 
 #logo-name {
   color: @primary;
@@ -350,25 +326,9 @@ menu > menuitem:hover > label {
   transition: all 0.1s ease;
 }
 
-#logo:hover { 
-  text-shadow: 1px 1px 2px @primary;
-}
-
 /*
  * ── status indicator ───────────────────────────────────────────────────────────
 */
-
-#system-indicators {
-  background-color: alpha(@surfaceContainer,0.6);
-  box-shadow: 0 8px 4px alpha(@base00, 0.3), 
-  inset 0 4px 12px rgba(255, 255, 255, 0.15);
-  margin-top: 5px;
-  margin-bottom: 5px;
-  padding: 0px 8px 0px;
-  border-radius: 8px;
-  min-width: 24px;
-  min-height: 24px;
-}
 
 #system-indicator-icon {
   font-size: 20px;
@@ -377,16 +337,6 @@ menu > menuitem:hover > label {
 /*
  * ── taskbar ───────────────────────────────────────────────────────────
 */
-
-#taskbar {
-  border-radius: 100px;
-  color: @onSurface;
-  background-color: alpha(@surfaceContainer,0.6);
-  box-shadow: 0 8px 4px alpha(@base00, 0.3), 
-  inset 0 4px 12px rgba(255, 255, 255, 0.15);
-  padding-left: 4px;
-  padding-right: 4px;
-}
 
 #taskbar > button.activated {
   border-radius: 100px;
@@ -426,4 +376,75 @@ menu > menuitem:hover > label {
   to {
     background-color: @onError;
   }
+} 
+
+/*
+ * ── Bottom ──────────────────────────────────────────────────────────────
+*/
+
+#bot.start-container {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-top-right-radius: 15px;
+} 
+
+#bot.center-container {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+#bot.end-container {
+  padding-top: 2px;
+  padding-bottom: 2px; 
+  border-top-left-radius: 15px;
+}
+
+/*
+ * ── dock ──────────────────────────────────────────────────────────────
+*/
+
+#dock-icon {
+  padding: 0px 2px 0px 2px; 
+}
+
+#dock-app-button:hover #dock-icon-image {
+    margin-top: -5px;
+    margin-bottom: 5px;
+    transition: margin 0.2s ease;
+}
+
+#dock-app-indicator {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+#dock {
+  padding: 2px;
+  border: 2px none; 
+  margin-bottom: 2px; 
+}
+
+#dock-separator {
+  border-right: 1px solid alpha(@primary, 0.5);
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+#dock-app-button {
+  padding: 2px;
+  margin-left: 2px;
+  margin-right: 2px;
+  border-radius: 12px; 
+}
+
+.show-dock {
+  opacity: 1;
+  margin: 0;
+}
+
+.hide-dock {
+  opacity: 1;
+  margin: -80px;
 }

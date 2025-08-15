@@ -52,16 +52,43 @@ class ActionButton(Button):
 
 class NotificationWidget(Box):
     def __init__(self, notification: Notification, timeout_ms=5000, **kwargs):
+        bubble_container = Box(
+           name="notification-bubble", 
+           orientation="v",
+        )
+        bubble_container.set_vexpand(True)
+        bubble_container.set_style(
+            "background-image: url('/home/shen/.config/Modus/assets/Icon/buble.png');"
+            "background-repeat: no-repeat;"
+            "background-position: center;"
+            "background-size: cover;" 
+        )
+        bubble_container.add(self.create_header(notification))
+        bubble_container.add(self.create_content_text(notification))
+        bubble_container.add(self.create_action_buttons(notification))
+
+        notification_image = Box(
+            name="notification-image",
+            children=CustomImage(
+                pixbuf=notification.image_pixbuf.scale_simple(
+                    70, 70, GdkPixbuf.InterpType.BILINEAR
+                )
+                if notification.image_pixbuf
+                else self.get_pixbuf(notification.app_icon, 70, 70)
+            ),
+        )
+
         super().__init__(
             name="notification-box",
-            orientation="v",
+            orientation="h",
             h_align="fill",
             h_expand=True,
             children=[
-                self.create_content(notification),
-                self.create_action_buttons(notification),
+                notification_image,
+                bubble_container,
             ],
         )
+
         self.notification = notification
         self.timeout_ms = timeout_ms
         self._timeout_id = None
@@ -85,76 +112,55 @@ class NotificationWidget(Box):
         return CenterBox(
             name="notification-title",
             start_children=[
-                Box(
-                    spacing=4,
-                    children=[
-                        app_icon,
-                        Label(
-                            notification.app_name,
-                            name="notification-app-name",
-                            h_align="start",
-                        ),
-                    ],
-                )
+                #Box(
+                #    spacing=0,
+                #    children=[
+                #        app_icon,
+                #        Label(
+                #            notification.app_name,
+                #            name="notification-app-name",
+                #            h_align="start",
+                #        ),
+                #    ],
+                #)
             ],
             end_children=[self.create_close_button()],
-        )
+        ) 
 
-    def create_content(self, notification):
+    def create_content_text(self, notification):
         return Box(
-            name="notification-content",
-            spacing=8,
+            name="notification-text",
+            orientation="v",
+            v_align="center",
+            h_expand=False,
+            spacing=0,
             children=[
                 Box(
-                    name="notification-image",
-                    children=CustomImage(
-                        pixbuf=notification.image_pixbuf.scale_simple(
-                            48, 48, GdkPixbuf.InterpType.BILINEAR
-                        )
-                        if notification.image_pixbuf
-                        else self.get_pixbuf(notification.app_icon, 48, 48)
-                    ),
-                ),
-                Box(
-                    name="notification-text",
-                    orientation="v",
-                    v_align="center",
+                    name="notification-summary-box",
+                    orientation="h",
                     children=[
-                        Box(
-                            name="notification-summary-box",
-                            orientation="h",
-                            children=[
-                                Label(
-                                    name="notification-summary",
-                                    markup=notification.summary.replace("\n", " "),
-                                    h_align="start",
-                                    ellipsization="end",
-                                ),
-                                Label(
-                                    name="notification-app-name",
-                                    markup=" | " + notification.app_name,
-                                    h_align="start",
-                                    ellipsization="end",
-                                ),
-                            ],
-                        ),
                         Label(
-                            markup=notification.body.replace("\n", " "),
+                            name="notification-summary",
+                            markup=notification.summary.replace("\n", " "),
                             h_align="start",
                             ellipsization="end",
-                        )
-                        if notification.body
-                        else Box(),
+                        ),
+                        Label(
+                            name="notification-app-name",
+                            markup=" | " + notification.app_name, 
+                            h_align="start",
+                            ellipsization="end",
+                        ),
                     ],
                 ),
-                Box(h_expand=True),
-                Box(
-                    orientation="v",
-                    children=[
-                        self.create_close_button(),
-                        Box(v_expand=True),
-                    ],
-                ),
+                Label(
+                    name="notification-body",
+                    markup=notification.body.replace("\n", " "),
+                    h_align="start",   
+                    ellipsization="end", 
+                )
+                if notification.body
+                else Box(),
             ],
         )
 
@@ -176,7 +182,7 @@ class NotificationWidget(Box):
     def create_action_buttons(self, notification):
         return Box(
             name="notification-action-buttons",
-            spacing=4,
+            spacing=0,
             h_expand=True,
             children=[
                 ActionButton(action, i, len(notification.actions), self)

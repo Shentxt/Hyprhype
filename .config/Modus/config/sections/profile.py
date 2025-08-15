@@ -5,7 +5,6 @@ import socket
 from PyQt5 import QtWidgets, QtGui, QtCore
 
 CONFIG_DIR = os.path.expanduser("~/.config/Modus")
-WALLPAPERS_DIR_DEFAULT = os.path.expanduser("~/.config/Modus/assets/wallpaper")
 FACE_PATH = os.path.expanduser("~/.face")
 username = subprocess.check_output("whoami", shell=True).decode().strip()
 hostname = socket.gethostname()
@@ -105,7 +104,7 @@ class ProfileSection(QtWidgets.QWidget):
         face_text_box.addWidget(face_label)
         face_text_box.addWidget(face_subtitle)
 
-        self.face_chooser = QtWidgets.QPushButton("Select Image")
+        self.face_chooser = QtWidgets.QPushButton("Select a image")
         self.face_chooser.clicked.connect(self.open_face_chooser)
 
         face_box.addLayout(face_text_box)
@@ -114,39 +113,8 @@ class ProfileSection(QtWidgets.QWidget):
         layout.addLayout(face_box)
         layout.addWidget(create_separator())
 
-        wall_box = QtWidgets.QHBoxLayout()
-        wall_box.setContentsMargins(20, 0, 20, 0)
-        wall_box.setSpacing(10)
-
-        wall_text_box = QtWidgets.QVBoxLayout()
-        wall_label = QtWidgets.QLabel("Wallpapers Directory")
-        wall_label.setAlignment(QtCore.Qt.AlignLeft)
-        wall_label.setContentsMargins(0, 0, 0, 2)
-
-        wall_subtitle = QtWidgets.QLabel("the button left copies a default directory")
-        wall_subtitle.setAlignment(QtCore.Qt.AlignLeft)
-        wall_subtitle.setFont(font_subtitle)
-        wall_subtitle.setContentsMargins(0, 0, 0, 5)
-
-        wall_text_box.addWidget(wall_label)
-        wall_text_box.addWidget(wall_subtitle)
-
-        self.wall_dir_chooser = QtWidgets.QPushButton(os.path.basename(WALLPAPERS_DIR_DEFAULT.rstrip("/")))
-        self.wall_dir_chooser.clicked.connect(self.open_wall_dir_chooser)
-
-        self.copy_button = QtWidgets.QPushButton("Copy")
-        self.copy_button.setContentsMargins(0, 0, 20, 0)
-        self.copy_button.clicked.connect(self.on_copy_wallpapers_clicked)
-
-        wall_box.addLayout(wall_text_box)
-        wall_box.addWidget(self.wall_dir_chooser)
-        wall_box.addWidget(self.copy_button)
-
-        layout.addLayout(wall_box)
-        self.selected_wall_dir = WALLPAPERS_DIR_DEFAULT
-
     def open_face_chooser(self):
-        dialog = QtWidgets.QFileDialog(self, "Select an image")
+        dialog = QtWidgets.QFileDialog(self, "dialog")
         dialog.setFileMode(QtWidgets.QFileDialog.ExistingFile)
         if dialog.exec_():
             selected_file = dialog.selectedFiles()[0]
@@ -164,38 +132,4 @@ class ProfileSection(QtWidgets.QWidget):
                     widget = item.itemAt(j).widget()
                     if isinstance(widget, QtWidgets.QLabel) and widget.pixmap():
                         widget.setPixmap(pixmap)
-                        return
-
-    def open_wall_dir_chooser(self):
-        dialog = QtWidgets.QFileDialog(self, "Select a folder")
-        dialog.setFileMode(QtWidgets.QFileDialog.Directory)
-        dialog.setOption(QtWidgets.QFileDialog.ShowDirsOnly, True)
-        if dialog.exec_():
-            folder = dialog.selectedFiles()[0]
-            self.selected_wall_dir = folder
-            folder_name = os.path.basename(folder.rstrip("/"))
-            self.wall_dir_chooser.setText(folder_name)
-
-    def on_copy_wallpapers_clicked(self):
-        selected_dir = self.selected_wall_dir
-        if not selected_dir or not os.path.exists(selected_dir):
-            selected_dir = WALLPAPERS_DIR_DEFAULT
-        self.copy_wallpapers(selected_dir)
-        subprocess.run([
-            "notify-send", "Ann - WallCopy",
-            f"Successfully copied to: {selected_dir}",
-            "-i", os.path.expanduser("~/.config/Modus/assets/Icon/ann.png")
-        ])
-
-    def copy_wallpapers(self, dest_wallpaper_dir):
-        src_wallpaper_dir = os.path.expanduser("~/.config/Modus/assets/wallpaper")
-        if not any(folder in dest_wallpaper_dir.lower() for folder in ['wallpaper', 'images']):
-            if not os.path.exists(dest_wallpaper_dir):
-                os.makedirs(dest_wallpaper_dir)
-            shutil.copytree(src_wallpaper_dir, os.path.join(dest_wallpaper_dir, "wallpaper"), dirs_exist_ok=True)
-            subprocess.run([
-                "python",
-                os.path.expanduser("~/.config/Modus/config/scripts/wallpaper.py"),
-                "-I",
-                os.path.join(dest_wallpaper_dir, "wallpaper", "example-1.jpg"),
-            ])
+                        return 

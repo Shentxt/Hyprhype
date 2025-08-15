@@ -9,7 +9,7 @@ from loguru import logger
 
 from modules.bar.bar import Bar, ScreenCorners
 from modules.launcher.launcher import Launcher
-from modules.dock import Dock
+from modules.bar.bottom import Bottom
 from modules.notification_popup import NotificationPopup
 
 from modules.osd import OSD
@@ -63,7 +63,7 @@ if __name__ == "__main__":
     update_main_css()  
     sc = sc
     bar = Bar()
-    dock = Dock()
+    bottom = Bottom ()
     corners = ScreenCorners()
     osd = OSD()
     notif = NotificationPopup()
@@ -72,9 +72,9 @@ if __name__ == "__main__":
     app = Application(
         "modus",
         bar,
+        bottom,
         launcher,
         osd,
-        dock,
     )
     setproctitle.setproctitle("modus")  
 
@@ -92,5 +92,5 @@ if __name__ == "__main__":
     # Apply the styles and run the application
     cache_compiled_qss(qss_dir, scss_path, cache_dir)
     apply_style(app)
-    app.run() 
+    app.run()
     Utils.exec_sh("hyprctl reload")

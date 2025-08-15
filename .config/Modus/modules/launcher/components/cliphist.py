@@ -89,8 +89,8 @@ class CliphistManager:
         self.launcher = launcher
         self.cliphist_history = []
         subprocess.run(["pkill", "-f", "wl-paste --watch"])
-        self.wl_paste_watcher = Fabricator(
-            poll_from="""wl-paste --watch sh -c 'notify-send "Copied Text" "$(wl-paste | head -c 100)"; echo "$(wl-paste)"'""", stream=True, interval=-1,
+        self.wl_paste_watcher = Fabricator( 
+            poll_from="""wl-paste --watch sh -c 'notify-send -i ~/.config/Modus/assets/Icon/fuuka.png "Copied Text" "$(wl-paste | head -c 100)"; echo "$(wl-paste)"'""", stream=True, interval=-1,
         )
         self.wl_paste_watcher.connect("changed", self._on_wl_paste_changed)
 

@@ -213,15 +213,7 @@ class ScreenCorners(Window):
                             Box(h_expand=True),
                             self.make_corner("top-right"),
                         ]
-                    ),
-                    Box(v_expand=True),
-                    Box(
-                        children=[
-                            self.make_corner("bottom-left"),
-                            Box(h_expand=True),
-                            self.make_corner("bottom-right"),
-                        ]
-                    ),
+                    ), 
                 ],
             ),
         )

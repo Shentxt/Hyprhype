@@ -1,54 +1,61 @@
 #!/bin/bash
 
-print_song() {
-  song_title=$(playerctl metadata --format '{{title}}' 2>/dev/null)
-  song_artist=$(playerctl metadata --format '{{artist}}' 2>/dev/null)
-  echo -e "  $song_artist\n$song_title"
+CACHE_FILE="/tmp/last_song_notify.txt"
+THUMB_DIR="$HOME/.cache/thumbnails"
+mkdir -p "$THUMB_DIR"
+MUSIC_ART="$THUMB_DIR/music_art.png"
+
+for cmd in playerctl notify-send curl; do
+    command -v "$cmd" >/dev/null || { echo "Falta $cmd"; exit 1; }
+done
+
+get_metadata() {
+    playerctl metadata --format '{{title}}|{{artist}}|{{mpris:artUrl}}' 2>/dev/null
 }
 
-send_notify() {
-  CACHE_FILE="/tmp/last_song_notify.txt"
-  THUMB_DIR="$HOME/.cache/thumbnails"
-  mkdir -p "$THUMB_DIR"
+get_album_art() {
+    local art_url="$1"
 
-  while true; do
-    status=$(playerctl status 2>/dev/null)
-    if [[ "$status" != "Playing" ]]; then
-      sleep 10
-      continue
+    if [[ "$art_url" == file://* ]]; then
+        cp -f "${art_url#file://}" "$MUSIC_ART" 2>/dev/null
+    elif [[ "$art_url" == http* ]]; then
+        curl -sfL "$art_url" -o "$MUSIC_ART"
+    else
+        cp -f "/usr/share/icons/Adwaita/256x256/actions/media-playback-start.png" "$MUSIC_ART"
     fi
 
-    song_title=$(playerctl metadata --format '{{title}}' 2>/dev/null)
-    song_artist=$(playerctl metadata --format '{{artist}}' 2>/dev/null)
-    current_song="${song_title} - ${song_artist}"
+    echo "$MUSIC_ART"
+}
 
-    if [[ "$current_song" != "$(cat "$CACHE_FILE" 2>/dev/null)" ]]; then
-      song_file=$(playerctl metadata mpris:artUrl 2>/dev/null | sed 's/^file:\/\///')
+send_notification() {
+    notify-send -u low "  $1" "$2" -i "$MUSIC_ART"
+}
 
-      if [[ -f "$song_file" ]]; then
-        ffmpeg -y -i "$song_file" -an -vcodec copy "$THUMB_DIR/cover.jpg" 2>/dev/null
+monitor_player() {
+    playerctl -F status 2>/dev/null | while read -r status; do
+        if [[ "$status" == "Playing" ]]; then
+            metadata=$(get_metadata)
+            IFS="|" read -r title artist art_url <<< "$metadata"
 
-        if [[ -f "$THUMB_DIR/cover.jpg" ]]; then
-          convert "$THUMB_DIR/cover.jpg" -resize 128x128^ -gravity center -extent 128x128 \
-            -alpha on -background none \
-            \( +clone -alpha extract -draw 'fill black polygon 0,0 0,128 128,128 fill white circle 64,64 64,0' -alpha off \) \
-            -compose copy_opacity -composite "$THUMB_DIR/profile.png"
+            [[ -z "$title" || -z "$artist" ]] && continue
+
+            current_hash="$title - $artist - $art_url"
+            if [[ "$current_hash" != "$(cat "$CACHE_FILE" 2>/dev/null)" ]]; then
+                get_album_art "$art_url"    
+                send_notification "$artist" "$title"
+                echo "$current_hash" > "$CACHE_FILE"
+            fi
         fi
-      fi
-
-      notify-send "  $song_artist" "$song_title" -i "$THUMB_DIR/profile.png"
-      echo "$current_song" > "$CACHE_FILE"
-    fi
-    sleep 10
-  done
+    done
 }
 
 case "$1" in
   --song)
-    print_song
+    IFS="|" read -r title artist _ <<< "$(get_metadata)"
+    echo -e "  $artist\n$title"
     ;;
   --notify)
-    send_notify
+    monitor_player
     ;;
   *)
     echo "Uso: $0 [--song|--notify]"

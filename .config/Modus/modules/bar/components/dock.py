@@ -1,23 +1,55 @@
 import json
 import threading
-from gi.repository import GLib
+import cairo
+from gi.repository import GLib,  Gdk, GdkPixbuf
 from utils import IconResolver, read_config
 from fabric.widgets.box import Box
 from fabric.widgets.button import Button
 from fabric.widgets.image import Image
 from fabric.widgets.eventbox import EventBox
-from fabric.widgets.wayland import WaylandWindow as Window
 from fabric.hyprland.widgets import get_hyprland_connection
 from fabric.utils import exec_shell_command, idle_add, remove_handler
 
-class Dock(Window):
+def add_shadow_to_pixbuf(pixbuf, light_alpha=0.4, dark_alpha=0.4, offset=(2, 2)): 
+    pixels = pixbuf.get_pixels()
+    n_channels = pixbuf.get_n_channels()
+    stride = pixbuf.get_rowstride()
+    w, h = pixbuf.get_width(), pixbuf.get_height()
+
+    total_lum = 0
+    count = 0
+    for y in range(h):
+        row = pixels[y*stride:(y+1)*stride]
+        for x in range(0, w*n_channels, n_channels):
+            r, g, b = row[x:x+3]
+            lum = (0.2126*r + 0.7152*g + 0.0722*b) / 255
+            total_lum += lum
+            count += 1
+    avg_lum = total_lum / count
+
+    if avg_lum > 0.5:
+        shadow_color = (0, 0, 0, dark_alpha)  
+    else:
+        shadow_color = (1, 1, 1, light_alpha)  
+
+    surf = cairo.ImageSurface(cairo.FORMAT_ARGB32, w + offset[0], h + offset[1])
+    ctx = cairo.Context(surf)
+
+    ctx.set_source_rgba(*shadow_color)
+    ctx.mask_surface(
+        Gdk.cairo_surface_create_from_pixbuf(pixbuf, 1),
+        offset[0],
+        offset[1]
+    )
+
+    Gdk.cairo_set_source_pixbuf(ctx, pixbuf, 0, 0)
+    ctx.paint()
+
+    return Gdk.pixbuf_get_from_surface(surf, 0, 0, surf.get_width(), surf.get_height())
+
+class Dock(Box):
     def __init__(self, **kwargs):
-        super().__init__(
-            layer="top",
-            anchor="bottom center",
-            exclusivity="none",
-            **kwargs,
-        )
+        super().__init__(orientation="v", name="dock", **kwargs)
         self.config = read_config()
         self.conn = get_hyprland_connection()
         self.icon = IconResolver()
@@ -26,9 +58,8 @@ class Dock(Window):
         self.hide_id = None
         self._arranger_handler = None
 
-        # Set up UI containers
         self.view = Box(name="viewport", orientation="h")
-        self.wrapper = Box(name="dock", orientation="v", children=[self.view])
+        self.wrapper = Box(name="dock-wrapper", orientation="v", children=[self.view])
         self.hover = EventBox()
         self.hover.set_size_request(-1, 1)
         self.hover.connect("enter-notify-event", self._on_hover_enter)
@@ -40,9 +71,7 @@ class Dock(Window):
 
         if self.conn.ready:
             self.update_dock()
-            GLib.timeout_add(
-                500, self.check_hide
-            )  # Delay to ensure Hyprland loads clients
+            GLib.timeout_add(500, self.check_hide)
         else:
             self.conn.connect("event::ready", self.update_dock)
             self.conn.connect("event::ready", self.check_hide)
@@ -58,7 +87,6 @@ class Dock(Window):
         self.delay_hide()
 
     def toggle_dock(self, show):
-        """Show or hide the dock immediately."""
         if show:
             if self.is_hidden:
                 self.is_hidden = False
@@ -74,7 +102,6 @@ class Dock(Window):
                 self.wrapper.remove_style_class("show-dock")
 
     def delay_hide(self):
-        """Schedule hiding the dock after a short delay."""
         if self.hide_id:
             GLib.source_remove(self.hide_id)
         self.hide_id = GLib.timeout_add(1000, self.hide_dock)
@@ -85,7 +112,6 @@ class Dock(Window):
         return False
 
     def check_hide(self, *args):
-        """Show the dock immediately in an empty workspace; otherwise, hide if needed."""
         clients = self.get_clients()
         current_ws = self.get_workspace()
         ws_clients = [w for w in clients if w["workspace"]["id"] == current_ws]
@@ -98,7 +124,6 @@ class Dock(Window):
             self.toggle_dock(show=True)
 
     def update_dock(self, *args):
-        """Refresh the dock icons based on running and pinned apps."""
         arranger_handler = getattr(self, "_arranger_handler", None)
 
         if arranger_handler:
@@ -132,18 +157,22 @@ class Dock(Window):
         return False
 
     def create_button(self, app, instances):
-        """Create a button for an app with an icon and an optional indicator."""
         icon_img = self.icon.get_icon_pixbuf(
             app.lower(), 30
         ) or self.icon.get_icon_pixbuf("image-missing", 30)
-        items = [Image(pixbuf=icon_img)]
+        icon_img = add_shadow_to_pixbuf(icon_img)
+        items = [Image(pixbuf=icon_img, name="dock-icon-image")]  
         if instances:
-            items.append(
-                Image( 
-                    pixbuf=self.icon.get_icon_pixbuf("find-location-symbolic", 11),
-                    name="dock-app-indicator",
+            indicators = Box(orientation="h", spacing=0.15, h_align="center")
+            for _ in range(min(len(instances), 3)):    
+                indicators.add(
+                    Image(
+                        pixbuf=self.icon.get_icon_pixbuf("pager-checked-symbolic", 10),
+                        name="dock-app-indicator",
+                    )
                 )
-            )
+            items.append(indicators)
+        
         return Button(
             child=Box(
                 name="dock-icon",

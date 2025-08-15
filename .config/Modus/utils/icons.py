@@ -104,6 +104,8 @@ moderate_signal: str = "&#xeba4;"
 good_signal: str = "&#xeba5;"
 no_signal: str = "&#xf063;"
 weak_signal: str = "&#xeba3;"
+up_arrow = "&#x25B2;"   
+down_arrow = "&#x25BC;" 
 
 # Overview
 circle_plus: str = "&#xea69;"

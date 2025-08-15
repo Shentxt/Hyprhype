@@ -1,4 +1,7 @@
-import hashlib, json, os, colorsys
+import hashlib
+import json
+import os
+import colorsys
 from PIL import Image
 from fabric.widgets.box import Box
 from fabric.widgets.centerbox import CenterBox
@@ -10,7 +13,7 @@ from fabric.utils import get_relative_path, exec_shell_command_async
 from concurrent.futures import ThreadPoolExecutor, wait
 from utils import WALLPAPERS_DIR
 import utils.icons as icons
-
+from os.path import basename
 
 class WallpaperSelector(Box):
     CACHE_DIR = os.path.expanduser("~/.cache/modus/wallpapers")
@@ -40,21 +43,22 @@ class WallpaperSelector(Box):
         )
         self.launcher = kwargs["launcher"]
         os.makedirs(self.CACHE_DIR, exist_ok=True)
-        self.files = [f for f in os.listdir(WALLPAPERS_DIR) if self._is_image(f)]
-        self.thumbnails, self.thumbnail_queue = [], []
+        self.wallpaper_dir = WALLPAPERS_DIR
+        self.files = []
+        self.thumbnails = []
+        self.thumbnail_queue = []
         self.executor = ThreadPoolExecutor(max_workers=4)
-        self.selected_index, self.current_wallpaper = -1, None
+        self.selected_index = -1
+        self.current_wallpaper = None
+        self.dir_monitor = None
+        self.parent_monitor = None
         self._init_widgets()
+        self.setup_monitors()
         self._start_thumbnail_thread()
-        self.setup_file_monitor()
         if os.path.exists(self.CURRENT_WALLPAPER_FILE):
             gfile = Gio.File.new_for_path(self.CURRENT_WALLPAPER_FILE)
-            self.current_wp_monitor = gfile.monitor_file(
-                Gio.FileMonitorFlags.NONE, None
-            )
-            self.current_wp_monitor.connect(
-                "changed", self.on_current_wallpaper_changed
-            )
+            self.current_wp_monitor = gfile.monitor_file(Gio.FileMonitorFlags.NONE, None)
+            self.current_wp_monitor.connect("changed", self.on_current_wallpaper_changed)
         self.show_all()
         self.search_entry.grab_focus()
 
@@ -99,45 +103,108 @@ class WallpaperSelector(Box):
             notify_text=lambda entry, *_: self.on_custom_color_submitted(entry),
             on_key_press_event=self.on_custom_color_key_press,
         )
+          
+        self.folder_popover = Gtk.Popover()
+        self.folder_popover.set_name("folder-popover")
+        self.folder_popover.set_position(Gtk.PositionType.BOTTOM)
+        self.folder_popover.set_modal(True)  
+    
+        self.filechooser = Gtk.FileChooserWidget(
+            action=Gtk.FileChooserAction.SELECT_FOLDER
+        )
+        self.filechooser.set_size_request(400, 300)
+    
+        popover_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, margin=5)
+        popover_box.pack_start(self.filechooser, True, True, 0)
+        self.folder_popover.add(popover_box)
+    
+        self.select_folder_button = Gtk.Button(label=f"{basename(self.wallpaper_dir)}")
+        self.select_folder_button.set_name("folder-select-button")
+        self.folder_popover.set_relative_to(self.select_folder_button)
+    
+        self.select_folder_button.connect("clicked", self.on_folder_button_clicked)
+        self.filechooser.connect("selection-changed", self.on_embedded_folder_selected)
+        self.filechooser.connect("file-activated", lambda w: self.folder_popover.popdown()) 
+    
         self.header_box = CenterBox(
             name="header-box",
             spacing=10,
             orientation="h",
             start_children=[self.materialyoucolor_switcher, self.mat_icon],
-            center_children=[
-                self.search_entry,
-                Label(label="Custom Color:"),
-                self.custom_color_entry,
-            ],
-            end_children=[self.dropdown_box],
+            center_children=[self.search_entry, Label(label="Color selector:"), self.custom_color_entry],
+            end_children=[self.dropdown_box, self.select_folder_button],
         )
         self.add(self.header_box)
         self.add(self.scrolled_window)
+        self._load_wallpaper_dir()
+        os.makedirs(self.CACHE_DIR, exist_ok=True)
+    
+    def on_folder_button_clicked(self, button):
+        if self.folder_popover.get_visible():
+            self.folder_popover.popdown()
+        else:
+            self.filechooser.set_current_folder(self.wallpaper_dir)
+            self.folder_popover.show_all()
+    
+    def _load_wallpaper_dir(self):
+        try:
+            with open(self.SETTINGS_FILE, 'r') as f:
+                settings = json.load(f)
+                saved_dir = settings.get("wallpaper-dir")
+                if saved_dir and os.path.isdir(saved_dir):
+                    self.wallpaper_dir = saved_dir
+                else:
+                    self.wallpaper_dir = WALLPAPERS_DIR
+        except:
+            self.wallpaper_dir = WALLPAPERS_DIR
 
-    def setup_file_monitor(self):
-        gfile = Gio.File.new_for_path(WALLPAPERS_DIR)
-        self.file_monitor = gfile.monitor_directory(Gio.FileMonitorFlags.NONE, None)
-        self.file_monitor.connect("changed", self.on_directory_changed)
+    def on_embedded_folder_selected(self, widget):
+        folder = widget.get_filename()
+        if folder and os.path.isdir(folder):
+            self.wallpaper_dir = folder
+            self.select_folder_button.set_label(f"{basename(folder)}")
+            self._update_settings_field("wallpaper-dir", folder)
+            self._start_dir_monitor()
+            self.load_wallpapers()
+            GLib.idle_add(self.arrange_viewport)
 
-    def on_current_wallpaper_changed(self, monitor, file, other_file, event_type):
-        if event_type in (Gio.FileMonitorEvent.CHANGED, Gio.FileMonitorEvent.CREATED):
-            try:
-                with open(self.CURRENT_WALLPAPER_FILE, "r") as f:
-                    new_wp = f.read().strip()
-                if new_wp and new_wp != self.current_wallpaper:
-                    self.current_wallpaper = new_wp
-                    if self.custom_color_entry.get_text().strip().lower() in [
-                        "",
-                        "none",
-                    ]:
-                        scheme = self.scheme_dropdown.get_active_id()
-                        color_generator = get_relative_path(
-                            "../../../config/material-colors/generate.py"
-                        )
-                        command = f'python -O {color_generator} --scheme "{scheme}" --fade 1.5 --image "{self.current_wallpaper}"'
-                        self._run_command(command)
-            except Exception as e:
-                print(f"Error updating current wallpaper: {e}")
+    def setup_monitors(self):
+        parent_dir = os.path.dirname(self.wallpaper_dir)
+        if os.path.exists(parent_dir):
+            parent_gfile = Gio.File.new_for_path(parent_dir)
+            self.parent_monitor = parent_gfile.monitor_directory(Gio.FileMonitorFlags.NONE, None)
+            self.parent_monitor.connect("changed", self.on_parent_dir_changed)
+        if os.path.exists(self.wallpaper_dir):
+            self._start_dir_monitor()
+        else:
+            self.files = []
+            self.arrange_viewport()
+
+    def _start_dir_monitor(self):
+        if self.dir_monitor:
+            self.dir_monitor.cancel()
+        gfile = Gio.File.new_for_path(self.wallpaper_dir)
+        self.dir_monitor = gfile.monitor_directory(Gio.FileMonitorFlags.NONE, None)
+        self.dir_monitor.connect("changed", self.on_directory_changed)
+        self.load_wallpapers()
+
+    def on_parent_dir_changed(self, monitor, file, other_file, event_type):
+        if file.get_basename() == os.path.basename(self.wallpaper_dir):
+            if event_type == Gio.FileMonitorEvent.CREATED:
+                self._start_dir_monitor()
+            elif event_type == Gio.FileMonitorEvent.DELETED:
+                if self.dir_monitor:
+                    self.dir_monitor.cancel()
+                    self.dir_monitor = None
+                self.files.clear()
+                self.arrange_viewport()
+
+    def load_wallpapers(self):
+        if os.path.exists(self.wallpaper_dir):
+            self.files = [f for f in os.listdir(self.wallpaper_dir) if self._is_image(f)]
+        else:
+            self.files = []
+        self.arrange_viewport()
 
     def on_directory_changed(self, monitor, file, other_file, event_type):
         file_name = file.get_basename()
@@ -148,21 +215,30 @@ class WallpaperSelector(Box):
                 self.thumbnails = [(p, n) for p, n in self.thumbnails if n != file_name]
                 GLib.idle_add(self.arrange_viewport, self.search_entry.get_text())
             return
-        if event_type in (
-            Gio.FileMonitorEvent.CREATED,
-            Gio.FileMonitorEvent.CHANGED,
-        ) and self._is_image(file_name):
-            if (
-                event_type == Gio.FileMonitorEvent.CREATED
-                and file_name not in self.files
-            ):
+        if event_type in (Gio.FileMonitorEvent.CREATED, Gio.FileMonitorEvent.CHANGED) and self._is_image(file_name):
+            if event_type == Gio.FileMonitorEvent.CREATED and file_name not in self.files:
                 self.files.append(file_name)
                 self.files.sort()
             elif event_type == Gio.FileMonitorEvent.CHANGED and file_name in self.files:
                 self._delete_cache(file_name)
             self.executor.submit(self._process_file, file_name)
 
-    def _delete_cache(self, file_name: str):
+    def on_current_wallpaper_changed(self, monitor, file, other_file, event_type):
+        if event_type in (Gio.FileMonitorEvent.CHANGED, Gio.FileMonitorEvent.CREATED):
+            try:
+                with open(self.CURRENT_WALLPAPER_FILE, "r") as f:
+                    new_wp = f.read().strip()
+                if new_wp and new_wp != self.current_wallpaper:
+                    self.current_wallpaper = new_wp
+                    if self.custom_color_entry.get_text().strip().lower() in ["", "none"]:
+                        scheme = self.scheme_dropdown.get_active_id()
+                        color_generator = get_relative_path("../../../config/material-colors/generate.py")
+                        command = f'python -O {color_generator} --scheme "{scheme}" --fade 1.5 --image "{self.current_wallpaper}"'
+                        self._run_command(command)
+            except Exception as e:
+                print(f"Error updating current wallpaper: {e}")
+
+    def _delete_cache(self, file_name):
         cache_path = self._get_cache_path(file_name)
         if os.path.exists(cache_path):
             try:
@@ -170,54 +246,40 @@ class WallpaperSelector(Box):
             except Exception:
                 pass
 
-    def arrange_viewport(self, query: str = ""):
+    def arrange_viewport(self, query=""):
         model = self.viewport.get_model()
         model.clear()
-        for pixbuf, file_name in sorted(
-            [
-                (thumb, name)
-                for thumb, name in self.thumbnails
-                if query.casefold() in name.casefold()
-            ],
-            key=lambda x: x[1].lower(),
-        ):
+        for pixbuf, file_name in sorted([(thumb, name) for thumb, name in self.thumbnails if query.casefold() in name.casefold()], key=lambda x: x[1].lower()):
             model.append([pixbuf, file_name])
         if not query.strip():
             self.viewport.unselect_all()
             self.selected_index = -1
         elif len(model) > 0:
-            self.update_selection(0) 
+            self.update_selection(0)
 
     def on_wallpaper_selected(self, iconview, path):
         model = iconview.get_model()
         file_name = model[path][1]
-        full_path = os.path.join(WALLPAPERS_DIR, file_name)
+        full_path = os.path.join(self.wallpaper_dir, file_name)
         selected_scheme = self.scheme_dropdown.get_active_id()
-        wallpaper_script = get_relative_path("../../../config/scripts/wallpaper.py") 
+        wallpaper_script = get_relative_path("../../../config/scripts/wallpaper.py")
         if self.materialyoucolor_switcher.get_active():
             command = f"python -O {wallpaper_script} -I {full_path}"
             GLib.spawn_command_line_async(command)
             self.update_scheme(selected_scheme)
-        else: 
-            exec_shell_command_async(cmd)   
- 
+        else:
+            command = f"python -O {wallpaper_script} {full_path}"
+            exec_shell_command_async(command)
+
     def on_search_entry_key_press(self, widget, event):
         if event.state & Gdk.ModifierType.SHIFT_MASK:
             if event.keyval in (Gdk.KEY_Up, Gdk.KEY_Down):
-                scheme_list = [
-                    scheme_id for _, scheme_id in sorted(self.SCHEMES.items())
-                ]
+                scheme_list = [scheme_id for _, scheme_id in sorted(self.SCHEMES.items())]
                 try:
-                    current_index = scheme_list.index(
-                        self.scheme_dropdown.get_active_id()
-                    )
+                    current_index = scheme_list.index(self.scheme_dropdown.get_active_id())
                 except ValueError:
                     current_index = 0
-                new_index = (
-                    (current_index - 1) % len(scheme_list)
-                    if event.keyval == Gdk.KEY_Up
-                    else (current_index + 1) % len(scheme_list)
-                )
+                new_index = (current_index - 1) % len(scheme_list) if event.keyval == Gdk.KEY_Up else (current_index + 1) % len(scheme_list)
                 self.scheme_dropdown.set_active(new_index)
                 return True
             elif event.keyval == Gdk.KEY_Right:
@@ -239,26 +301,16 @@ class WallpaperSelector(Box):
         if total_items == 0:
             return
         if self.selected_index == -1:
-            new_index = (
-                0 if keyval in (Gdk.KEY_Down, Gdk.KEY_Right) else total_items - 1
-            )
+            new_index = 0 if keyval in (Gdk.KEY_Down, Gdk.KEY_Right) else total_items - 1
         else:
             current_index = self.selected_index
             allocation = self.viewport.get_allocation()
             columns = max(1, allocation.width // self.ITEM_WIDTH)
-            new_index = current_index + (
-                1
-                if keyval == Gdk.KEY_Right
-                else -1
-                if keyval == Gdk.KEY_Left
-                else columns
-                if keyval == Gdk.KEY_Down
-                else -columns
-            )
+            new_index = current_index + (1 if keyval == Gdk.KEY_Right else -1 if keyval == Gdk.KEY_Left else columns if keyval == Gdk.KEY_Down else -columns)
             new_index = max(0, min(new_index, total_items - 1))
         self.update_selection(new_index)
 
-    def update_selection(self, new_index: int):
+    def update_selection(self, new_index):
         self.viewport.unselect_all()
         path = Gtk.TreePath.new_from_indices([new_index])
         self.viewport.select_path(path)
@@ -269,15 +321,12 @@ class WallpaperSelector(Box):
         GLib.Thread.new("thumbnail-loader", self._preload_thumbnails, None)
 
     def _preload_thumbnails(self, _data):
-        futures = [
-            self.executor.submit(self._process_file, file_name)
-            for file_name in self.files
-        ]
+        futures = [self.executor.submit(self._process_file, file_name) for file_name in self.files]
         wait(futures)
         GLib.idle_add(self._process_batch)
 
     def _process_file(self, file_name):
-        full_path = os.path.join(WALLPAPERS_DIR, file_name)
+        full_path = os.path.join(self.wallpaper_dir, file_name)
         cache_path = self._get_cache_path(file_name)
         if not os.path.exists(cache_path):
             try:
@@ -308,30 +357,22 @@ class WallpaperSelector(Box):
             GLib.idle_add(self._process_batch)
         return False
 
-    def _get_cache_path(self, file_name: str) -> str:
+    def _get_cache_path(self, file_name):
         file_hash = hashlib.md5(file_name.encode("utf-8")).hexdigest()
         return os.path.join(self.CACHE_DIR, f"{file_hash}.png")
 
     def on_scheme_changed(self, combo):
         scheme_id = combo.get_active_id()
-        display_name = next(
-            name for name, id in self.SCHEMES.items() if id == scheme_id
-        )
+        display_name = next(name for name, id in self.SCHEMES.items() if id == scheme_id)
         self.update_scheme(scheme_id)
-        color_generator = get_relative_path(
-            "../../../config/material-colors/generate.py"
-        )
+        color_generator = get_relative_path("../../../config/material-colors/generate.py")
         command = f'python -O {color_generator} -R --scheme "{scheme_id}"'
-        self._run_command(
-            command,
-            success_message=f"Applied color scheme: {display_name}",
-            failure_message="Failed to apply color scheme:",
-        )
+        self._run_command(command, success_message=f"Applied color scheme: {display_name}", failure_message="Failed to apply color scheme:")
 
-    def update_scheme(self, scheme: str):
+    def update_scheme(self, scheme):
         self._update_settings_field("generation-scheme", scheme)
 
-    def on_custom_color_submitted(self, entry: Entry):
+    def on_custom_color_submitted(self, entry):
         color = entry.get_text().strip()
         if not color:
             self.update_custom_color("")
@@ -360,12 +401,10 @@ class WallpaperSelector(Box):
                     print(f"Error reading current wallpaper: {e}")
         return self.current_wallpaper
 
-    def update_custom_color(self, color: str):
+    def update_custom_color(self, color):
         color = color if color and color.lower() != "none" else "none"
         self._update_settings_field("custom-color", color)
-        color_generator = get_relative_path(
-            "../../../config/material-colors/generate.py"
-        )
+        color_generator = get_relative_path("../../../config/material-colors/generate.py")
         if color == "none":
             scheme = self.scheme_dropdown.get_active_id()
             current_wp = self._fetch_current_wallpaper()
@@ -375,31 +414,25 @@ class WallpaperSelector(Box):
         self._run_command(command)
 
     @staticmethod
-    def _is_image(file_name: str) -> bool:
-        return file_name.lower().endswith(
-            (".png", ".jpg", ".jpeg", ".bmp", ".gif", ".webp")
-        )
+    def _is_image(file_name):
+        return file_name.lower().endswith((".png", ".jpg", ".jpeg", ".bmp", ".gif", ".webp"))
 
     @staticmethod
-    def is_valid_hex_color(value: str) -> bool:
-        return (
-            value.startswith("#")
-            and len(value) == 7
-            and all(c in "0123456789ABCDEFabcdef" for c in value[1:])
-        )
+    def is_valid_hex_color(value):
+        return value.startswith("#") and len(value) == 7 and all(c in "0123456789ABCDEFabcdef" for c in value[1:])
 
     @staticmethod
-    def is_valid_hue(value: str) -> bool:
+    def is_valid_hue(value):
         try:
             return 0 <= float(value) <= 360
         except ValueError:
             return False
 
-    def hue_to_hex(self, hue: float) -> str:
+    def hue_to_hex(self, hue):
         r, g, b = colorsys.hls_to_rgb(hue / 360.0, 0.5, 1.0)
         return f"#{int(r * 255):02x}{int(g * 255):02x}{int(b * 255):02x}"
 
-    def _update_settings_field(self, field: str, value):
+    def _update_settings_field(self, field, value):
         try:
             with open(self.SETTINGS_FILE, "r") as f:
                 settings = json.load(f)
@@ -409,9 +442,7 @@ class WallpaperSelector(Box):
         except Exception:
             pass
 
-    def _run_command(
-        self, command: str, success_message: str = None, failure_message: str = None
-    ):
+    def _run_command(self, command, success_message=None, failure_message=None):
         try:
             GLib.spawn_command_line_async(command)
             if success_message:
